@@ -35,10 +35,12 @@
 			this.panelSearch = new System.Windows.Forms.Panel();
 			this.inputSearch = new System.Windows.Forms.TextBox();
 			this.buttonSearch = new System.Windows.Forms.Button();
-			this.listDisplay = new System.Windows.Forms.ListBox();
 			this.buttonView = new System.Windows.Forms.Button();
 			this.labelFileDialog = new System.Windows.Forms.Label();
 			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.listviewData = new System.Windows.Forms.ListView();
+			this.columnDistrictName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnNeighborhoodCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -146,20 +148,6 @@
 			this.buttonSearch.Text = "Search";
 			this.buttonSearch.UseVisualStyleBackColor = false;
 			// 
-			// listDisplay
-			// 
-			this.listDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.listDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.listDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.listDisplay.FormattingEnabled = true;
-			this.listDisplay.ItemHeight = 16;
-			this.listDisplay.Location = new System.Drawing.Point(12, 84);
-			this.listDisplay.MultiColumn = true;
-			this.listDisplay.Name = "listDisplay";
-			this.listDisplay.Size = new System.Drawing.Size(760, 320);
-			this.listDisplay.TabIndex = 26;
-			// 
 			// buttonView
 			// 
 			this.buttonView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -196,6 +184,33 @@
 			this.fileDialog.FileName = "openFileDialog1";
 			this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_FileOk);
 			// 
+			// listviewData
+			// 
+			this.listviewData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.listviewData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listviewData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnDistrictName,
+            this.columnNeighborhoodCount});
+			this.listviewData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.listviewData.FullRowSelect = true;
+			this.listviewData.HideSelection = false;
+			this.listviewData.Location = new System.Drawing.Point(12, 84);
+			this.listviewData.Name = "listviewData";
+			this.listviewData.Size = new System.Drawing.Size(760, 320);
+			this.listviewData.TabIndex = 33;
+			this.listviewData.UseCompatibleStateImageBehavior = false;
+			this.listviewData.View = System.Windows.Forms.View.Details;
+			// 
+			// columnDistrictName
+			// 
+			this.columnDistrictName.Text = "District Name";
+			this.columnDistrictName.Width = 300;
+			// 
+			// columnNeighborhoodCount
+			// 
+			this.columnNeighborhoodCount.Text = "Neighborhoods";
+			this.columnNeighborhoodCount.Width = 140;
+			// 
 			// FormPublic
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,11 +221,11 @@
 			this.Controls.Add(this.buttonView);
 			this.Controls.Add(this.panelSearch);
 			this.Controls.Add(this.buttonSearch);
-			this.Controls.Add(this.listDisplay);
 			this.Controls.Add(this.buttonProperties);
 			this.Controls.Add(this.buttonNeighborhoods);
 			this.Controls.Add(this.buttonDistricts);
 			this.Controls.Add(this.buttonBack);
+			this.Controls.Add(this.listviewData);
 			this.Name = "FormPublic";
 			this.Text = "Public Access";
 			this.panelSearch.ResumeLayout(false);
@@ -228,9 +243,11 @@
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.TextBox inputSearch;
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.ListBox listDisplay;
         private System.Windows.Forms.Button buttonView;
 		private System.Windows.Forms.Label labelFileDialog;
 		private System.Windows.Forms.OpenFileDialog fileDialog;
+		private System.Windows.Forms.ListView listviewData;
+		private System.Windows.Forms.ColumnHeader columnDistrictName;
+		private System.Windows.Forms.ColumnHeader columnNeighborhoodCount;
 	}
 }
