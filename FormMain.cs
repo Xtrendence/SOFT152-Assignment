@@ -56,10 +56,12 @@ namespace SOFT152Assignment {
 		private void showCategory(string desiredCategory) {
 			this.category = desiredCategory.ToLower();
 
+			// Reset all buttons to dark gray.
 			buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
 			buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
 			buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
 
+			// Reset all button tags so none are considered to be "active".
 			buttonDistricts.Tag = "";
 			buttonNeighborhoods.Tag = "";
 			buttonProperties.Tag = "";
@@ -82,6 +84,7 @@ namespace SOFT152Assignment {
 				// Same as above, but for the "Properties" button.
 				buttonProperties.Tag = "active-category";
 			}
+			// If the data source file isn't empty, then populate the ListViews.
 			if(dataLines != null && dataLines.ToString() != "") {
 				populateLists(dataLines, this.category);
 			}
