@@ -74,7 +74,7 @@
 			// 
 			// buttonDistricts
 			// 
-			this.buttonDistricts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.buttonDistricts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonDistricts.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonDistricts.FlatAppearance.BorderSize = 0;
 			this.buttonDistricts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -84,7 +84,7 @@
 			this.buttonDistricts.Name = "buttonDistricts";
 			this.buttonDistricts.Size = new System.Drawing.Size(98, 60);
 			this.buttonDistricts.TabIndex = 23;
-			this.buttonDistricts.Tag = "active-category";
+			this.buttonDistricts.Tag = "";
 			this.buttonDistricts.Text = "Districts";
 			this.buttonDistricts.UseVisualStyleBackColor = false;
 			this.buttonDistricts.Click += new System.EventHandler(this.ButtonDistricts_Click);

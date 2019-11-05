@@ -12,10 +12,18 @@ namespace SOFT152Assignment
 {
     public partial class FormPublic : Form
     {
+		public string category;
         public FormPublic()
         {
             InitializeComponent();
+			// By default, the districts category is shown.
+			showCategory("districts");
         }
+		// For back buttons to remember which dataset the user was looking at.
+		public FormPublic(string activeCategory) {
+			this.category = activeCategory.ToLower();
+			showCategory(category);
+		}
 
         private void ButtonBack_Click(object sender, EventArgs e)
         {
@@ -30,6 +38,42 @@ namespace SOFT152Assignment
 			// Most forms have the same size, but some (such as popups) might not.
 			if (matchSize) {
 				form.Size = this.Size;
+			}
+		}
+		private void showCategory(string desiredCategory) {
+			this.category = desiredCategory.ToLower();
+			if(desiredCategory == "districts") {
+				// Sets the "Districts" button's background color to brighter than the other two, letting the user know that it's the active one.
+				buttonDistricts.BackColor = Color.FromArgb(100, 100, 100);
+				buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
+				buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
+
+				// Sets the "Tag" property of the "Districts" button to "active-category". This is later used to determine which popup dialog form to display.
+				buttonDistricts.Tag = "active-category";
+				buttonNeighborhoods.Tag = "";
+				buttonProperties.Tag = "";
+			}
+			else if(desiredCategory == "neighborhoods") {
+				// Same as above, but for the "Neighborhoods" button.
+				buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
+				buttonNeighborhoods.BackColor = Color.FromArgb(100, 100, 100);
+				buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
+
+				// Same thing as above, but for the "Neighborhoods" button.
+				buttonDistricts.Tag = "";
+				buttonNeighborhoods.Tag = "active-category";
+				buttonProperties.Tag = "";
+			}
+			else if(desiredCategory == "properties") {
+				// Same as above, but for the "Properties" button.
+				buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
+				buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
+				buttonProperties.BackColor = Color.FromArgb(100, 100, 100);
+
+				// Same as above, but for the "Properties" button.
+				buttonDistricts.Tag = "";
+				buttonNeighborhoods.Tag = "";
+				buttonProperties.Tag = "active-category";
 			}
 		}
 
@@ -52,39 +96,15 @@ namespace SOFT152Assignment
         }
 
 		private void ButtonDistricts_Click(object sender, EventArgs e) {
-			// Sets the "Districts" button's background color to brighter than the other two, letting the user know that it's the active one.
-			buttonDistricts.BackColor = Color.FromArgb(100, 100, 100);
-			buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
-			buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
-
-			// Sets the "Tag" property of the "Districts" button to "active-category". This is later used to determine which popup dialog form to display.
-			buttonDistricts.Tag = "active-category";
-			buttonNeighborhoods.Tag = "";
-			buttonProperties.Tag = "";
+			showCategory("districts");
 		}
 
 		private void ButtonNeighborhoods_Click(object sender, EventArgs e) {
-			// Same as above, but for the "Neighborhoods" button.
-			buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
-			buttonNeighborhoods.BackColor = Color.FromArgb(100, 100, 100);
-			buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
-
-			// Same thing as above, but for the "Neighborhoods" button.
-			buttonDistricts.Tag = "";
-			buttonNeighborhoods.Tag = "active-category";
-			buttonProperties.Tag = "";
+			showCategory("neighborhoods");
 		}
 
 		private void ButtonProperties_Click(object sender, EventArgs e) {
-			// Same as above, but for the "Properties" button.
-			buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
-			buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
-			buttonProperties.BackColor = Color.FromArgb(100, 100, 100);
-
-			// Same as above, but for the "Properties" button.
-			buttonDistricts.Tag = "";
-			buttonNeighborhoods.Tag = "";
-			buttonProperties.Tag = "active-category";
+			showCategory("properties");
 		}
 
 		private void panelSearch_Click(object sender, EventArgs e) {
