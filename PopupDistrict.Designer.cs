@@ -31,11 +31,11 @@
 			this.buttonBack = new System.Windows.Forms.Button();
 			this.inputName = new System.Windows.Forms.TextBox();
 			this.panelName = new System.Windows.Forms.Panel();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panelCount = new System.Windows.Forms.Panel();
 			this.inputNeighborhoodCount = new System.Windows.Forms.TextBox();
 			this.buttonNext = new System.Windows.Forms.Button();
 			this.panelName.SuspendLayout();
-			this.panel1.SuspendLayout();
+			this.panelCount.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonBack
@@ -62,9 +62,11 @@
 			this.inputName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.inputName.Location = new System.Drawing.Point(13, 10);
 			this.inputName.Name = "inputName";
-			this.inputName.Size = new System.Drawing.Size(270, 16);
+			this.inputName.Size = new System.Drawing.Size(332, 16);
 			this.inputName.TabIndex = 13;
 			this.inputName.Text = "District Name...";
+			this.inputName.Enter += new System.EventHandler(this.inputName_Enter);
+			this.inputName.Leave += new System.EventHandler(this.inputName_Leave);
 			// 
 			// panelName
 			// 
@@ -72,17 +74,19 @@
 			this.panelName.Controls.Add(this.inputName);
 			this.panelName.Location = new System.Drawing.Point(12, 222);
 			this.panelName.Name = "panelName";
-			this.panelName.Size = new System.Drawing.Size(297, 34);
+			this.panelName.Size = new System.Drawing.Size(360, 34);
 			this.panelName.TabIndex = 31;
+			this.panelName.Click += new System.EventHandler(this.panelName_Click);
 			// 
-			// panel1
+			// panelCount
 			// 
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.panel1.Controls.Add(this.inputNeighborhoodCount);
-			this.panel1.Location = new System.Drawing.Point(12, 268);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(297, 34);
-			this.panel1.TabIndex = 32;
+			this.panelCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.panelCount.Controls.Add(this.inputNeighborhoodCount);
+			this.panelCount.Location = new System.Drawing.Point(12, 268);
+			this.panelCount.Name = "panelCount";
+			this.panelCount.Size = new System.Drawing.Size(209, 34);
+			this.panelCount.TabIndex = 32;
+			this.panelCount.Click += new System.EventHandler(this.panelCount_Click);
 			// 
 			// inputNeighborhoodCount
 			// 
@@ -92,9 +96,11 @@
 			this.inputNeighborhoodCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.inputNeighborhoodCount.Location = new System.Drawing.Point(13, 10);
 			this.inputNeighborhoodCount.Name = "inputNeighborhoodCount";
-			this.inputNeighborhoodCount.Size = new System.Drawing.Size(270, 16);
+			this.inputNeighborhoodCount.Size = new System.Drawing.Size(182, 16);
 			this.inputNeighborhoodCount.TabIndex = 13;
 			this.inputNeighborhoodCount.Text = "Number of Neighborhoods...";
+			this.inputNeighborhoodCount.Enter += new System.EventHandler(this.inputNeighborhoodCount_Enter);
+			this.inputNeighborhoodCount.Leave += new System.EventHandler(this.inputNeighborhoodCount_Leave);
 			// 
 			// buttonNext
 			// 
@@ -104,12 +110,13 @@
 			this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.buttonNext.Location = new System.Drawing.Point(12, 315);
+			this.buttonNext.Location = new System.Drawing.Point(293, 315);
 			this.buttonNext.Name = "buttonNext";
 			this.buttonNext.Size = new System.Drawing.Size(79, 34);
 			this.buttonNext.TabIndex = 19;
 			this.buttonNext.Text = "Next";
 			this.buttonNext.UseVisualStyleBackColor = false;
+			this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
 			// 
 			// PopupDistrict
 			// 
@@ -118,7 +125,7 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(384, 361);
 			this.Controls.Add(this.buttonNext);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.panelCount);
 			this.Controls.Add(this.panelName);
 			this.Controls.Add(this.buttonBack);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -126,8 +133,8 @@
 			this.Text = "District";
 			this.panelName.ResumeLayout(false);
 			this.panelName.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.panelCount.ResumeLayout(false);
+			this.panelCount.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -137,7 +144,7 @@
 		private System.Windows.Forms.Button buttonBack;
 		private System.Windows.Forms.TextBox inputName;
 		private System.Windows.Forms.Panel panelName;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panelCount;
 		private System.Windows.Forms.TextBox inputNeighborhoodCount;
 		private System.Windows.Forms.Button buttonNext;
 	}

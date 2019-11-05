@@ -28,7 +28,7 @@ namespace SOFT152Assignment
         }
         private void showForm(Form form)
         {
-            this.Hide();
+			this.Hide();
             form.Show();
 			// Ensures that the new form opens on top of the current one.
             form.Left = this.Left;

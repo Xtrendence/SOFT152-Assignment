@@ -24,10 +24,10 @@ namespace SOFT152Assignment
 
 		private void buttonBack_Click(object sender, EventArgs e) {
 			if(level == "public") {
-				showForm(new FormPublic());
+				showForm(new FormPublic(), false);
 			}
 			else if(level == "staff") {
-				showForm(new FormStaff());
+				showForm(new FormStaff(), false);
 			}
 		}
 
@@ -44,14 +44,58 @@ namespace SOFT152Assignment
 			}
 		}
 
-		private void showForm(Form form) {
+		private void showForm(Form form, bool matchSize) {
 			this.Hide();
 			form.Show();
 			// Open form in the same location.
 			form.Left = this.Left;
 			form.Top = this.Top;
-			// All forms have the same size.
-			form.Size = this.Size;
+			// Most forms have the same size, but some (such as popups) might not.
+			if (matchSize) {
+				form.Size = this.Size;
+			}
+		}
+
+		private void panelName_Click(object sender, EventArgs e) {
+			// User might click on the panel instead of the TextBox. This takes care of that.
+			inputName.Focus();
+		}
+
+		private void panelCount_Click(object sender, EventArgs e) {
+			// User might click on the panel instead of the TextBox. This takes care of that.
+			inputPropertyCount.Focus();
+		}
+
+		private void buttonNext_Click(object sender, EventArgs e) {
+
+		}
+
+		private void inputName_Leave(object sender, EventArgs e) {
+			// Fill "placeholder".
+			if (inputName.Text.Trim() == "") {
+				inputName.Text = "Neighborhood Name...";
+			}
+		}
+
+		private void inputPropertyCount_Leave(object sender, EventArgs e) {
+			// Fill "placeholder".
+			if (inputPropertyCount.Text.Trim() == "") {
+				inputPropertyCount.Text = "Number of Properties...";
+			}
+		}
+
+		private void inputName_Enter(object sender, EventArgs e) {
+			// Empty "placeholder".
+			if (inputName.Text == "Neighborhood Name...") {
+				inputName.Text = "";
+			}
+		}
+
+		private void inputPropertyCount_Enter(object sender, EventArgs e) {
+			// Empty "placeholder".
+			if (inputPropertyCount.Text == "Number of Properties...") {
+				inputPropertyCount.Text = "";
+			}
 		}
 	}
 }
