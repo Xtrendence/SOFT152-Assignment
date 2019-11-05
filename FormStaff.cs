@@ -129,5 +129,12 @@ namespace SOFT152Assignment
 				showForm(new PopupProperty("staff", "edit"), false);
 			}
 		}
+
+		private void labelFileDialog_Click(object sender, EventArgs e) {
+			fileDialog.Title = "Select Data Source File";
+			fileDialog.FileName = "";
+			fileDialog.InitialDirectory = @"C:\";
+			fileDialog.ShowDialog();
+		}
 	}
 }

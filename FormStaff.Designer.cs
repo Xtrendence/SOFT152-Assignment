@@ -38,6 +38,8 @@
 			this.buttonProperties = new System.Windows.Forms.Button();
 			this.buttonNeighborhoods = new System.Windows.Forms.Button();
 			this.buttonDistricts = new System.Windows.Forms.Button();
+			this.labelFileDialog = new System.Windows.Forms.Label();
+			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -189,12 +191,30 @@
 			this.buttonDistricts.UseVisualStyleBackColor = false;
 			this.buttonDistricts.Click += new System.EventHandler(this.ButtonDistricts_Click);
 			// 
+			// labelFileDialog
+			// 
+			this.labelFileDialog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.labelFileDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelFileDialog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.labelFileDialog.Location = new System.Drawing.Point(12, 84);
+			this.labelFileDialog.Name = "labelFileDialog";
+			this.labelFileDialog.Size = new System.Drawing.Size(760, 320);
+			this.labelFileDialog.TabIndex = 33;
+			this.labelFileDialog.Text = "Select Data Source...";
+			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelFileDialog.Click += new System.EventHandler(this.labelFileDialog_Click);
+			// 
+			// fileDialog
+			// 
+			this.fileDialog.FileName = "openFileDialog1";
+			// 
 			// FormStaff
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(784, 461);
+			this.Controls.Add(this.labelFileDialog);
 			this.Controls.Add(this.buttonProperties);
 			this.Controls.Add(this.panelSearch);
 			this.Controls.Add(this.buttonNeighborhoods);
@@ -223,5 +243,7 @@
         private System.Windows.Forms.Button buttonProperties;
         private System.Windows.Forms.Button buttonNeighborhoods;
         private System.Windows.Forms.Button buttonDistricts;
-    }
+		private System.Windows.Forms.Label labelFileDialog;
+		private System.Windows.Forms.OpenFileDialog fileDialog;
+	}
 }
