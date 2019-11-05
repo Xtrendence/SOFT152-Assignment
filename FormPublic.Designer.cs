@@ -191,6 +191,7 @@
 			this.listviewData.FullRowSelect = true;
 			this.listviewData.HideSelection = false;
 			this.listviewData.Location = new System.Drawing.Point(12, 84);
+			this.listviewData.MultiSelect = false;
 			this.listviewData.Name = "listviewData";
 			this.listviewData.Size = new System.Drawing.Size(760, 320);
 			this.listviewData.TabIndex = 33;

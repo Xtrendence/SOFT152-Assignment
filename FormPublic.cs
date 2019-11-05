@@ -130,7 +130,8 @@ namespace SOFT152Assignment
 		}
 
 		private void labelFileDialog_Click(object sender, EventArgs e) {
-			if(labelFileDialog.Text == "Select Data Source...") {
+			// Disable file selection if one's already been selected.
+			if (labelFileDialog.Text == "Select Data Source...") {
 				fileDialog.Title = "Select Data Source File";
 				fileDialog.FileName = "";
 				fileDialog.InitialDirectory = @"C:\";
@@ -163,6 +164,7 @@ namespace SOFT152Assignment
 		}
 
 		private void fileDialog_FileOk(object sender, CancelEventArgs e) {
+			// Display the file name to the user along with "Loading" so they know they chose the right file.
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
 			readFile(fileDialog.FileName);
 		}
