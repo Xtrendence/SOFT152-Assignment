@@ -28,9 +28,7 @@ C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\SOFT152Assignm
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\SOFT152Assignment.exe
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\SOFT152Assignment.pdb
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.csprojAssemblyReference.cache
-C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormPublic.resources
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormMain.resources
-C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormStaff.resources
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.PopupDistrict.resources
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.PopupNeighborhood.resources
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.PopupProperty.resources
@@ -38,3 +36,4 @@ C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignm
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.exe
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.pdb
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormAccess.resources

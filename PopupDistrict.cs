@@ -24,10 +24,10 @@ namespace SOFT152Assignment
 
 		private void buttonBack_Click(object sender, EventArgs e) {
 			if(level == "public") {
-				showForm(new FormPublic("districts"), false);
+				showForm(new FormMain("districts", "public"), false);
 			}
 			else if(level == "staff") {
-				showForm(new FormStaff("districts"), false);
+				showForm(new FormMain("districts", "staff"), false);
 			}
 		}
 

@@ -65,11 +65,11 @@
       <DependentUpon>PopupProperty.cs</DependentUpon>
     </Compile>
     <Compile Include="District.cs" />
-    <Compile Include="FormPublic.cs">
+    <Compile Include="FormAccess.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPublic.Designer.cs">
-      <DependentUpon>FormPublic.cs</DependentUpon>
+    <Compile Include="FormAccess.Designer.cs">
+      <DependentUpon>FormAccess.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -77,24 +77,15 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStaff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormStaff.Designer.cs">
-      <DependentUpon>FormStaff.cs</DependentUpon>
-    </Compile>
     <Compile Include="Neighborhood.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
-    <EmbeddedResource Include="FormPublic.resx">
-      <DependentUpon>FormPublic.cs</DependentUpon>
+    <EmbeddedResource Include="FormAccess.resx">
+      <DependentUpon>FormAccess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormStaff.resx">
-      <DependentUpon>FormStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupDistrict.resx">
       <DependentUpon>PopupDistrict.cs</DependentUpon>

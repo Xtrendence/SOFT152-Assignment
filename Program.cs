@@ -13,7 +13,7 @@ namespace SOFT152Assignment {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new FormAccess());
         }
     }
 }
