@@ -13,6 +13,7 @@ namespace SOFT152Assignment
 {
     public partial class FormPublic : Form
     {
+		public string[] dataLines;
 		public string category;
         public FormPublic()
         {
@@ -76,6 +77,9 @@ namespace SOFT152Assignment
 				buttonDistricts.Tag = "";
 				buttonNeighborhoods.Tag = "";
 				buttonProperties.Tag = "active-category";
+			}
+			if(dataLines != null && dataLines.ToString() != "") {
+				populateList(dataLines, this.category);
 			}
 		}
 
@@ -149,18 +153,36 @@ namespace SOFT152Assignment
 			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 
-		private void readFile(string filename) {
-			string[] lines = File.ReadLines(filename).ToArray();
-			listviewData.Columns.Add("District Name", 510);
-			listviewData.Columns.Add("Number of Neighborhoods", 250);
-			for(int i = 0; i < lines.Length; i++) {
-				string name = lines[i].ToString();
-				i++;
-				string count = lines[i].ToString();
-				string[] row = new string[2] { name, count };
-				listviewData.Items.Add(new ListViewItem(row));
+		private void populateList(string[] lines, string activeCategory) {
+			// Clear ListView of any existing data.
+			listviewData.Clear();
+			if(activeCategory == "districts") {
+				// Add a column to the ListView for the district names.
+				listviewData.Columns.Add("District Name", 510);
+				// Add a column for the number of neighborhoods in the district.
+				listviewData.Columns.Add("Number of Neighborhoods", 250);
+				// For each line in the file, add the line to an array that is later added as a row to the ListView.
+				for (int i = 0; i < lines.Length; i++) {
+					string name = lines[i].ToString();
+					i++;
+					string count = lines[i].ToString();
+					string[] row = new string[2] { name, count };
+					listviewData.Items.Add(new ListViewItem(row));
+				}
+			}
+			else if(activeCategory == "neighborhoods") {
+				
+			}
+			else if(activeCategory == "properties") {
+
 			}
 			labelFileDialog.Hide();
+		}
+
+		private void readFile(string filename) {
+			// Read every line from the data source file, and store the lines in an array.
+			dataLines = File.ReadLines(filename).ToArray();
+			populateList(dataLines, this.category);
 		}
 
 		private void fileDialog_FileOk(object sender, CancelEventArgs e) {
