@@ -21,6 +21,7 @@ namespace SOFT152Assignment
         }
 		// For back buttons to remember which dataset the user was looking at.
 		public FormPublic(string activeCategory) {
+			InitializeComponent();
 			this.category = activeCategory.ToLower();
 			showCategory(category);
 		}
@@ -30,8 +31,8 @@ namespace SOFT152Assignment
             showForm(new FormMain(), true);
         }
 		private void showForm(Form form, bool matchSize) {
-			this.Hide();
 			form.Show();
+			this.Hide();
 			// Open form in the same location.
 			form.Left = this.Left;
 			form.Top = this.Top;

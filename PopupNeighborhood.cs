@@ -24,10 +24,10 @@ namespace SOFT152Assignment
 
 		private void buttonBack_Click(object sender, EventArgs e) {
 			if(level == "public") {
-				showForm(new FormPublic(), false);
+				showForm(new FormPublic("neighborhoods"), false);
 			}
 			else if(level == "staff") {
-				showForm(new FormStaff(), false);
+				showForm(new FormStaff("neighborhoods"), false);
 			}
 		}
 
@@ -45,8 +45,8 @@ namespace SOFT152Assignment
 		}
 
 		private void showForm(Form form, bool matchSize) {
-			this.Hide();
 			form.Show();
+			this.Hide();
 			// Open form in the same location.
 			form.Left = this.Left;
 			form.Top = this.Top;

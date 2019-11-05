@@ -21,6 +21,7 @@ namespace SOFT152Assignment
         }
 		// For back buttons to "remember" the category the user was looking at. Just a quality of life improvement.
 		public FormStaff(string activeCategory) {
+			InitializeComponent();
 			this.category = activeCategory.ToLower();
 			showCategory(category);
 		}
@@ -31,8 +32,8 @@ namespace SOFT152Assignment
         }
         private void showForm(Form form, bool matchSize)
         {
+			form.Show();
             this.Hide();
-            form.Show();
             // Open form in the same location.
             form.Left = this.Left;
             form.Top = this.Top;
