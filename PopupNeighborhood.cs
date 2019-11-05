@@ -32,6 +32,7 @@ namespace SOFT152Assignment
 		}
 
 		private void setTitle() {
+			// When a "popup" form is opened, the action the user wants to perform is passed to the popup form's class, and is used to determine what the window title of the form should be.
 			if (action == "edit") {
 				this.Text = "Edit Neighborhood";
 			}

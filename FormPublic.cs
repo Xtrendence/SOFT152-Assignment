@@ -51,30 +51,36 @@ namespace SOFT152Assignment
         }
 
 		private void ButtonDistricts_Click(object sender, EventArgs e) {
+			// Sets the "Districts" button's background color to brighter than the other two, letting the user know that it's the active one.
 			buttonDistricts.BackColor = Color.FromArgb(100, 100, 100);
 			buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
 			buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
 
+			// Sets the "Tag" property of the "Districts" button to "active-category". This is later used to determine which popup dialog form to display.
 			buttonDistricts.Tag = "active-category";
 			buttonNeighborhoods.Tag = "";
 			buttonProperties.Tag = "";
 		}
 
 		private void ButtonNeighborhoods_Click(object sender, EventArgs e) {
+			// Same as above, but for the "Neighborhoods" button.
 			buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
 			buttonNeighborhoods.BackColor = Color.FromArgb(100, 100, 100);
 			buttonProperties.BackColor = Color.FromArgb(60, 60, 60);
 
+			// Same thing as above, but for the "Neighborhoods" button.
 			buttonDistricts.Tag = "";
 			buttonNeighborhoods.Tag = "active-category";
 			buttonProperties.Tag = "";
 		}
 
 		private void ButtonProperties_Click(object sender, EventArgs e) {
+			// Same as above, but for the "Properties" button.
 			buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
 			buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
 			buttonProperties.BackColor = Color.FromArgb(100, 100, 100);
 
+			// Same as above, but for the "Properties" button.
 			buttonDistricts.Tag = "";
 			buttonNeighborhoods.Tag = "";
 			buttonProperties.Tag = "active-category";
@@ -86,13 +92,16 @@ namespace SOFT152Assignment
 		}
 
 		private void buttonView_Click(object sender, EventArgs e) {
-			if(buttonDistricts.Tag.ToString() == "active-category") {
+			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
+			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
 				showForm(new PopupDistrict("public", "view"));
 			}
-			else if(buttonNeighborhoods.Tag.ToString() == "active-category") {
+			// Same as above but the "PopupNeighborhood" form is opened.
+			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
 				showForm(new PopupNeighborhood("public", "view"));
 			}
-			else if(buttonProperties.Tag.ToString() == "active-category") {
+			// The "PopupProperty" form is opened.
+			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
 				showForm(new PopupProperty("public", "view"));
 			}
 		}
