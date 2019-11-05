@@ -39,8 +39,6 @@
 			this.labelFileDialog = new System.Windows.Forms.Label();
 			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.listviewData = new System.Windows.Forms.ListView();
-			this.columnDistrictName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnNeighborhoodCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -188,9 +186,6 @@
 			// 
 			this.listviewData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.listviewData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.listviewData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnDistrictName,
-            this.columnNeighborhoodCount});
 			this.listviewData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewData.FullRowSelect = true;
 			this.listviewData.HideSelection = false;
@@ -200,16 +195,6 @@
 			this.listviewData.TabIndex = 33;
 			this.listviewData.UseCompatibleStateImageBehavior = false;
 			this.listviewData.View = System.Windows.Forms.View.Details;
-			// 
-			// columnDistrictName
-			// 
-			this.columnDistrictName.Text = "District Name";
-			this.columnDistrictName.Width = 300;
-			// 
-			// columnNeighborhoodCount
-			// 
-			this.columnNeighborhoodCount.Text = "Neighborhoods";
-			this.columnNeighborhoodCount.Width = 140;
 			// 
 			// FormPublic
 			// 
@@ -247,7 +232,5 @@
 		private System.Windows.Forms.Label labelFileDialog;
 		private System.Windows.Forms.OpenFileDialog fileDialog;
 		private System.Windows.Forms.ListView listviewData;
-		private System.Windows.Forms.ColumnHeader columnDistrictName;
-		private System.Windows.Forms.ColumnHeader columnNeighborhoodCount;
 	}
 }
