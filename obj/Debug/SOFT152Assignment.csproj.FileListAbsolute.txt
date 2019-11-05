@@ -1,0 +1,26 @@
+C:\Users\knouchin\source\repos\SOFT152Assignment\bin\Debug\SOFT152Assignment.exe.config
+C:\Users\knouchin\source\repos\SOFT152Assignment\bin\Debug\SOFT152Assignment.exe
+C:\Users\knouchin\source\repos\SOFT152Assignment\bin\Debug\SOFT152Assignment.pdb
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.csprojAssemblyReference.cache
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.Properties.Resources.resources
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.csproj.CoreCompileInputs.cache
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.exe
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.pdb
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.FormPublic.resources
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.FormMain.resources
+C:\Users\knouchin\source\repos\SOFT152Assignment\obj\Debug\SOFT152Assignment.FormStaff.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\bin\Debug\SOFT152Assignment.exe.config
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\bin\Debug\SOFT152Assignment.exe
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\bin\Debug\SOFT152Assignment.pdb
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.csprojAssemblyReference.cache
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.FormPublic.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.FormMain.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.FormStaff.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.Properties.Resources.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.exe
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.pdb
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.PopupDistrict.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.PopupNeighborhood.resources
+D:\My Files\Documents\Visual Studio Projects\SOFT152Assignment\obj\Debug\SOFT152Assignment.PopupProperty.resources
