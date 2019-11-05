@@ -203,10 +203,13 @@
 			this.labelFileDialog.Text = "Select Data Source...";
 			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.labelFileDialog.Click += new System.EventHandler(this.labelFileDialog_Click);
+			this.labelFileDialog.MouseEnter += new System.EventHandler(this.labelFileDialog_MouseEnter);
+			this.labelFileDialog.MouseLeave += new System.EventHandler(this.labelFileDialog_MouseLeave);
 			// 
 			// fileDialog
 			// 
 			this.fileDialog.FileName = "openFileDialog1";
+			this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_FileOk);
 			// 
 			// FormStaff
 			// 

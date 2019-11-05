@@ -31,6 +31,7 @@
 			this.buttonPublic = new System.Windows.Forms.Button();
 			this.buttonStaff = new System.Windows.Forms.Button();
 			this.labelAccess = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// buttonPublic
@@ -77,17 +78,30 @@
 			this.labelAccess.Text = "Access Level";
 			this.labelAccess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// label1
+			// 
+			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.label1.Location = new System.Drawing.Point(0, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(785, 58);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Airbnb Management Tool";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(784, 461);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelAccess);
 			this.Controls.Add(this.buttonStaff);
 			this.Controls.Add(this.buttonPublic);
 			this.Name = "FormMain";
-			this.Text = "Airbnb Management Tool";
+			this.Text = "Access Level";
 			this.ResumeLayout(false);
 
         }
@@ -97,6 +111,7 @@
         private System.Windows.Forms.Button buttonPublic;
         private System.Windows.Forms.Button buttonStaff;
         private System.Windows.Forms.Label labelAccess;
-    }
+		private System.Windows.Forms.Label label1;
+	}
 }
 

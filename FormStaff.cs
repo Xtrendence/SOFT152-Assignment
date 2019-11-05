@@ -131,10 +131,26 @@ namespace SOFT152Assignment
 		}
 
 		private void labelFileDialog_Click(object sender, EventArgs e) {
-			fileDialog.Title = "Select Data Source File";
-			fileDialog.FileName = "";
-			fileDialog.InitialDirectory = @"C:\";
-			fileDialog.ShowDialog();
+			if(labelFileDialog.Text == "Select Data Source...") {
+				fileDialog.Title = "Select Data Source File";
+				fileDialog.FileName = "";
+				fileDialog.InitialDirectory = @"C:\";
+				fileDialog.CheckFileExists = true;
+				fileDialog.CheckPathExists = true;
+				fileDialog.ShowDialog();
+			}
+		}
+
+		private void labelFileDialog_MouseEnter(object sender, EventArgs e) {
+			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
+		}
+
+		private void labelFileDialog_MouseLeave(object sender, EventArgs e) {
+			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60); 
+		}
+
+		private void fileDialog_FileOk(object sender, CancelEventArgs e) {
+			labelFileDialog.Text = "Loading...";
 		}
 	}
 }
