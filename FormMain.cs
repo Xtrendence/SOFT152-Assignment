@@ -9,31 +9,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SOFT152Assignment
-{
-    public partial class FormMain : Form
-    {
+namespace SOFT152Assignment {
+	public partial class FormMain : Form {
 		public string[] dataLines;
 		public string category;
 		public string level;
-        public FormMain()
-        {
-            InitializeComponent();
+		public FormMain() {
+			InitializeComponent();
 			// By default, the districts category is shown.
 			showCategory("districts");
-        }
+		}
 		// For back buttons to "remember" the category the user was looking at. Just a quality of life improvement.
 		public FormMain(string activeCategory, string accessLevel) {
 			InitializeComponent();
 			this.category = activeCategory.ToLower();
 			this.level = accessLevel.ToLower();
 
-			if(this.level == "staff") {
+			if (this.level == "staff") {
 				buttonAdd.Show();
 				buttonEdit.Show();
 				this.Text = "Staff Access";
 			}
-			else if(this.level == "public") {
+			else if (this.level == "public") {
 				buttonAdd.Hide();
 				buttonEdit.Hide();
 				this.Text = "Public Access";
@@ -42,22 +39,20 @@ namespace SOFT152Assignment
 			showCategory(category);
 		}
 
-        private void ButtonBack_Click(object sender, EventArgs e)
-        {
-            showForm(new FormAccess(), true);
-        }
-        private void showForm(Form form, bool matchSize)
-        {
+		private void ButtonBack_Click(object sender, EventArgs e) {
+			showForm(new FormAccess(), true);
+		}
+		private void showForm(Form form, bool matchSize) {
 			form.Show();
-            this.Hide();
-            // Open form in the same location.
-            form.Left = this.Left;
-            form.Top = this.Top;
+			this.Hide();
+			// Open form in the same location.
+			form.Left = this.Left;
+			form.Top = this.Top;
 			// Most forms have the same size, but some (such as popups) might not.
 			if (matchSize) {
 				form.Size = this.Size;
 			}
-        }
+		}
 		private void showCategory(string desiredCategory) {
 			this.category = desiredCategory.ToLower();
 			if (desiredCategory == "districts") {
@@ -98,23 +93,19 @@ namespace SOFT152Assignment
 			}
 		}
 
-		private void ButtonDistricts_Click(object sender, EventArgs e)
-        {
+		private void ButtonDistricts_Click(object sender, EventArgs e) {
 			showCategory("districts");
 		}
 
-        private void ButtonNeighborhoods_Click(object sender, EventArgs e)
-        {
+		private void ButtonNeighborhoods_Click(object sender, EventArgs e) {
 			showCategory("neighborhoods");
 		}
 
-        private void ButtonProperties_Click(object sender, EventArgs e)
-        {
+		private void ButtonProperties_Click(object sender, EventArgs e) {
 			showCategory("properties");
-        }
+		}
 
-        private void ButtonAdd_Click(object sender, EventArgs e)
-        {
+		private void ButtonAdd_Click(object sender, EventArgs e) {
 			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
 			if (buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
 				showForm(new PopupDistrict("staff", "add"), false);
@@ -127,7 +118,7 @@ namespace SOFT152Assignment
 			else if (buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
 				showForm(new PopupProperty("staff", "add"), false);
 			}
-        }
+		}
 
 		private void panelSearch_Click(object sender, EventArgs e) {
 			// User might click on the panel instead of the TextBox. This takes care of that.
@@ -151,7 +142,7 @@ namespace SOFT152Assignment
 
 		private void labelFileDialog_Click(object sender, EventArgs e) {
 			// Disable file selection if one's already been selected.
-			if(labelFileDialog.Text == "Select Data Source...") {
+			if (labelFileDialog.Text == "Select Data Source...") {
 				fileDialog.Title = "Select Data Source File";
 				fileDialog.FileName = "";
 				fileDialog.InitialDirectory = @"C:\";
@@ -166,7 +157,7 @@ namespace SOFT152Assignment
 		}
 
 		private void labelFileDialog_MouseLeave(object sender, EventArgs e) {
-			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60); 
+			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 
 		private void populateLists(string[] lines, string activeCategory) {

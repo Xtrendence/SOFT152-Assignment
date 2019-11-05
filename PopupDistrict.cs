@@ -8,19 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SOFT152Assignment
-{
-    public partial class PopupDistrict : Form
-    {
+namespace SOFT152Assignment {
+	public partial class PopupDistrict : Form {
 		public string level;
 		public string action;
-        public PopupDistrict(string accessLevel, string desiredAction)
-        {
-            InitializeComponent();
+		public PopupDistrict(string accessLevel, string desiredAction) {
+			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			setTitle();
-        }
+		}
 
 		private void buttonBack_Click(object sender, EventArgs e) {
 			if(level == "public") {
@@ -51,7 +48,7 @@ namespace SOFT152Assignment
 			form.Left = this.Left;
 			form.Top = this.Top;
 			// Most forms have the same size, but some (such as popups) might not.
-			if (matchSize) {
+			if(matchSize) {
 				form.Size = this.Size;
 			}
 		}
@@ -72,28 +69,28 @@ namespace SOFT152Assignment
 
 		private void inputName_Leave(object sender, EventArgs e) {
 			// Fill "placeholder".
-			if (inputName.Text.Trim() == "") {
+			if(inputName.Text.Trim() == "") {
 				inputName.Text = "District Name...";
 			}
 		}
 
 		private void inputNeighborhoodCount_Leave(object sender, EventArgs e) {
 			// Fill "placeholder".
-			if (inputNeighborhoodCount.Text.Trim() == "") {
+			if(inputNeighborhoodCount.Text.Trim() == "") {
 				inputNeighborhoodCount.Text = "Number of Neighborhoods...";
 			}
 		}
 
 		private void inputName_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if (inputName.Text == "District Name...") {
+			if(inputName.Text == "District Name...") {
 				inputName.Text = "";
 			}
 		}
 
 		private void inputNeighborhoodCount_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if (inputNeighborhoodCount.Text == "Number of Neighborhoods...") {
+			if(inputNeighborhoodCount.Text == "Number of Neighborhoods...") {
 				inputNeighborhoodCount.Text = "";
 			}
 		}
