@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -149,8 +150,23 @@ namespace SOFT152Assignment
 			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60); 
 		}
 
+		private void readFile(string filename) {
+			string[] lines = File.ReadLines(filename).ToArray();
+			listviewData.Columns.Add("District Name", 600);
+			listviewData.Columns.Add("Number of Neighborhoods", 160);
+			for(int i = 0; i < lines.Length; i++) {
+				string name = lines[i].ToString();
+				i++;
+				string count = lines[i].ToString();
+				string[] row = new string[2] { name, count };
+				listviewData.Items.Add(new ListViewItem(row));
+			}
+			labelFileDialog.Hide();
+		}
+
 		private void fileDialog_FileOk(object sender, CancelEventArgs e) {
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
+			readFile(fileDialog.FileName);
 		}
 	}
 }

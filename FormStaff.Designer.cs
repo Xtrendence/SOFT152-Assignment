@@ -30,7 +30,6 @@
         {
 			this.inputSearch = new System.Windows.Forms.TextBox();
 			this.buttonSearch = new System.Windows.Forms.Button();
-			this.listDisplay = new System.Windows.Forms.ListBox();
 			this.buttonBack = new System.Windows.Forms.Button();
 			this.buttonAdd = new System.Windows.Forms.Button();
 			this.buttonEdit = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@
 			this.buttonDistricts = new System.Windows.Forms.Button();
 			this.labelFileDialog = new System.Windows.Forms.Label();
 			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.listviewData = new System.Windows.Forms.ListView();
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -69,20 +69,6 @@
 			this.buttonSearch.TabIndex = 12;
 			this.buttonSearch.Text = "Search";
 			this.buttonSearch.UseVisualStyleBackColor = false;
-			// 
-			// listDisplay
-			// 
-			this.listDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.listDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.listDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.listDisplay.FormattingEnabled = true;
-			this.listDisplay.ItemHeight = 16;
-			this.listDisplay.Location = new System.Drawing.Point(12, 84);
-			this.listDisplay.MultiColumn = true;
-			this.listDisplay.Name = "listDisplay";
-			this.listDisplay.Size = new System.Drawing.Size(760, 320);
-			this.listDisplay.TabIndex = 11;
 			// 
 			// buttonBack
 			// 
@@ -211,6 +197,20 @@
 			this.fileDialog.FileName = "openFileDialog1";
 			this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_FileOk);
 			// 
+			// listviewData
+			// 
+			this.listviewData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.listviewData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listviewData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.listviewData.FullRowSelect = true;
+			this.listviewData.HideSelection = false;
+			this.listviewData.Location = new System.Drawing.Point(12, 84);
+			this.listviewData.Name = "listviewData";
+			this.listviewData.Size = new System.Drawing.Size(760, 320);
+			this.listviewData.TabIndex = 34;
+			this.listviewData.UseCompatibleStateImageBehavior = false;
+			this.listviewData.View = System.Windows.Forms.View.Details;
+			// 
 			// FormStaff
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,8 +225,8 @@
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.buttonEdit);
 			this.Controls.Add(this.buttonSearch);
-			this.Controls.Add(this.listDisplay);
 			this.Controls.Add(this.buttonBack);
+			this.Controls.Add(this.listviewData);
 			this.Name = "FormStaff";
 			this.Text = "Staff Access";
 			this.panelSearch.ResumeLayout(false);
@@ -238,7 +238,6 @@
         #endregion
         private System.Windows.Forms.TextBox inputSearch;
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.ListBox listDisplay;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonEdit;
@@ -248,5 +247,6 @@
         private System.Windows.Forms.Button buttonDistricts;
 		private System.Windows.Forms.Label labelFileDialog;
 		private System.Windows.Forms.OpenFileDialog fileDialog;
+		private System.Windows.Forms.ListView listviewData;
 	}
 }

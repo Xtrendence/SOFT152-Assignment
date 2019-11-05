@@ -150,13 +150,13 @@ namespace SOFT152Assignment
 
 		private void readFile(string filename) {
 			string[] lines = File.ReadLines(filename).ToArray();
+			listviewData.Columns.Add("District Name", 600);
+			listviewData.Columns.Add("Number of Neighborhoods", 160);
 			for(int i = 0; i < lines.Length; i++) {
 				string name = lines[i].ToString();
 				i++;
 				string count = lines[i].ToString();
 				string[] row = new string[2] { name, count };
-				listviewData.Columns.Add("District Name", 600);
-				listviewData.Columns.Add("Number of Neighborhoods", 160);
 				listviewData.Items.Add(new ListViewItem(row));
 			}
 			labelFileDialog.Hide();
