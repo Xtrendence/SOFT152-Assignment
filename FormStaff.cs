@@ -150,7 +150,7 @@ namespace SOFT152Assignment
 		}
 
 		private void fileDialog_FileOk(object sender, CancelEventArgs e) {
-			labelFileDialog.Text = "Loading...";
+			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
 		}
 	}
 }
