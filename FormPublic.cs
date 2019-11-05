@@ -79,7 +79,7 @@ namespace SOFT152Assignment
 				buttonProperties.Tag = "active-category";
 			}
 			if(dataLines != null && dataLines.ToString() != "") {
-				populateList(dataLines, this.category);
+				populateLists(dataLines, this.category);
 			}
 		}
 
@@ -153,28 +153,47 @@ namespace SOFT152Assignment
 			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 
-		private void populateList(string[] lines, string activeCategory) {
-			// Clear ListView of any existing data.
-			listviewData.Clear();
-			if(activeCategory == "districts") {
-				// Add a column to the ListView for the district names.
-				listviewData.Columns.Add("District Name", 510);
-				// Add a column for the number of neighborhoods in the district.
-				listviewData.Columns.Add("Number of Neighborhoods", 250);
-				// For each line in the file, add the line to an array that is later added as a row to the ListView.
-				for (int i = 0; i < lines.Length; i++) {
-					string name = lines[i].ToString();
-					i++;
-					string count = lines[i].ToString();
-					string[] row = new string[2] { name, count };
-					listviewData.Items.Add(new ListViewItem(row));
-				}
+		private void populateLists(string[] lines, string activeCategory) {
+			// Clear ListViews of any existing data.
+			listviewDistricts.Clear();
+			listviewNeighborhoods.Clear();
+			listviewProperties.Clear();
+
+			// Hide all ListViews.
+			listviewDistricts.Hide();
+			listviewNeighborhoods.Hide();
+			listviewProperties.Hide();
+
+			// Add a column to the "Districts" ListView for the district names.
+			listviewDistricts.Columns.Add("District Name", 510);
+			// Add a column for the number of neighborhoods in the district.
+			listviewDistricts.Columns.Add("Number of Neighborhoods", 250);
+			// Add a column for the name of neighborhoods.
+			listviewNeighborhoods.Columns.Add("Neighborhood Name", 510);
+			// Add a column for the number of properties.
+			listviewNeighborhoods.Columns.Add("Number of Properties", 250);
+
+			// For each line in the file, add the line to an array that is later added as a row to the ListView.
+			for (int i = 0; i < lines.Length; i++) {
+				string districtName = lines[i].ToString();
+				i++;
+				string districtNeighborhoodCount = lines[i].ToString();
+				i++;
+				string neighborhoodName = lines[i].ToString();
+				i++;
+				string neighborhoodPropertyCount = lines[i].ToString();
+				listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
+				listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhoodName, neighborhoodPropertyCount }));
+			}
+
+			if (activeCategory == "districts") {
+				listviewDistricts.Show();
 			}
 			else if(activeCategory == "neighborhoods") {
-				
+				listviewNeighborhoods.Show();
 			}
 			else if(activeCategory == "properties") {
-
+				listviewProperties.Show();
 			}
 			labelFileDialog.Hide();
 		}
@@ -182,7 +201,7 @@ namespace SOFT152Assignment
 		private void readFile(string filename) {
 			// Read every line from the data source file, and store the lines in an array.
 			dataLines = File.ReadLines(filename).ToArray();
-			populateList(dataLines, this.category);
+			populateLists(dataLines, this.category);
 		}
 
 		private void fileDialog_FileOk(object sender, CancelEventArgs e) {

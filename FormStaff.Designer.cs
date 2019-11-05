@@ -39,7 +39,9 @@
 			this.buttonDistricts = new System.Windows.Forms.Button();
 			this.labelFileDialog = new System.Windows.Forms.Label();
 			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.listviewData = new System.Windows.Forms.ListView();
+			this.listviewDistricts = new System.Windows.Forms.ListView();
+			this.listviewNeighborhoods = new System.Windows.Forms.ListView();
+			this.listviewProperties = new System.Windows.Forms.ListView();
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -197,21 +199,56 @@
 			this.fileDialog.FileName = "openFileDialog1";
 			this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_FileOk);
 			// 
-			// listviewData
+			// listviewDistricts
 			// 
-			this.listviewData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.listviewData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.listviewData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listviewData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.listviewData.FullRowSelect = true;
-			this.listviewData.HideSelection = false;
-			this.listviewData.Location = new System.Drawing.Point(12, 84);
-			this.listviewData.MultiSelect = false;
-			this.listviewData.Name = "listviewData";
-			this.listviewData.Size = new System.Drawing.Size(760, 320);
-			this.listviewData.TabIndex = 34;
-			this.listviewData.UseCompatibleStateImageBehavior = false;
-			this.listviewData.View = System.Windows.Forms.View.Details;
+			this.listviewDistricts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.listviewDistricts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listviewDistricts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listviewDistricts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.listviewDistricts.FullRowSelect = true;
+			this.listviewDistricts.HideSelection = false;
+			this.listviewDistricts.Location = new System.Drawing.Point(12, 84);
+			this.listviewDistricts.MultiSelect = false;
+			this.listviewDistricts.Name = "listviewDistricts";
+			this.listviewDistricts.Size = new System.Drawing.Size(760, 320);
+			this.listviewDistricts.TabIndex = 34;
+			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
+			this.listviewDistricts.View = System.Windows.Forms.View.Details;
+			this.listviewDistricts.Visible = false;
+			// 
+			// listviewNeighborhoods
+			// 
+			this.listviewNeighborhoods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.listviewNeighborhoods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listviewNeighborhoods.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listviewNeighborhoods.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.listviewNeighborhoods.FullRowSelect = true;
+			this.listviewNeighborhoods.HideSelection = false;
+			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 84);
+			this.listviewNeighborhoods.MultiSelect = false;
+			this.listviewNeighborhoods.Name = "listviewNeighborhoods";
+			this.listviewNeighborhoods.Size = new System.Drawing.Size(760, 320);
+			this.listviewNeighborhoods.TabIndex = 35;
+			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
+			this.listviewNeighborhoods.View = System.Windows.Forms.View.Details;
+			this.listviewNeighborhoods.Visible = false;
+			// 
+			// listviewProperties
+			// 
+			this.listviewProperties.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.listviewProperties.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listviewProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listviewProperties.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.listviewProperties.FullRowSelect = true;
+			this.listviewProperties.HideSelection = false;
+			this.listviewProperties.Location = new System.Drawing.Point(12, 84);
+			this.listviewProperties.MultiSelect = false;
+			this.listviewProperties.Name = "listviewProperties";
+			this.listviewProperties.Size = new System.Drawing.Size(760, 320);
+			this.listviewProperties.TabIndex = 36;
+			this.listviewProperties.UseCompatibleStateImageBehavior = false;
+			this.listviewProperties.View = System.Windows.Forms.View.Details;
+			this.listviewProperties.Visible = false;
 			// 
 			// FormStaff
 			// 
@@ -228,7 +265,9 @@
 			this.Controls.Add(this.buttonEdit);
 			this.Controls.Add(this.buttonSearch);
 			this.Controls.Add(this.buttonBack);
-			this.Controls.Add(this.listviewData);
+			this.Controls.Add(this.listviewDistricts);
+			this.Controls.Add(this.listviewNeighborhoods);
+			this.Controls.Add(this.listviewProperties);
 			this.Name = "FormStaff";
 			this.Text = "Staff Access";
 			this.panelSearch.ResumeLayout(false);
@@ -249,6 +288,8 @@
         private System.Windows.Forms.Button buttonDistricts;
 		private System.Windows.Forms.Label labelFileDialog;
 		private System.Windows.Forms.OpenFileDialog fileDialog;
-		private System.Windows.Forms.ListView listviewData;
+		private System.Windows.Forms.ListView listviewDistricts;
+		private System.Windows.Forms.ListView listviewNeighborhoods;
+		private System.Windows.Forms.ListView listviewProperties;
 	}
 }

@@ -13,11 +13,11 @@ namespace SOFT152Assignment {
         public int count;
         public double latitude;
         public double longitude;
-        public int roomType;
+        public string roomType;
         public double roomPrice;
         public int roomNights;
         public int roomAvailability;
-        public Property(int propertyID, string propertyName, int propertyHostID, string propertyHostName, int propertyCount, double propertyLatitude, double propertyLongitude, int propertyRoomType, double propertyRoomPrice, int propertyRoomNights, int propertyRoomAvailablity) {
+        public Property(int propertyID, string propertyName, int propertyHostID, string propertyHostName, int propertyCount, double propertyLatitude, double propertyLongitude, string propertyRoomType, double propertyRoomPrice, int propertyRoomNights, int propertyRoomAvailablity) {
             this.id = propertyID;
             this.name = propertyName;
             this.hostID = propertyHostID;
@@ -86,7 +86,7 @@ namespace SOFT152Assignment {
                 this.longitude = value;
             }
         }
-        public int RoomType {
+        public string RoomType {
             get {
                 return this.roomType;
             }
