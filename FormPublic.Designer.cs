@@ -186,6 +186,7 @@
 			// 
 			this.listviewData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.listviewData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listviewData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.listviewData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewData.FullRowSelect = true;
 			this.listviewData.HideSelection = false;

@@ -152,8 +152,8 @@ namespace SOFT152Assignment
 
 		private void readFile(string filename) {
 			string[] lines = File.ReadLines(filename).ToArray();
-			listviewData.Columns.Add("District Name", 600);
-			listviewData.Columns.Add("Number of Neighborhoods", 160);
+			listviewData.Columns.Add("District Name", 510);
+			listviewData.Columns.Add("Number of Neighborhoods", 250);
 			for(int i = 0; i < lines.Length; i++) {
 				string name = lines[i].ToString();
 				i++;
