@@ -19,20 +19,21 @@ namespace SOFT152Assignment
 
         private void ButtonBack_Click(object sender, EventArgs e)
         {
-            showForm(new FormMain());
+            showForm(new FormMain(), true);
         }
-        private void showForm(Form form)
-        {
-            this.Hide();
-            form.Show();
-            // Open form in same location.
-            form.Left = this.Left;
-            form.Top = this.Top;
-            // All forms have the same size.
-            form.Size = this.Size;
-        }
+		private void showForm(Form form, bool matchSize) {
+			this.Hide();
+			form.Show();
+			// Open form in the same location.
+			form.Left = this.Left;
+			form.Top = this.Top;
+			// Most forms have the same size, but some (such as popups) might not.
+			if (matchSize) {
+				form.Size = this.Size;
+			}
+		}
 
-        private void InputSearch_Enter(object sender, EventArgs e)
+		private void InputSearch_Enter(object sender, EventArgs e)
         {
             // Empty "placeholder".
             if(inputSearch.Text == "Search...")
@@ -94,15 +95,15 @@ namespace SOFT152Assignment
 		private void buttonView_Click(object sender, EventArgs e) {
 			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
 			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				showForm(new PopupDistrict("public", "view"));
+				showForm(new PopupDistrict("public", "view"), false);
 			}
 			// Same as above but the "PopupNeighborhood" form is opened.
 			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				showForm(new PopupNeighborhood("public", "view"));
+				showForm(new PopupNeighborhood("public", "view"), false);
 			}
 			// The "PopupProperty" form is opened.
 			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				showForm(new PopupProperty("public", "view"));
+				showForm(new PopupProperty("public", "view"), false);
 			}
 		}
 	}

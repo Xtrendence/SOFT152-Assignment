@@ -70,7 +70,7 @@
 			// 
 			this.panelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.panelName.Controls.Add(this.inputName);
-			this.panelName.Location = new System.Drawing.Point(12, 84);
+			this.panelName.Location = new System.Drawing.Point(12, 222);
 			this.panelName.Name = "panelName";
 			this.panelName.Size = new System.Drawing.Size(297, 34);
 			this.panelName.TabIndex = 31;
@@ -79,7 +79,7 @@
 			// 
 			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.panel1.Controls.Add(this.inputNeighborhoodCount);
-			this.panel1.Location = new System.Drawing.Point(12, 130);
+			this.panel1.Location = new System.Drawing.Point(12, 268);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(297, 34);
 			this.panel1.TabIndex = 32;
@@ -104,7 +104,7 @@
 			this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.buttonNext.Location = new System.Drawing.Point(12, 176);
+			this.buttonNext.Location = new System.Drawing.Point(12, 315);
 			this.buttonNext.Name = "buttonNext";
 			this.buttonNext.Size = new System.Drawing.Size(79, 34);
 			this.buttonNext.TabIndex = 19;
