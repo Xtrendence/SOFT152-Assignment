@@ -52,7 +52,7 @@
 			this.buttonBack.TabIndex = 11;
 			this.buttonBack.Text = "Back";
 			this.buttonBack.UseVisualStyleBackColor = false;
-			this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+			this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
 			// 
 			// inputName
 			// 
@@ -65,8 +65,8 @@
 			this.inputName.Size = new System.Drawing.Size(332, 16);
 			this.inputName.TabIndex = 13;
 			this.inputName.Text = "District Name...";
-			this.inputName.Enter += new System.EventHandler(this.inputName_Enter);
-			this.inputName.Leave += new System.EventHandler(this.inputName_Leave);
+			this.inputName.Enter += new System.EventHandler(this.InputName_Enter);
+			this.inputName.Leave += new System.EventHandler(this.InputName_Leave);
 			// 
 			// panelName
 			// 
@@ -76,7 +76,7 @@
 			this.panelName.Name = "panelName";
 			this.panelName.Size = new System.Drawing.Size(360, 34);
 			this.panelName.TabIndex = 31;
-			this.panelName.Click += new System.EventHandler(this.panelName_Click);
+			this.panelName.Click += new System.EventHandler(this.PanelName_Click);
 			// 
 			// panelCount
 			// 
@@ -86,7 +86,7 @@
 			this.panelCount.Name = "panelCount";
 			this.panelCount.Size = new System.Drawing.Size(209, 34);
 			this.panelCount.TabIndex = 32;
-			this.panelCount.Click += new System.EventHandler(this.panelCount_Click);
+			this.panelCount.Click += new System.EventHandler(this.PanelCount_Click);
 			// 
 			// inputNeighborhoodCount
 			// 
@@ -99,8 +99,8 @@
 			this.inputNeighborhoodCount.Size = new System.Drawing.Size(182, 16);
 			this.inputNeighborhoodCount.TabIndex = 13;
 			this.inputNeighborhoodCount.Text = "Number of Neighborhoods...";
-			this.inputNeighborhoodCount.Enter += new System.EventHandler(this.inputNeighborhoodCount_Enter);
-			this.inputNeighborhoodCount.Leave += new System.EventHandler(this.inputNeighborhoodCount_Leave);
+			this.inputNeighborhoodCount.Enter += new System.EventHandler(this.InputNeighborhoodCount_Enter);
+			this.inputNeighborhoodCount.Leave += new System.EventHandler(this.InputNeighborhoodCount_Leave);
 			// 
 			// buttonNext
 			// 
@@ -116,7 +116,7 @@
 			this.buttonNext.TabIndex = 19;
 			this.buttonNext.Text = "Next";
 			this.buttonNext.UseVisualStyleBackColor = false;
-			this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+			this.buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
 			// 
 			// PopupDistrict
 			// 

@@ -15,13 +15,13 @@ namespace SOFT152Assignment {
 		}
 
 		private void ButtonPublic_Click(object sender, EventArgs e) {
-			showForm(new FormMain("districts", "public"));
+			ShowForm(new FormMain("districts", "public"));
 		}
 
 		private void ButtonStaff_Click(object sender, EventArgs e) {
-			showForm(new FormMain("districts", "staff"));
+			ShowForm(new FormMain("districts", "staff"));
 		}
-		private void showForm(Form form) {
+		private void ShowForm(Form form) {
 			this.Hide();
 			form.Show();
 			// Ensures that the new form opens on top of the current one.

@@ -119,7 +119,7 @@
 			this.buttonEdit.TabIndex = 17;
 			this.buttonEdit.Text = "Edit";
 			this.buttonEdit.UseVisualStyleBackColor = false;
-			this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+			this.buttonEdit.Click += new System.EventHandler(this.ButtonEdit_Click);
 			// 
 			// panelSearch
 			// 
@@ -129,7 +129,7 @@
 			this.panelSearch.Name = "panelSearch";
 			this.panelSearch.Size = new System.Drawing.Size(297, 34);
 			this.panelSearch.TabIndex = 19;
-			this.panelSearch.Click += new System.EventHandler(this.panelSearch_Click);
+			this.panelSearch.Click += new System.EventHandler(this.PanelSearch_Click);
 			// 
 			// buttonProperties
 			// 
@@ -191,14 +191,14 @@
 			this.labelFileDialog.TabIndex = 33;
 			this.labelFileDialog.Text = "Select Data Source...";
 			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.labelFileDialog.Click += new System.EventHandler(this.labelFileDialog_Click);
-			this.labelFileDialog.MouseEnter += new System.EventHandler(this.labelFileDialog_MouseEnter);
-			this.labelFileDialog.MouseLeave += new System.EventHandler(this.labelFileDialog_MouseLeave);
+			this.labelFileDialog.Click += new System.EventHandler(this.LabelFileDialog_Click);
+			this.labelFileDialog.MouseEnter += new System.EventHandler(this.LabelFileDialog_MouseEnter);
+			this.labelFileDialog.MouseLeave += new System.EventHandler(this.LabelFileDialog_MouseLeave);
 			// 
 			// fileDialog
 			// 
 			this.fileDialog.FileName = "openFileDialog1";
-			this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_FileOk);
+			this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.FileDialog_FileOk);
 			// 
 			// listviewDistricts
 			// 
@@ -265,7 +265,7 @@
 			this.buttonView.TabIndex = 37;
 			this.buttonView.Text = "View";
 			this.buttonView.UseVisualStyleBackColor = false;
-			this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
+			this.buttonView.Click += new System.EventHandler(this.ButtonView_Click);
 			// 
 			// FormMain
 			// 

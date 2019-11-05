@@ -52,7 +52,7 @@
 			this.buttonBack.TabIndex = 11;
 			this.buttonBack.Text = "Back";
 			this.buttonBack.UseVisualStyleBackColor = false;
-			this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+			this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
 			// 
 			// buttonNext
 			// 
@@ -68,7 +68,7 @@
 			this.buttonNext.TabIndex = 33;
 			this.buttonNext.Text = "Next";
 			this.buttonNext.UseVisualStyleBackColor = false;
-			this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+			this.buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
 			// 
 			// panelCount
 			// 
@@ -78,7 +78,7 @@
 			this.panelCount.Name = "panelCount";
 			this.panelCount.Size = new System.Drawing.Size(179, 34);
 			this.panelCount.TabIndex = 35;
-			this.panelCount.Click += new System.EventHandler(this.panelCount_Click);
+			this.panelCount.Click += new System.EventHandler(this.PanelCount_Click);
 			// 
 			// inputPropertyCount
 			// 
@@ -91,8 +91,8 @@
 			this.inputPropertyCount.Size = new System.Drawing.Size(150, 16);
 			this.inputPropertyCount.TabIndex = 13;
 			this.inputPropertyCount.Text = "Number of Properties...";
-			this.inputPropertyCount.Enter += new System.EventHandler(this.inputPropertyCount_Enter);
-			this.inputPropertyCount.Leave += new System.EventHandler(this.inputPropertyCount_Leave);
+			this.inputPropertyCount.Enter += new System.EventHandler(this.InputPropertyCount_Enter);
+			this.inputPropertyCount.Leave += new System.EventHandler(this.InputPropertyCount_Leave);
 			// 
 			// panelName
 			// 
@@ -102,7 +102,7 @@
 			this.panelName.Name = "panelName";
 			this.panelName.Size = new System.Drawing.Size(360, 34);
 			this.panelName.TabIndex = 34;
-			this.panelName.Click += new System.EventHandler(this.panelName_Click);
+			this.panelName.Click += new System.EventHandler(this.PanelName_Click);
 			// 
 			// inputName
 			// 
@@ -115,8 +115,8 @@
 			this.inputName.Size = new System.Drawing.Size(331, 16);
 			this.inputName.TabIndex = 13;
 			this.inputName.Text = "Neighborhood Name...";
-			this.inputName.Enter += new System.EventHandler(this.inputName_Enter);
-			this.inputName.Leave += new System.EventHandler(this.inputName_Leave);
+			this.inputName.Enter += new System.EventHandler(this.InputName_Enter);
+			this.inputName.Leave += new System.EventHandler(this.InputName_Leave);
 			// 
 			// PopupNeighborhood
 			// 

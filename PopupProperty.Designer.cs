@@ -45,7 +45,7 @@
 			this.buttonBack.TabIndex = 11;
 			this.buttonBack.Text = "Back";
 			this.buttonBack.UseVisualStyleBackColor = false;
-			this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+			this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
 			// 
 			// PopupProperty
 			// 

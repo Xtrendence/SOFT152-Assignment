@@ -17,7 +17,7 @@ namespace SOFT152Assignment {
 		public FormMain() {
 			InitializeComponent();
 			// By default, the districts category is shown.
-			showCategory("districts");
+			ShowCategory("districts");
 		}
 		// For back buttons to "remember" the category the user was looking at. Just a quality of life improvement.
 		public FormMain(string activeCategory, string accessLevel) {
@@ -36,13 +36,13 @@ namespace SOFT152Assignment {
 				this.Text = "Public Access";
 			}
 
-			showCategory(category);
+			ShowCategory(category);
 		}
 
 		private void ButtonBack_Click(object sender, EventArgs e) {
-			showForm(new FormAccess(), true);
+			ShowForm(new FormAccess(), true);
 		}
-		private void showForm(Form form, bool matchSize) {
+		private void ShowForm(Form form, bool matchSize) {
 			form.Show();
 			this.Hide();
 			// Open form in the same location.
@@ -53,7 +53,7 @@ namespace SOFT152Assignment {
 				form.Size = this.Size;
 			}
 		}
-		private void showCategory(string desiredCategory) {
+		private void ShowCategory(string desiredCategory) {
 			this.category = desiredCategory.ToLower();
 
 			// Reset all buttons to dark gray.
@@ -91,53 +91,53 @@ namespace SOFT152Assignment {
 		}
 
 		private void ButtonDistricts_Click(object sender, EventArgs e) {
-			showCategory("districts");
+			ShowCategory("districts");
 		}
 
 		private void ButtonNeighborhoods_Click(object sender, EventArgs e) {
-			showCategory("neighborhoods");
+			ShowCategory("neighborhoods");
 		}
 
 		private void ButtonProperties_Click(object sender, EventArgs e) {
-			showCategory("properties");
+			ShowCategory("properties");
 		}
 
 		private void ButtonAdd_Click(object sender, EventArgs e) {
 			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
 			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				showForm(new PopupDistrict("staff", "add"), false);
+				ShowForm(new PopupDistrict("staff", "add"), false);
 			}
 			// Same thing, but for the "Neighborhoods" button.
 			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				showForm(new PopupNeighborhood("staff", "add"), false);
+				ShowForm(new PopupNeighborhood("staff", "add"), false);
 			}
 			// Same thing, but for the "Properties" button.
 			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				showForm(new PopupProperty("staff", "add"), false);
+				ShowForm(new PopupProperty("staff", "add"), false);
 			}
 		}
 
-		private void panelSearch_Click(object sender, EventArgs e) {
+		private void PanelSearch_Click(object sender, EventArgs e) {
 			// User might click on the panel instead of the TextBox. This takes care of that.
 			inputSearch.Focus();
 		}
 
-		private void buttonEdit_Click(object sender, EventArgs e) {
+		private void ButtonEdit_Click(object sender, EventArgs e) {
 			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
 			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				showForm(new PopupDistrict("staff", "edit"), false);
+				ShowForm(new PopupDistrict("staff", "edit"), false);
 			}
 			// Same thing, but for the "Neighborhoods" button.
 			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				showForm(new PopupNeighborhood("staff", "edit"), false);
+				ShowForm(new PopupNeighborhood("staff", "edit"), false);
 			}
 			// Same thing, but for the "Properties" button.
 			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				showForm(new PopupProperty("staff", "edit"), false);
+				ShowForm(new PopupProperty("staff", "edit"), false);
 			}
 		}
 
-		private void labelFileDialog_Click(object sender, EventArgs e) {
+		private void LabelFileDialog_Click(object sender, EventArgs e) {
 			// Disable file selection if one's already been selected.
 			if(labelFileDialog.Text == "Select Data Source...") {
 				fileDialog.Title = "Select Data Source File";
@@ -149,11 +149,11 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void labelFileDialog_MouseEnter(object sender, EventArgs e) {
+		private void LabelFileDialog_MouseEnter(object sender, EventArgs e) {
 			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
 		}
 
-		private void labelFileDialog_MouseLeave(object sender, EventArgs e) {
+		private void LabelFileDialog_MouseLeave(object sender, EventArgs e) {
 			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 
@@ -199,33 +199,34 @@ namespace SOFT152Assignment {
 			else if(activeCategory == "properties") {
 				listviewProperties.Show();
 			}
+
 			labelFileDialog.Hide();
 		}
 
-		private void readFile(string filename) {
+		private void ReadFile(string filename) {
 			// Read every line from the data source file, and store the lines in an array.
 			dataLines = File.ReadLines(filename).ToArray();
 			populateLists(dataLines, this.category);
 		}
 
-		private void fileDialog_FileOk(object sender, CancelEventArgs e) {
+		private void FileDialog_FileOk(object sender, CancelEventArgs e) {
 			// Display the file name to the user along with "Loading" so they know they chose the right file.
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
-			readFile(fileDialog.FileName);
+			ReadFile(fileDialog.FileName);
 		}
 
-		private void buttonView_Click(object sender, EventArgs e) {
+		private void ButtonView_Click(object sender, EventArgs e) {
 			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
 			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				showForm(new PopupDistrict(this.level, "view"), false);
+				ShowForm(new PopupDistrict(this.level, "view"), false);
 			}
 			// Same as above but the "PopupNeighborhood" form is opened.
 			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				showForm(new PopupNeighborhood(this.level, "view"), false);
+				ShowForm(new PopupNeighborhood(this.level, "view"), false);
 			}
 			// The "PopupProperty" form is opened.
 			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				showForm(new PopupProperty(this.level, "view"), false);
+				ShowForm(new PopupProperty(this.level, "view"), false);
 			}
 		}
 	}
