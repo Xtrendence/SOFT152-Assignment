@@ -58,6 +58,7 @@
 			this.inputSearch.TabIndex = 13;
 			this.inputSearch.Text = "Search...";
 			this.inputSearch.Enter += new System.EventHandler(this.InputSearch_Enter);
+			this.inputSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InputSearch_KeyUp);
 			this.inputSearch.Leave += new System.EventHandler(this.InputSearch_Leave);
 			// 
 			// buttonSearch
@@ -74,6 +75,7 @@
 			this.buttonSearch.TabIndex = 12;
 			this.buttonSearch.Text = "Search";
 			this.buttonSearch.UseVisualStyleBackColor = false;
+			this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
 			// 
 			// buttonBack
 			// 

@@ -217,15 +217,20 @@ namespace SOFT152Assignment {
 
 			// For each line in the file, add the line to an array that is later added as a row to the ListView.
 			for(int i = 0; i < lines.Length; i++) {
-				string districtName = lines[i].ToString();
-				i++;
-				string districtNeighborhoodCount = lines[i].ToString();
-				i++;
-				string neighborhoodName = lines[i].ToString();
-				i++;
-				string neighborhoodPropertyCount = lines[i].ToString();
-				listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
-				listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhoodName, neighborhoodPropertyCount }));
+				try {
+					string districtName = lines[i].ToString();
+					i++;
+					string districtNeighborhoodCount = lines[i].ToString();
+					i++;
+					string neighborhoodName = lines[i].ToString();
+					i++;
+					string neighborhoodPropertyCount = lines[i].ToString();
+					listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
+					listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhoodName, neighborhoodPropertyCount }));
+				}
+				catch(IndexOutOfRangeException e) {
+					Debug.WriteLine(e.Message);
+				}
 			}
 
 			if(activeCategory == "districts") {
@@ -346,6 +351,49 @@ namespace SOFT152Assignment {
 					Property property = new Property(Convert.ToInt32(item[0].Text), item[1].Text, Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), Convert.ToDouble(item[5].Text), Convert.ToDouble(item[6].Text), item[7].Text, Convert.ToDouble(item[8].Text), Convert.ToInt32(item[9].Text), Convert.ToInt32(item[10].Text));
 					ShowForm(new PopupProperty("staff", "view", property), false, true);
 				}
+			}
+		}
+
+		private void ButtonSearch_Click(object sender, EventArgs e) {
+			string query = inputSearch.Text.Trim();
+			ListView.ListViewItemCollection items = listviewDistricts.Items;
+			if(this.category == "neighborhoods") {
+				items = listviewDistricts.Items;
+			}
+			else if(this.category == "properties") {
+				items = listviewDistricts.Items;
+			}
+			if(query == "" || query == "Search...") {
+				// If the search query is empty, then all ListViewItems are restored. I wanted to use "Hide()" on them originally, but that doesn't seem to be possible.
+				PopulateLists(dataLines, this.category);
+			}
+			else {
+				// For each item in the list...
+				foreach(ListViewItem item in items) {
+					// And for each sub-item in the parent item...
+					for(int i = 0; i < item.SubItems.Count; i++) {
+						// If the lowercase value of the query is equal to the lowercase value (to make things easier for the user), then that item is tagged as match.
+						if(query.ToLower() == item.SubItems[i].Text.ToLower()) {
+							item.Tag = "match";
+						}
+					}
+					// After the sub-items have been iterated through, the item is checked to see if it has a tag. If it doesn't, then it's not a match, and is removed.
+					if(item.Tag == null) {
+						item.Remove();
+					}
+				}
+			}
+		}
+
+		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
+			if(inputSearch.Text.Trim() == "") {
+				PopulateLists(dataLines, this.category);
+				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
+				buttonSearch.ForeColor = Color.FromArgb(150, 150, 150);
+			}
+			else {
+				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
+				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 	}
