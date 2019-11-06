@@ -128,6 +128,8 @@
 			this.Controls.Add(this.panelCount);
 			this.Controls.Add(this.panelName);
 			this.Controls.Add(this.buttonBack);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "PopupNeighborhood";
 			this.Text = "Neighborhood";
 			this.panelCount.ResumeLayout(false);

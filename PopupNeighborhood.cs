@@ -12,11 +12,21 @@ namespace SOFT152Assignment {
 	public partial class PopupNeighborhood : Form {
 		public string level;
 		public string action;
+		public Neighborhood neighborhood;
 		public PopupNeighborhood(string accessLevel, string desiredAction) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			SetTitle();
+		}
+		public PopupNeighborhood(string accessLevel, string desiredAction, Neighborhood neighborhoodObject) {
+			InitializeComponent();
+			this.level = accessLevel.ToLower();
+			this.action = desiredAction.ToLower();
+			this.neighborhood = neighborhoodObject;
+
+			this.inputName.Text = neighborhood.Name;
+			this.inputPropertyCount.Text = neighborhood.PropertyCount.ToString();
 		}
 
 		private void ButtonBack_Click(object sender, EventArgs e) {
@@ -35,9 +45,6 @@ namespace SOFT152Assignment {
 			}
 			else if(action == "add") {
 				this.Text = "Add Neighborhood";
-			}
-			else if(action == "view") {
-				this.Text = "View Neighborhood";
 			}
 		}
 

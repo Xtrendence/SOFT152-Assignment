@@ -54,6 +54,8 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(384, 361);
 			this.Controls.Add(this.buttonBack);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "PopupProperty";
 			this.Text = "AddProperty";
 			this.ResumeLayout(false);

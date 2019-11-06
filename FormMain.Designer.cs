@@ -42,7 +42,6 @@
 			this.listviewDistricts = new System.Windows.Forms.ListView();
 			this.listviewNeighborhoods = new System.Windows.Forms.ListView();
 			this.listviewProperties = new System.Windows.Forms.ListView();
-			this.buttonView = new System.Windows.Forms.Button();
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -57,6 +56,8 @@
 			this.inputSearch.Size = new System.Drawing.Size(270, 16);
 			this.inputSearch.TabIndex = 13;
 			this.inputSearch.Text = "Search...";
+			this.inputSearch.Enter += new System.EventHandler(this.InputSearch_Enter);
+			this.inputSearch.Leave += new System.EventHandler(this.InputSearch_Leave);
 			// 
 			// buttonSearch
 			// 
@@ -216,6 +217,7 @@
 			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
 			this.listviewDistricts.View = System.Windows.Forms.View.Details;
 			this.listviewDistricts.Visible = false;
+			this.listviewDistricts.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.ListviewDistricts_ItemSelectionChanged);
 			// 
 			// listviewNeighborhoods
 			// 
@@ -251,29 +253,12 @@
 			this.listviewProperties.View = System.Windows.Forms.View.Details;
 			this.listviewProperties.Visible = false;
 			// 
-			// buttonView
-			// 
-			this.buttonView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-			this.buttonView.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.buttonView.FlatAppearance.BorderSize = 0;
-			this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.buttonView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonView.Location = new System.Drawing.Point(413, 415);
-			this.buttonView.Name = "buttonView";
-			this.buttonView.Size = new System.Drawing.Size(62, 34);
-			this.buttonView.TabIndex = 37;
-			this.buttonView.Text = "View";
-			this.buttonView.UseVisualStyleBackColor = false;
-			this.buttonView.Click += new System.EventHandler(this.ButtonView_Click);
-			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(784, 461);
-			this.Controls.Add(this.buttonView);
 			this.Controls.Add(this.labelFileDialog);
 			this.Controls.Add(this.buttonProperties);
 			this.Controls.Add(this.panelSearch);
@@ -286,6 +271,8 @@
 			this.Controls.Add(this.listviewDistricts);
 			this.Controls.Add(this.listviewNeighborhoods);
 			this.Controls.Add(this.listviewProperties);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "FormMain";
 			this.Text = "Access";
 			this.panelSearch.ResumeLayout(false);
@@ -309,6 +296,5 @@
 		private System.Windows.Forms.ListView listviewDistricts;
 		private System.Windows.Forms.ListView listviewNeighborhoods;
 		private System.Windows.Forms.ListView listviewProperties;
-		private System.Windows.Forms.Button buttonView;
 	}
 }

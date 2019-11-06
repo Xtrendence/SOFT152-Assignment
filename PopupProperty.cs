@@ -12,10 +12,18 @@ namespace SOFT152Assignment {
 	public partial class PopupProperty : Form {
 		public string level;
 		public string action;
+		public Property property;
 		public PopupProperty(string accessLevel, string desiredAction) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
+			SetTitle();
+		}
+		public PopupProperty(string accessLevel, string desiredAction, Property propertyObject) {
+			InitializeComponent();
+			this.level = accessLevel.ToLower();
+			this.action = desiredAction.ToLower();
+			this.property = propertyObject;
 			SetTitle();
 		}
 
@@ -35,9 +43,6 @@ namespace SOFT152Assignment {
 			}
 			else if(action == "add") {
 				this.Text = "Add Property";
-			}
-			else if(action == "view") {
-				this.Text = "View Property";
 			}
 		}
 

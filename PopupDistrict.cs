@@ -12,13 +12,22 @@ namespace SOFT152Assignment {
 	public partial class PopupDistrict : Form {
 		public string level;
 		public string action;
+		public District district;
 		public PopupDistrict(string accessLevel, string desiredAction) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			SetTitle();
 		}
+		public PopupDistrict(string accessLevel, string desiredAction, District districtObject) {
+			InitializeComponent();
+			this.level = accessLevel.ToLower();
+			this.action = desiredAction.ToLower();
+			this.district = districtObject;
 
+			this.inputName.Text = district.Name;
+			this.inputNeighborhoodCount.Text = district.NeighborhoodCount.ToString();
+		}
 		private void ButtonBack_Click(object sender, EventArgs e) {
 			if(level == "public") {
 				ShowForm(new FormMain("districts", "public"), false);
@@ -35,9 +44,6 @@ namespace SOFT152Assignment {
 			}
 			else if(action == "add") {
 				this.Text = "Add District";
-			}
-			else if(action == "view") {
-				this.Text = "View District";
 			}
 		}
 

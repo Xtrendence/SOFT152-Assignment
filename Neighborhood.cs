@@ -14,6 +14,10 @@ namespace SOFT152Assignment {
             this.propertyCount = neighborhoodPropertyCount;
             this.propertyNames = neighborhoodPropertyNames;
         }
+		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount) {
+			this.name = neighborhoodName;
+			this.propertyCount = neighborhoodPropertyCount;
+		}
         public string Name {
             get {
                 return this.name;

@@ -129,6 +129,8 @@
 			this.Controls.Add(this.panelName);
 			this.Controls.Add(this.buttonBack);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "PopupDistrict";
 			this.Text = "District";
 			this.panelName.ResumeLayout(false);

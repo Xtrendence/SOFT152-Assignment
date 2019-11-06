@@ -14,7 +14,11 @@ namespace SOFT152Assignment {
             this.neighborhoodCount = districtNeighborhoodCount;
             this.neighborhoodNames = districtNeighborhoodNames;
         }
-        public string Name {
+		public District(string districtName, int districtNeighborhoodCount) {
+			this.name = districtName;
+			this.neighborhoodCount = districtNeighborhoodCount;
+		}
+		public string Name {
             get {
                 return this.name;
             }
