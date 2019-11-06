@@ -72,7 +72,7 @@
 			this.labelAccess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.labelAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelAccess.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.labelAccess.Location = new System.Drawing.Point(265, 182);
+			this.labelAccess.Location = new System.Drawing.Point(265, 183);
 			this.labelAccess.Name = "labelAccess";
 			this.labelAccess.Size = new System.Drawing.Size(255, 41);
 			this.labelAccess.TabIndex = 2;
