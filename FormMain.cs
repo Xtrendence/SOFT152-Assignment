@@ -46,11 +46,16 @@ namespace SOFT152Assignment {
 			form.Show();
 			if(!keepOpen) {
 				this.Hide();
+				// Open form in the same location.
+				form.Left = this.Left;
+				form.Top = this.Top;
+			}
+			else {
+				// Since the other form is open in the back, it'd make sense to open the new one out of the current one's screen real estate, so if the user accidentally clicks on the old form, the new one doesn't get hidden behind it and possibly get forgotten about.
+				form.Left = this.Size.Width - 100;
+				form.Top = this.Size.Height;
 			}
 			
-			// Open form in the same location.
-			form.Left = this.Left;
-			form.Top = this.Top;
 			// Most forms have the same size, but some (such as popups) might not.
 			if(matchSize) {
 				form.Size = this.Size;
@@ -358,10 +363,10 @@ namespace SOFT152Assignment {
 			PopulateLists(dataLines, this.category);
 			ListView.ListViewItemCollection items = listviewDistricts.Items;
 			if(this.category == "neighborhoods") {
-				items = listviewDistricts.Items;
+				items = listviewNeighborhoods.Items;
 			}
 			else if(this.category == "properties") {
-				items = listviewDistricts.Items;
+				items = listviewProperties.Items;
 			}
 			if(query == "" || query == "Search...") {
 				// If the search query is empty, then all ListViewItems are restored. I wanted to use "Hide()" on them originally, but that doesn't seem to be possible.
@@ -386,7 +391,9 @@ namespace SOFT152Assignment {
 		}
 
 		private void ButtonSearch_Click(object sender, EventArgs e) {
-			search(inputSearch.Text.Trim());
+			if(inputSearch.Text.Trim() != "" && inputSearch.Text != "Search...") {
+				search(inputSearch.Text.Trim());
+			}
 		}
 
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
