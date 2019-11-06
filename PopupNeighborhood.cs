@@ -97,6 +97,7 @@ namespace SOFT152Assignment {
 		private void InputName_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
 			if(inputName.Text == "Neighborhood Name..." || inputName.Text == "* Required") {
+				inputName.ForeColor = Color.FromArgb(250, 250, 250);
 				inputName.Text = "";
 			}
 		}
@@ -104,6 +105,7 @@ namespace SOFT152Assignment {
 		private void InputPropertyCount_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
 			if(inputPropertyCount.Text == "Number of Properties..." || inputPropertyCount.Text == "* Required") {
+				inputPropertyCount.ForeColor = Color.FromArgb(250, 250, 250);
 				inputPropertyCount.Text = "";
 			}
 		}
