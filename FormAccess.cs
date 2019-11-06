@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace SOFT152Assignment {
 	public partial class FormAccess : Form {
+		public bool open;
 		public FormAccess() {
 			InitializeComponent();
+			// Set the form to open. This is used later on to actually exit the application if the form is closed.
+			open = true;
 		}
 
 		private void ButtonPublic_Click(object sender, EventArgs e) {
@@ -29,6 +32,14 @@ namespace SOFT152Assignment {
 			// Ensures that the new form is the same size as the current one.
 			form.Size = this.Size;
 			this.Hide();
+		}
+
+		private void FormAccess_FormClosed(object sender, FormClosedEventArgs e) {
+			if(this.open) {
+				this.open = false;
+				this.Close();
+				Application.Exit();
+			}
 		}
 	}
 }

@@ -106,6 +106,7 @@
 			this.MaximizeBox = false;
 			this.Name = "FormAccess";
 			this.Text = "Access Level";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAccess_FormClosed);
 			this.ResumeLayout(false);
 
         }

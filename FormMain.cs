@@ -47,8 +47,9 @@ namespace SOFT152Assignment {
 			ShowForm(new FormAccess(), true, false);
 		}
 		private void ShowForm(Form form, bool matchSize, bool keepOpen) {
-			form.Show();
+			// The "keepOpen" boolean is used to determine whether or not the current from should be kept open. Clicking something like the back button would count as closing the current form, so the "keepOpen" would be set to false. A popup, on the other hand, would constitute a situation in which the current form should ideally be kept open.
 			if(!keepOpen) {
+				form.Show();
 				this.Hide();
 				// Open form in the same location.
 				form.Left = this.Left;
@@ -56,8 +57,13 @@ namespace SOFT152Assignment {
 			}
 			else {
 				// Since the other form is open in the back, it'd make sense to open the new one out of the current one's screen real estate, so if the user accidentally clicks on the old form, the new one doesn't get hidden behind it and possibly get forgotten about.
-				form.Left = this.Size.Width - 100;
-				form.Top = this.Size.Height;
+				int x = this.Size.Width - 100;
+				int y = this.Size.Height;
+				// Setting the location of a dialog is different from a normal form.
+				form.StartPosition = FormStartPosition.Manual;
+				form.Location = new Point(x, y);
+				// "ShowDialog" defers from the normal "Show" method, because it essentially disables the current form while the new one is open. This is good for a popup, because the user interacting with the data while a popup is open could lead to issues.
+				form.ShowDialog();
 			}
 			
 			// Most forms have the same size, but some (such as popups) might not.
