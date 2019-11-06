@@ -50,18 +50,6 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void ShowForm(Form form, bool matchSize) {
-			form.Show();
-			this.Hide();
-			// Open form in the same location.
-			form.Left = this.Left;
-			form.Top = this.Top;
-			// Most forms have the same size, but some (such as popups) might not.
-			if(matchSize) {
-				form.Size = this.Size;
-			}
-		}
-
 		private void PanelName_Click(object sender, EventArgs e) {
 			// User might click on the panel instead of the TextBox. This takes care of that.
 			inputName.Focus();
@@ -73,7 +61,14 @@ namespace SOFT152Assignment {
 		}
 
 		private void ButtonNext_Click(object sender, EventArgs e) {
-
+			if(inputName.Text.Trim() == "" || inputName.Text == "District Name...") {
+				inputName.ForeColor = Color.FromArgb(240, 100, 50);
+				inputName.Text = "* Required";
+			}
+			if(inputPropertyCount.Text.Trim() == "" || inputPropertyCount.Text == "Number of Neighborhoods...") {
+				inputPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
+				inputPropertyCount.Text = "* Required";
+			}
 		}
 
 		private void InputName_Leave(object sender, EventArgs e) {
@@ -92,14 +87,14 @@ namespace SOFT152Assignment {
 
 		private void InputName_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if(inputName.Text == "Neighborhood Name...") {
+			if(inputName.Text == "Neighborhood Name..." || inputName.Text == "* Required") {
 				inputName.Text = "";
 			}
 		}
 
 		private void InputPropertyCount_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if(inputPropertyCount.Text == "Number of Properties...") {
+			if(inputPropertyCount.Text == "Number of Properties..." || inputPropertyCount.Text == "* Required") {
 				inputPropertyCount.Text = "";
 			}
 		}

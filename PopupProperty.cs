@@ -69,18 +69,6 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void ShowForm(Form form, bool matchSize) {
-			form.Show();
-			this.Hide();
-			// Open form in the same location.
-			form.Left = this.Left;
-			form.Top = this.Top;
-			// Most forms have the same size, but some (such as popups) might not.
-			if(matchSize) {
-				form.Size = this.Size;
-			}
-		}
-
 		private void InputPropertyID_Enter(object sender, EventArgs e) {
 			if(inputPropertyID.Text == "Property ID...") {
 				inputPropertyID.Text = "";

@@ -50,18 +50,6 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void ShowForm(Form form, bool matchSize) {
-			form.Show();
-			this.Hide();
-			// Open form in the same location.
-			form.Left = this.Left;
-			form.Top = this.Top;
-			// Most forms have the same size, but some (such as popups) might not.
-			if(matchSize) {
-				form.Size = this.Size;
-			}
-		}
-
 		private void PanelName_Click(object sender, EventArgs e) {
 			// User might click on the panel instead of the TextBox. This takes care of that.
 			inputName.Focus();
