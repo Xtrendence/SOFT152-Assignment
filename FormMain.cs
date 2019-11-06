@@ -354,7 +354,8 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void ButtonSearch_Click(object sender, EventArgs e) {
+		private void search() {
+			PopulateLists(dataLines, this.category);
 			string query = inputSearch.Text.Trim();
 			ListView.ListViewItemCollection items = listviewDistricts.Items;
 			if(this.category == "neighborhoods") {
@@ -385,6 +386,10 @@ namespace SOFT152Assignment {
 			}
 		}
 
+		private void ButtonSearch_Click(object sender, EventArgs e) {
+			search();
+		}
+
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
 			if(inputSearch.Text.Trim() == "") {
 				PopulateLists(dataLines, this.category);
@@ -394,6 +399,10 @@ namespace SOFT152Assignment {
 			else {
 				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
 				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
+				// Allows the user to press the "Enter" or "Return" key to initiate a search.
+				if(e.KeyCode == Keys.Enter) {
+					search();
+				}
 			}
 		}
 	}
