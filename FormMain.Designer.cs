@@ -299,6 +299,7 @@
 			this.MaximizeBox = false;
 			this.Name = "FormMain";
 			this.Text = "Access";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
 			this.panelSearch.ResumeLayout(false);
 			this.panelSearch.PerformLayout();
 			this.ResumeLayout(false);

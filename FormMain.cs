@@ -15,14 +15,18 @@ namespace SOFT152Assignment {
 		public string[] dataLines;
 		public string category;
 		public string level;
+		public bool open;
 		public FormMain() {
 			InitializeComponent();
+			// Set the form as open.
+			this.open = true;
 			// By default, the districts category is shown.
 			ShowCategory("districts");
 		}
 		// For back buttons to "remember" the category the user was looking at. Just a quality of life improvement.
 		public FormMain(string activeCategory, string accessLevel) {
 			InitializeComponent();
+			this.open = true;
 			this.category = activeCategory.ToLower();
 			this.level = accessLevel.ToLower();
 
@@ -409,6 +413,14 @@ namespace SOFT152Assignment {
 				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
 				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
 				search(inputSearch.Text.Trim());
+			}
+		}
+
+		private void FormMain_FormClosed(object sender, FormClosedEventArgs e) {
+			if(this.open) {
+				this.open = false;
+				this.Close();
+				Application.Exit();
 			}
 		}
 	}
