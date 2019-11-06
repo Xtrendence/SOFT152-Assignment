@@ -102,7 +102,8 @@
 			this.inputRoomAvailability.Size = new System.Drawing.Size(331, 16);
 			this.inputRoomAvailability.TabIndex = 13;
 			this.inputRoomAvailability.Text = "Availability Days";
-			this.inputRoomAvailability.Enter += new System.EventHandler(this.inputRoomAvailability_Enter);
+			this.inputRoomAvailability.Enter += new System.EventHandler(this.InputRoomAvailability_Enter);
+			this.inputRoomAvailability.Leave += new System.EventHandler(this.InputRoomAvailability_Leave);
 			// 
 			// panel1
 			// 
@@ -124,7 +125,8 @@
 			this.inputRoomNights.Size = new System.Drawing.Size(331, 16);
 			this.inputRoomNights.TabIndex = 13;
 			this.inputRoomNights.Text = "Minimum Nights";
-			this.inputRoomNights.Enter += new System.EventHandler(this.inputRoomNights_Enter);
+			this.inputRoomNights.Enter += new System.EventHandler(this.InputRoomNights_Enter);
+			this.inputRoomNights.Leave += new System.EventHandler(this.InputRoomNights_Leave);
 			// 
 			// panel2
 			// 
@@ -146,7 +148,8 @@
 			this.inputRoomPrice.Size = new System.Drawing.Size(331, 16);
 			this.inputRoomPrice.TabIndex = 13;
 			this.inputRoomPrice.Text = "Room Price";
-			this.inputRoomPrice.Enter += new System.EventHandler(this.inputRoomPrice_Enter);
+			this.inputRoomPrice.Enter += new System.EventHandler(this.InputRoomPrice_Enter);
+			this.inputRoomPrice.Leave += new System.EventHandler(this.InputRoomPrice_Leave);
 			// 
 			// panel3
 			// 
@@ -168,7 +171,8 @@
 			this.inputRoomType.Size = new System.Drawing.Size(331, 16);
 			this.inputRoomType.TabIndex = 13;
 			this.inputRoomType.Text = "Room Type";
-			this.inputRoomType.Enter += new System.EventHandler(this.inputRoomType_Enter);
+			this.inputRoomType.Enter += new System.EventHandler(this.InputRoomType_Enter);
+			this.inputRoomType.Leave += new System.EventHandler(this.InputRoomType_Leave);
 			// 
 			// panel4
 			// 
@@ -190,7 +194,8 @@
 			this.inputLongitude.Size = new System.Drawing.Size(331, 16);
 			this.inputLongitude.TabIndex = 13;
 			this.inputLongitude.Text = "Longitude";
-			this.inputLongitude.Enter += new System.EventHandler(this.inputLongitude_Enter);
+			this.inputLongitude.Enter += new System.EventHandler(this.InputLongitude_Enter);
+			this.inputLongitude.Leave += new System.EventHandler(this.InputLongitude_Leave);
 			// 
 			// panel5
 			// 
@@ -212,7 +217,8 @@
 			this.inputLatitude.Size = new System.Drawing.Size(331, 16);
 			this.inputLatitude.TabIndex = 13;
 			this.inputLatitude.Text = "Latitude";
-			this.inputLatitude.Enter += new System.EventHandler(this.inputLatitude_Enter);
+			this.inputLatitude.Enter += new System.EventHandler(this.InputLatitude_Enter);
+			this.inputLatitude.Leave += new System.EventHandler(this.InputLatitude_Leave);
 			// 
 			// panel6
 			// 
@@ -234,7 +240,8 @@
 			this.inputHostPropertyCount.Size = new System.Drawing.Size(331, 16);
 			this.inputHostPropertyCount.TabIndex = 13;
 			this.inputHostPropertyCount.Text = "Number of Properties Owned by Host";
-			this.inputHostPropertyCount.Enter += new System.EventHandler(this.inputHostPropertyCount_Enter);
+			this.inputHostPropertyCount.Enter += new System.EventHandler(this.InputHostPropertyCount_Enter);
+			this.inputHostPropertyCount.Leave += new System.EventHandler(this.InputHostPropertyCount_Leave);
 			// 
 			// panel7
 			// 
@@ -256,7 +263,8 @@
 			this.inputHostName.Size = new System.Drawing.Size(331, 16);
 			this.inputHostName.TabIndex = 13;
 			this.inputHostName.Text = "Host Name";
-			this.inputHostName.Enter += new System.EventHandler(this.inputHostName_Enter);
+			this.inputHostName.Enter += new System.EventHandler(this.InputHostName_Enter);
+			this.inputHostName.Leave += new System.EventHandler(this.InputHostName_Leave);
 			// 
 			// panel8
 			// 
@@ -278,7 +286,8 @@
 			this.inputHostID.Size = new System.Drawing.Size(331, 16);
 			this.inputHostID.TabIndex = 13;
 			this.inputHostID.Text = "Host ID";
-			this.inputHostID.Enter += new System.EventHandler(this.inputHostID_Enter);
+			this.inputHostID.Enter += new System.EventHandler(this.InputHostID_Enter);
+			this.inputHostID.Leave += new System.EventHandler(this.InputHostID_Leave);
 			// 
 			// panel9
 			// 
@@ -300,7 +309,8 @@
 			this.inputPropertyName.Size = new System.Drawing.Size(331, 16);
 			this.inputPropertyName.TabIndex = 13;
 			this.inputPropertyName.Text = "Property Name";
-			this.inputPropertyName.Enter += new System.EventHandler(this.inputPropertyName_Enter);
+			this.inputPropertyName.Enter += new System.EventHandler(this.InputPropertyName_Enter);
+			this.inputPropertyName.Leave += new System.EventHandler(this.InputPropertyName_Leave);
 			// 
 			// panel10
 			// 
@@ -322,7 +332,8 @@
 			this.inputPropertyID.Size = new System.Drawing.Size(331, 16);
 			this.inputPropertyID.TabIndex = 13;
 			this.inputPropertyID.Text = "Property ID";
-			this.inputPropertyID.Enter += new System.EventHandler(this.inputPropertyID_Enter);
+			this.inputPropertyID.Enter += new System.EventHandler(this.InputPropertyID_Enter);
+			this.inputPropertyID.Leave += new System.EventHandler(this.InputPropertyID_Leave);
 			// 
 			// buttonDelete
 			// 

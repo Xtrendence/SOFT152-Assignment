@@ -58,48 +58,136 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void inputPropertyID_Enter(object sender, EventArgs e) {
-
+		private void InputPropertyID_Enter(object sender, EventArgs e) {
+			if(inputPropertyID.Text == "Property ID...") {
+				inputPropertyID.Text = "";
+			}
 		}
 
-		private void inputPropertyName_Enter(object sender, EventArgs e) {
-
+		private void InputPropertyName_Enter(object sender, EventArgs e) {
+			if(inputPropertyName.Text == "Property Name...") {
+				inputPropertyName.Text = "";
+			}
 		}
 
-		private void inputHostID_Enter(object sender, EventArgs e) {
-
+		private void InputHostID_Enter(object sender, EventArgs e) {
+			if(inputHostID.Text == "Host ID...") {
+				inputHostID.Text = "";
+			}
 		}
 
-		private void inputHostName_Enter(object sender, EventArgs e) {
-
+		private void InputHostName_Enter(object sender, EventArgs e) {
+			if(inputHostName.Text == "Host Name...") {
+				inputHostName.Text = "";
+			}
 		}
 
-		private void inputHostPropertyCount_Enter(object sender, EventArgs e) {
-
+		private void InputHostPropertyCount_Enter(object sender, EventArgs e) {
+			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host...") {
+				inputHostPropertyCount.Text = "";
+			}
 		}
 
-		private void inputRoomType_Enter(object sender, EventArgs e) {
-
+		private void InputRoomType_Enter(object sender, EventArgs e) {
+			if(inputRoomType.Text == "Room Type...") {
+				inputRoomType.Text = "";
+			}
 		}
 
-		private void inputRoomPrice_Enter(object sender, EventArgs e) {
-
+		private void InputRoomPrice_Enter(object sender, EventArgs e) {
+			if(inputRoomPrice.Text == "Room Price...") {
+				inputRoomPrice.Text = "";
+			}
 		}
 
-		private void inputLongitude_Enter(object sender, EventArgs e) {
-
+		private void InputLongitude_Enter(object sender, EventArgs e) {
+			if(inputLongitude.Text == "Longitude...") {
+				inputLongitude.Text = "";
+			}
 		}
 
-		private void inputLatitude_Enter(object sender, EventArgs e) {
-
+		private void InputLatitude_Enter(object sender, EventArgs e) {
+			if(inputLatitude.Text == "Latitude...") {
+				inputLatitude.Text = "";
+			}
 		}
 
-		private void inputRoomNights_Enter(object sender, EventArgs e) {
-
+		private void InputRoomNights_Enter(object sender, EventArgs e) {
+			if(inputRoomNights.Text == "Minimum Nights...") {
+				inputRoomNights.Text = "";
+			}
 		}
 
-		private void inputRoomAvailability_Enter(object sender, EventArgs e) {
+		private void InputRoomAvailability_Enter(object sender, EventArgs e) {
+			if(inputRoomAvailability.Text == "Availability Days...") {
+				inputRoomAvailability.Text = "";
+			}
+		}
 
+		private void InputPropertyID_Leave(object sender, EventArgs e) {
+			if(inputPropertyID.Text.Trim() == "") {
+				inputPropertyID.Text = "Property ID...";
+			}
+		}
+
+		private void InputPropertyName_Leave(object sender, EventArgs e) {
+			if(inputPropertyName.Text.Trim() == "") {
+				inputPropertyName.Text = "Property Name...";
+			}
+		}
+
+		private void InputHostID_Leave(object sender, EventArgs e) {
+			if(inputHostID.Text.Trim() == "") {
+				inputHostID.Text = "Host ID...";
+			}
+		}
+
+		private void InputHostName_Leave(object sender, EventArgs e) {
+			if(inputHostName.Text.Trim() == "") {
+				inputHostName.Text = "Host Name...";
+			}
+		}
+
+		private void InputHostPropertyCount_Leave(object sender, EventArgs e) {
+			if(inputHostPropertyCount.Text.Trim() == "") {
+				inputHostPropertyCount.Text = "Number of Properties Owned by Host...";
+			}
+		}
+
+		private void InputRoomType_Leave(object sender, EventArgs e) {
+			if(inputRoomType.Text.Trim() == "") {
+				inputRoomType.Text = "Room Type...";
+			}
+		}
+
+		private void InputRoomPrice_Leave(object sender, EventArgs e) {
+			if(inputRoomPrice.Text.Trim() == "") {
+				inputRoomPrice.Text = "Room Price...";
+			}
+		}
+
+		private void InputLongitude_Leave(object sender, EventArgs e) {
+			if(inputLongitude.Text.Trim() == "") {
+				inputLongitude.Text = "Longitude...";
+			}
+		}
+
+		private void InputLatitude_Leave(object sender, EventArgs e) {
+			if(inputLatitude.Text.Trim() == "") {
+				inputLatitude.Text = "Latitude...";
+			}
+		}
+
+		private void InputRoomNights_Leave(object sender, EventArgs e) {
+			if(inputRoomNights.Text.Trim() == "") {
+				inputRoomNights.Text = "Minimum Nights...";
+			}
+		}
+
+		private void InputRoomAvailability_Leave(object sender, EventArgs e) {
+			if(inputRoomAvailability.Text.Trim() == "") {
+				inputRoomAvailability.Text = "Availability Days...";
+			}
 		}
 	}
 }
