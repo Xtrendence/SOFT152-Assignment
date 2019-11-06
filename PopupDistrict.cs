@@ -67,12 +67,10 @@ namespace SOFT152Assignment {
 			bool valid = true;
 			if(inputName.Text.Trim() == "" || inputName.Text == "District Name...") {
 				inputName.ForeColor = Color.FromArgb(240, 100, 50);
-				inputName.Text = "* Required";
 				valid = false;
 			}
 			if(inputNeighborhoodCount.Text.Trim() == "" || inputNeighborhoodCount.Text == "Number of Neighborhoods...") {
 				inputNeighborhoodCount.ForeColor = Color.FromArgb(240, 100, 50);
-				inputNeighborhoodCount.Text = "* Required";
 				valid = false;
 			}
 			if(valid) {
@@ -96,7 +94,7 @@ namespace SOFT152Assignment {
 
 		private void InputName_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if(inputName.Text == "District Name..." || inputName.Text == "* Required") {
+			if(inputName.Text == "District Name...") {
 				inputName.ForeColor = Color.FromArgb(250, 250, 250);
 				inputName.Text = "";
 			}
@@ -104,7 +102,7 @@ namespace SOFT152Assignment {
 
 		private void InputNeighborhoodCount_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if(inputNeighborhoodCount.Text == "Number of Neighborhoods..." || inputNeighborhoodCount.Text == "* Required") {
+			if(inputNeighborhoodCount.Text == "Number of Neighborhoods...") {
 				inputNeighborhoodCount.ForeColor = Color.FromArgb(250, 250, 250);
 				inputNeighborhoodCount.Text = "";
 			}

@@ -84,68 +84,79 @@ namespace SOFT152Assignment {
 		}
 
 		private void InputPropertyID_Enter(object sender, EventArgs e) {
-			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "* Required") {
+			if(inputPropertyID.Text == "Property ID...") {
 				inputPropertyID.Text = "";
+				inputPropertyID.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputPropertyName_Enter(object sender, EventArgs e) {
-			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "* Required") {
+			if(inputPropertyName.Text == "Property Name...") {
 				inputPropertyName.Text = "";
+				inputPropertyName.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputHostID_Enter(object sender, EventArgs e) {
-			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "* Required") {
+			if(inputHostID.Text == "Host ID...") {
 				inputHostID.Text = "";
+				inputHostID.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputHostName_Enter(object sender, EventArgs e) {
-			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "* Required") {
+			if(inputHostName.Text == "Host Name...") {
 				inputHostName.Text = "";
+				inputHostName.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputHostPropertyCount_Enter(object sender, EventArgs e) {
-			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "* Required") {
+			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host...") {
 				inputHostPropertyCount.Text = "";
+				inputHostPropertyCount.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputRoomType_Enter(object sender, EventArgs e) {
-			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "* Required") {
+			if(inputRoomType.Text == "Room Type...") {
 				inputRoomType.Text = "";
+				inputRoomType.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputRoomPrice_Enter(object sender, EventArgs e) {
-			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "* Required") {
+			if(inputRoomPrice.Text == "Room Price...") {
 				inputRoomPrice.Text = "";
+				inputRoomPrice.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputLongitude_Enter(object sender, EventArgs e) {
-			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "* Required") {
+			if(inputLongitude.Text == "Longitude...") {
 				inputLongitude.Text = "";
+				inputLongitude.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputLatitude_Enter(object sender, EventArgs e) {
-			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "* Required") {
+			if(inputLatitude.Text == "Latitude...") {
 				inputLatitude.Text = "";
+				inputLatitude.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputRoomNights_Enter(object sender, EventArgs e) {
-			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "* Required") {
+			if(inputRoomNights.Text == "Minimum Nights...") {
 				inputRoomNights.Text = "";
+				inputRoomNights.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
 		private void InputRoomAvailability_Enter(object sender, EventArgs e) {
-			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "* Required") {
+			if(inputRoomAvailability.Text == "Availability Days...") {
 				inputRoomAvailability.Text = "";
+				inputRoomAvailability.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
@@ -224,57 +235,46 @@ namespace SOFT152Assignment {
 			bool valid = true;
 			// Again, a List and a for loop here would be ideal.
 			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "") {
-				inputPropertyID.Text = "* Required";
 				inputPropertyID.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "") {
-				inputPropertyName.Text = "* Required";
 				inputPropertyName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "") {
-				inputHostID.Text = "* Required";
 				inputHostID.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "") {
-				inputHostName.Text = "* Required";
 				inputHostName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "") {
-				inputHostPropertyCount.Text = "* Required";
 				inputHostPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "") {
-				inputRoomType.Text = "* Required";
 				inputRoomType.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "") {
-				inputRoomPrice.Text = "* Required";
 				inputRoomPrice.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "") {
-				inputLongitude.Text = "* Required";
 				inputLongitude.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "") {
-				inputLatitude.Text = "* Required";
 				inputLatitude.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "") {
-				inputRoomNights.Text = "* Required";
 				inputRoomNights.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "") {
-				inputRoomAvailability.Text = "* Required";
 				inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
