@@ -51,6 +51,19 @@ namespace SOFT152Assignment {
 				this.inputLatitude.ReadOnly = true;
 				this.inputRoomNights.ReadOnly = true;
 				this.inputRoomAvailability.ReadOnly = true;
+
+				this.inputPropertyID.Enabled = false;
+				this.inputPropertyName.Enabled = false;
+				this.inputHostID.Enabled = false;
+				this.inputHostName.Enabled = false;
+				this.inputHostPropertyCount.Enabled = false;
+				this.inputRoomType.Enabled = false;
+				this.inputRoomPrice.Enabled = false;
+				this.inputLongitude.Enabled = false;
+				this.inputLatitude.Enabled = false;
+				this.inputRoomNights.Enabled = false;
+				this.inputRoomAvailability.Enabled = false;
+
 				this.buttonNext.Hide();
 			}
 

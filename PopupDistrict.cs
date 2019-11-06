@@ -32,7 +32,9 @@ namespace SOFT152Assignment {
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			if(action == "view") {
 				this.inputName.ReadOnly = true;
+				this.inputName.Enabled = false;
 				this.inputNeighborhoodCount.ReadOnly = true;
+				this.inputNeighborhoodCount.Enabled = false;
 				this.buttonNext.Hide();
 			}
 		}
