@@ -28,6 +28,13 @@ namespace SOFT152Assignment {
 			// Autofill for editing the district name and neighborhood count.
 			this.inputName.Text = district.Name;
 			this.inputNeighborhoodCount.Text = district.NeighborhoodCount.ToString();
+
+			// If the user only wants to view the item, then the TextBox components are set to read-only.
+			if(action == "view") {
+				this.inputName.ReadOnly = true;
+				this.inputNeighborhoodCount.ReadOnly = true;
+				this.buttonNext.Hide();
+			}
 		}
 
 		private void SetTitle() {
@@ -37,6 +44,9 @@ namespace SOFT152Assignment {
 			}
 			else if(action == "add") {
 				this.Text = "Add District";
+			}
+			else if(action == "view") {
+				this.Text = "View District";
 			}
 		}
 

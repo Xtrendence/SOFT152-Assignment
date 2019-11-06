@@ -42,6 +42,7 @@
 			this.listviewDistricts = new System.Windows.Forms.ListView();
 			this.listviewNeighborhoods = new System.Windows.Forms.ListView();
 			this.listviewProperties = new System.Windows.Forms.ListView();
+			this.buttonView = new System.Windows.Forms.Button();
 			this.panelSearch.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -255,6 +256,22 @@
 			this.listviewProperties.Visible = false;
 			this.listviewProperties.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listviewProperties_ItemSelectionChanged);
 			// 
+			// buttonView
+			// 
+			this.buttonView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonView.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonView.FlatAppearance.BorderSize = 0;
+			this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.buttonView.Location = new System.Drawing.Point(413, 415);
+			this.buttonView.Name = "buttonView";
+			this.buttonView.Size = new System.Drawing.Size(62, 34);
+			this.buttonView.TabIndex = 37;
+			this.buttonView.Text = "View";
+			this.buttonView.UseVisualStyleBackColor = false;
+			this.buttonView.Click += new System.EventHandler(this.ButtonView_Click);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +285,7 @@
 			this.Controls.Add(this.buttonDistricts);
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.buttonEdit);
+			this.Controls.Add(this.buttonView);
 			this.Controls.Add(this.buttonSearch);
 			this.Controls.Add(this.buttonBack);
 			this.Controls.Add(this.listviewDistricts);
@@ -298,5 +316,6 @@
 		private System.Windows.Forms.ListView listviewDistricts;
 		private System.Windows.Forms.ListView listviewNeighborhoods;
 		private System.Windows.Forms.ListView listviewProperties;
+		private System.Windows.Forms.Button buttonView;
 	}
 }

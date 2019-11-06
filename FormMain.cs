@@ -60,6 +60,8 @@ namespace SOFT152Assignment {
 			this.category = desiredCategory.ToLower();
 
 			// The user can't have any ListViewItems selected if they've just switched categories.
+			buttonView.BackColor = Color.FromArgb(20, 20, 20);
+			buttonView.ForeColor = Color.FromArgb(150, 150, 150);
 			buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
 			buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
 
@@ -251,10 +253,14 @@ namespace SOFT152Assignment {
 		private void ListviewDistricts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewDistricts.SelectedItems.Count == 1) {
+				buttonView.BackColor = Color.FromArgb(60, 60, 60);
+				buttonView.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
 				buttonEdit.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 			else {
+				buttonView.BackColor = Color.FromArgb(20, 20, 20);
+				buttonView.ForeColor = Color.FromArgb(150, 150, 150);
 				buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
 				buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
 			}
@@ -263,10 +269,14 @@ namespace SOFT152Assignment {
 		private void listviewNeighborhoods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewDistricts.SelectedItems.Count == 1) {
+				buttonView.BackColor = Color.FromArgb(60, 60, 60);
+				buttonView.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
 				buttonEdit.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 			else {
+				buttonView.BackColor = Color.FromArgb(20, 20, 20);
+				buttonView.ForeColor = Color.FromArgb(150, 150, 150);
 				buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
 				buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
 			}
@@ -275,10 +285,14 @@ namespace SOFT152Assignment {
 		private void listviewProperties_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewDistricts.SelectedItems.Count == 1) {
+				buttonView.BackColor = Color.FromArgb(60, 60, 60);
+				buttonView.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
 				buttonEdit.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 			else {
+				buttonView.BackColor = Color.FromArgb(20, 20, 20);
+				buttonView.ForeColor = Color.FromArgb(150, 150, 150);
 				buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
 				buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
 			}
@@ -295,6 +309,40 @@ namespace SOFT152Assignment {
 			// Add placeholder text.
 			if(inputSearch.Text.Trim() == "") {
 				inputSearch.Text = "Search...";
+			}
+		}
+
+		private void ButtonView_Click(object sender, EventArgs e) {
+			// If "Districts" is the active category.
+			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
+				// And if the "Districts" ListView has a selected item...
+				if(listviewDistricts.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection item = listviewDistricts.SelectedItems[0].SubItems;
+					District district = new District(item[0].Text, Convert.ToInt32(item[1].Text));
+					ShowForm(new PopupDistrict("staff", "view", district), false, true);
+				}
+			}
+			// If "Neighborhoods" is the active category.
+			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
+				// And if the "Neighborhoods" ListView has a selected item...
+				if(listviewNeighborhoods.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection item = listviewNeighborhoods.SelectedItems[0].SubItems;
+					Neighborhood neighborhood = new Neighborhood(item[0].Text, Convert.ToInt32(item[1].Text));
+					ShowForm(new PopupNeighborhood("staff", "view", neighborhood), false, true);
+				}
+			}
+			// If "Properties" is the active category...
+			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
+				// And if the "Properties" ListView has a selected item...
+				if(listviewProperties.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection item = listviewProperties.SelectedItems[0].SubItems;
+					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
+					Property property = new Property(Convert.ToInt32(item[0].Text), item[1].Text, Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), Convert.ToDouble(item[5].Text), Convert.ToDouble(item[6].Text), item[7].Text, Convert.ToDouble(item[8].Text), Convert.ToInt32(item[9].Text), Convert.ToInt32(item[10].Text));
+					ShowForm(new PopupProperty("staff", "view", property), false, true);
+				}
 			}
 		}
 	}

@@ -24,6 +24,35 @@ namespace SOFT152Assignment {
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			this.property = propertyObject;
+
+			this.inputPropertyID.Text = property.Id.ToString();
+			this.inputPropertyName.Text = property.Name.ToString();
+			this.inputHostID.Text = property.HostID.ToString();
+			this.inputHostName.Text = property.HostName.ToString();
+			this.inputHostPropertyCount.Text = property.Count.ToString();
+			this.inputRoomType.Text = property.RoomType.ToString(); ;
+			this.inputRoomPrice.Text = property.RoomPrice.ToString();
+			this.inputLongitude.Text = property.Longitude.ToString();
+			this.inputLatitude.Text = property.Latitude.ToString();
+			this.inputRoomNights.Text = property.RoomNights.ToString();
+			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
+
+			// If the user only wants to view the item, then the TextBox components are set to read-only.
+			if(this.action == "view") {
+				this.inputPropertyID.ReadOnly = true;
+				this.inputPropertyName.ReadOnly = true;
+				this.inputHostID.ReadOnly = true;
+				this.inputHostName.ReadOnly = true;
+				this.inputHostPropertyCount.ReadOnly = true;
+				this.inputRoomType.ReadOnly = true;
+				this.inputRoomPrice.ReadOnly = true;
+				this.inputLongitude.ReadOnly = true;
+				this.inputLatitude.ReadOnly = true;
+				this.inputRoomNights.ReadOnly = true;
+				this.inputRoomAvailability.ReadOnly = true;
+				this.buttonNext.Hide();
+			}
+
 			SetTitle();
 		}
 
@@ -34,6 +63,9 @@ namespace SOFT152Assignment {
 			}
 			else if(action == "add") {
 				this.Text = "Add Property";
+			}
+			else if(action == "view") {
+				this.Text = "View Property";
 			}
 		}
 

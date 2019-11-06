@@ -28,6 +28,13 @@ namespace SOFT152Assignment {
 			// Autofill for changing the neighborhood name and property count.
 			this.inputName.Text = neighborhood.Name;
 			this.inputPropertyCount.Text = neighborhood.PropertyCount.ToString();
+
+			// If the user only wants to view the item, then the TextBox components are set to read-only.
+			if(action == "view") {
+				this.inputName.ReadOnly = true;
+				this.inputPropertyCount.ReadOnly = true;
+				this.buttonNext.Hide();
+			}
 		}
 
 		private void SetTitle() {
@@ -37,6 +44,9 @@ namespace SOFT152Assignment {
 			}
 			else if(action == "add") {
 				this.Text = "Add Neighborhood";
+			}
+			else if(action == "view") {
+				this.Text = "View Neighborhood";
 			}
 		}
 
