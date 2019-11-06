@@ -190,6 +190,9 @@ namespace SOFT152Assignment {
 			foreach(ListViewItem item in list.Items) {
 				list.Items.Remove(item);
 			}
+			foreach(ColumnHeader header in list.Columns) {
+				list.Columns.Remove(header);
+			}
 		}
 
 		private void PopulateLists(string[] lines, string activeCategory) {
