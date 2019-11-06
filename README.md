@@ -7,3 +7,7 @@ This was created after I had already made the UI of the program. It looked a bit
 ### Started Assignment
  
 #### 11th of November, 2019 at 11 AM
+
+### Finished Assignment
+
+#### To be determined...
