@@ -65,12 +65,12 @@ namespace SOFT152Assignment {
 		private void ButtonNext_Click(object sender, EventArgs e) {
 			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
 			bool valid = true;
-			if(inputName.Text.Trim() == "" || inputName.Text == "District Name...") {
+			if(inputName.Text.Trim() == "" || inputName.Text == "Neighborhood Name...") {
 				inputName.ForeColor = Color.FromArgb(240, 100, 50);
 				inputName.Text = "* Required";
 				valid = false;
 			}
-			if(inputPropertyCount.Text.Trim() == "" || inputPropertyCount.Text == "Number of Neighborhoods...") {
+			if(inputPropertyCount.Text.Trim() == "" || inputPropertyCount.Text == "Number of Properties...") {
 				inputPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
 				inputPropertyCount.Text = "* Required";
 				valid = false;
