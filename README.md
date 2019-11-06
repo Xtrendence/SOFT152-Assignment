@@ -11,3 +11,7 @@ This was created after I had already made the UI of the program. It looked a bit
 ### Finished Assignment
 
 #### To be determined...
+
+### Total Time
+
+#### 11 / 5 / 2019, 11 AM -> 1 PM | 3 PM -> 12 AM | 11 / 6 / 2019, 12 AM -> 3 AM = 16 Hours
