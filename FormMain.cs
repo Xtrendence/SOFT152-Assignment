@@ -64,6 +64,9 @@ namespace SOFT152Assignment {
 		private void ShowCategory(string desiredCategory) {
 			this.category = desiredCategory.ToLower();
 
+			// Reset the search TextBox value.
+			inputSearch.Text = "Search...";
+
 			// The user can't have any ListViewItems selected if they've just switched categories.
 			buttonView.BackColor = Color.FromArgb(20, 20, 20);
 			buttonView.ForeColor = Color.FromArgb(150, 150, 150);
@@ -281,7 +284,7 @@ namespace SOFT152Assignment {
 
 		private void listviewNeighborhoods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
-			if(listviewDistricts.SelectedItems.Count == 1) {
+			if(listviewNeighborhoods.SelectedItems.Count == 1) {
 				buttonView.BackColor = Color.FromArgb(60, 60, 60);
 				buttonView.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
@@ -297,7 +300,7 @@ namespace SOFT152Assignment {
 
 		private void listviewProperties_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
-			if(listviewDistricts.SelectedItems.Count == 1) {
+			if(listviewProperties.SelectedItems.Count == 1) {
 				buttonView.BackColor = Color.FromArgb(60, 60, 60);
 				buttonView.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
