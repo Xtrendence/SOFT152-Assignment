@@ -25,17 +25,9 @@ namespace SOFT152Assignment {
 			this.action = desiredAction.ToLower();
 			this.neighborhood = neighborhoodObject;
 
+			// Autofill for changing the neighborhood name and property count.
 			this.inputName.Text = neighborhood.Name;
 			this.inputPropertyCount.Text = neighborhood.PropertyCount.ToString();
-		}
-
-		private void ButtonBack_Click(object sender, EventArgs e) {
-			if(level == "public") {
-				ShowForm(new FormMain("neighborhoods", "public"), false);
-			}
-			else if(level == "staff") {
-				ShowForm(new FormMain("neighborhoods", "staff"), false);
-			}
 		}
 
 		private void SetTitle() {

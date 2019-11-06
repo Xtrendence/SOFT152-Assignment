@@ -27,15 +27,6 @@ namespace SOFT152Assignment {
 			SetTitle();
 		}
 
-		private void ButtonBack_Click(object sender, EventArgs e) {
-			if(level == "public") {
-				ShowForm(new FormMain("properties", "public"), false);
-			}
-			else if(level == "staff") {
-				ShowForm(new FormMain("properties", "staff"), false);
-			}
-		}
-
 		private void SetTitle() {
 			// When a "popup" form is opened, the action the user wants to perform is passed to the popup form's class, and is used to determine what the window title of the form should be.
 			if(action == "edit") {

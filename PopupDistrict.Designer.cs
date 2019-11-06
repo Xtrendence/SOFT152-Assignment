@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.buttonBack = new System.Windows.Forms.Button();
 			this.inputName = new System.Windows.Forms.TextBox();
 			this.panelName = new System.Windows.Forms.Panel();
 			this.panelCount = new System.Windows.Forms.Panel();
@@ -37,22 +36,6 @@
 			this.panelName.SuspendLayout();
 			this.panelCount.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// buttonBack
-			// 
-			this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.buttonBack.FlatAppearance.BorderSize = 0;
-			this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.buttonBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.buttonBack.Location = new System.Drawing.Point(12, 12);
-			this.buttonBack.Name = "buttonBack";
-			this.buttonBack.Size = new System.Drawing.Size(79, 60);
-			this.buttonBack.TabIndex = 11;
-			this.buttonBack.Text = "Back";
-			this.buttonBack.UseVisualStyleBackColor = false;
-			this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
 			// 
 			// inputName
 			// 
@@ -72,7 +55,7 @@
 			// 
 			this.panelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.panelName.Controls.Add(this.inputName);
-			this.panelName.Location = new System.Drawing.Point(12, 222);
+			this.panelName.Location = new System.Drawing.Point(12, 12);
 			this.panelName.Name = "panelName";
 			this.panelName.Size = new System.Drawing.Size(360, 34);
 			this.panelName.TabIndex = 31;
@@ -82,7 +65,7 @@
 			// 
 			this.panelCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.panelCount.Controls.Add(this.inputNeighborhoodCount);
-			this.panelCount.Location = new System.Drawing.Point(12, 268);
+			this.panelCount.Location = new System.Drawing.Point(12, 52);
 			this.panelCount.Name = "panelCount";
 			this.panelCount.Size = new System.Drawing.Size(209, 34);
 			this.panelCount.TabIndex = 32;
@@ -110,7 +93,7 @@
 			this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.buttonNext.Location = new System.Drawing.Point(293, 315);
+			this.buttonNext.Location = new System.Drawing.Point(293, 52);
 			this.buttonNext.Name = "buttonNext";
 			this.buttonNext.Size = new System.Drawing.Size(79, 34);
 			this.buttonNext.TabIndex = 19;
@@ -123,11 +106,10 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-			this.ClientSize = new System.Drawing.Size(384, 361);
+			this.ClientSize = new System.Drawing.Size(384, 95);
 			this.Controls.Add(this.buttonNext);
 			this.Controls.Add(this.panelCount);
 			this.Controls.Add(this.panelName);
-			this.Controls.Add(this.buttonBack);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
@@ -142,8 +124,6 @@
         }
 
 		#endregion
-
-		private System.Windows.Forms.Button buttonBack;
 		private System.Windows.Forms.TextBox inputName;
 		private System.Windows.Forms.Panel panelName;
 		private System.Windows.Forms.Panel panelCount;

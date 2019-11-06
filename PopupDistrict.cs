@@ -25,16 +25,9 @@ namespace SOFT152Assignment {
 			this.action = desiredAction.ToLower();
 			this.district = districtObject;
 
+			// Autofill for editing the district name and neighborhood count.
 			this.inputName.Text = district.Name;
 			this.inputNeighborhoodCount.Text = district.NeighborhoodCount.ToString();
-		}
-		private void ButtonBack_Click(object sender, EventArgs e) {
-			if(level == "public") {
-				ShowForm(new FormMain("districts", "public"), false);
-			}
-			else if(level == "staff") {
-				ShowForm(new FormMain("districts", "staff"), false);
-			}
 		}
 
 		private void SetTitle() {
