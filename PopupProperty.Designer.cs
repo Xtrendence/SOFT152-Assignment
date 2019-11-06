@@ -332,6 +332,7 @@
 			this.buttonDelete.TabIndex = 46;
 			this.buttonDelete.Text = "Delete";
 			this.buttonDelete.UseVisualStyleBackColor = false;
+			this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
 			// 
 			// buttonNext
 			// 
@@ -347,6 +348,7 @@
 			this.buttonNext.TabIndex = 47;
 			this.buttonNext.Text = "Next";
 			this.buttonNext.UseVisualStyleBackColor = false;
+			this.buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
 			// 
 			// PopupProperty
 			// 

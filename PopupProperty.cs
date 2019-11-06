@@ -25,6 +25,7 @@ namespace SOFT152Assignment {
 			this.action = desiredAction.ToLower();
 			this.property = propertyObject;
 
+			// Ideally, I'd use a List and then loop through the Controls to get their values and such, but that isn't permitted.
 			this.inputPropertyID.Text = property.Id.ToString();
 			this.inputPropertyName.Text = property.Name.ToString();
 			this.inputHostID.Text = property.HostID.ToString();
@@ -70,67 +71,67 @@ namespace SOFT152Assignment {
 		}
 
 		private void InputPropertyID_Enter(object sender, EventArgs e) {
-			if(inputPropertyID.Text == "Property ID...") {
+			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "* Required") {
 				inputPropertyID.Text = "";
 			}
 		}
 
 		private void InputPropertyName_Enter(object sender, EventArgs e) {
-			if(inputPropertyName.Text == "Property Name...") {
+			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "* Required") {
 				inputPropertyName.Text = "";
 			}
 		}
 
 		private void InputHostID_Enter(object sender, EventArgs e) {
-			if(inputHostID.Text == "Host ID...") {
+			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "* Required") {
 				inputHostID.Text = "";
 			}
 		}
 
 		private void InputHostName_Enter(object sender, EventArgs e) {
-			if(inputHostName.Text == "Host Name...") {
+			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "* Required") {
 				inputHostName.Text = "";
 			}
 		}
 
 		private void InputHostPropertyCount_Enter(object sender, EventArgs e) {
-			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host...") {
+			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "* Required") {
 				inputHostPropertyCount.Text = "";
 			}
 		}
 
 		private void InputRoomType_Enter(object sender, EventArgs e) {
-			if(inputRoomType.Text == "Room Type...") {
+			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "* Required") {
 				inputRoomType.Text = "";
 			}
 		}
 
 		private void InputRoomPrice_Enter(object sender, EventArgs e) {
-			if(inputRoomPrice.Text == "Room Price...") {
+			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "* Required") {
 				inputRoomPrice.Text = "";
 			}
 		}
 
 		private void InputLongitude_Enter(object sender, EventArgs e) {
-			if(inputLongitude.Text == "Longitude...") {
+			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "* Required") {
 				inputLongitude.Text = "";
 			}
 		}
 
 		private void InputLatitude_Enter(object sender, EventArgs e) {
-			if(inputLatitude.Text == "Latitude...") {
+			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "* Required") {
 				inputLatitude.Text = "";
 			}
 		}
 
 		private void InputRoomNights_Enter(object sender, EventArgs e) {
-			if(inputRoomNights.Text == "Minimum Nights...") {
+			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "* Required") {
 				inputRoomNights.Text = "";
 			}
 		}
 
 		private void InputRoomAvailability_Enter(object sender, EventArgs e) {
-			if(inputRoomAvailability.Text == "Availability Days...") {
+			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "* Required") {
 				inputRoomAvailability.Text = "";
 			}
 		}
@@ -198,6 +199,74 @@ namespace SOFT152Assignment {
 		private void InputRoomAvailability_Leave(object sender, EventArgs e) {
 			if(inputRoomAvailability.Text.Trim() == "") {
 				inputRoomAvailability.Text = "Availability Days...";
+			}
+		}
+
+		private void ButtonDelete_Click(object sender, EventArgs e) {
+
+		}
+
+		private void ButtonNext_Click(object sender, EventArgs e) {
+			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
+			bool valid = true;
+			// Again, a List and a for loop here would be ideal.
+			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "") {
+				inputPropertyID.Text = "* Required";
+				inputPropertyID.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "") {
+				inputPropertyName.Text = "* Required";
+				inputPropertyName.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "") {
+				inputHostID.Text = "* Required";
+				inputHostID.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "") {
+				inputHostName.Text = "* Required";
+				inputHostName.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "") {
+				inputHostPropertyCount.Text = "* Required";
+				inputHostPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "") {
+				inputRoomType.Text = "* Required";
+				inputRoomType.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "") {
+				inputRoomPrice.Text = "* Required";
+				inputRoomPrice.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "") {
+				inputLongitude.Text = "* Required";
+				inputLongitude.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "") {
+				inputLatitude.Text = "* Required";
+				inputLatitude.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "") {
+				inputRoomNights.Text = "* Required";
+				inputRoomNights.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "") {
+				inputRoomAvailability.Text = "* Required";
+				inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(valid) {
+
 			}
 		}
 	}
