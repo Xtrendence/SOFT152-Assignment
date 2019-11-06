@@ -60,6 +60,10 @@ namespace SOFT152Assignment {
 		private void ShowCategory(string desiredCategory) {
 			this.category = desiredCategory.ToLower();
 
+			// The user can't have any ListViewItems selected if they've just switched categories.
+			buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
+			buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
+
 			// Reset all buttons to dark gray.
 			buttonDistricts.BackColor = Color.FromArgb(60, 60, 60);
 			buttonNeighborhoods.BackColor = Color.FromArgb(60, 60, 60);
@@ -239,6 +243,31 @@ namespace SOFT152Assignment {
 		}
 
 		private void ListviewDistricts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
+			if(listviewDistricts.SelectedItems.Count == 1) {
+				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
+				buttonEdit.ForeColor = Color.FromArgb(250, 250, 250);
+			}
+			else {
+				buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
+				buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
+			}
+		}
+
+		private void listviewNeighborhoods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
+			if(listviewDistricts.SelectedItems.Count == 1) {
+				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
+				buttonEdit.ForeColor = Color.FromArgb(250, 250, 250);
+			}
+			else {
+				buttonEdit.BackColor = Color.FromArgb(20, 20, 20);
+				buttonEdit.ForeColor = Color.FromArgb(150, 150, 150);
+			}
+		}
+
+		private void listviewProperties_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewDistricts.SelectedItems.Count == 1) {
 				buttonEdit.BackColor = Color.FromArgb(60, 60, 60);
 				buttonEdit.ForeColor = Color.FromArgb(250, 250, 250);
@@ -250,12 +279,14 @@ namespace SOFT152Assignment {
 		}
 
 		private void InputSearch_Enter(object sender, EventArgs e) {
+			// Remove placeholder text.
 			if(inputSearch.Text == "Search...") {
 				inputSearch.Text = "";
 			}
 		}
 
 		private void InputSearch_Leave(object sender, EventArgs e) {
+			// Add placeholder text.
 			if(inputSearch.Text.Trim() == "") {
 				inputSearch.Text = "Search...";
 			}

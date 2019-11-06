@@ -235,6 +235,7 @@
 			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
 			this.listviewNeighborhoods.View = System.Windows.Forms.View.Details;
 			this.listviewNeighborhoods.Visible = false;
+			this.listviewNeighborhoods.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listviewNeighborhoods_ItemSelectionChanged);
 			// 
 			// listviewProperties
 			// 
@@ -252,6 +253,7 @@
 			this.listviewProperties.UseCompatibleStateImageBehavior = false;
 			this.listviewProperties.View = System.Windows.Forms.View.Details;
 			this.listviewProperties.Visible = false;
+			this.listviewProperties.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listviewProperties_ItemSelectionChanged);
 			// 
 			// FormMain
 			// 

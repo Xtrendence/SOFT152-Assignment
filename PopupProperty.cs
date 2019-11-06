@@ -57,5 +57,49 @@ namespace SOFT152Assignment {
 				form.Size = this.Size;
 			}
 		}
+
+		private void inputPropertyID_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputPropertyName_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputHostID_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputHostName_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputHostPropertyCount_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputRoomType_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputRoomPrice_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputLongitude_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputLatitude_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputRoomNights_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void inputRoomAvailability_Enter(object sender, EventArgs e) {
+
+		}
 	}
 }
