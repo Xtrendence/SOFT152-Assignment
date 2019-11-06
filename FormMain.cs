@@ -354,9 +354,8 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void search() {
+		private void search(string query) {
 			PopulateLists(dataLines, this.category);
-			string query = inputSearch.Text.Trim();
 			ListView.ListViewItemCollection items = listviewDistricts.Items;
 			if(this.category == "neighborhoods") {
 				items = listviewDistricts.Items;
@@ -373,8 +372,8 @@ namespace SOFT152Assignment {
 				foreach(ListViewItem item in items) {
 					// And for each sub-item in the parent item...
 					for(int i = 0; i < item.SubItems.Count; i++) {
-						// If the lowercase value of the query is equal to the lowercase value (to make things easier for the user), then that item is tagged as match.
-						if(query.ToLower() == item.SubItems[i].Text.ToLower()) {
+						// If the lowercase value of the query is found in the lowercase value of the sub-item's text content, then its parent item is tagged as a match.
+						if(item.SubItems[i].Text.ToLower().IndexOf(query.ToLower()) >= 0) {
 							item.Tag = "match";
 						}
 					}
@@ -387,7 +386,7 @@ namespace SOFT152Assignment {
 		}
 
 		private void ButtonSearch_Click(object sender, EventArgs e) {
-			search();
+			search(inputSearch.Text.Trim());
 		}
 
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
@@ -399,10 +398,7 @@ namespace SOFT152Assignment {
 			else {
 				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
 				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
-				// Allows the user to press the "Enter" or "Return" key to initiate a search.
-				if(e.KeyCode == Keys.Enter) {
-					search();
-				}
+				search(inputSearch.Text.Trim());
 			}
 		}
 	}
