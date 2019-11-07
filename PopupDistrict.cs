@@ -35,6 +35,7 @@ namespace SOFT152Assignment {
 				this.inputName.Enabled = false;
 				this.inputNeighborhoodCount.ReadOnly = true;
 				this.inputNeighborhoodCount.Enabled = false;
+				this.panelCount.Show();
 				this.buttonNext.Hide();
 			}
 		}

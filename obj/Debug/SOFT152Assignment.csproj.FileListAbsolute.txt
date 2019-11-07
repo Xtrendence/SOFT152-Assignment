@@ -37,3 +37,30 @@ C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignm
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.exe
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.pdb
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormAccess.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\bin\Debug\SOFT152Assignment.exe.config
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\bin\Debug\SOFT152Assignment.exe
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\bin\Debug\SOFT152Assignment.pdb
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csprojAssemblyReference.cache
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.FormAccess.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.FormMain.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupDistrict.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupNeighborhood.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupProperty.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.Properties.Resources.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csproj.CoreCompileInputs.cache
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.exe
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.pdb
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csprojAssemblyReference.cache
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.exe
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.pdb
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\bin\Debug\SOFT152Assignment.exe.config
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\bin\Debug\SOFT152Assignment.exe
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\bin\Debug\SOFT152Assignment.pdb
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.FormAccess.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.FormMain.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupDistrict.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupNeighborhood.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupProperty.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.Properties.Resources.resources
+C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache

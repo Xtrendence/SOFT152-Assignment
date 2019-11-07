@@ -13,6 +13,7 @@ using System.Windows.Forms;
 namespace SOFT152Assignment {
 	public partial class FormMain : Form {
 		public string[] dataLines;
+		public string dataSource;
 		public string category;
 		public string level;
 		public bool open;
@@ -93,6 +94,13 @@ namespace SOFT152Assignment {
 			buttonNeighborhoods.Tag = "";
 			buttonProperties.Tag = "";
 
+			// If the data source isn't empty... (so the data an actually be saved and modified).
+			if(this.dataSource != null && this.dataSource != "") {
+				// The add button works without selecting any ListViewItems in the districts category.
+				buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
+				buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
+			}
+
 			if(desiredCategory == "districts") {
 				// Sets the "Districts" button's background color to brighter than the other two, letting the user know that it's the active one.
 				buttonDistricts.BackColor = Color.FromArgb(100, 100, 100);
@@ -130,17 +138,31 @@ namespace SOFT152Assignment {
 		}
 
 		private void ButtonAdd_Click(object sender, EventArgs e) {
-			// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
-			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				ShowForm(new PopupDistrict("staff", "add"), false, true);
-			}
-			// Same thing, but for the "Neighborhoods" button.
-			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				ShowForm(new PopupNeighborhood("staff", "add"), false, true);
-			}
-			// Same thing, but for the "Properties" button.
-			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				ShowForm(new PopupProperty("staff", "add"), false, true);
+			// A data file is required to actually modify and add data to.
+			if(this.dataSource != null && this.dataSource != "") {
+				// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
+				if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
+					ShowForm(new PopupDistrict("staff", "add"), false, true);
+				}
+				// Same thing, but for the "Neighborhoods" button.
+				else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
+					if(listviewNeighborhoods.SelectedItems.Count == 1) {
+						ShowForm(new PopupNeighborhood("staff", "add", listviewNeighborhoods.SelectedItems[0].SubItems[0].Text), false, true);
+					}
+					else {
+						ShowForm(new PopupNeighborhood("staff", "add"), false, true);
+					}
+				}
+				// Same thing, but for the "Properties" button.
+				else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
+					ShowForm(new PopupProperty("staff", "add"), false, true);
+					if(listviewProperties.SelectedItems.Count == 1) {
+						ShowForm(new PopupProperty("staff", "add", listviewProperties.SelectedItems[0].SubItems[0].Text, listviewProperties.SelectedItems[0].SubItems[1].Text), false, true);
+					}
+					else {
+						ShowForm(new PopupProperty("staff", "add"), false, true);
+					}
+				}
 			}
 		}
 
@@ -155,8 +177,8 @@ namespace SOFT152Assignment {
 				// And if the "Districts" ListView has a selected item...
 				if(listviewDistricts.SelectedItems.Count == 1) {
 					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection item = listviewDistricts.SelectedItems[0].SubItems;
-					District district = new District(item[0].Text, Convert.ToInt32(item[1].Text));
+					ListViewItem.ListViewSubItemCollection subItem = listviewDistricts.SelectedItems[0].SubItems;
+					District district = new District(subItem[0].Text, Convert.ToInt32(subItem[1].Text));
 					ShowForm(new PopupDistrict("staff", "edit", district), false, true);
 				}
 			}
@@ -165,9 +187,9 @@ namespace SOFT152Assignment {
 				// And if the "Neighborhoods" ListView has a selected item...
 				if(listviewNeighborhoods.SelectedItems.Count == 1) {
 					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection item = listviewNeighborhoods.SelectedItems[0].SubItems;
-					Neighborhood neighborhood = new Neighborhood(item[0].Text, Convert.ToInt32(item[1].Text));
-					ShowForm(new PopupNeighborhood("staff", "edit", neighborhood), false, true);
+					ListViewItem.ListViewSubItemCollection subItem = listviewNeighborhoods.SelectedItems[0].SubItems;
+					Neighborhood neighborhood = new Neighborhood(subItem[1].Text, Convert.ToInt32(subItem[2].Text));
+					ShowForm(new PopupNeighborhood("staff", "edit", subItem[0].Text, neighborhood), false, true);
 				}
 			}
 			// If "Properties" is the active category...
@@ -175,10 +197,10 @@ namespace SOFT152Assignment {
 				// And if the "Properties" ListView has a selected item...
 				if(listviewProperties.SelectedItems.Count == 1) {
 					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection item = listviewProperties.SelectedItems[0].SubItems;
+					ListViewItem.ListViewSubItemCollection subItem = listviewProperties.SelectedItems[0].SubItems;
 					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
-					Property property = new Property(Convert.ToInt32(item[0].Text), item[1].Text, Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), Convert.ToDouble(item[5].Text), Convert.ToDouble(item[6].Text), item[7].Text, Convert.ToDouble(item[8].Text), Convert.ToInt32(item[9].Text), Convert.ToInt32(item[10].Text));
-					ShowForm(new PopupProperty("staff", "edit", property), false, true);
+					Property property = new Property(Convert.ToInt32(subItem[2].Text), subItem[3].Text, Convert.ToInt32(subItem[4].Text), subItem[5].Text, Convert.ToInt32(subItem[6].Text), Convert.ToDouble(subItem[7].Text), Convert.ToDouble(subItem[8].Text), subItem[9].Text, Convert.ToDouble(subItem[10].Text), Convert.ToInt32(subItem[11].Text), Convert.ToInt32(subItem[12].Text));
+					ShowForm(new PopupProperty("staff", "edit", subItem[0].Text, subItem[1].Text, property), false, true);
 				}
 			}
 		}
@@ -228,10 +250,27 @@ namespace SOFT152Assignment {
 			listviewDistricts.Columns.Add("District Name", 510);
 			// Add a column for the number of neighborhoods in the district.
 			listviewDistricts.Columns.Add("Number of Neighborhoods", 250);
+			// Add a column for the district name in the neighborhoods ListView.
+			listviewNeighborhoods.Columns.Add("District Name", 250);
 			// Add a column for the name of neighborhoods.
-			listviewNeighborhoods.Columns.Add("Neighborhood Name", 510);
+			listviewNeighborhoods.Columns.Add("Neighborhood Name", 260);
 			// Add a column for the number of properties.
 			listviewNeighborhoods.Columns.Add("Number of Properties", 250);
+
+			// Add columns for properties ListView.
+			listviewProperties.Columns.Add("District Name", 250);
+			listviewProperties.Columns.Add("Neighborhood Name", 250);
+			listviewProperties.Columns.Add("Property ID", 150);
+			listviewProperties.Columns.Add("Property Name", 250);
+			listviewProperties.Columns.Add("Host ID", 150);
+			listviewProperties.Columns.Add("Host Name", 250);
+			listviewProperties.Columns.Add("Properties Owned by Host", 250);
+			listviewProperties.Columns.Add("Room Type", 250);
+			listviewProperties.Columns.Add("Room Price", 150);
+			listviewProperties.Columns.Add("Longitude", 250);
+			listviewProperties.Columns.Add("Latitude", 250);
+			listviewProperties.Columns.Add("Minimum Nights", 150);
+			listviewProperties.Columns.Add("Days Available per Year", 250);
 
 			// For each line in the file, add the line to an array that is later added as a row to the ListView.
 			for(int i = 0; i < lines.Length; i++) {
@@ -243,8 +282,32 @@ namespace SOFT152Assignment {
 					string neighborhoodName = lines[i].ToString();
 					i++;
 					string neighborhoodPropertyCount = lines[i].ToString();
+					i++;
+					string propertyID = lines[i].ToString();
+					i++;
+					string propertyName = lines[i].ToString();
+					i++;
+					string hostID = lines[i].ToString();
+					i++;
+					string hostName = lines[i].ToString();
+					i++;
+					string hostPropertyCount = lines[i].ToString();
+					i++;
+					string roomType = lines[i].ToString();
+					i++;
+					string roomPrice = lines[i].ToString();
+					i++;
+					string longitude = lines[i].ToString();
+					i++;
+					string latitude = lines[i].ToString();
+					i++;
+					string roomNights = lines[i].ToString();
+					i++;
+					string roomAvailability = lines[i].ToString();
+					i++;
 					listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
-					listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhoodName, neighborhoodPropertyCount }));
+					listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName, neighborhoodName, neighborhoodPropertyCount }));
+					listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName, neighborhoodName, propertyID, propertyName, hostID, hostName, hostPropertyCount, roomType, roomPrice, longitude, latitude, roomNights, roomAvailability }));
 				}
 				catch(IndexOutOfRangeException e) {
 					Debug.WriteLine(e.Message);
@@ -261,6 +324,11 @@ namespace SOFT152Assignment {
 				listviewProperties.Show();
 			}
 
+			if(this.dataSource != null && this.dataSource.ToString() != "") {
+				buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
+				buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
+			}
+
 			labelFileDialog.Hide();
 		}
 
@@ -274,6 +342,7 @@ namespace SOFT152Assignment {
 			// Display the file name to the user along with "Loading" so they know they chose the right file.
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
 			ReadFile(fileDialog.FileName);
+			this.dataSource = fileDialog.FileName;
 		}
 
 		private void ListviewDistricts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
@@ -355,8 +424,8 @@ namespace SOFT152Assignment {
 				if(listviewNeighborhoods.SelectedItems.Count == 1) {
 					// Then that items subitems are fetched.
 					ListViewItem.ListViewSubItemCollection item = listviewNeighborhoods.SelectedItems[0].SubItems;
-					Neighborhood neighborhood = new Neighborhood(item[0].Text, Convert.ToInt32(item[1].Text));
-					ShowForm(new PopupNeighborhood("staff", "view", neighborhood), false, true);
+					Neighborhood neighborhood = new Neighborhood(item[1].Text, Convert.ToInt32(item[2].Text));
+					ShowForm(new PopupNeighborhood("staff", "view", item[0].Text, neighborhood), false, true);
 				}
 			}
 			// If "Properties" is the active category...
@@ -366,8 +435,8 @@ namespace SOFT152Assignment {
 					// Then that items subitems are fetched.
 					ListViewItem.ListViewSubItemCollection item = listviewProperties.SelectedItems[0].SubItems;
 					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
-					Property property = new Property(Convert.ToInt32(item[0].Text), item[1].Text, Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), Convert.ToDouble(item[5].Text), Convert.ToDouble(item[6].Text), item[7].Text, Convert.ToDouble(item[8].Text), Convert.ToInt32(item[9].Text), Convert.ToInt32(item[10].Text));
-					ShowForm(new PopupProperty("staff", "view", property), false, true);
+					Property property = new Property(Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), item[5].Text, Convert.ToInt32(item[6].Text), Convert.ToDouble(item[7].Text), Convert.ToDouble(item[8].Text), item[9].Text, Convert.ToDouble(item[10].Text), Convert.ToInt32(item[11].Text), Convert.ToInt32(item[12].Text));
+					ShowForm(new PopupProperty("staff", "view", item[0].Text, item[1].Text, property), false, true);
 				}
 			}
 		}
@@ -391,7 +460,7 @@ namespace SOFT152Assignment {
 					// And for each sub-item in the parent item...
 					for(int i = 0; i < item.SubItems.Count; i++) {
 						// If the lowercase value of the query is found in the lowercase value of the sub-item's text content, then its parent item is tagged as a match.
-						if(item.SubItems[i].Text.ToLower().IndexOf(query.ToLower()) >= 0) {
+						if(item.SubItems[i].Text.ToLower() == query.ToLower()) {
 							item.Tag = "match";
 						}
 					}

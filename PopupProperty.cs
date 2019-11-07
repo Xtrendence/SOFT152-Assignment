@@ -13,6 +13,8 @@ namespace SOFT152Assignment {
 		public TextBox[] textBoxes;
 		public string level;
 		public string action;
+		public string district;
+		public string neighborhood;
 		public Property property;
 		public PopupProperty(string accessLevel, string desiredAction) {
 			InitializeComponent();
@@ -41,6 +43,66 @@ namespace SOFT152Assignment {
 			this.inputLatitude.Text = property.Latitude.ToString();
 			this.inputRoomNights.Text = property.RoomNights.ToString();
 			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
+
+			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
+			if(this.action == "view") {
+				foreach(TextBox input in textBoxes) {
+					input.ReadOnly = true;
+					input.Enabled = false;
+				}
+
+				this.buttonNext.Hide();
+			}
+		}
+
+		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName, Property propertyObject) {
+			InitializeComponent();
+			this.level = accessLevel.ToLower();
+			this.action = desiredAction.ToLower();
+			this.district = districtName;
+			this.neighborhood = neighborhoodName;
+			this.property = propertyObject;
+			SetTitle();
+			GetTextBoxes();
+
+			// For editing and viewing, this sets/autofills the values of the TextBoxes.
+			this.inputDistrictName.Text = this.district;
+			this.inputNeighborhoodName.Text = this.neighborhood;
+			this.inputPropertyID.Text = property.Id.ToString();
+			this.inputPropertyName.Text = property.Name.ToString();
+			this.inputHostID.Text = property.HostID.ToString();
+			this.inputHostName.Text = property.HostName.ToString();
+			this.inputHostPropertyCount.Text = property.Count.ToString();
+			this.inputRoomType.Text = property.RoomType.ToString(); ;
+			this.inputRoomPrice.Text = property.RoomPrice.ToString();
+			this.inputLongitude.Text = property.Longitude.ToString();
+			this.inputLatitude.Text = property.Latitude.ToString();
+			this.inputRoomNights.Text = property.RoomNights.ToString();
+			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
+
+			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
+			if(this.action == "view") {
+				foreach(TextBox input in textBoxes) {
+					input.ReadOnly = true;
+					input.Enabled = false;
+				}
+
+				this.buttonNext.Hide();
+			}
+		}
+
+		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName) {
+			InitializeComponent();
+			this.level = accessLevel.ToLower();
+			this.action = desiredAction.ToLower();
+			this.district = districtName;
+			this.neighborhood = neighborhoodName;
+			SetTitle();
+			GetTextBoxes();
+
+			// For editing and viewing, this sets/autofills the values of the TextBoxes.
+			this.inputDistrictName.Text = this.district;
+			this.inputNeighborhoodName.Text = this.neighborhood;
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
 			if(this.action == "view") {
@@ -267,6 +329,32 @@ namespace SOFT152Assignment {
 			}
 			if(valid) {
 
+			}
+		}
+
+		private void InputDistrictName_Enter(object sender, EventArgs e) {
+			if(inputDistrictName.Text == "District Name...") {
+				inputDistrictName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputDistrictName.Text = "";
+			}
+		}
+
+		private void InputDistrictName_Leave(object sender, EventArgs e) {
+			if(inputDistrictName.Text.Trim() == "") {
+				inputDistrictName.Text = "District Name...";
+			}
+		}
+
+		private void InputNeighborhoodName_Enter(object sender, EventArgs e) {
+			if(inputNeighborhoodName.Text == "Neighborhood Name...") {
+				inputNeighborhoodName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputNeighborhoodName.Text = "";
+			}
+		}
+
+		private void InputNeighborhoodName_Leave(object sender, EventArgs e) {
+			if(inputNeighborhoodName.Text.Trim() == "") {
+				inputNeighborhoodName.Text = "District Name...";
 			}
 		}
 	}

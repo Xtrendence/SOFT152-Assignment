@@ -12,6 +12,7 @@ namespace SOFT152Assignment {
 	public partial class PopupNeighborhood : Form {
 		public string level;
 		public string action;
+		public string district;
 		public Neighborhood neighborhood;
 		public PopupNeighborhood(string accessLevel, string desiredAction) {
 			InitializeComponent();
@@ -19,22 +20,49 @@ namespace SOFT152Assignment {
 			this.action = desiredAction.ToLower();
 			SetTitle();
 		}
-		public PopupNeighborhood(string accessLevel, string desiredAction, Neighborhood neighborhoodObject) {
+		public PopupNeighborhood(string accessLevel, string desiredAction, string districtName, Neighborhood neighborhoodObject) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
+			this.district = districtName;
 			this.neighborhood = neighborhoodObject;
 
 			// Autofill for changing the neighborhood name and property count.
-			this.inputName.Text = neighborhood.Name;
+			this.inputDistrictName.Text = this.district;
+			this.inputNeighborhoodName.Text = neighborhood.Name;
 			this.inputPropertyCount.Text = neighborhood.PropertyCount.ToString();
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			if(action == "view") {
-				this.inputName.ReadOnly = true;
-				this.inputName.Enabled = false;
+				this.inputDistrictName.ReadOnly = true;
+				this.inputDistrictName.Enabled = false;
+				this.inputNeighborhoodName.ReadOnly = true;
+				this.inputNeighborhoodName.Enabled = false;
 				this.inputPropertyCount.ReadOnly = true;
 				this.inputPropertyCount.Enabled = false;
+				this.panelCount.Show();
+				this.buttonNext.Hide();
+			}
+		}
+
+		public PopupNeighborhood(string accessLevel, string desiredAction, string districtName) {
+			InitializeComponent();
+			this.level = accessLevel.ToLower();
+			this.action = desiredAction.ToLower();
+			this.district = districtName;
+
+			// Autofill for changing the neighborhood name and property count.
+			this.inputDistrictName.Text = this.district;
+
+			// If the user only wants to view the item, then the TextBox components are set to read-only.
+			if(action == "view") {
+				this.inputDistrictName.ReadOnly = true;
+				this.inputDistrictName.Enabled = false;
+				this.inputNeighborhoodName.ReadOnly = true;
+				this.inputNeighborhoodName.Enabled = false;
+				this.inputPropertyCount.ReadOnly = true;
+				this.inputPropertyCount.Enabled = false;
+				this.panelCount.Show();
 				this.buttonNext.Hide();
 			}
 		}
@@ -54,7 +82,7 @@ namespace SOFT152Assignment {
 
 		private void PanelName_Click(object sender, EventArgs e) {
 			// User might click on the panel instead of the TextBox. This takes care of that.
-			inputName.Focus();
+			inputNeighborhoodName.Focus();
 		}
 
 		private void PanelCount_Click(object sender, EventArgs e) {
@@ -65,8 +93,8 @@ namespace SOFT152Assignment {
 		private void ButtonNext_Click(object sender, EventArgs e) {
 			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
 			bool valid = true;
-			if(inputName.Text.Trim() == "" || inputName.Text == "Neighborhood Name...") {
-				inputName.ForeColor = Color.FromArgb(240, 100, 50);
+			if(inputNeighborhoodName.Text.Trim() == "" || inputNeighborhoodName.Text == "Neighborhood Name...") {
+				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
 			if(inputPropertyCount.Text.Trim() == "" || inputPropertyCount.Text == "Number of Properties...") {
@@ -78,10 +106,10 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void InputName_Leave(object sender, EventArgs e) {
+		private void InputNeighborhoodName_Leave(object sender, EventArgs e) {
 			// Fill "placeholder".
-			if(inputName.Text.Trim() == "") {
-				inputName.Text = "Neighborhood Name...";
+			if(inputNeighborhoodName.Text.Trim() == "") {
+				inputNeighborhoodName.Text = "Neighborhood Name...";
 			}
 		}
 
@@ -92,11 +120,11 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void InputName_Enter(object sender, EventArgs e) {
+		private void InputNeighborhoodName_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
-			if(inputName.Text == "Neighborhood Name...") {
-				inputName.ForeColor = Color.FromArgb(250, 250, 250);
-				inputName.Text = "";
+			if(inputNeighborhoodName.Text == "Neighborhood Name...") {
+				inputNeighborhoodName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputNeighborhoodName.Text = "";
 			}
 		}
 
@@ -105,6 +133,21 @@ namespace SOFT152Assignment {
 			if(inputPropertyCount.Text == "Number of Properties...") {
 				inputPropertyCount.ForeColor = Color.FromArgb(250, 250, 250);
 				inputPropertyCount.Text = "";
+			}
+		}
+
+		private void InputDistrictName_Enter(object sender, EventArgs e) {
+			// Empty "placeholder".
+			if(inputDistrictName.Text == "District Name...") {
+				inputDistrictName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputDistrictName.Text = "";
+			}
+		}
+
+		private void InputDistrictName_Leave(object sender, EventArgs e) {
+			// Fill "placeholder".
+			if(inputDistrictName.Text == "") {
+				inputDistrictName.Text = "District Name...";
 			}
 		}
 	}
