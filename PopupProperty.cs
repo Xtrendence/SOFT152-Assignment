@@ -16,45 +16,18 @@ namespace SOFT152Assignment {
 		public string district;
 		public string neighborhood;
 		public Property property;
+		// For adding.
 		public PopupProperty(string accessLevel, string desiredAction) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
+			this.inputDistrictName.Enabled = true;
+			this.inputNeighborhoodName.Enabled = true;
 			SetTitle();
 			GetTextBoxes();
 		}
-		public PopupProperty(string accessLevel, string desiredAction, Property propertyObject) {
-			InitializeComponent();
-			this.level = accessLevel.ToLower();
-			this.action = desiredAction.ToLower();
-			this.property = propertyObject;
-			SetTitle();
-			GetTextBoxes();
 
-			// For editing and viewing, this sets/autofills the values of the TextBoxes.
-			this.inputPropertyID.Text = property.Id.ToString();
-			this.inputPropertyName.Text = property.Name.ToString();
-			this.inputHostID.Text = property.HostID.ToString();
-			this.inputHostName.Text = property.HostName.ToString();
-			this.inputHostPropertyCount.Text = property.Count.ToString();
-			this.inputRoomType.Text = property.RoomType.ToString(); ;
-			this.inputRoomPrice.Text = property.RoomPrice.ToString();
-			this.inputLongitude.Text = property.Longitude.ToString();
-			this.inputLatitude.Text = property.Latitude.ToString();
-			this.inputRoomNights.Text = property.RoomNights.ToString();
-			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
-
-			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
-			if(this.action == "view") {
-				foreach(TextBox input in textBoxes) {
-					input.ReadOnly = true;
-					input.Enabled = false;
-				}
-
-				this.buttonNext.Hide();
-			}
-		}
-
+		// For editing or viewing.
 		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName, Property propertyObject) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
@@ -64,6 +37,9 @@ namespace SOFT152Assignment {
 			this.property = propertyObject;
 			SetTitle();
 			GetTextBoxes();
+
+			this.inputDistrictName.Enabled = true;
+			this.inputNeighborhoodName.Enabled = true;
 
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
 			this.inputDistrictName.Text = this.district;
@@ -91,6 +67,7 @@ namespace SOFT152Assignment {
 			}
 		}
 
+		// For adding, but with the district name and neighborhood name autofilled.
 		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
@@ -129,7 +106,21 @@ namespace SOFT152Assignment {
 		}
 
 		private void GetTextBoxes() {
-			this.textBoxes = new TextBox[11]{ inputPropertyID, inputPropertyName, inputHostID, inputHostName, inputHostPropertyCount, inputRoomType, inputRoomPrice, inputLongitude, inputLatitude, inputRoomNights, inputRoomAvailability };
+			this.textBoxes = new TextBox[13]{ inputDistrictName, inputNeighborhoodName, inputPropertyID, inputPropertyName, inputHostID, inputHostName, inputHostPropertyCount, inputRoomType, inputRoomPrice, inputLongitude, inputLatitude, inputRoomNights, inputRoomAvailability };
+		}
+
+		private void InputDistrictName_Enter(object sender, EventArgs e) {
+			if(inputDistrictName.Text == "District Name...") {
+				inputDistrictName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputDistrictName.Text = "";
+			}
+		}
+
+		private void InputNeighborhoodName_Enter(object sender, EventArgs e) {
+			if(inputNeighborhoodName.Text == "Neighborhood Name...") {
+				inputNeighborhoodName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputNeighborhoodName.Text = "";
+			}
 		}
 
 		private void InputPropertyID_Enter(object sender, EventArgs e) {
@@ -209,6 +200,18 @@ namespace SOFT152Assignment {
 			}
 		}
 
+		private void InputDistrictName_Leave(object sender, EventArgs e) {
+			if(inputDistrictName.Text.Trim() == "") {
+				inputDistrictName.Text = "District Name...";
+			}
+		}
+
+		private void InputNeighborhoodName_Leave(object sender, EventArgs e) {
+			if(inputNeighborhoodName.Text.Trim() == "") {
+				inputNeighborhoodName.Text = "Neighborhood Name...";
+			}
+		}
+
 		private void InputPropertyID_Leave(object sender, EventArgs e) {
 			if(inputPropertyID.Text.Trim() == "") {
 				inputPropertyID.Text = "Property ID...";
@@ -282,7 +285,14 @@ namespace SOFT152Assignment {
 		private void ButtonNext_Click(object sender, EventArgs e) {
 			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
 			bool valid = true;
-			// Again, a List and a for loop here would be ideal.
+			if(inputDistrictName.Text == "District Name..." || inputDistrictName.Text == "") {
+				inputDistrictName.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(inputNeighborhoodName.Text == "Neighborhood Name..." || inputNeighborhoodName.Text == "") {
+				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
 			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "") {
 				inputPropertyID.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
@@ -329,32 +339,6 @@ namespace SOFT152Assignment {
 			}
 			if(valid) {
 
-			}
-		}
-
-		private void InputDistrictName_Enter(object sender, EventArgs e) {
-			if(inputDistrictName.Text == "District Name...") {
-				inputDistrictName.ForeColor = Color.FromArgb(250, 250, 250);
-				inputDistrictName.Text = "";
-			}
-		}
-
-		private void InputDistrictName_Leave(object sender, EventArgs e) {
-			if(inputDistrictName.Text.Trim() == "") {
-				inputDistrictName.Text = "District Name...";
-			}
-		}
-
-		private void InputNeighborhoodName_Enter(object sender, EventArgs e) {
-			if(inputNeighborhoodName.Text == "Neighborhood Name...") {
-				inputNeighborhoodName.ForeColor = Color.FromArgb(250, 250, 250);
-				inputNeighborhoodName.Text = "";
-			}
-		}
-
-		private void InputNeighborhoodName_Leave(object sender, EventArgs e) {
-			if(inputNeighborhoodName.Text.Trim() == "") {
-				inputNeighborhoodName.Text = "District Name...";
 			}
 		}
 	}

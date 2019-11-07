@@ -44,9 +44,165 @@ namespace SOFT152Assignment {
 			ShowCategory(category);
 		}
 
+		private void FormMain_FormClosed(object sender, FormClosedEventArgs e) {
+			if(this.open) {
+				this.open = false;
+				this.Close();
+				Application.Exit();
+			}
+		}
+
 		private void ButtonBack_Click(object sender, EventArgs e) {
 			ShowForm(new FormAccess(), true, false);
 		}
+		private void ButtonDistricts_Click(object sender, EventArgs e) {
+			ShowCategory("districts");
+		}
+
+		private void ButtonNeighborhoods_Click(object sender, EventArgs e) {
+			ShowCategory("neighborhoods");
+		}
+
+		private void ButtonProperties_Click(object sender, EventArgs e) {
+			ShowCategory("properties");
+		}
+
+		private void ButtonSearch_Click(object sender, EventArgs e) {
+			if(inputSearch.Text.Trim() != "" && inputSearch.Text != "Search...") {
+				search(inputSearch.Text.Trim());
+			}
+		}
+
+		private void PanelSearch_Click(object sender, EventArgs e) {
+			// User might click on the panel instead of the TextBox. This takes care of that.
+			inputSearch.Focus();
+		}
+
+		private void InputSearch_Enter(object sender, EventArgs e) {
+			// Remove placeholder text.
+			if(inputSearch.Text == "Search...") {
+				inputSearch.Text = "";
+			}
+		}
+
+		private void InputSearch_Leave(object sender, EventArgs e) {
+			// Add placeholder text.
+			if(inputSearch.Text.Trim() == "") {
+				inputSearch.Text = "Search...";
+			}
+		}
+
+		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
+			if(inputSearch.Text.Trim() == "") {
+				PopulateLists(dataLines, this.category);
+				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
+				buttonSearch.ForeColor = Color.FromArgb(150, 150, 150);
+			}
+			else {
+				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
+				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
+				if(e.KeyCode == Keys.Enter) {
+					search(inputSearch.Text.Trim());
+				}
+			}
+		}
+
+		private void ButtonAdd_Click(object sender, EventArgs e) {
+			// A data file is required to actually modify and add data to.
+			if(this.dataSource != null && this.dataSource != "") {
+				// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
+				if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
+					ShowForm(new PopupDistrict("staff", "add"), false, true);
+				}
+				// Same thing, but for the "Neighborhoods" button.
+				else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
+					if(listviewNeighborhoods.SelectedItems.Count == 1) {
+						ShowForm(new PopupNeighborhood("staff", "add", listviewNeighborhoods.SelectedItems[0].SubItems[0].Text), false, true);
+					}
+					else {
+						ShowForm(new PopupNeighborhood("staff", "add"), false, true);
+					}
+				}
+				// Same thing, but for the "Properties" button.
+				else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
+					if(listviewProperties.SelectedItems.Count == 1) {
+						ShowForm(new PopupProperty("staff", "add", listviewProperties.SelectedItems[0].SubItems[0].Text, listviewProperties.SelectedItems[0].SubItems[1].Text), false, true);
+					}
+					else {
+						ShowForm(new PopupProperty("staff", "add"), false, true);
+					}
+				}
+			}
+		}
+
+		private void ButtonEdit_Click(object sender, EventArgs e) {
+			// If "Districts" is the active category.
+			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
+				// And if the "Districts" ListView has a selected item...
+				if(listviewDistricts.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection subItem = listviewDistricts.SelectedItems[0].SubItems;
+					District district = new District(subItem[0].Text, Convert.ToInt32(subItem[1].Text));
+					ShowForm(new PopupDistrict("staff", "edit", district), false, true);
+				}
+			}
+			// If "Neighborhoods" is the active category.
+			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
+				// And if the "Neighborhoods" ListView has a selected item...
+				if(listviewNeighborhoods.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection subItem = listviewNeighborhoods.SelectedItems[0].SubItems;
+					Neighborhood neighborhood = new Neighborhood(subItem[1].Text, Convert.ToInt32(subItem[2].Text));
+					ShowForm(new PopupNeighborhood("staff", "edit", subItem[0].Text, neighborhood), false, true);
+				}
+			}
+			// If "Properties" is the active category...
+			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
+				// And if the "Properties" ListView has a selected item...
+				if(listviewProperties.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection subItem = listviewProperties.SelectedItems[0].SubItems;
+					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
+					Property property = new Property(Convert.ToInt32(subItem[2].Text), subItem[3].Text, Convert.ToInt32(subItem[4].Text), subItem[5].Text, Convert.ToInt32(subItem[6].Text), Convert.ToDouble(subItem[7].Text), Convert.ToDouble(subItem[8].Text), subItem[9].Text, Convert.ToDouble(subItem[10].Text), Convert.ToInt32(subItem[11].Text), Convert.ToInt32(subItem[12].Text));
+					ShowForm(new PopupProperty("staff", "edit", subItem[0].Text, subItem[1].Text, property), false, true);
+				}
+			}
+		}
+
+		private void ButtonView_Click(object sender, EventArgs e) {
+			// If "Districts" is the active category.
+			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
+				// And if the "Districts" ListView has a selected item...
+				if(listviewDistricts.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection item = listviewDistricts.SelectedItems[0].SubItems;
+					District district = new District(item[0].Text, Convert.ToInt32(item[1].Text));
+					ShowForm(new PopupDistrict("staff", "view", district), false, true);
+				}
+			}
+			// If "Neighborhoods" is the active category.
+			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
+				// And if the "Neighborhoods" ListView has a selected item...
+				if(listviewNeighborhoods.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection item = listviewNeighborhoods.SelectedItems[0].SubItems;
+					Neighborhood neighborhood = new Neighborhood(item[1].Text, Convert.ToInt32(item[2].Text));
+					ShowForm(new PopupNeighborhood("staff", "view", item[0].Text, neighborhood), false, true);
+				}
+			}
+			// If "Properties" is the active category...
+			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
+				// And if the "Properties" ListView has a selected item...
+				if(listviewProperties.SelectedItems.Count == 1) {
+					// Then that items subitems are fetched.
+					ListViewItem.ListViewSubItemCollection item = listviewProperties.SelectedItems[0].SubItems;
+					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
+					Property property = new Property(Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), item[5].Text, Convert.ToInt32(item[6].Text), Convert.ToDouble(item[7].Text), Convert.ToDouble(item[8].Text), item[9].Text, Convert.ToDouble(item[10].Text), Convert.ToInt32(item[11].Text), Convert.ToInt32(item[12].Text));
+					ShowForm(new PopupProperty("staff", "view", item[0].Text, item[1].Text, property), false, true);
+				}
+			}
+		}
+
 		private void ShowForm(Form form, bool matchSize, bool keepOpen) {
 			// The "keepOpen" boolean is used to determine whether or not the current from should be kept open. Clicking something like the back button would count as closing the current form, so the "keepOpen" would be set to false. A popup, on the other hand, would constitute a situation in which the current form should ideally be kept open.
 			if(!keepOpen) {
@@ -123,106 +279,6 @@ namespace SOFT152Assignment {
 			if(dataLines != null && dataLines.ToString() != "") {
 				PopulateLists(dataLines, this.category);
 			}
-		}
-
-		private void ButtonDistricts_Click(object sender, EventArgs e) {
-			ShowCategory("districts");
-		}
-
-		private void ButtonNeighborhoods_Click(object sender, EventArgs e) {
-			ShowCategory("neighborhoods");
-		}
-
-		private void ButtonProperties_Click(object sender, EventArgs e) {
-			ShowCategory("properties");
-		}
-
-		private void ButtonAdd_Click(object sender, EventArgs e) {
-			// A data file is required to actually modify and add data to.
-			if(this.dataSource != null && this.dataSource != "") {
-				// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
-				if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-					ShowForm(new PopupDistrict("staff", "add"), false, true);
-				}
-				// Same thing, but for the "Neighborhoods" button.
-				else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-					if(listviewNeighborhoods.SelectedItems.Count == 1) {
-						ShowForm(new PopupNeighborhood("staff", "add", listviewNeighborhoods.SelectedItems[0].SubItems[0].Text), false, true);
-					}
-					else {
-						ShowForm(new PopupNeighborhood("staff", "add"), false, true);
-					}
-				}
-				// Same thing, but for the "Properties" button.
-				else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-					ShowForm(new PopupProperty("staff", "add"), false, true);
-					if(listviewProperties.SelectedItems.Count == 1) {
-						ShowForm(new PopupProperty("staff", "add", listviewProperties.SelectedItems[0].SubItems[0].Text, listviewProperties.SelectedItems[0].SubItems[1].Text), false, true);
-					}
-					else {
-						ShowForm(new PopupProperty("staff", "add"), false, true);
-					}
-				}
-			}
-		}
-
-		private void PanelSearch_Click(object sender, EventArgs e) {
-			// User might click on the panel instead of the TextBox. This takes care of that.
-			inputSearch.Focus();
-		}
-
-		private void ButtonEdit_Click(object sender, EventArgs e) {
-			// If "Districts" is the active category.
-			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				// And if the "Districts" ListView has a selected item...
-				if(listviewDistricts.SelectedItems.Count == 1) {
-					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection subItem = listviewDistricts.SelectedItems[0].SubItems;
-					District district = new District(subItem[0].Text, Convert.ToInt32(subItem[1].Text));
-					ShowForm(new PopupDistrict("staff", "edit", district), false, true);
-				}
-			}
-			// If "Neighborhoods" is the active category.
-			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				// And if the "Neighborhoods" ListView has a selected item...
-				if(listviewNeighborhoods.SelectedItems.Count == 1) {
-					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection subItem = listviewNeighborhoods.SelectedItems[0].SubItems;
-					Neighborhood neighborhood = new Neighborhood(subItem[1].Text, Convert.ToInt32(subItem[2].Text));
-					ShowForm(new PopupNeighborhood("staff", "edit", subItem[0].Text, neighborhood), false, true);
-				}
-			}
-			// If "Properties" is the active category...
-			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				// And if the "Properties" ListView has a selected item...
-				if(listviewProperties.SelectedItems.Count == 1) {
-					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection subItem = listviewProperties.SelectedItems[0].SubItems;
-					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
-					Property property = new Property(Convert.ToInt32(subItem[2].Text), subItem[3].Text, Convert.ToInt32(subItem[4].Text), subItem[5].Text, Convert.ToInt32(subItem[6].Text), Convert.ToDouble(subItem[7].Text), Convert.ToDouble(subItem[8].Text), subItem[9].Text, Convert.ToDouble(subItem[10].Text), Convert.ToInt32(subItem[11].Text), Convert.ToInt32(subItem[12].Text));
-					ShowForm(new PopupProperty("staff", "edit", subItem[0].Text, subItem[1].Text, property), false, true);
-				}
-			}
-		}
-
-		private void LabelFileDialog_Click(object sender, EventArgs e) {
-			// Disable file selection if one's already been selected.
-			if(labelFileDialog.Text == "Select Data Source...") {
-				fileDialog.Title = "Select Data Source File";
-				fileDialog.FileName = "";
-				fileDialog.InitialDirectory = @"C:\";
-				fileDialog.CheckFileExists = true;
-				fileDialog.CheckPathExists = true;
-				fileDialog.ShowDialog();
-			}
-		}
-
-		private void LabelFileDialog_MouseEnter(object sender, EventArgs e) {
-			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
-		}
-
-		private void LabelFileDialog_MouseLeave(object sender, EventArgs e) {
-			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 
 		// To avoid using "Clear()", which would count as a shortcut (I'm guessing).
@@ -324,11 +380,6 @@ namespace SOFT152Assignment {
 				listviewProperties.Show();
 			}
 
-			if(this.dataSource != null && this.dataSource.ToString() != "") {
-				buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
-				buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
-			}
-
 			labelFileDialog.Hide();
 		}
 
@@ -343,6 +394,10 @@ namespace SOFT152Assignment {
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
 			ReadFile(fileDialog.FileName);
 			this.dataSource = fileDialog.FileName;
+			if(this.dataSource != null && this.dataSource != "") {
+				this.buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
+				this.buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
+			}
 		}
 
 		private void ListviewDistricts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
@@ -393,54 +448,6 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void InputSearch_Enter(object sender, EventArgs e) {
-			// Remove placeholder text.
-			if(inputSearch.Text == "Search...") {
-				inputSearch.Text = "";
-			}
-		}
-
-		private void InputSearch_Leave(object sender, EventArgs e) {
-			// Add placeholder text.
-			if(inputSearch.Text.Trim() == "") {
-				inputSearch.Text = "Search...";
-			}
-		}
-
-		private void ButtonView_Click(object sender, EventArgs e) {
-			// If "Districts" is the active category.
-			if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
-				// And if the "Districts" ListView has a selected item...
-				if(listviewDistricts.SelectedItems.Count == 1) {
-					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection item = listviewDistricts.SelectedItems[0].SubItems;
-					District district = new District(item[0].Text, Convert.ToInt32(item[1].Text));
-					ShowForm(new PopupDistrict("staff", "view", district), false, true);
-				}
-			}
-			// If "Neighborhoods" is the active category.
-			else if(buttonNeighborhoods.Tag != null && buttonNeighborhoods.Tag.ToString() == "active-category") {
-				// And if the "Neighborhoods" ListView has a selected item...
-				if(listviewNeighborhoods.SelectedItems.Count == 1) {
-					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection item = listviewNeighborhoods.SelectedItems[0].SubItems;
-					Neighborhood neighborhood = new Neighborhood(item[1].Text, Convert.ToInt32(item[2].Text));
-					ShowForm(new PopupNeighborhood("staff", "view", item[0].Text, neighborhood), false, true);
-				}
-			}
-			// If "Properties" is the active category...
-			else if(buttonProperties.Tag != null && buttonProperties.Tag.ToString() == "active-category") {
-				// And if the "Properties" ListView has a selected item...
-				if(listviewProperties.SelectedItems.Count == 1) {
-					// Then that items subitems are fetched.
-					ListViewItem.ListViewSubItemCollection item = listviewProperties.SelectedItems[0].SubItems;
-					// This looks terrifying, but it's just grabbing all 11 subitems, converting them to the appropriate data type, and then creating a "Property" object. 
-					Property property = new Property(Convert.ToInt32(item[2].Text), item[3].Text, Convert.ToInt32(item[4].Text), item[5].Text, Convert.ToInt32(item[6].Text), Convert.ToDouble(item[7].Text), Convert.ToDouble(item[8].Text), item[9].Text, Convert.ToDouble(item[10].Text), Convert.ToInt32(item[11].Text), Convert.ToInt32(item[12].Text));
-					ShowForm(new PopupProperty("staff", "view", item[0].Text, item[1].Text, property), false, true);
-				}
-			}
-		}
-
 		private void search(string query) {
 			PopulateLists(dataLines, this.category);
 			ListView.ListViewItemCollection items = listviewDistricts.Items;
@@ -472,31 +479,24 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void ButtonSearch_Click(object sender, EventArgs e) {
-			if(inputSearch.Text.Trim() != "" && inputSearch.Text != "Search...") {
-				search(inputSearch.Text.Trim());
+		private void LabelFileDialog_Click(object sender, EventArgs e) {
+			// Disable file selection if one's already been selected.
+			if(labelFileDialog.Text == "Select Data Source...") {
+				fileDialog.Title = "Select Data Source File";
+				fileDialog.FileName = "";
+				fileDialog.InitialDirectory = @"C:\";
+				fileDialog.CheckFileExists = true;
+				fileDialog.CheckPathExists = true;
+				fileDialog.ShowDialog();
 			}
 		}
 
-		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
-			if(inputSearch.Text.Trim() == "") {
-				PopulateLists(dataLines, this.category);
-				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
-				buttonSearch.ForeColor = Color.FromArgb(150, 150, 150);
-			}
-			else {
-				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
-				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
-				search(inputSearch.Text.Trim());
-			}
+		private void LabelFileDialog_MouseEnter(object sender, EventArgs e) {
+			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
 		}
 
-		private void FormMain_FormClosed(object sender, FormClosedEventArgs e) {
-			if(this.open) {
-				this.open = false;
-				this.Close();
-				Application.Exit();
-			}
+		private void LabelFileDialog_MouseLeave(object sender, EventArgs e) {
+			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 	}
 }

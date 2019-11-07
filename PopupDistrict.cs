@@ -79,20 +79,6 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void InputName_Leave(object sender, EventArgs e) {
-			// Fill "placeholder".
-			if(inputName.Text.Trim() == "") {
-				inputName.Text = "District Name...";
-			}
-		}
-
-		private void InputNeighborhoodCount_Leave(object sender, EventArgs e) {
-			// Fill "placeholder".
-			if(inputNeighborhoodCount.Text.Trim() == "") {
-				inputNeighborhoodCount.Text = "Number of Neighborhoods...";
-			}
-		}
-
 		private void InputName_Enter(object sender, EventArgs e) {
 			// Empty "placeholder".
 			if(inputName.Text == "District Name...") {
@@ -106,6 +92,20 @@ namespace SOFT152Assignment {
 			if(inputNeighborhoodCount.Text == "Number of Neighborhoods...") {
 				inputNeighborhoodCount.ForeColor = Color.FromArgb(250, 250, 250);
 				inputNeighborhoodCount.Text = "";
+			}
+		}
+
+		private void InputName_Leave(object sender, EventArgs e) {
+			// Fill "placeholder".
+			if(inputName.Text.Trim() == "") {
+				inputName.Text = "District Name...";
+			}
+		}
+
+		private void InputNeighborhoodCount_Leave(object sender, EventArgs e) {
+			// Fill "placeholder".
+			if(inputNeighborhoodCount.Text.Trim() == "") {
+				inputNeighborhoodCount.Text = "Number of Neighborhoods...";
 			}
 		}
 	}
