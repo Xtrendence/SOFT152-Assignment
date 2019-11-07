@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace SOFT152Assignment {
 	public partial class PopupProperty : Form {
+		public TextBox[] textBoxes;
 		public string level;
 		public string action;
 		public Property property;
@@ -18,14 +19,17 @@ namespace SOFT152Assignment {
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			SetTitle();
+			GetTextBoxes();
 		}
 		public PopupProperty(string accessLevel, string desiredAction, Property propertyObject) {
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			this.property = propertyObject;
+			SetTitle();
+			GetTextBoxes();
 
-			// Ideally, I'd use a List and then loop through the Controls to get their values and such, but that isn't permitted.
+			// For editing and viewing, this sets/autofills the values of the TextBoxes.
 			this.inputPropertyID.Text = property.Id.ToString();
 			this.inputPropertyName.Text = property.Name.ToString();
 			this.inputHostID.Text = property.HostID.ToString();
@@ -38,36 +42,15 @@ namespace SOFT152Assignment {
 			this.inputRoomNights.Text = property.RoomNights.ToString();
 			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
 
-			// If the user only wants to view the item, then the TextBox components are set to read-only.
+			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
 			if(this.action == "view") {
-				this.inputPropertyID.ReadOnly = true;
-				this.inputPropertyName.ReadOnly = true;
-				this.inputHostID.ReadOnly = true;
-				this.inputHostName.ReadOnly = true;
-				this.inputHostPropertyCount.ReadOnly = true;
-				this.inputRoomType.ReadOnly = true;
-				this.inputRoomPrice.ReadOnly = true;
-				this.inputLongitude.ReadOnly = true;
-				this.inputLatitude.ReadOnly = true;
-				this.inputRoomNights.ReadOnly = true;
-				this.inputRoomAvailability.ReadOnly = true;
-
-				this.inputPropertyID.Enabled = false;
-				this.inputPropertyName.Enabled = false;
-				this.inputHostID.Enabled = false;
-				this.inputHostName.Enabled = false;
-				this.inputHostPropertyCount.Enabled = false;
-				this.inputRoomType.Enabled = false;
-				this.inputRoomPrice.Enabled = false;
-				this.inputLongitude.Enabled = false;
-				this.inputLatitude.Enabled = false;
-				this.inputRoomNights.Enabled = false;
-				this.inputRoomAvailability.Enabled = false;
+				foreach(TextBox input in textBoxes) {
+					input.ReadOnly = true;
+					input.Enabled = false;
+				}
 
 				this.buttonNext.Hide();
 			}
-
-			SetTitle();
 		}
 
 		private void SetTitle() {
@@ -81,6 +64,10 @@ namespace SOFT152Assignment {
 			else if(action == "view") {
 				this.Text = "View Property";
 			}
+		}
+
+		private void GetTextBoxes() {
+			this.textBoxes = new TextBox[11]{ inputPropertyID, inputPropertyName, inputHostID, inputHostName, inputHostPropertyCount, inputRoomType, inputRoomPrice, inputLongitude, inputLatitude, inputRoomNights, inputRoomAvailability };
 		}
 
 		private void InputPropertyID_Enter(object sender, EventArgs e) {
