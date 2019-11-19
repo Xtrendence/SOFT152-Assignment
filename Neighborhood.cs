@@ -8,12 +8,14 @@ namespace SOFT152Assignment {
     public class Neighborhood {
         public string name;
         public int propertyCount;
-        public string[] propertyNames;
-        public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount, string[] neighborhoodPropertyNames) {
+        public Property[] properties;
+        public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount, Property neighborhoodProperty) {
             this.name = neighborhoodName;
             this.propertyCount = neighborhoodPropertyCount;
-            this.propertyNames = neighborhoodPropertyNames;
-        }
+			int numberOfProperties = this.properties.Length;
+			Array.Resize(ref properties, numberOfProperties + 1);
+			properties[numberOfProperties] = neighborhoodProperty;
+		}
 		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount) {
 			this.name = neighborhoodName;
 			this.propertyCount = neighborhoodPropertyCount;
@@ -34,12 +36,12 @@ namespace SOFT152Assignment {
                 this.propertyCount = value;
             }
         }
-        public string[] PropertyNames {
+        public Property[] Properties {
             get {
-                return this.propertyNames;
+                return this.properties;
             }
             set {
-                this.propertyNames = value;
+                this.properties = value;
             }
         }
     }

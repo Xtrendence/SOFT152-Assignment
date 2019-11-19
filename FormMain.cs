@@ -383,23 +383,6 @@ namespace SOFT152Assignment {
 			labelFileDialog.Hide();
 		}
 
-		private void ReadFile(string filename) {
-			// Read every line from the data source file, and store the lines in an array.
-			dataLines = File.ReadLines(filename).ToArray();
-			PopulateLists(dataLines, this.category);
-		}
-
-		private void FileDialog_FileOk(object sender, CancelEventArgs e) {
-			// Display the file name to the user along with "Loading" so they know they chose the right file.
-			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
-			ReadFile(fileDialog.FileName);
-			this.dataSource = fileDialog.FileName;
-			if(this.dataSource != null && this.dataSource != "") {
-				this.buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
-				this.buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
-			}
-		}
-
 		private void ListviewDistricts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewDistricts.SelectedItems.Count == 1) {
@@ -476,6 +459,23 @@ namespace SOFT152Assignment {
 						item.Remove();
 					}
 				}
+			}
+		}
+
+		private void ReadFile(string filename) {
+			// Read every line from the data source file, and store the lines in an array.
+			dataLines = File.ReadLines(filename).ToArray();
+			PopulateLists(dataLines, this.category);
+		}
+
+		private void FileDialog_FileOk(object sender, CancelEventArgs e) {
+			// Display the file name to the user along with "Loading" so they know they chose the right file.
+			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
+			ReadFile(fileDialog.FileName);
+			this.dataSource = fileDialog.FileName;
+			if(this.dataSource != null && this.dataSource != "") {
+				this.buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
+				this.buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
