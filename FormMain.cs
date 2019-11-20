@@ -94,16 +94,17 @@ namespace SOFT152Assignment {
 
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
 			if(inputSearch.Text.Trim() == "") {
-				PopulateLists(dataLines, this.category);
+				if(this.dataSource != null && this.dataSource != "") {
+					PopulateLists(dataLines, this.category);
+				}
 				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
 				buttonSearch.ForeColor = Color.FromArgb(150, 150, 150);
+				search(inputSearch.Text.Trim());
 			}
 			else {
 				buttonSearch.BackColor = Color.FromArgb(60, 60, 60);
 				buttonSearch.ForeColor = Color.FromArgb(250, 250, 250);
-				if(e.KeyCode == Keys.Enter) {
-					search(inputSearch.Text.Trim());
-				}
+				search(inputSearch.Text.Trim());
 			}
 		}
 
@@ -329,44 +330,45 @@ namespace SOFT152Assignment {
 			listviewProperties.Columns.Add("Days Available per Year", 250);
 
 			// For each line in the file, add the line to an array that is later added as a row to the ListView.
-			for(int i = 0; i < lines.Length; i++) {
-				try {
-					string districtName = lines[i].ToString();
-					i++;
-					string districtNeighborhoodCount = lines[i].ToString();
-					i++;
-					string neighborhoodName = lines[i].ToString();
-					i++;
-					string neighborhoodPropertyCount = lines[i].ToString();
-					i++;
-					string propertyID = lines[i].ToString();
-					i++;
-					string propertyName = lines[i].ToString();
-					i++;
-					string hostID = lines[i].ToString();
-					i++;
-					string hostName = lines[i].ToString();
-					i++;
-					string hostPropertyCount = lines[i].ToString();
-					i++;
-					string roomType = lines[i].ToString();
-					i++;
-					string roomPrice = lines[i].ToString();
-					i++;
-					string longitude = lines[i].ToString();
-					i++;
-					string latitude = lines[i].ToString();
-					i++;
-					string roomNights = lines[i].ToString();
-					i++;
-					string roomAvailability = lines[i].ToString();
-					i++;
-					listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
-					listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName, neighborhoodName, neighborhoodPropertyCount }));
-					listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName, neighborhoodName, propertyID, propertyName, hostID, hostName, hostPropertyCount, roomType, roomPrice, longitude, latitude, roomNights, roomAvailability }));
-				}
-				catch(IndexOutOfRangeException e) {
-					Debug.WriteLine(e.Message);
+			if(lines != null && lines.ToString() != "") {
+				for(int i = 0; i < lines.Length; i++) {
+					try {
+						string districtName = lines[i].ToString();
+						i++;
+						string districtNeighborhoodCount = lines[i].ToString();
+						i++;
+						string neighborhoodName = lines[i].ToString();
+						i++;
+						string neighborhoodPropertyCount = lines[i].ToString();
+						i++;
+						string propertyID = lines[i].ToString();
+						i++;
+						string propertyName = lines[i].ToString();
+						i++;
+						string hostID = lines[i].ToString();
+						i++;
+						string hostName = lines[i].ToString();
+						i++;
+						string hostPropertyCount = lines[i].ToString();
+						i++;
+						string roomType = lines[i].ToString();
+						i++;
+						string roomPrice = lines[i].ToString();
+						i++;
+						string longitude = lines[i].ToString();
+						i++;
+						string latitude = lines[i].ToString();
+						i++;
+						string roomNights = lines[i].ToString();
+						i++;
+						string roomAvailability = lines[i].ToString();
+						listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
+						listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName, neighborhoodName, neighborhoodPropertyCount }));
+						listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName, neighborhoodName, propertyID, propertyName, hostID, hostName, hostPropertyCount, roomType, roomPrice, longitude, latitude, roomNights, roomAvailability }));
+					}
+					catch(IndexOutOfRangeException e) {
+						Debug.WriteLine(e.Message);
+					}
 				}
 			}
 
@@ -432,31 +434,41 @@ namespace SOFT152Assignment {
 		}
 
 		private void search(string query) {
-			PopulateLists(dataLines, this.category);
-			ListView.ListViewItemCollection items = listviewDistricts.Items;
-			if(this.category == "neighborhoods") {
-				items = listviewNeighborhoods.Items;
-			}
-			else if(this.category == "properties") {
-				items = listviewProperties.Items;
-			}
-			if(query == "" || query == "Search...") {
-				// If the search query is empty, then all ListViewItems are restored. I wanted to use "Hide()" on them originally, but that doesn't seem to be possible.
+			if(this.dataSource != null && this.dataSource != "") {
+				int queryLength = query.Length;
 				PopulateLists(dataLines, this.category);
-			}
-			else {
-				// For each item in the list...
-				foreach(ListViewItem item in items) {
-					// And for each sub-item in the parent item...
-					for(int i = 0; i < item.SubItems.Count; i++) {
-						// If the lowercase value of the query is found in the lowercase value of the sub-item's text content, then its parent item is tagged as a match.
-						if(item.SubItems[i].Text.ToLower() == query.ToLower()) {
-							item.Tag = "match";
+				ListView.ListViewItemCollection items = listviewDistricts.Items;
+				if(this.category == "neighborhoods") {
+					items = listviewNeighborhoods.Items;
+				}
+				else if(this.category == "properties") {
+					items = listviewProperties.Items;
+				}
+				if(query == "" || query == "Search...") {
+					// If the search query is empty, then all ListViewItems are restored. I wanted to use "Hide()" on them originally, but that doesn't seem to be possible.
+					PopulateLists(dataLines, this.category);
+				}
+				else {
+					// For each item in the list...
+					foreach(ListViewItem item in items) {
+						// And for each sub-item in the parent item...
+						for(int i = 0; i < item.SubItems.Count; i++) {
+							// If the lowercase value of the query is found in the lowercase value of the sub-item's text content, then its parent item is tagged as a match.
+							string subItemText = item.SubItems[i].Text;
+							int subItemLength = subItemText.Length;
+							// Check to see if the sub-item's text content is bigger than or equal to the query's length. This prevents an index out of range exception with the "Substring()" method.
+							if(subItemLength >= queryLength) {
+								// To avoid using "Contains()" or "IndexOf()", I've coded my own way of checking if the sub-item's text content contains a portion of the query. Unfortunately, it only checks from the beginning of the sub-item string, so the user can't search for the "eigh" in "neighborhood" for example.
+								string subString = subItemText.Substring(0, queryLength).ToLower();
+								if(subString == query.ToLower()) {
+									item.Tag = "match";
+								}
+							}
 						}
-					}
-					// After the sub-items have been iterated through, the item is checked to see if it has a tag. If it doesn't, then it's not a match, and is removed.
-					if(item.Tag == null) {
-						item.Remove();
+						// After the sub-items have been iterated through, the item is checked to see if it has a tag. If it doesn't, then it's not a match, and is removed.
+						if(item.Tag == null) {
+							item.Remove();
+						}
 					}
 				}
 			}
