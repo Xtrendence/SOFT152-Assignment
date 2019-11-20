@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace SOFT152Assignment {
 	public partial class FormMain : Form {
-		public District[] districts = new District[0];
 		public string dataSource;
 		public string category;
 		public string level;
@@ -95,7 +94,7 @@ namespace SOFT152Assignment {
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
 			if(inputSearch.Text.Trim() == "") {
 				if(this.dataSource != null && this.dataSource != "") {
-					PopulateLists(this.districts, this.category);
+					PopulateLists(Data.districts, this.category);
 				}
 				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
 				buttonSearch.ForeColor = Color.FromArgb(150, 150, 150);
@@ -278,7 +277,7 @@ namespace SOFT152Assignment {
 			}
 			// If the data source file is set, then populate the ListViews.
 			if(dataSource != null && dataSource.ToString() != "") {
-				PopulateLists(this.districts, this.category);
+				PopulateLists(Data.districts, this.category);
 			}
 		}
 
@@ -329,6 +328,7 @@ namespace SOFT152Assignment {
 			listviewProperties.Columns.Add("Minimum Nights", 150);
 			listviewProperties.Columns.Add("Days Available per Year", 250);
 
+			// Add each district, neighborhood, and property to their respective ListViews.
 			foreach(District district in districts) {
 				listviewDistricts.Items.Add(new ListViewItem(new string[2] { district.Name, district.NeighborhoodCount.ToString() }));
 				foreach(Neighborhood neighborhood in district.Neighborhoods) {
@@ -403,7 +403,7 @@ namespace SOFT152Assignment {
 		private void search(string query) {
 			if(this.dataSource != null && this.dataSource != "") {
 				int queryLength = query.Length;
-				PopulateLists(this.districts, this.category);
+				PopulateLists(Data.districts, this.category);
 				ListView.ListViewItemCollection items = listviewDistricts.Items;
 				if(this.category == "neighborhoods") {
 					items = listviewNeighborhoods.Items;
@@ -413,7 +413,7 @@ namespace SOFT152Assignment {
 				}
 				if(query == "" || query == "Search...") {
 					// If the search query is empty, then all ListViewItems are restored. I wanted to use "Hide()" on them originally, but that doesn't seem to be possible.
-					PopulateLists(this.districts, this.category);
+					PopulateLists(Data.districts, this.category);
 				}
 				else {
 					// For each item in the list...
@@ -442,7 +442,7 @@ namespace SOFT152Assignment {
 		}
 
 		private void ReadFile(string filename) {
-			// Read every line from the data source file, and store the lines in an array.
+			// Read every line from the data source file.
 			string[] lines = File.ReadLines(filename).ToArray();
 			// Loop that goes through each line in the text file.
 			try {
@@ -459,20 +459,16 @@ namespace SOFT152Assignment {
 						string districtName = lines[currentLine];
 						int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
 						currentLine += districtFields;
-						// Create a new "District" object, and add it to the array of districts.
+						// Create a new "District" object.
 						District district = new District(districtName, districtNeighborhoodCount);
-						// Add the district to the ListView.
-						listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName.ToString(), districtNeighborhoodCount.ToString() }));
 						// For each neighborhood in the district...
 						for(int j = 0; j < districtNeighborhoodCount; j++) {
 							if(currentLine + neighborhoodFields <= lines.Length) {
 								string neighborhoodName = lines[currentLine];
 								int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
 								currentLine += neighborhoodFields;
-								// Create a new "Neighborhood" object, and add it to the array of neighborhoods.
+								// Create a new "Neighborhood" object.
 								Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
-								// Add the neighborhood to the ListView.
-								listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName.ToString(), neighborhoodName.ToString(), neighborhoodPropertyCount.ToString() }));
 								// For each property in the neighborhood...
 								for(int k = 0; k < neighborhoodPropertyCount; k++) {
 									if(currentLine + propertyFields <= lines.Length) {
@@ -488,26 +484,27 @@ namespace SOFT152Assignment {
 										int roomNights = Convert.ToInt32(lines[currentLine + 9]);
 										int roomAvailability = Convert.ToInt32(lines[currentLine + 10]);
 										currentLine += propertyFields;
-										// Create a new "Property" object, and add it to the array of properties.
+										// Create a new "Property" object, and add it to the array of properties in the neighborhood.
 										Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
 										neighborhood.addProperty(property);
-										// Add the property to the ListView.
-										listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName.ToString(), neighborhoodName.ToString(), propertyID.ToString(), propertyName.ToString(), hostID.ToString(), hostName.ToString(), hostPropertyCount.ToString(), longitude.ToString(), latitude.ToString(), roomType.ToString(), roomPrice.ToString(), roomNights.ToString(), roomAvailability.ToString() }));
 									}
 								}
+								// Add the neighborhood object to the neighborhood array in the district object.
 								district.addNeighborhood(neighborhood);
 							}
 						}
-						int numberOfDistricts = this.districts.Length;
-						Array.Resize(ref districts, numberOfDistricts + 1);
-						districts[numberOfDistricts] = district;
+						// Add each district to the main district array that'll contain all the data from the text file.
+						int numberOfDistricts = Data.districts.Length;
+						Array.Resize(ref Data.districts, numberOfDistricts + 1);
+						Data.districts[numberOfDistricts] = district;
 					}
 				}
 			}
 			catch(IndexOutOfRangeException e) {
 				Debug.WriteLine(e.Message);
 			}
-			PopulateLists(districts, this.category);
+			// Fill the ListViews with data.
+			PopulateLists(Data.districts, this.category);
 		}
 
 		private void FileDialog_FileOk(object sender, CancelEventArgs e) {
