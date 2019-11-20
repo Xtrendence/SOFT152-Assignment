@@ -331,44 +331,65 @@ namespace SOFT152Assignment {
 
 			// For each line in the file, add the line to an array that is later added as a row to the ListView.
 			if(lines != null && lines.ToString() != "") {
-				for(int i = 0; i < lines.Length; i++) {
-					try {
-						string districtName = lines[i].ToString();
-						i++;
-						string districtNeighborhoodCount = lines[i].ToString();
-						i++;
-						string neighborhoodName = lines[i].ToString();
-						i++;
-						string neighborhoodPropertyCount = lines[i].ToString();
-						i++;
-						string propertyID = lines[i].ToString();
-						i++;
-						string propertyName = lines[i].ToString();
-						i++;
-						string hostID = lines[i].ToString();
-						i++;
-						string hostName = lines[i].ToString();
-						i++;
-						string hostPropertyCount = lines[i].ToString();
-						i++;
-						string roomType = lines[i].ToString();
-						i++;
-						string roomPrice = lines[i].ToString();
-						i++;
-						string longitude = lines[i].ToString();
-						i++;
-						string latitude = lines[i].ToString();
-						i++;
-						string roomNights = lines[i].ToString();
-						i++;
-						string roomAvailability = lines[i].ToString();
-						listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName, districtNeighborhoodCount }));
-						listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName, neighborhoodName, neighborhoodPropertyCount }));
-						listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName, neighborhoodName, propertyID, propertyName, hostID, hostName, hostPropertyCount, roomType, roomPrice, longitude, latitude, roomNights, roomAvailability }));
+				// District name, and number of neighborhoods.
+				int districtFields = 2;
+				// Neighborhood name, and number of properties.
+				int neighborhoodFields = 2;
+				// Property ID, property name, host ID, host name, number of properties the host has, room type, room price, longitude, latitude, minimum number of nights, room availability.
+				int propertyFields = 11;
+				// Loop that goes through each line in the text file.
+				try {
+					int districtStart = 0;
+					for(int districtLoop = districtStart; districtLoop < lines.Length; districtLoop++) {
+						string districtName = lines[districtStart];
+						int districtNeighborhoodCount = Convert.ToInt32(lines[districtStart + 1]);
+						int neighborhoodStart = districtStart + 2;
+						for(int neighborhoodLoop = neighborhoodStart; neighborhoodLoop < districtNeighborhoodCount; neighborhoodLoop++) {
+							string neighborhoodName = lines[neighborhoodLoop];
+							int neighborhoodPropertyCount = Convert.ToInt32(lines[neighborhoodLoop + 1]);
+							int propertyStart = neighborhoodLoop + 1;
+							for(int propertyLoop = propertyStart; propertyLoop < neighborhoodPropertyCount; propertyLoop++) {
+								Debug.WriteLine("Property Loop: " + propertyLoop);
+								int propertyID = Convert.ToInt32(lines[propertyLoop]);
+								string propertyName = lines[propertyLoop + 1];
+								int hostID = Convert.ToInt32(lines[propertyLoop + 2]);
+								string hostName = lines[propertyLoop + 3];
+								int hostPropertyCount = Convert.ToInt32(lines[propertyLoop + 4]);
+								double latitude = Convert.ToDouble(lines[propertyLoop + 5]);
+								double longitude = Convert.ToDouble(lines[propertyLoop + 6]);
+								string roomType = lines[propertyLoop + 7];
+								double roomPrice = Convert.ToDouble(lines[propertyLoop + 8]);
+								int roomNights = Convert.ToInt32(lines[propertyLoop + 9]);
+								int roomAvailability = Convert.ToInt32(lines[propertyLoop + 10]);
+								neighborhoodLoop += 11;
+								districtStart += 11;
+								propertyLoop += 11;
+								propertyStart += 11;
+								Debug.WriteLine("Property ID: " + propertyID);
+								Debug.WriteLine("Property Name: " + propertyName);
+								Debug.WriteLine("Host ID: " + hostID);
+								Debug.WriteLine("Host Name: " + hostName);
+								Debug.WriteLine("Host Property Count: " + hostPropertyCount);
+								Debug.WriteLine("Latitude: " + latitude);
+								Debug.WriteLine("Longitude: " + longitude);
+								Debug.WriteLine("Room Type: " + roomType);
+								Debug.WriteLine("Room Price: " + roomPrice);
+								Debug.WriteLine("Room Nights: " + roomNights);
+								Debug.WriteLine("Room Availability: " + roomAvailability);
+							}
+							Debug.WriteLine("District Start: " + districtStart);
+							Debug.WriteLine("District Name: " + districtName);
+							Debug.WriteLine("District Neighborhood Count: " + districtNeighborhoodCount);
+							Debug.WriteLine("Neighborhood Start: " + neighborhoodStart);
+							Debug.WriteLine("Neighborhood Name: " + neighborhoodName);
+							Debug.WriteLine("Neighborhood Property Count: " + neighborhoodPropertyCount);
+							Debug.WriteLine("Property Start: " + propertyStart);
+							districtStart += 2;
+						}
 					}
-					catch(IndexOutOfRangeException e) {
-						Debug.WriteLine(e.Message);
-					}
+				}
+				catch(IndexOutOfRangeException e) {
+					Debug.WriteLine(e.Message);
 				}
 			}
 

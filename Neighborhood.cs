@@ -8,7 +8,7 @@ namespace SOFT152Assignment {
     public class Neighborhood {
         public string name;
         public int propertyCount;
-        public Property[] properties;
+        public Property[] properties = new Property[0];
         public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount, Property neighborhoodProperty) {
             this.name = neighborhoodName;
             this.propertyCount = neighborhoodPropertyCount;
