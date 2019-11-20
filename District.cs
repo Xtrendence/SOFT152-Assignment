@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace SOFT152Assignment {
     public class District {
-		public District[] districts = new District[0];
         public string name;
         public int neighborhoodCount;
         public Neighborhood[] neighborhoods = new Neighborhood[0];
@@ -20,14 +19,6 @@ namespace SOFT152Assignment {
 		public District(string districtName, int districtNeighborhoodCount) {
 			this.name = districtName;
 			this.neighborhoodCount = districtNeighborhoodCount;
-		}
-		public District[] Districts {
-			get {
-				return this.districts;
-			}
-			set {
-				this.districts = value;
-			}
 		}
 		public string Name {
             get {
@@ -53,12 +44,6 @@ namespace SOFT152Assignment {
                 this.neighborhoods = value;
             }
         }
-
-		public void addDistrict(District district) {
-			int numberOfDistricts = this.districts.Length;
-			Array.Resize(ref districts, numberOfDistricts + 1);
-			districts[numberOfDistricts] = district;
-		}
 
 		public void addNeighborhood(Neighborhood neighborhood) {
 			int numberOfNeighborhoods = this.neighborhoods.Length;

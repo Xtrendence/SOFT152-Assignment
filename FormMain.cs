@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SOFT152Assignment {
 	public partial class FormMain : Form {
-		public string[] dataLines;
+		public District[] districts = new District[0];
 		public string dataSource;
 		public string category;
 		public string level;
@@ -95,7 +95,7 @@ namespace SOFT152Assignment {
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
 			if(inputSearch.Text.Trim() == "") {
 				if(this.dataSource != null && this.dataSource != "") {
-					PopulateLists(dataLines, this.category);
+					PopulateLists(this.districts, this.category);
 				}
 				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
 				buttonSearch.ForeColor = Color.FromArgb(150, 150, 150);
@@ -276,9 +276,9 @@ namespace SOFT152Assignment {
 				// Same as above, but for the "Properties" button.
 				buttonProperties.Tag = "active-category";
 			}
-			// If the data source file isn't empty, then populate the ListViews.
-			if(dataLines != null && dataLines.ToString() != "") {
-				PopulateLists(dataLines, this.category);
+			// If the data source file is set, then populate the ListViews.
+			if(dataSource != null && dataSource.ToString() != "") {
+				PopulateLists(this.districts, this.category);
 			}
 		}
 
@@ -292,7 +292,7 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void PopulateLists(string[] lines, string activeCategory) {
+		private void PopulateLists(District[] districts, string activeCategory) {
 			// Clear ListViews of any existing data. Coded my own method to replace the "Clear()" shortcut.
 			EmptyList(listviewDistricts);
 			EmptyList(listviewNeighborhoods);
@@ -329,68 +329,13 @@ namespace SOFT152Assignment {
 			listviewProperties.Columns.Add("Minimum Nights", 150);
 			listviewProperties.Columns.Add("Days Available per Year", 250);
 
-			// For each line in the file, add the line to an array that is later added as a row to the ListView.
-			if(lines != null && lines.ToString() != "") {
-				// Loop that goes through each line in the text file.
-				try {
-					// Districts have two fields, neighborhoods have two as well, and properties have eleven. This is used to determine which line has been read.
-					int districtFields = 2;
-					int neighborhoodFields = 2;
-					int propertyFields = 11;
-					// To keep track of which line is currently being read.
-					int currentLine = 0;
-					// For each line in the data file...
-					for(int i = 0; i < lines.Length; i++) {
-						// Ensure that the index isn't out of range.
-						if(currentLine + districtFields <= lines.Length) {
-							string districtName = lines[currentLine];
-							int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
-							currentLine += districtFields;
-							// Create a new "District" object, and add it to the array of districts.
-							District district = new District(districtName, districtNeighborhoodCount);
-							district.addDistrict(district);
-							// Add the district to the ListView.
-							listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName.ToString(), districtNeighborhoodCount.ToString() }));
-							// For each neighborhood in the district...
-							for(int j = 0; j < districtNeighborhoodCount; j++) {
-								if(currentLine + neighborhoodFields <= lines.Length) {
-									string neighborhoodName = lines[currentLine];
-									int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
-									currentLine += neighborhoodFields;
-									// Create a new "Neighborhood" object, and add it to the array of neighborhoods.
-									Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
-									district.addNeighborhood(neighborhood);
-									// Add the neighborhood to the ListView.
-									listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName.ToString(), neighborhoodName.ToString(), neighborhoodPropertyCount.ToString() }));
-									// For each property in the neighborhood...
-									for(int k = 0; k < neighborhoodPropertyCount; k++) {
-										if(currentLine + propertyFields <= lines.Length) {
-											int propertyID = Convert.ToInt32(lines[currentLine]);
-											string propertyName = lines[currentLine + 1];
-											int hostID = Convert.ToInt32(lines[currentLine + 2]);
-											string hostName = lines[currentLine + 3];
-											int hostPropertyCount = Convert.ToInt32(lines[currentLine + 4]);
-											double latitude = Convert.ToDouble(lines[currentLine + 5]);
-											double longitude = Convert.ToDouble(lines[currentLine + 6]);
-											string roomType = lines[currentLine + 7];
-											double roomPrice = Convert.ToDouble(lines[currentLine + 8]);
-											int roomNights = Convert.ToInt32(lines[currentLine + 9]);
-											int roomAvailability = Convert.ToInt32(lines[currentLine + 10]);
-											currentLine += propertyFields;
-											// Create a new "Property" object, and add it to the array of properties.
-											Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
-											neighborhood.addProperty(property);
-											// Add the property to the ListView.
-											listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName.ToString(), neighborhoodName.ToString(), propertyID.ToString(), propertyName.ToString(), hostID.ToString(), hostName.ToString(), hostPropertyCount.ToString(), longitude.ToString(), latitude.ToString(), roomType.ToString(), roomPrice.ToString(), roomNights.ToString(), roomAvailability.ToString() }));
-										}
-									}
-								}
-							}
-						}
+			foreach(District district in districts) {
+				listviewDistricts.Items.Add(new ListViewItem(new string[2] { district.Name, district.NeighborhoodCount.ToString() }));
+				foreach(Neighborhood neighborhood in district.Neighborhoods) {
+					listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { district.Name, neighborhood.Name, neighborhood.PropertyCount.ToString() }));
+					foreach(Property property in neighborhood.Properties) {
+						listviewProperties.Items.Add(new ListViewItem(new string[13] { district.Name, neighborhood.Name, property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
 					}
-				}
-				catch(IndexOutOfRangeException e) {
-					Debug.WriteLine(e.Message);
 				}
 			}
 
@@ -458,7 +403,7 @@ namespace SOFT152Assignment {
 		private void search(string query) {
 			if(this.dataSource != null && this.dataSource != "") {
 				int queryLength = query.Length;
-				PopulateLists(dataLines, this.category);
+				PopulateLists(this.districts, this.category);
 				ListView.ListViewItemCollection items = listviewDistricts.Items;
 				if(this.category == "neighborhoods") {
 					items = listviewNeighborhoods.Items;
@@ -468,7 +413,7 @@ namespace SOFT152Assignment {
 				}
 				if(query == "" || query == "Search...") {
 					// If the search query is empty, then all ListViewItems are restored. I wanted to use "Hide()" on them originally, but that doesn't seem to be possible.
-					PopulateLists(dataLines, this.category);
+					PopulateLists(this.districts, this.category);
 				}
 				else {
 					// For each item in the list...
@@ -498,8 +443,71 @@ namespace SOFT152Assignment {
 
 		private void ReadFile(string filename) {
 			// Read every line from the data source file, and store the lines in an array.
-			dataLines = File.ReadLines(filename).ToArray();
-			PopulateLists(dataLines, this.category);
+			string[] lines = File.ReadLines(filename).ToArray();
+			// Loop that goes through each line in the text file.
+			try {
+				// Districts have two fields, neighborhoods have two as well, and properties have eleven. This is used to determine which line has been read.
+				int districtFields = 2;
+				int neighborhoodFields = 2;
+				int propertyFields = 11;
+				// To keep track of which line is currently being read.
+				int currentLine = 0;
+				// For each line in the data file...
+				for(int i = 0; i < lines.Length; i++) {
+					// Ensure that the index isn't out of range.
+					if(currentLine + districtFields <= lines.Length) {
+						string districtName = lines[currentLine];
+						int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
+						currentLine += districtFields;
+						// Create a new "District" object, and add it to the array of districts.
+						District district = new District(districtName, districtNeighborhoodCount);
+						// Add the district to the ListView.
+						listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName.ToString(), districtNeighborhoodCount.ToString() }));
+						// For each neighborhood in the district...
+						for(int j = 0; j < districtNeighborhoodCount; j++) {
+							if(currentLine + neighborhoodFields <= lines.Length) {
+								string neighborhoodName = lines[currentLine];
+								int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
+								currentLine += neighborhoodFields;
+								// Create a new "Neighborhood" object, and add it to the array of neighborhoods.
+								Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
+								// Add the neighborhood to the ListView.
+								listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName.ToString(), neighborhoodName.ToString(), neighborhoodPropertyCount.ToString() }));
+								// For each property in the neighborhood...
+								for(int k = 0; k < neighborhoodPropertyCount; k++) {
+									if(currentLine + propertyFields <= lines.Length) {
+										int propertyID = Convert.ToInt32(lines[currentLine]);
+										string propertyName = lines[currentLine + 1];
+										int hostID = Convert.ToInt32(lines[currentLine + 2]);
+										string hostName = lines[currentLine + 3];
+										int hostPropertyCount = Convert.ToInt32(lines[currentLine + 4]);
+										double latitude = Convert.ToDouble(lines[currentLine + 5]);
+										double longitude = Convert.ToDouble(lines[currentLine + 6]);
+										string roomType = lines[currentLine + 7];
+										double roomPrice = Convert.ToDouble(lines[currentLine + 8]);
+										int roomNights = Convert.ToInt32(lines[currentLine + 9]);
+										int roomAvailability = Convert.ToInt32(lines[currentLine + 10]);
+										currentLine += propertyFields;
+										// Create a new "Property" object, and add it to the array of properties.
+										Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
+										neighborhood.addProperty(property);
+										// Add the property to the ListView.
+										listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName.ToString(), neighborhoodName.ToString(), propertyID.ToString(), propertyName.ToString(), hostID.ToString(), hostName.ToString(), hostPropertyCount.ToString(), longitude.ToString(), latitude.ToString(), roomType.ToString(), roomPrice.ToString(), roomNights.ToString(), roomAvailability.ToString() }));
+									}
+								}
+								district.addNeighborhood(neighborhood);
+							}
+						}
+						int numberOfDistricts = this.districts.Length;
+						Array.Resize(ref districts, numberOfDistricts + 1);
+						districts[numberOfDistricts] = district;
+					}
+				}
+			}
+			catch(IndexOutOfRangeException e) {
+				Debug.WriteLine(e.Message);
+			}
+			PopulateLists(districts, this.category);
 		}
 
 		private void FileDialog_FileOk(object sender, CancelEventArgs e) {

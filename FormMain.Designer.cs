@@ -217,6 +217,7 @@
 			this.listviewDistricts.MultiSelect = false;
 			this.listviewDistricts.Name = "listviewDistricts";
 			this.listviewDistricts.Size = new System.Drawing.Size(760, 320);
+			this.listviewDistricts.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewDistricts.TabIndex = 34;
 			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
 			this.listviewDistricts.View = System.Windows.Forms.View.Details;
@@ -235,6 +236,7 @@
 			this.listviewNeighborhoods.MultiSelect = false;
 			this.listviewNeighborhoods.Name = "listviewNeighborhoods";
 			this.listviewNeighborhoods.Size = new System.Drawing.Size(760, 320);
+			this.listviewNeighborhoods.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewNeighborhoods.TabIndex = 35;
 			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
 			this.listviewNeighborhoods.View = System.Windows.Forms.View.Details;
@@ -253,6 +255,7 @@
 			this.listviewProperties.MultiSelect = false;
 			this.listviewProperties.Name = "listviewProperties";
 			this.listviewProperties.Size = new System.Drawing.Size(760, 320);
+			this.listviewProperties.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewProperties.TabIndex = 36;
 			this.listviewProperties.UseCompatibleStateImageBehavior = false;
 			this.listviewProperties.View = System.Windows.Forms.View.Details;
