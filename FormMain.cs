@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Shell;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SOFT152Assignment {
 	public partial class FormMain : Form {
-		public string dataSource;
+		public string dataFile;
 		public string category;
 		public string level;
 		public bool open;
@@ -93,7 +94,7 @@ namespace SOFT152Assignment {
 
 		private void InputSearch_KeyUp(object sender, KeyEventArgs e) {
 			if(inputSearch.Text.Trim() == "") {
-				if(this.dataSource != null && this.dataSource != "") {
+				if(this.dataFile != null && this.dataFile != "") {
 					PopulateLists(Data.districts, this.category);
 				}
 				buttonSearch.BackColor = Color.FromArgb(20, 20, 20);
@@ -109,7 +110,7 @@ namespace SOFT152Assignment {
 
 		private void ButtonAdd_Click(object sender, EventArgs e) {
 			// A data file is required to actually modify and add data to.
-			if(this.dataSource != null && this.dataSource != "") {
+			if(this.dataFile != null && this.dataFile != "") {
 				// If the "Districts" button's "Tag" property isn't empty, and is set to "active-category", then the "PopupDistrict" form is opened. Checks for "null" first because using the "ToString()" method on null can result in an error.
 				if(buttonDistricts.Tag != null && buttonDistricts.Tag.ToString() == "active-category") {
 					ShowForm(new PopupDistrict("staff", "add"), false, true);
@@ -251,7 +252,7 @@ namespace SOFT152Assignment {
 			buttonProperties.Tag = "";
 
 			// If the data source isn't empty... (so the data an actually be saved and modified).
-			if(this.dataSource != null && this.dataSource != "") {
+			if(this.dataFile != null && this.dataFile != "") {
 				// The add button works without selecting any ListViewItems in the districts category.
 				buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
 				buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
@@ -276,7 +277,7 @@ namespace SOFT152Assignment {
 				buttonProperties.Tag = "active-category";
 			}
 			// If the data source file is set, then populate the ListViews.
-			if(dataSource != null && dataSource.ToString() != "") {
+			if(dataFile != null && dataFile.ToString() != "") {
 				PopulateLists(Data.districts, this.category);
 			}
 		}
@@ -401,7 +402,7 @@ namespace SOFT152Assignment {
 		}
 
 		private void search(string query) {
-			if(this.dataSource != null && this.dataSource != "") {
+			if(this.dataFile != null && this.dataFile != "") {
 				int queryLength = query.Length;
 				PopulateLists(Data.districts, this.category);
 				ListView.ListViewItemCollection items = listviewDistricts.Items;
@@ -511,8 +512,8 @@ namespace SOFT152Assignment {
 			// Display the file name to the user along with "Loading" so they know they chose the right file.
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
 			ReadFile(fileDialog.FileName);
-			this.dataSource = fileDialog.FileName;
-			if(this.dataSource != null && this.dataSource != "") {
+			this.dataFile = fileDialog.FileName;
+			if(this.dataFile != null && this.dataFile != "") {
 				this.buttonAdd.BackColor = Color.FromArgb(60, 60, 60);
 				this.buttonAdd.ForeColor = Color.FromArgb(250, 250, 250);
 			}
@@ -522,8 +523,8 @@ namespace SOFT152Assignment {
 			// Disable file selection if one's already been selected.
 			if(labelFileDialog.Text == "Select Data Source...") {
 				fileDialog.Title = "Select Data Source File";
-				fileDialog.FileName = "";
-				fileDialog.InitialDirectory = @"C:\";
+				fileDialog.FileName = "*.txt";
+				fileDialog.InitialDirectory = KnownFolders.Downloads.Path;
 				fileDialog.CheckFileExists = true;
 				fileDialog.CheckPathExists = true;
 				fileDialog.ShowDialog();

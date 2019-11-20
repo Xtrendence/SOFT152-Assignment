@@ -64,3 +64,8 @@ C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-mas
 C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.PopupProperty.resources
 C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.Properties.Resources.resources
 C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.csproj.CopyComplete
