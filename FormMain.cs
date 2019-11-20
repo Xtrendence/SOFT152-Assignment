@@ -331,36 +331,41 @@ namespace SOFT152Assignment {
 
 			// For each line in the file, add the line to an array that is later added as a row to the ListView.
 			if(lines != null && lines.ToString() != "") {
-				// District name, and number of neighborhoods.
-				int districtFields = 2;
-				// Neighborhood name, and number of properties.
-				int neighborhoodFields = 2;
-				// Property ID, property name, host ID, host name, number of properties the host has, room type, room price, longitude, latitude, minimum number of nights, room availability.
-				int propertyFields = 11;
 				// Loop that goes through each line in the text file.
 				try {
 					int currentLine = 0;
-					int nextDistrict = 0;
-					int nextNeighborhood = 2;
-					int nextProperty = 4;
 					for(int i = 0; i < lines.Length; i++) {
 						string districtName = lines[currentLine];
 						int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
 						currentLine += 2;
+						District district = new District(districtName, districtNeighborhoodCount);
+						district.addDistrict(district);
+						listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName.ToString(), districtNeighborhoodCount.ToString() }));
 						for(int j = 0; j < districtNeighborhoodCount; j++) {
 							string neighborhoodName = lines[currentLine];
 							int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
 							currentLine += 2;
+							Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
+							district.addNeighborhood(neighborhood);
+							listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName.ToString(), neighborhoodName.ToString(), neighborhoodPropertyCount.ToString() }));
 							for(int k = 0; k < neighborhoodPropertyCount; k++) {
 								int propertyID = Convert.ToInt32(lines[currentLine]);
+								string propertyName = lines[currentLine + 1];
+								int hostID = Convert.ToInt32(lines[currentLine + 2]);
+								string hostName = lines[currentLine + 3];
+								int hostPropertyCount = Convert.ToInt32(lines[currentLine + 4]);
+								double latitude = Convert.ToDouble(lines[currentLine + 5]);
+								double longitude = Convert.ToDouble(lines[currentLine + 6]);
+								string roomType = lines[currentLine + 7];
+								double roomPrice = Convert.ToDouble(lines[currentLine + 8]);
+								int roomNights = Convert.ToInt32(lines[currentLine + 9]);
+								int roomAvailability = Convert.ToInt32(lines[currentLine + 10]);
 								currentLine += 11;
-								Debug.WriteLine("Property ID: " + propertyID);
+								Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
+								neighborhood.addProperty(property);
+								listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName.ToString(), neighborhoodName.ToString(), propertyID.ToString(), propertyName.ToString(), hostID.ToString(), hostName.ToString(), hostPropertyCount.ToString(), roomType.ToString(), roomPrice.ToString(), longitude.ToString(), latitude.ToString(), roomNights.ToString(), roomAvailability.ToString() }));
 							}
-							Debug.WriteLine("Neighborhood Name: " + neighborhoodName);
-							Debug.WriteLine("Neighborhood Property Count: " + neighborhoodPropertyCount);
 						}
-						Debug.WriteLine("District Name: " + districtName);
-						Debug.WriteLine("District Neighborhood Count: " + districtNeighborhoodCount);
 					}
 				}
 				catch(IndexOutOfRangeException e) {
