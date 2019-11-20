@@ -12,10 +12,14 @@ This was created after I had already made the UI of the program. It looked a bit
 
 #### To be determined...
 
-### Total Time
+### Time Spent On The Assignment
 
 #### 11 / 5 / 2019, 11 AM -> 1 PM | 3 PM -> 12 AM | 11 / 6 / 2019, 12 AM -> 3 AM = 16 Hours
 
 #### 11 / 6 / 2019, 4 PM -> 7 PM = 3 Hours
 
 #### 11 / 19 / 2019, 9:45 PM -> 10 PM | 11 / 20 / 2019, 1:30 AM -> 1:50 AM = 35 Minutes
+
+### Total Time
+
+#### To be determined...
