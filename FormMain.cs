@@ -216,7 +216,7 @@ namespace SOFT152Assignment {
 			else {
 				// Since the other form is open in the back, it'd make sense to open the new one out of the current one's screen real estate, so if the user accidentally clicks on the old form, the new one doesn't get hidden behind it and possibly get forgotten about.
 				int x = this.Size.Width - 100;
-				int y = this.Size.Height;
+				int y = this.Size.Height - 150;
 				// Setting the location of a dialog is different from a normal form.
 				form.StartPosition = FormStartPosition.Manual;
 				form.Location = new Point(x, y);
@@ -333,25 +333,38 @@ namespace SOFT152Assignment {
 			if(lines != null && lines.ToString() != "") {
 				// Loop that goes through each line in the text file.
 				try {
+					// Districts have two fields, neighborhoods have two as well, and properties have eleven. This is used to determine which line has been read.
+					int districtFields = 2;
+					int neighborhoodFields = 2;
+					int propertyFields = 11;
+					// To keep track of which line is currently being read.
 					int currentLine = 0;
+					// For each line in the data file...
 					for(int i = 0; i < lines.Length; i++) {
-						if(currentLine + 2 <= lines.Length) {
+						// Ensure that the index isn't out of range.
+						if(currentLine + districtFields <= lines.Length) {
 							string districtName = lines[currentLine];
 							int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
-							currentLine += 2;
+							currentLine += districtFields;
+							// Create a new "District" object, and add it to the array of districts.
 							District district = new District(districtName, districtNeighborhoodCount);
 							district.addDistrict(district);
+							// Add the district to the ListView.
 							listviewDistricts.Items.Add(new ListViewItem(new string[2] { districtName.ToString(), districtNeighborhoodCount.ToString() }));
+							// For each neighborhood in the district...
 							for(int j = 0; j < districtNeighborhoodCount; j++) {
-								if(currentLine + 2 <= lines.Length) {
+								if(currentLine + neighborhoodFields <= lines.Length) {
 									string neighborhoodName = lines[currentLine];
 									int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
-									currentLine += 2;
+									currentLine += neighborhoodFields;
+									// Create a new "Neighborhood" object, and add it to the array of neighborhoods.
 									Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
 									district.addNeighborhood(neighborhood);
+									// Add the neighborhood to the ListView.
 									listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { districtName.ToString(), neighborhoodName.ToString(), neighborhoodPropertyCount.ToString() }));
+									// For each property in the neighborhood...
 									for(int k = 0; k < neighborhoodPropertyCount; k++) {
-										if(currentLine + 11 <= lines.Length) {
+										if(currentLine + propertyFields <= lines.Length) {
 											int propertyID = Convert.ToInt32(lines[currentLine]);
 											string propertyName = lines[currentLine + 1];
 											int hostID = Convert.ToInt32(lines[currentLine + 2]);
@@ -363,9 +376,11 @@ namespace SOFT152Assignment {
 											double roomPrice = Convert.ToDouble(lines[currentLine + 8]);
 											int roomNights = Convert.ToInt32(lines[currentLine + 9]);
 											int roomAvailability = Convert.ToInt32(lines[currentLine + 10]);
-											currentLine += 11;
+											currentLine += propertyFields;
+											// Create a new "Property" object, and add it to the array of properties.
 											Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
 											neighborhood.addProperty(property);
+											// Add the property to the ListView.
 											listviewProperties.Items.Add(new ListViewItem(new string[13] { districtName.ToString(), neighborhoodName.ToString(), propertyID.ToString(), propertyName.ToString(), hostID.ToString(), hostName.ToString(), hostPropertyCount.ToString(), longitude.ToString(), latitude.ToString(), roomType.ToString(), roomPrice.ToString(), roomNights.ToString(), roomAvailability.ToString() }));
 										}
 									}
