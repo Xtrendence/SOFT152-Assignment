@@ -20,6 +20,8 @@ This was created after I had already made the UI of the program. It looked a bit
 
 #### 11 / 19 / 2019, 9:45 PM -> 10 PM | 11 / 20 / 2019, 1:30 AM -> 1:50 AM = 35 Minutes
 
+#### 11 / 20 / 2019, 6:40 -> 9:50 = 3 Hours
+
 ### Total Time
 
 #### To be determined...
