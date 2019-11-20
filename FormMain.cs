@@ -339,53 +339,28 @@ namespace SOFT152Assignment {
 				int propertyFields = 11;
 				// Loop that goes through each line in the text file.
 				try {
-					int districtStart = 0;
-					for(int districtLoop = districtStart; districtLoop < lines.Length; districtLoop++) {
-						string districtName = lines[districtStart];
-						int districtNeighborhoodCount = Convert.ToInt32(lines[districtStart + 1]);
-						int neighborhoodStart = districtStart + 2;
-						for(int neighborhoodLoop = neighborhoodStart; neighborhoodLoop < districtNeighborhoodCount; neighborhoodLoop++) {
-							string neighborhoodName = lines[neighborhoodLoop];
-							int neighborhoodPropertyCount = Convert.ToInt32(lines[neighborhoodLoop + 1]);
-							int propertyStart = neighborhoodLoop + 1;
-							for(int propertyLoop = propertyStart; propertyLoop < neighborhoodPropertyCount; propertyLoop++) {
-								Debug.WriteLine("Property Loop: " + propertyLoop);
-								int propertyID = Convert.ToInt32(lines[propertyLoop]);
-								string propertyName = lines[propertyLoop + 1];
-								int hostID = Convert.ToInt32(lines[propertyLoop + 2]);
-								string hostName = lines[propertyLoop + 3];
-								int hostPropertyCount = Convert.ToInt32(lines[propertyLoop + 4]);
-								double latitude = Convert.ToDouble(lines[propertyLoop + 5]);
-								double longitude = Convert.ToDouble(lines[propertyLoop + 6]);
-								string roomType = lines[propertyLoop + 7];
-								double roomPrice = Convert.ToDouble(lines[propertyLoop + 8]);
-								int roomNights = Convert.ToInt32(lines[propertyLoop + 9]);
-								int roomAvailability = Convert.ToInt32(lines[propertyLoop + 10]);
-								neighborhoodLoop += 11;
-								districtStart += 11;
-								propertyLoop += 11;
-								propertyStart += 11;
+					int currentLine = 0;
+					int nextDistrict = 0;
+					int nextNeighborhood = 2;
+					int nextProperty = 4;
+					for(int i = 0; i < lines.Length; i++) {
+						string districtName = lines[currentLine];
+						int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
+						currentLine += 2;
+						for(int j = 0; j < districtNeighborhoodCount; j++) {
+							string neighborhoodName = lines[currentLine];
+							int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
+							currentLine += 2;
+							for(int k = 0; k < neighborhoodPropertyCount; k++) {
+								int propertyID = Convert.ToInt32(lines[currentLine]);
+								currentLine += 11;
 								Debug.WriteLine("Property ID: " + propertyID);
-								Debug.WriteLine("Property Name: " + propertyName);
-								Debug.WriteLine("Host ID: " + hostID);
-								Debug.WriteLine("Host Name: " + hostName);
-								Debug.WriteLine("Host Property Count: " + hostPropertyCount);
-								Debug.WriteLine("Latitude: " + latitude);
-								Debug.WriteLine("Longitude: " + longitude);
-								Debug.WriteLine("Room Type: " + roomType);
-								Debug.WriteLine("Room Price: " + roomPrice);
-								Debug.WriteLine("Room Nights: " + roomNights);
-								Debug.WriteLine("Room Availability: " + roomAvailability);
 							}
-							Debug.WriteLine("District Start: " + districtStart);
-							Debug.WriteLine("District Name: " + districtName);
-							Debug.WriteLine("District Neighborhood Count: " + districtNeighborhoodCount);
-							Debug.WriteLine("Neighborhood Start: " + neighborhoodStart);
 							Debug.WriteLine("Neighborhood Name: " + neighborhoodName);
 							Debug.WriteLine("Neighborhood Property Count: " + neighborhoodPropertyCount);
-							Debug.WriteLine("Property Start: " + propertyStart);
-							districtStart += 2;
 						}
+						Debug.WriteLine("District Name: " + districtName);
+						Debug.WriteLine("District Neighborhood Count: " + districtNeighborhoodCount);
 					}
 				}
 				catch(IndexOutOfRangeException e) {
