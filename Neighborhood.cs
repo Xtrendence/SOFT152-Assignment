@@ -44,5 +44,10 @@ namespace SOFT152Assignment {
                 this.properties = value;
             }
         }
+		public void addProperty(Property property) {
+			int numberOfProperties = this.properties.Length;
+			Array.Resize(ref properties, numberOfProperties + 1);
+			properties[numberOfProperties] = property;
+		}
     }
 }

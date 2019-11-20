@@ -44,5 +44,11 @@ namespace SOFT152Assignment {
                 this.neighborhoods = value;
             }
         }
-    }
+
+		public void addNeighborhood(Neighborhood neighborhood) {
+			int numberOfNeighborhoods = this.neighborhoods.Length;
+			Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);
+			neighborhoods[numberOfNeighborhoods] = neighborhood;
+		}
+	}
 }
