@@ -8,23 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SOFT152Assignment {
-	public partial class FormAccess : Form {
+namespace SOFT152Assignment
+{
+	public partial class FormAccess : Form
+	{
 		public bool open;
-		public FormAccess() {
+
+		public FormAccess()
+		{
 			InitializeComponent();
 			// Set the form to open. This is used later on to actually exit the application if the form is closed.
 			open = true;
 		}
 
-		private void ButtonPublic_Click(object sender, EventArgs e) {
+		private void ButtonPublic_Click(object sender, EventArgs e)
+		{
 			ShowForm(new FormMain("districts", "public"));
 		}
 
-		private void ButtonStaff_Click(object sender, EventArgs e) {
+		private void ButtonStaff_Click(object sender, EventArgs e)
+		{
 			ShowForm(new FormMain("districts", "staff"));
 		}
-		private void ShowForm(Form form) {
+
+		private void ShowForm(Form form)
+		{
 			form.Show();
 			// Ensures that the new form opens on top of the current one.
 			form.Left = this.Left;
@@ -34,8 +42,10 @@ namespace SOFT152Assignment {
 			this.Hide();
 		}
 
-		private void FormAccess_FormClosed(object sender, FormClosedEventArgs e) {
-			if(this.open) {
+		private void FormAccess_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			if(this.open)
+			{
 				this.open = false;
 				this.Close();
 				Application.Exit();

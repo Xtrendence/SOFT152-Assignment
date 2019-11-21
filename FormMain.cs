@@ -443,62 +443,46 @@ namespace SOFT152Assignment {
 		}
 
 		private void ReadFile(string filename) {
-			// Read every line from the data source file.
-			string[] lines = File.ReadLines(filename).ToArray();
-			// Loop that goes through each line in the text file.
 			try {
-				// Districts have two fields, neighborhoods have two as well, and properties have eleven. This is used to determine which line has been read.
-				int districtFields = 2;
-				int neighborhoodFields = 2;
-				int propertyFields = 11;
-				// To keep track of which line is currently being read.
-				int currentLine = 0;
-				// For each line in the data file...
-				for(int i = 0; i < lines.Length; i++) {
-					// Ensure that the index isn't out of range.
-					if(currentLine + districtFields <= lines.Length) {
-						string districtName = lines[currentLine];
-						int districtNeighborhoodCount = Convert.ToInt32(lines[currentLine + 1]);
-						currentLine += districtFields;
-						// Create a new "District" object.
-						District district = new District(districtName, districtNeighborhoodCount);
-						// For each neighborhood in the district...
-						for(int j = 0; j < districtNeighborhoodCount; j++) {
-							if(currentLine + neighborhoodFields <= lines.Length) {
-								string neighborhoodName = lines[currentLine];
-								int neighborhoodPropertyCount = Convert.ToInt32(lines[currentLine + 1]);
-								currentLine += neighborhoodFields;
-								// Create a new "Neighborhood" object.
-								Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
-								// For each property in the neighborhood...
-								for(int k = 0; k < neighborhoodPropertyCount; k++) {
-									if(currentLine + propertyFields <= lines.Length) {
-										int propertyID = Convert.ToInt32(lines[currentLine]);
-										string propertyName = lines[currentLine + 1];
-										int hostID = Convert.ToInt32(lines[currentLine + 2]);
-										string hostName = lines[currentLine + 3];
-										int hostPropertyCount = Convert.ToInt32(lines[currentLine + 4]);
-										double latitude = Convert.ToDouble(lines[currentLine + 5]);
-										double longitude = Convert.ToDouble(lines[currentLine + 6]);
-										string roomType = lines[currentLine + 7];
-										double roomPrice = Convert.ToDouble(lines[currentLine + 8]);
-										int roomNights = Convert.ToInt32(lines[currentLine + 9]);
-										int roomAvailability = Convert.ToInt32(lines[currentLine + 10]);
-										currentLine += propertyFields;
-										// Create a new "Property" object, and add it to the array of properties in the neighborhood.
-										Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
-										neighborhood.addProperty(property);
-									}
-								}
-								// Add the neighborhood object to the neighborhood array in the district object.
-								district.addNeighborhood(neighborhood);
-							}
+				StreamReader reader = new StreamReader(filename);
+				while(!reader.EndOfStream)
+				{
+					string districtName = reader.ReadLine();
+					int districtNeighborhoodCount = Convert.ToInt32(reader.ReadLine());
+					// Create a new "District" object.
+					District district = new District(districtName, districtNeighborhoodCount);
+					// For each neighborhood in the district...
+					for(int j = 0; j < districtNeighborhoodCount; j++)
+					{
+						string neighborhoodName = reader.ReadLine();
+						int neighborhoodPropertyCount = Convert.ToInt32(reader.ReadLine());
+						// Create a new "Neighborhood" object.
+						Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
+						// For each property in the neighborhood...
+						for(int k = 0; k < neighborhoodPropertyCount; k++)
+						{
+							int propertyID = Convert.ToInt32(reader.ReadLine());
+							string propertyName = reader.ReadLine();
+							int hostID = Convert.ToInt32(reader.ReadLine());
+							string hostName = reader.ReadLine();
+							int hostPropertyCount = Convert.ToInt32(reader.ReadLine());
+							double latitude = Convert.ToDouble(reader.ReadLine());
+							double longitude = Convert.ToDouble(reader.ReadLine());
+							string roomType = reader.ReadLine();
+							double roomPrice = Convert.ToDouble(reader.ReadLine());
+							int roomNights = Convert.ToInt32(reader.ReadLine());
+							int roomAvailability = Convert.ToInt32(reader.ReadLine());
+							// Create a new "Property" object, and add it to the array of properties in the neighborhood.
+							Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
+							neighborhood.addProperty(property);
 						}
-						// Add each district to the main district array that'll contain all the data from the text file.
-						int numberOfDistricts = Data.districts.Length;
-						Array.Resize(ref Data.districts, numberOfDistricts + 1);
-						Data.districts[numberOfDistricts] = district;
+						// Add the neighborhood object to the neighborhood array in the district object.
+						district.addNeighborhood(neighborhood);
 					}
+					// Add each district to the main district array that'll contain all the data from the text file.
+					int numberOfDistricts = Data.districts.Length;
+					Array.Resize(ref Data.districts, numberOfDistricts + 1);
+					Data.districts[numberOfDistricts] = district;
 				}
 			}
 			catch(IndexOutOfRangeException e) {
