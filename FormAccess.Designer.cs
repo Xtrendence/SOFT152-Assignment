@@ -33,6 +33,8 @@
 			this.buttonStaff = new System.Windows.Forms.Button();
 			this.labelAccess = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// buttonPublic
@@ -94,12 +96,23 @@
 			this.label1.Text = "Airbnb Management Tool";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(592, 314);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(255, 255);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 4;
+			this.pictureBox1.TabStop = false;
+			// 
 			// FormAccess
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(1438, 905);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelAccess);
 			this.Controls.Add(this.buttonStaff);
@@ -110,6 +123,7 @@
 			this.Name = "FormAccess";
 			this.Text = "Access Level";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAccess_FormClosed);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -120,6 +134,7 @@
         private System.Windows.Forms.Button buttonStaff;
         private System.Windows.Forms.Label labelAccess;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }
 
