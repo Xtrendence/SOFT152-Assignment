@@ -12,13 +12,11 @@ namespace SOFT152Assignment
 		public int neighborhoodCount;
 		public Neighborhood[] neighborhoods = new Neighborhood[0];
 
-		public District(string districtName, int districtNeighborhoodCount, Neighborhood districtNeighborhood)
+		public District(string districtName, int districtNeighborhoodCount, Neighborhood[] districtNeighborhoods)
 		{
 			this.name = districtName;
 			this.neighborhoodCount = districtNeighborhoodCount;
-			int numberOfNeighborhoods = this.neighborhoods.Length;
-			Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);
-			neighborhoods[numberOfNeighborhoods] = districtNeighborhood;
+			this.neighborhoods = districtNeighborhoods;
 		}
 
 		public District(string districtName, int districtNeighborhoodCount)

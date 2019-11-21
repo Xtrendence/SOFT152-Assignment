@@ -11,13 +11,11 @@ namespace SOFT152Assignment
 		public string name;
 		public int propertyCount;
 		public Property[] properties = new Property[0];
-		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount, Property neighborhoodProperty)
+		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount, Property[] neighborhoodProperties)
 		{
 			this.name = neighborhoodName;
 			this.propertyCount = neighborhoodPropertyCount;
-			int numberOfProperties = this.properties.Length;
-			Array.Resize(ref properties, numberOfProperties + 1);
-			properties[numberOfProperties] = neighborhoodProperty;
+			this.properties = neighborhoodProperties;
 		}
 		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount)
 		{
