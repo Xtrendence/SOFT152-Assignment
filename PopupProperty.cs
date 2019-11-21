@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SOFT152Assignment {
-	public partial class PopupProperty : Form {
+namespace SOFT152Assignment
+{
+	public partial class PopupProperty : Form
+	{
 		public TextBox[] textBoxes;
 		public string level;
 		public string action;
@@ -17,7 +19,8 @@ namespace SOFT152Assignment {
 		public string neighborhood;
 		public Property property;
 		// For adding.
-		public PopupProperty(string accessLevel, string desiredAction) {
+		public PopupProperty(string accessLevel, string desiredAction)
+		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
@@ -28,7 +31,8 @@ namespace SOFT152Assignment {
 		}
 
 		// For editing or viewing.
-		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName, Property propertyObject) {
+		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName, Property propertyObject)
+		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
@@ -57,8 +61,10 @@ namespace SOFT152Assignment {
 			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
-			if(this.action == "view") {
-				foreach(TextBox input in textBoxes) {
+			if(this.action == "view")
+			{
+				foreach(TextBox input in textBoxes)
+				{
 					input.ReadOnly = true;
 					input.Enabled = false;
 				}
@@ -68,7 +74,8 @@ namespace SOFT152Assignment {
 		}
 
 		// For adding, but with the district name and neighborhood name autofilled.
-		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName) {
+		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName)
+		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
@@ -82,8 +89,10 @@ namespace SOFT152Assignment {
 			this.inputNeighborhoodName.Text = this.neighborhood;
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
-			if(this.action == "view") {
-				foreach(TextBox input in textBoxes) {
+			if(this.action == "view")
+			{
+				foreach(TextBox input in textBoxes)
+				{
 					input.ReadOnly = true;
 					input.Enabled = false;
 				}
@@ -92,252 +101,325 @@ namespace SOFT152Assignment {
 			}
 		}
 
-		private void SetTitle() {
+		private void SetTitle()
+		{
 			// When a "popup" form is opened, the action the user wants to perform is passed to the popup form's class, and is used to determine what the window title of the form should be.
-			if(action == "edit") {
+			if(action == "edit")
+			{
 				this.Text = "Edit Property";
 			}
-			else if(action == "add") {
+			else if(action == "add")
+			{
 				this.Text = "Add Property";
 			}
-			else if(action == "view") {
+			else if(action == "view")
+			{
 				this.Text = "View Property";
 			}
 		}
 
-		private void GetTextBoxes() {
-			this.textBoxes = new TextBox[13]{ inputDistrictName, inputNeighborhoodName, inputPropertyID, inputPropertyName, inputHostID, inputHostName, inputHostPropertyCount, inputRoomType, inputRoomPrice, inputLongitude, inputLatitude, inputRoomNights, inputRoomAvailability };
+		private void GetTextBoxes()
+		{
+			this.textBoxes = new TextBox[13] { inputDistrictName, inputNeighborhoodName, inputPropertyID, inputPropertyName, inputHostID, inputHostName, inputHostPropertyCount, inputRoomType, inputRoomPrice, inputLongitude, inputLatitude, inputRoomNights, inputRoomAvailability };
 		}
 
-		private void InputDistrictName_Enter(object sender, EventArgs e) {
-			if(inputDistrictName.Text == "District Name...") {
+		private void InputDistrictName_Enter(object sender, EventArgs e)
+		{
+			if(inputDistrictName.Text == "District Name...")
+			{
 				inputDistrictName.ForeColor = Color.FromArgb(250, 250, 250);
 				inputDistrictName.Text = "";
 			}
 		}
 
-		private void InputNeighborhoodName_Enter(object sender, EventArgs e) {
-			if(inputNeighborhoodName.Text == "Neighborhood Name...") {
+		private void InputNeighborhoodName_Enter(object sender, EventArgs e)
+		{
+			if(inputNeighborhoodName.Text == "Neighborhood Name...")
+			{
 				inputNeighborhoodName.ForeColor = Color.FromArgb(250, 250, 250);
 				inputNeighborhoodName.Text = "";
 			}
 		}
 
-		private void InputPropertyID_Enter(object sender, EventArgs e) {
-			if(inputPropertyID.Text == "Property ID...") {
+		private void InputPropertyID_Enter(object sender, EventArgs e)
+		{
+			if(inputPropertyID.Text == "Property ID...")
+			{
 				inputPropertyID.Text = "";
 				inputPropertyID.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputPropertyName_Enter(object sender, EventArgs e) {
-			if(inputPropertyName.Text == "Property Name...") {
+		private void InputPropertyName_Enter(object sender, EventArgs e)
+		{
+			if(inputPropertyName.Text == "Property Name...")
+			{
 				inputPropertyName.Text = "";
 				inputPropertyName.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputHostID_Enter(object sender, EventArgs e) {
-			if(inputHostID.Text == "Host ID...") {
+		private void InputHostID_Enter(object sender, EventArgs e)
+		{
+			if(inputHostID.Text == "Host ID...")
+			{
 				inputHostID.Text = "";
 				inputHostID.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputHostName_Enter(object sender, EventArgs e) {
-			if(inputHostName.Text == "Host Name...") {
+		private void InputHostName_Enter(object sender, EventArgs e)
+		{
+			if(inputHostName.Text == "Host Name...")
+			{
 				inputHostName.Text = "";
 				inputHostName.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputHostPropertyCount_Enter(object sender, EventArgs e) {
-			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host...") {
+		private void InputHostPropertyCount_Enter(object sender, EventArgs e)
+		{
+			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host...")
+			{
 				inputHostPropertyCount.Text = "";
 				inputHostPropertyCount.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputRoomType_Enter(object sender, EventArgs e) {
-			if(inputRoomType.Text == "Room Type...") {
+		private void InputRoomType_Enter(object sender, EventArgs e)
+		{
+			if(inputRoomType.Text == "Room Type...")
+			{
 				inputRoomType.Text = "";
 				inputRoomType.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputRoomPrice_Enter(object sender, EventArgs e) {
-			if(inputRoomPrice.Text == "Room Price...") {
+		private void InputRoomPrice_Enter(object sender, EventArgs e)
+		{
+			if(inputRoomPrice.Text == "Room Price...")
+			{
 				inputRoomPrice.Text = "";
 				inputRoomPrice.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputLongitude_Enter(object sender, EventArgs e) {
-			if(inputLongitude.Text == "Longitude...") {
+		private void InputLongitude_Enter(object sender, EventArgs e)
+		{
+			if(inputLongitude.Text == "Longitude...")
+			{
 				inputLongitude.Text = "";
 				inputLongitude.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputLatitude_Enter(object sender, EventArgs e) {
-			if(inputLatitude.Text == "Latitude...") {
+		private void InputLatitude_Enter(object sender, EventArgs e)
+		{
+			if(inputLatitude.Text == "Latitude...")
+			{
 				inputLatitude.Text = "";
 				inputLatitude.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputRoomNights_Enter(object sender, EventArgs e) {
-			if(inputRoomNights.Text == "Minimum Nights...") {
+		private void InputRoomNights_Enter(object sender, EventArgs e)
+		{
+			if(inputRoomNights.Text == "Minimum Nights...")
+			{
 				inputRoomNights.Text = "";
 				inputRoomNights.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputRoomAvailability_Enter(object sender, EventArgs e) {
-			if(inputRoomAvailability.Text == "Availability Days...") {
+		private void InputRoomAvailability_Enter(object sender, EventArgs e)
+		{
+			if(inputRoomAvailability.Text == "Availability Days...")
+			{
 				inputRoomAvailability.Text = "";
 				inputRoomAvailability.ForeColor = Color.FromArgb(250, 250, 250);
 			}
 		}
 
-		private void InputDistrictName_Leave(object sender, EventArgs e) {
-			if(inputDistrictName.Text.Trim() == "") {
+		private void InputDistrictName_Leave(object sender, EventArgs e)
+		{
+			if(inputDistrictName.Text.Trim() == "")
+			{
 				inputDistrictName.Text = "District Name...";
 			}
 		}
 
-		private void InputNeighborhoodName_Leave(object sender, EventArgs e) {
-			if(inputNeighborhoodName.Text.Trim() == "") {
+		private void InputNeighborhoodName_Leave(object sender, EventArgs e)
+		{
+			if(inputNeighborhoodName.Text.Trim() == "")
+			{
 				inputNeighborhoodName.Text = "Neighborhood Name...";
 			}
 		}
 
-		private void InputPropertyID_Leave(object sender, EventArgs e) {
-			if(inputPropertyID.Text.Trim() == "") {
+		private void InputPropertyID_Leave(object sender, EventArgs e)
+		{
+			if(inputPropertyID.Text.Trim() == "")
+			{
 				inputPropertyID.Text = "Property ID...";
 			}
 		}
 
-		private void InputPropertyName_Leave(object sender, EventArgs e) {
-			if(inputPropertyName.Text.Trim() == "") {
+		private void InputPropertyName_Leave(object sender, EventArgs e)
+		{
+			if(inputPropertyName.Text.Trim() == "")
+			{
 				inputPropertyName.Text = "Property Name...";
 			}
 		}
 
-		private void InputHostID_Leave(object sender, EventArgs e) {
-			if(inputHostID.Text.Trim() == "") {
+		private void InputHostID_Leave(object sender, EventArgs e)
+		{
+			if(inputHostID.Text.Trim() == "")
+			{
 				inputHostID.Text = "Host ID...";
 			}
 		}
 
-		private void InputHostName_Leave(object sender, EventArgs e) {
-			if(inputHostName.Text.Trim() == "") {
+		private void InputHostName_Leave(object sender, EventArgs e)
+		{
+			if(inputHostName.Text.Trim() == "")
+			{
 				inputHostName.Text = "Host Name...";
 			}
 		}
 
-		private void InputHostPropertyCount_Leave(object sender, EventArgs e) {
-			if(inputHostPropertyCount.Text.Trim() == "") {
+		private void InputHostPropertyCount_Leave(object sender, EventArgs e)
+		{
+			if(inputHostPropertyCount.Text.Trim() == "")
+			{
 				inputHostPropertyCount.Text = "Number of Properties Owned by Host...";
 			}
 		}
 
-		private void InputRoomType_Leave(object sender, EventArgs e) {
-			if(inputRoomType.Text.Trim() == "") {
+		private void InputRoomType_Leave(object sender, EventArgs e)
+		{
+			if(inputRoomType.Text.Trim() == "")
+			{
 				inputRoomType.Text = "Room Type...";
 			}
 		}
 
-		private void InputRoomPrice_Leave(object sender, EventArgs e) {
-			if(inputRoomPrice.Text.Trim() == "") {
+		private void InputRoomPrice_Leave(object sender, EventArgs e)
+		{
+			if(inputRoomPrice.Text.Trim() == "")
+			{
 				inputRoomPrice.Text = "Room Price...";
 			}
 		}
 
-		private void InputLongitude_Leave(object sender, EventArgs e) {
-			if(inputLongitude.Text.Trim() == "") {
+		private void InputLongitude_Leave(object sender, EventArgs e)
+		{
+			if(inputLongitude.Text.Trim() == "")
+			{
 				inputLongitude.Text = "Longitude...";
 			}
 		}
 
-		private void InputLatitude_Leave(object sender, EventArgs e) {
-			if(inputLatitude.Text.Trim() == "") {
+		private void InputLatitude_Leave(object sender, EventArgs e)
+		{
+			if(inputLatitude.Text.Trim() == "")
+			{
 				inputLatitude.Text = "Latitude...";
 			}
 		}
 
-		private void InputRoomNights_Leave(object sender, EventArgs e) {
-			if(inputRoomNights.Text.Trim() == "") {
+		private void InputRoomNights_Leave(object sender, EventArgs e)
+		{
+			if(inputRoomNights.Text.Trim() == "")
+			{
 				inputRoomNights.Text = "Minimum Nights...";
 			}
 		}
 
-		private void InputRoomAvailability_Leave(object sender, EventArgs e) {
-			if(inputRoomAvailability.Text.Trim() == "") {
+		private void InputRoomAvailability_Leave(object sender, EventArgs e)
+		{
+			if(inputRoomAvailability.Text.Trim() == "")
+			{
 				inputRoomAvailability.Text = "Availability Days...";
 			}
 		}
 
-		private void ButtonDelete_Click(object sender, EventArgs e) {
+		private void ButtonDelete_Click(object sender, EventArgs e)
+		{
 
 		}
 
-		private void ButtonNext_Click(object sender, EventArgs e) {
+		private void ButtonNext_Click(object sender, EventArgs e)
+		{
 			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
 			bool valid = true;
-			if(inputDistrictName.Text == "District Name..." || inputDistrictName.Text == "") {
+			if(inputDistrictName.Text == "District Name..." || inputDistrictName.Text == "")
+			{
 				inputDistrictName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputNeighborhoodName.Text == "Neighborhood Name..." || inputNeighborhoodName.Text == "") {
+			if(inputNeighborhoodName.Text == "Neighborhood Name..." || inputNeighborhoodName.Text == "")
+			{
 				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "") {
+			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "")
+			{
 				inputPropertyID.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "") {
+			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "")
+			{
 				inputPropertyName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "") {
+			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "")
+			{
 				inputHostID.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "") {
+			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "")
+			{
 				inputHostName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "") {
+			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "")
+			{
 				inputHostPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "") {
+			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "")
+			{
 				inputRoomType.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "") {
+			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "")
+			{
 				inputRoomPrice.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "") {
+			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "")
+			{
 				inputLongitude.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "") {
+			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "")
+			{
 				inputLatitude.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "") {
+			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "")
+			{
 				inputRoomNights.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "") {
+			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "")
+			{
 				inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(valid) {
+			if(valid)
+			{
 
 			}
 		}
