@@ -19,16 +19,20 @@ namespace SOFT152Assignment
 			InitializeComponent();
 			// Set the form to open. This is used later on to actually exit the application if the form is closed.
 			open = true;
+			int screenWidth = Screen.FromControl(this).Bounds.Width;
+			int screenHeight = Screen.FromControl(this).Bounds.Height;
+			this.Left = (screenWidth / 2) - (this.Width / 2);
+			this.Top = 50;
 		}
 
 		private void ButtonPublic_Click(object sender, EventArgs e)
 		{
-			ShowForm(new FormMain("districts", "public"));
+			ShowForm(new FormMain("public"));
 		}
 
 		private void ButtonStaff_Click(object sender, EventArgs e)
 		{
-			ShowForm(new FormMain("districts", "staff"));
+			ShowForm(new FormMain("staff"));
 		}
 
 		private void ShowForm(Form form)
