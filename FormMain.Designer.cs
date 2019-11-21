@@ -40,19 +40,13 @@
 			this.buttonViewDistrict = new System.Windows.Forms.Button();
 			this.buttonEditDistrict = new System.Windows.Forms.Button();
 			this.buttonAddDistrict = new System.Windows.Forms.Button();
-			this.panelSearchNeighborhood = new System.Windows.Forms.Panel();
-			this.inputSearchNeighborhood = new System.Windows.Forms.TextBox();
 			this.buttonAddNeighborhood = new System.Windows.Forms.Button();
 			this.buttonEditNeighborhood = new System.Windows.Forms.Button();
 			this.buttonViewNeighborhood = new System.Windows.Forms.Button();
-			this.panelSearchProperty = new System.Windows.Forms.Panel();
-			this.inputSearchProperty = new System.Windows.Forms.TextBox();
 			this.buttonAddProperty = new System.Windows.Forms.Button();
 			this.buttonEditProperty = new System.Windows.Forms.Button();
 			this.buttonViewProperty = new System.Windows.Forms.Button();
 			this.panelSearchDistrict.SuspendLayout();
-			this.panelSearchNeighborhood.SuspendLayout();
-			this.panelSearchProperty.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonBack
@@ -222,27 +216,6 @@
 			this.buttonAddDistrict.UseVisualStyleBackColor = false;
 			this.buttonAddDistrict.Click += new System.EventHandler(this.ButtonAddDistrict_Click);
 			// 
-			// panelSearchNeighborhood
-			// 
-			this.panelSearchNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.panelSearchNeighborhood.Controls.Add(this.inputSearchNeighborhood);
-			this.panelSearchNeighborhood.Location = new System.Drawing.Point(1131, 314);
-			this.panelSearchNeighborhood.Name = "panelSearchNeighborhood";
-			this.panelSearchNeighborhood.Size = new System.Drawing.Size(297, 34);
-			this.panelSearchNeighborhood.TabIndex = 40;
-			// 
-			// inputSearchNeighborhood
-			// 
-			this.inputSearchNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.inputSearchNeighborhood.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.inputSearchNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.inputSearchNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.inputSearchNeighborhood.Location = new System.Drawing.Point(13, 10);
-			this.inputSearchNeighborhood.Name = "inputSearchNeighborhood";
-			this.inputSearchNeighborhood.Size = new System.Drawing.Size(270, 16);
-			this.inputSearchNeighborhood.TabIndex = 13;
-			this.inputSearchNeighborhood.Text = "Search...";
-			// 
 			// buttonAddNeighborhood
 			// 
 			this.buttonAddNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -266,7 +239,7 @@
 			this.buttonEditNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditNeighborhood.Location = new System.Drawing.Point(1215, 269);
+			this.buttonEditNeighborhood.Location = new System.Drawing.Point(1131, 309);
 			this.buttonEditNeighborhood.Name = "buttonEditNeighborhood";
 			this.buttonEditNeighborhood.Size = new System.Drawing.Size(62, 34);
 			this.buttonEditNeighborhood.TabIndex = 38;
@@ -281,33 +254,12 @@
 			this.buttonViewNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewNeighborhood.Location = new System.Drawing.Point(1131, 359);
+			this.buttonViewNeighborhood.Location = new System.Drawing.Point(1131, 349);
 			this.buttonViewNeighborhood.Name = "buttonViewNeighborhood";
 			this.buttonViewNeighborhood.Size = new System.Drawing.Size(62, 34);
 			this.buttonViewNeighborhood.TabIndex = 41;
 			this.buttonViewNeighborhood.Text = "View";
 			this.buttonViewNeighborhood.UseVisualStyleBackColor = false;
-			// 
-			// panelSearchProperty
-			// 
-			this.panelSearchProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.panelSearchProperty.Controls.Add(this.inputSearchProperty);
-			this.panelSearchProperty.Location = new System.Drawing.Point(1131, 672);
-			this.panelSearchProperty.Name = "panelSearchProperty";
-			this.panelSearchProperty.Size = new System.Drawing.Size(297, 34);
-			this.panelSearchProperty.TabIndex = 44;
-			// 
-			// inputSearchProperty
-			// 
-			this.inputSearchProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.inputSearchProperty.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.inputSearchProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.inputSearchProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.inputSearchProperty.Location = new System.Drawing.Point(13, 10);
-			this.inputSearchProperty.Name = "inputSearchProperty";
-			this.inputSearchProperty.Size = new System.Drawing.Size(270, 16);
-			this.inputSearchProperty.TabIndex = 13;
-			this.inputSearchProperty.Text = "Search...";
 			// 
 			// buttonAddProperty
 			// 
@@ -332,7 +284,7 @@
 			this.buttonEditProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditProperty.Location = new System.Drawing.Point(1215, 627);
+			this.buttonEditProperty.Location = new System.Drawing.Point(1131, 667);
 			this.buttonEditProperty.Name = "buttonEditProperty";
 			this.buttonEditProperty.Size = new System.Drawing.Size(62, 34);
 			this.buttonEditProperty.TabIndex = 42;
@@ -347,7 +299,7 @@
 			this.buttonViewProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewProperty.Location = new System.Drawing.Point(1131, 717);
+			this.buttonViewProperty.Location = new System.Drawing.Point(1131, 707);
 			this.buttonViewProperty.Name = "buttonViewProperty";
 			this.buttonViewProperty.Size = new System.Drawing.Size(62, 34);
 			this.buttonViewProperty.TabIndex = 45;
@@ -362,9 +314,7 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(1438, 905);
 			this.Controls.Add(this.labelFileDialog);
-			this.Controls.Add(this.panelSearchProperty);
 			this.Controls.Add(this.buttonAddProperty);
-			this.Controls.Add(this.panelSearchNeighborhood);
 			this.Controls.Add(this.buttonEditProperty);
 			this.Controls.Add(this.buttonAddNeighborhood);
 			this.Controls.Add(this.buttonViewProperty);
@@ -386,10 +336,6 @@
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
 			this.panelSearchDistrict.ResumeLayout(false);
 			this.panelSearchDistrict.PerformLayout();
-			this.panelSearchNeighborhood.ResumeLayout(false);
-			this.panelSearchNeighborhood.PerformLayout();
-			this.panelSearchProperty.ResumeLayout(false);
-			this.panelSearchProperty.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -406,13 +352,9 @@
 		private System.Windows.Forms.Button buttonViewDistrict;
 		private System.Windows.Forms.Button buttonEditDistrict;
 		private System.Windows.Forms.Button buttonAddDistrict;
-		private System.Windows.Forms.Panel panelSearchNeighborhood;
-		private System.Windows.Forms.TextBox inputSearchNeighborhood;
 		private System.Windows.Forms.Button buttonAddNeighborhood;
 		private System.Windows.Forms.Button buttonEditNeighborhood;
 		private System.Windows.Forms.Button buttonViewNeighborhood;
-		private System.Windows.Forms.Panel panelSearchProperty;
-		private System.Windows.Forms.TextBox inputSearchProperty;
 		private System.Windows.Forms.Button buttonAddProperty;
 		private System.Windows.Forms.Button buttonEditProperty;
 		private System.Windows.Forms.Button buttonViewProperty;

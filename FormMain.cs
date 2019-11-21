@@ -247,6 +247,35 @@ namespace SOFT152Assignment
 				buttonViewDistrict.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEditDistrict.BackColor = Color.FromArgb(60, 60, 60);
 				buttonEditDistrict.ForeColor = Color.FromArgb(250, 250, 250);
+
+				EmptyList(listviewNeighborhoods);
+				EmptyList(listviewProperties);
+
+				listviewNeighborhoods.Columns.Add("Neighborhood Name", 260);
+				listviewNeighborhoods.Columns.Add("Number of Properties", 250);
+
+				listviewProperties.Columns.Add("Property ID", 130);
+				listviewProperties.Columns.Add("Property Name", 370);
+				listviewProperties.Columns.Add("Host ID", 130);
+				listviewProperties.Columns.Add("Host Name", 210);
+				listviewProperties.Columns.Add("Properties Owned", 180);
+				listviewProperties.Columns.Add("Longitude", 130);
+				listviewProperties.Columns.Add("Latitude", 130);
+				listviewProperties.Columns.Add("Room Type", 240);
+				listviewProperties.Columns.Add("Room Price", 130);
+				listviewProperties.Columns.Add("Minimum Nights", 150);
+				listviewProperties.Columns.Add("Days Available per Year", 250);
+
+				int districtIndex = listviewDistricts.SelectedIndices[0];
+				District district = Data.districts[districtIndex];
+				foreach(Neighborhood neighborhood in district.Neighborhoods)
+				{
+					listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
+					foreach(Property property in neighborhood.Properties)
+					{
+						listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+					}
+				}
 			}
 			else
 			{
@@ -254,6 +283,8 @@ namespace SOFT152Assignment
 				buttonViewDistrict.ForeColor = Color.FromArgb(150, 150, 150);
 				buttonEditDistrict.BackColor = Color.FromArgb(20, 20, 20);
 				buttonEditDistrict.ForeColor = Color.FromArgb(150, 150, 150);
+				PopulateList(Data.districts, "neighborhoods");
+				PopulateList(Data.districts, "properties");
 			}
 		}
 
@@ -266,6 +297,52 @@ namespace SOFT152Assignment
 				buttonViewNeighborhood.ForeColor = Color.FromArgb(250, 250, 250);
 				buttonEditNeighborhood.BackColor = Color.FromArgb(60, 60, 60);
 				buttonEditNeighborhood.ForeColor = Color.FromArgb(250, 250, 250);
+
+				EmptyList(listviewProperties);
+
+				listviewProperties.Columns.Add("Property ID", 130);
+				listviewProperties.Columns.Add("Property Name", 370);
+				listviewProperties.Columns.Add("Host ID", 130);
+				listviewProperties.Columns.Add("Host Name", 210);
+				listviewProperties.Columns.Add("Properties Owned", 180);
+				listviewProperties.Columns.Add("Longitude", 130);
+				listviewProperties.Columns.Add("Latitude", 130);
+				listviewProperties.Columns.Add("Room Type", 240);
+				listviewProperties.Columns.Add("Room Price", 130);
+				listviewProperties.Columns.Add("Minimum Nights", 150);
+				listviewProperties.Columns.Add("Days Available per Year", 250);
+
+				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+
+				if(listviewDistricts.SelectedItems.Count == 1)
+				{
+					int districtIndex = listviewDistricts.SelectedIndices[0];
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+					foreach(Property property in neighborhood.Properties)
+					{
+						listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+					}
+				}
+				else
+				{
+					Neighborhood neighborhood;
+					for(int i = 0; i < Data.districts.Length; i++)
+					{
+						District district = Data.districts[i];
+						foreach(Neighborhood neighborhoodToSearch in district.Neighborhoods)
+						{
+							if(neighborhoodToSearch.Name.ToLower() == listviewNeighborhoods.SelectedItems[0].SubItems[0].Text.ToLower())
+							{
+								neighborhood = neighborhoodToSearch;
+								foreach(Property property in neighborhood.Properties)
+								{
+									listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+								}
+							}
+						}
+					}
+				}
 			}
 			else
 			{
@@ -273,6 +350,37 @@ namespace SOFT152Assignment
 				buttonViewNeighborhood.ForeColor = Color.FromArgb(150, 150, 150);
 				buttonEditNeighborhood.BackColor = Color.FromArgb(20, 20, 20);
 				buttonEditNeighborhood.ForeColor = Color.FromArgb(150, 150, 150);
+
+				EmptyList(listviewProperties);
+
+				listviewProperties.Columns.Add("Property ID", 130);
+				listviewProperties.Columns.Add("Property Name", 370);
+				listviewProperties.Columns.Add("Host ID", 130);
+				listviewProperties.Columns.Add("Host Name", 210);
+				listviewProperties.Columns.Add("Properties Owned", 180);
+				listviewProperties.Columns.Add("Longitude", 130);
+				listviewProperties.Columns.Add("Latitude", 130);
+				listviewProperties.Columns.Add("Room Type", 240);
+				listviewProperties.Columns.Add("Room Price", 130);
+				listviewProperties.Columns.Add("Minimum Nights", 150);
+				listviewProperties.Columns.Add("Days Available per Year", 250);
+
+				if(listviewDistricts.SelectedItems.Count == 1)
+				{
+					int districtIndex = listviewDistricts.SelectedIndices[0];
+					District district = Data.districts[districtIndex];
+					foreach(Neighborhood neighborhood in district.Neighborhoods)
+					{
+						foreach(Property property in neighborhood.Properties)
+						{
+							listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+						}
+					}
+				}
+				else
+				{
+					PopulateList(Data.districts, "properties");
+				}
 			}
 		}
 
@@ -426,7 +534,7 @@ namespace SOFT152Assignment
 			{
 				fileDialog.Title = "Select Data Source File";
 				fileDialog.FileName = "*.txt";
-				fileDialog.InitialDirectory = KnownFolders.Downloads.Path;
+				fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 				fileDialog.CheckFileExists = true;
 				fileDialog.CheckPathExists = true;
 				fileDialog.ShowDialog();
