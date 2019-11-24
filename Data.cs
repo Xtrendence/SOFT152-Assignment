@@ -8,6 +8,7 @@ namespace SOFT152Assignment
 {
 	class Data
 	{
+		// Used to store the data from the file. Each district contains an array of neighborhoods, which contain arrays of properties.
 		public static District[] districts = new District[0];
 	}
 }

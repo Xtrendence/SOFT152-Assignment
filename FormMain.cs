@@ -92,11 +92,11 @@ namespace SOFT152Assignment
 				{
 					PopulateList(Data.districts, "districts");
 				}
-				search("districts", inputSearchDistrict.Text.Trim());
+				Search("districts", inputSearchDistrict.Text.Trim());
 			}
 			else
 			{
-				search("districts", inputSearchDistrict.Text.Trim());
+				Search("districts", inputSearchDistrict.Text.Trim());
 			}
 		}
 
@@ -114,10 +114,14 @@ namespace SOFT152Assignment
 			// If the "Districts" ListView has a selected item...
 			if(listviewDistricts.SelectedItems.Count == 1)
 			{
-				// Then that items subitems are fetched.
+				// Then that item's subitems are fetched.
 				ListViewItem.ListViewSubItemCollection subItem = listviewDistricts.SelectedItems[0].SubItems;
 				District district = new District(subItem[0].Text, Convert.ToInt32(subItem[1].Text));
 				ShowForm(new PopupDistrict("staff", "edit", district), false, true);
+			}
+			else
+			{
+				MessageBox.Show("Select a district first.", "Error");
 			}
 		}
 
@@ -126,10 +130,86 @@ namespace SOFT152Assignment
 			// If the "Districts" ListView has a selected item...
 			if(listviewDistricts.SelectedItems.Count == 1)
 			{
-				// Then that items subitems are fetched.
+				// Then that item's subitems are fetched.
 				ListViewItem.ListViewSubItemCollection item = listviewDistricts.SelectedItems[0].SubItems;
 				District district = new District(item[0].Text, Convert.ToInt32(item[1].Text));
 				ShowForm(new PopupDistrict("staff", "view", district), false, true);
+			}
+			else
+			{
+				MessageBox.Show("Select a district first.", "Error");
+			}
+		}
+
+		private void ButtonAddNeighborhood_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedItems.Count == 1)
+			{
+
+			}
+			else
+			{
+				MessageBox.Show("Select a district to add a neighborhood to first.", "Error");
+			}
+		}
+
+		private void ButtonEditNeighborhood_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+			{
+
+			}
+			else
+			{
+				MessageBox.Show("Select a district and a neighborhood first.", "Error");
+			}
+		}
+
+		private void ButtonViewNeighborhood_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+			{
+
+			}
+			else
+			{
+				MessageBox.Show("Select a district and a neighborhood first.", "Error");
+			}
+		}
+
+		private void ButtonAddProperty_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+			{
+
+			}
+			else
+			{
+				MessageBox.Show("Select a district and neighborhood first.", "Error");
+			}
+		}
+
+		private void ButtonEditProperty_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
+			{
+
+			}
+			else
+			{
+				MessageBox.Show("Select a district, neighborhood, and property first.", "Error");
+			}
+		}
+
+		private void ButtonViewProperty_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
+			{
+
+			}
+			else
+			{
+				MessageBox.Show("Select a district, neighborhood, and property first.", "Error");
 			}
 		}
 
@@ -183,33 +263,17 @@ namespace SOFT152Assignment
 			if(category == "districts")
 			{
 				EmptyList(listviewDistricts);
-				// Add a column to the "Districts" ListView for the district names.
-				listviewDistricts.Columns.Add("District Name", 510);
-				// Add a column for the number of neighborhoods in the district.
-				listviewDistricts.Columns.Add("Number of Neighborhoods", 250);
+				AddColumns("districts");
 			}
 			else if(category == "neighborhoods")
 			{
 				EmptyList(listviewNeighborhoods);
-				// Add a column for the name of neighborhoods.
-				listviewNeighborhoods.Columns.Add("Neighborhood Name", 260);
-				// Add a column for the number of properties.
-				listviewNeighborhoods.Columns.Add("Number of Properties", 250);
+				AddColumns("neighborhoods");
 			}
 			else if(category == "properties")
 			{
 				EmptyList(listviewProperties);
-				listviewProperties.Columns.Add("Property ID", 130);
-				listviewProperties.Columns.Add("Property Name", 370);
-				listviewProperties.Columns.Add("Host ID", 130);
-				listviewProperties.Columns.Add("Host Name", 210);
-				listviewProperties.Columns.Add("Properties Owned", 180);
-				listviewProperties.Columns.Add("Longitude", 130);
-				listviewProperties.Columns.Add("Latitude", 130);
-				listviewProperties.Columns.Add("Room Type", 240);
-				listviewProperties.Columns.Add("Room Price", 130);
-				listviewProperties.Columns.Add("Minimum Nights", 150);
-				listviewProperties.Columns.Add("Days Available per Year", 250);
+				AddColumns("properties");
 			}
 
 			// Add each district, neighborhood, and property to their respective ListViews.
@@ -234,7 +298,6 @@ namespace SOFT152Assignment
 					}
 				}
 			}
-
 			labelFileDialog.Hide();
 		}
 
@@ -243,28 +306,15 @@ namespace SOFT152Assignment
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewDistricts.SelectedItems.Count == 1)
 			{
-				buttonViewDistrict.BackColor = Color.FromArgb(60, 60, 60);
-				buttonViewDistrict.ForeColor = Color.FromArgb(250, 250, 250);
-				buttonEditDistrict.BackColor = Color.FromArgb(60, 60, 60);
-				buttonEditDistrict.ForeColor = Color.FromArgb(250, 250, 250);
+				Utils.EnableControl(buttonViewDistrict);
+				Utils.EnableControl(buttonEditDistrict);
+				Utils.EnableControl(buttonAddNeighborhood);
 
 				EmptyList(listviewNeighborhoods);
 				EmptyList(listviewProperties);
 
-				listviewNeighborhoods.Columns.Add("Neighborhood Name", 260);
-				listviewNeighborhoods.Columns.Add("Number of Properties", 250);
-
-				listviewProperties.Columns.Add("Property ID", 130);
-				listviewProperties.Columns.Add("Property Name", 370);
-				listviewProperties.Columns.Add("Host ID", 130);
-				listviewProperties.Columns.Add("Host Name", 210);
-				listviewProperties.Columns.Add("Properties Owned", 180);
-				listviewProperties.Columns.Add("Longitude", 130);
-				listviewProperties.Columns.Add("Latitude", 130);
-				listviewProperties.Columns.Add("Room Type", 240);
-				listviewProperties.Columns.Add("Room Price", 130);
-				listviewProperties.Columns.Add("Minimum Nights", 150);
-				listviewProperties.Columns.Add("Days Available per Year", 250);
+				AddColumns("neighborhoods");
+				AddColumns("properties");
 
 				int districtIndex = listviewDistricts.SelectedIndices[0];
 				District district = Data.districts[districtIndex];
@@ -279,43 +329,31 @@ namespace SOFT152Assignment
 			}
 			else
 			{
-				buttonViewDistrict.BackColor = Color.FromArgb(20, 20, 20);
-				buttonViewDistrict.ForeColor = Color.FromArgb(150, 150, 150);
-				buttonEditDistrict.BackColor = Color.FromArgb(20, 20, 20);
-				buttonEditDistrict.ForeColor = Color.FromArgb(150, 150, 150);
+				Utils.DisableControl(buttonViewDistrict);
+				Utils.DisableControl(buttonEditDistrict);
+				Utils.DisableControl(buttonAddNeighborhood);
+
 				PopulateList(Data.districts, "neighborhoods");
 				PopulateList(Data.districts, "properties");
 			}
 		}
 
-		private void listviewNeighborhoods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		private void ListviewNeighborhoods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewNeighborhoods.SelectedItems.Count == 1)
 			{
-				buttonViewNeighborhood.BackColor = Color.FromArgb(60, 60, 60);
-				buttonViewNeighborhood.ForeColor = Color.FromArgb(250, 250, 250);
-				buttonEditNeighborhood.BackColor = Color.FromArgb(60, 60, 60);
-				buttonEditNeighborhood.ForeColor = Color.FromArgb(250, 250, 250);
-
 				EmptyList(listviewProperties);
 
-				listviewProperties.Columns.Add("Property ID", 130);
-				listviewProperties.Columns.Add("Property Name", 370);
-				listviewProperties.Columns.Add("Host ID", 130);
-				listviewProperties.Columns.Add("Host Name", 210);
-				listviewProperties.Columns.Add("Properties Owned", 180);
-				listviewProperties.Columns.Add("Longitude", 130);
-				listviewProperties.Columns.Add("Latitude", 130);
-				listviewProperties.Columns.Add("Room Type", 240);
-				listviewProperties.Columns.Add("Room Price", 130);
-				listviewProperties.Columns.Add("Minimum Nights", 150);
-				listviewProperties.Columns.Add("Days Available per Year", 250);
+				AddColumns("properties");
 
 				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
 
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
+					Utils.EnableControl(buttonViewNeighborhood);
+					Utils.EnableControl(buttonEditNeighborhood);
+					Utils.EnableControl(buttonAddProperty);
 					int districtIndex = listviewDistricts.SelectedIndices[0];
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
@@ -326,6 +364,9 @@ namespace SOFT152Assignment
 				}
 				else
 				{
+					Utils.DisableControl(buttonViewNeighborhood);
+					Utils.DisableControl(buttonEditNeighborhood);
+					Utils.DisableControl(buttonAddProperty);
 					Neighborhood neighborhood;
 					for(int i = 0; i < Data.districts.Length; i++)
 					{
@@ -346,24 +387,13 @@ namespace SOFT152Assignment
 			}
 			else
 			{
-				buttonViewNeighborhood.BackColor = Color.FromArgb(20, 20, 20);
-				buttonViewNeighborhood.ForeColor = Color.FromArgb(150, 150, 150);
-				buttonEditNeighborhood.BackColor = Color.FromArgb(20, 20, 20);
-				buttonEditNeighborhood.ForeColor = Color.FromArgb(150, 150, 150);
+				Utils.DisableControl(buttonViewNeighborhood);
+				Utils.DisableControl(buttonEditNeighborhood);
+				Utils.DisableControl(buttonAddProperty);
 
 				EmptyList(listviewProperties);
 
-				listviewProperties.Columns.Add("Property ID", 130);
-				listviewProperties.Columns.Add("Property Name", 370);
-				listviewProperties.Columns.Add("Host ID", 130);
-				listviewProperties.Columns.Add("Host Name", 210);
-				listviewProperties.Columns.Add("Properties Owned", 180);
-				listviewProperties.Columns.Add("Longitude", 130);
-				listviewProperties.Columns.Add("Latitude", 130);
-				listviewProperties.Columns.Add("Room Type", 240);
-				listviewProperties.Columns.Add("Room Price", 130);
-				listviewProperties.Columns.Add("Minimum Nights", 150);
-				listviewProperties.Columns.Add("Days Available per Year", 250);
+				AddColumns("properties");
 
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
@@ -384,26 +414,22 @@ namespace SOFT152Assignment
 			}
 		}
 
-		private void listviewProperties_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		private void ListviewProperties_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
-			if(listviewProperties.SelectedItems.Count == 1)
+			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
 			{
-				buttonViewProperty.BackColor = Color.FromArgb(60, 60, 60);
-				buttonViewProperty.ForeColor = Color.FromArgb(250, 250, 250);
-				buttonEditProperty.BackColor = Color.FromArgb(60, 60, 60);
-				buttonEditProperty.ForeColor = Color.FromArgb(250, 250, 250);
+				Utils.EnableControl(buttonViewProperty);
+				Utils.EnableControl(buttonEditProperty);
 			}
 			else
 			{
-				buttonViewProperty.BackColor = Color.FromArgb(20, 20, 20);
-				buttonViewProperty.ForeColor = Color.FromArgb(150, 150, 150);
-				buttonEditProperty.BackColor = Color.FromArgb(20, 20, 20);
-				buttonEditProperty.ForeColor = Color.FromArgb(150, 150, 150);
+				Utils.DisableControl(buttonViewProperty);
+				Utils.DisableControl(buttonEditProperty);
 			}
 		}
 
-		private void search(string category, string query)
+		private void Search(string category, string query)
 		{
 			if(this.dataFile != null && this.dataFile != "")
 			{
@@ -512,6 +538,7 @@ namespace SOFT152Assignment
 			listviewDistricts.Show();
 			listviewNeighborhoods.Show();
 			listviewProperties.Show();
+			Utils.EnableControl(buttonAnalysis);
 		}
 
 		private void FileDialog_FileOk(object sender, CancelEventArgs e)
@@ -522,8 +549,7 @@ namespace SOFT152Assignment
 			this.dataFile = fileDialog.FileName;
 			if(this.dataFile != null && this.dataFile != "")
 			{
-				this.buttonAddDistrict.BackColor = Color.FromArgb(60, 60, 60);
-				this.buttonAddDistrict.ForeColor = Color.FromArgb(250, 250, 250);
+				Utils.EnableControl(buttonAddDistrict);
 			}
 		}
 
@@ -549,6 +575,34 @@ namespace SOFT152Assignment
 		private void LabelFileDialog_MouseLeave(object sender, EventArgs e)
 		{
 			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
+		}
+
+		private void AddColumns(string category)
+		{
+			if(category == "districts")
+			{
+				listviewDistricts.Columns.Add("District Name", 510);
+				listviewDistricts.Columns.Add("Number of Neighborhoods", 250);
+			}
+			else if(category == "neighborhoods")
+			{
+				listviewNeighborhoods.Columns.Add("Neighborhood Name", 260);
+				listviewNeighborhoods.Columns.Add("Number of Properties", 250);
+			}
+			else if(category == "properties")
+			{
+				listviewProperties.Columns.Add("Property ID", 130);
+				listviewProperties.Columns.Add("Property Name", 370);
+				listviewProperties.Columns.Add("Host ID", 130);
+				listviewProperties.Columns.Add("Host Name", 210);
+				listviewProperties.Columns.Add("Properties Owned", 180);
+				listviewProperties.Columns.Add("Longitude", 130);
+				listviewProperties.Columns.Add("Latitude", 130);
+				listviewProperties.Columns.Add("Room Type", 240);
+				listviewProperties.Columns.Add("Room Price", 130);
+				listviewProperties.Columns.Add("Minimum Nights", 150);
+				listviewProperties.Columns.Add("Days Available per Year", 250);
+			}
 		}
 	}
 }

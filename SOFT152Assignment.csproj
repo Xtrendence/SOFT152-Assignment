@@ -91,6 +91,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="FormAccess.resx">
       <DependentUpon>FormAccess.cs</DependentUpon>
     </EmbeddedResource>

@@ -46,12 +46,17 @@
 			this.buttonAddProperty = new System.Windows.Forms.Button();
 			this.buttonEditProperty = new System.Windows.Forms.Button();
 			this.buttonViewProperty = new System.Windows.Forms.Button();
+			this.buttonAnalysis = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
 			this.panelSearchDistrict.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonBack
 			// 
 			this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonBack.FlatAppearance.BorderSize = 0;
 			this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -69,7 +74,8 @@
 			// 
 			this.labelFileDialog.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelFileDialog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.labelFileDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelFileDialog.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.labelFileDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelFileDialog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
 			this.labelFileDialog.Location = new System.Drawing.Point(12, 84);
 			this.labelFileDialog.Name = "labelFileDialog";
@@ -97,7 +103,7 @@
 			this.listviewDistricts.Location = new System.Drawing.Point(12, 84);
 			this.listviewDistricts.MultiSelect = false;
 			this.listviewDistricts.Name = "listviewDistricts";
-			this.listviewDistricts.Size = new System.Drawing.Size(1099, 124);
+			this.listviewDistricts.Size = new System.Drawing.Size(1099, 177);
 			this.listviewDistricts.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewDistricts.TabIndex = 34;
 			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
@@ -113,16 +119,16 @@
 			this.listviewNeighborhoods.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewNeighborhoods.FullRowSelect = true;
 			this.listviewNeighborhoods.HideSelection = false;
-			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 214);
+			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 267);
 			this.listviewNeighborhoods.MultiSelect = false;
 			this.listviewNeighborhoods.Name = "listviewNeighborhoods";
-			this.listviewNeighborhoods.Size = new System.Drawing.Size(1099, 229);
+			this.listviewNeighborhoods.Size = new System.Drawing.Size(1099, 200);
 			this.listviewNeighborhoods.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewNeighborhoods.TabIndex = 35;
 			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
 			this.listviewNeighborhoods.View = System.Windows.Forms.View.Details;
 			this.listviewNeighborhoods.Visible = false;
-			this.listviewNeighborhoods.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listviewNeighborhoods_ItemSelectionChanged);
+			this.listviewNeighborhoods.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.ListviewNeighborhoods_ItemSelectionChanged);
 			// 
 			// listviewProperties
 			// 
@@ -132,16 +138,16 @@
 			this.listviewProperties.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewProperties.FullRowSelect = true;
 			this.listviewProperties.HideSelection = false;
-			this.listviewProperties.Location = new System.Drawing.Point(12, 449);
+			this.listviewProperties.Location = new System.Drawing.Point(12, 473);
 			this.listviewProperties.MultiSelect = false;
 			this.listviewProperties.Name = "listviewProperties";
-			this.listviewProperties.Size = new System.Drawing.Size(1099, 447);
+			this.listviewProperties.Size = new System.Drawing.Size(1099, 423);
 			this.listviewProperties.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewProperties.TabIndex = 36;
 			this.listviewProperties.UseCompatibleStateImageBehavior = false;
 			this.listviewProperties.View = System.Windows.Forms.View.Details;
 			this.listviewProperties.Visible = false;
-			this.listviewProperties.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listviewProperties_ItemSelectionChanged);
+			this.listviewProperties.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.ListviewProperties_ItemSelectionChanged);
 			// 
 			// inputSearchDistrict
 			// 
@@ -162,7 +168,8 @@
 			// 
 			this.panelSearchDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.panelSearchDistrict.Controls.Add(this.inputSearchDistrict);
-			this.panelSearchDistrict.Location = new System.Drawing.Point(1131, 129);
+			this.panelSearchDistrict.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.panelSearchDistrict.Location = new System.Drawing.Point(1131, 182);
 			this.panelSearchDistrict.Name = "panelSearchDistrict";
 			this.panelSearchDistrict.Size = new System.Drawing.Size(297, 34);
 			this.panelSearchDistrict.TabIndex = 19;
@@ -171,14 +178,15 @@
 			// buttonViewDistrict
 			// 
 			this.buttonViewDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonViewDistrict.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonViewDistrict.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonViewDistrict.FlatAppearance.BorderSize = 0;
 			this.buttonViewDistrict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewDistrict.Location = new System.Drawing.Point(1131, 174);
+			this.buttonViewDistrict.Location = new System.Drawing.Point(1320, 137);
 			this.buttonViewDistrict.Name = "buttonViewDistrict";
-			this.buttonViewDistrict.Size = new System.Drawing.Size(62, 34);
+			this.buttonViewDistrict.Size = new System.Drawing.Size(106, 34);
 			this.buttonViewDistrict.TabIndex = 37;
 			this.buttonViewDistrict.Text = "View";
 			this.buttonViewDistrict.UseVisualStyleBackColor = false;
@@ -187,14 +195,15 @@
 			// buttonEditDistrict
 			// 
 			this.buttonEditDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonEditDistrict.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonEditDistrict.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonEditDistrict.FlatAppearance.BorderSize = 0;
 			this.buttonEditDistrict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditDistrict.Location = new System.Drawing.Point(1215, 84);
+			this.buttonEditDistrict.Location = new System.Drawing.Point(1223, 137);
 			this.buttonEditDistrict.Name = "buttonEditDistrict";
-			this.buttonEditDistrict.Size = new System.Drawing.Size(62, 34);
+			this.buttonEditDistrict.Size = new System.Drawing.Size(91, 34);
 			this.buttonEditDistrict.TabIndex = 17;
 			this.buttonEditDistrict.Text = "Edit";
 			this.buttonEditDistrict.UseVisualStyleBackColor = false;
@@ -203,14 +212,15 @@
 			// buttonAddDistrict
 			// 
 			this.buttonAddDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonAddDistrict.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonAddDistrict.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonAddDistrict.FlatAppearance.BorderSize = 0;
 			this.buttonAddDistrict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAddDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAddDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAddDistrict.Location = new System.Drawing.Point(1131, 84);
+			this.buttonAddDistrict.Location = new System.Drawing.Point(1131, 137);
 			this.buttonAddDistrict.Name = "buttonAddDistrict";
-			this.buttonAddDistrict.Size = new System.Drawing.Size(64, 34);
+			this.buttonAddDistrict.Size = new System.Drawing.Size(86, 34);
 			this.buttonAddDistrict.TabIndex = 18;
 			this.buttonAddDistrict.Text = "Add";
 			this.buttonAddDistrict.UseVisualStyleBackColor = false;
@@ -219,92 +229,159 @@
 			// buttonAddNeighborhood
 			// 
 			this.buttonAddNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonAddNeighborhood.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonAddNeighborhood.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonAddNeighborhood.FlatAppearance.BorderSize = 0;
 			this.buttonAddNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAddNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAddNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAddNeighborhood.Location = new System.Drawing.Point(1131, 269);
+			this.buttonAddNeighborhood.Location = new System.Drawing.Point(1131, 319);
 			this.buttonAddNeighborhood.Name = "buttonAddNeighborhood";
-			this.buttonAddNeighborhood.Size = new System.Drawing.Size(64, 34);
+			this.buttonAddNeighborhood.Size = new System.Drawing.Size(86, 34);
 			this.buttonAddNeighborhood.TabIndex = 39;
 			this.buttonAddNeighborhood.Text = "Add";
 			this.buttonAddNeighborhood.UseVisualStyleBackColor = false;
+			this.buttonAddNeighborhood.Click += new System.EventHandler(this.ButtonAddNeighborhood_Click);
 			// 
 			// buttonEditNeighborhood
 			// 
 			this.buttonEditNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonEditNeighborhood.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonEditNeighborhood.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonEditNeighborhood.FlatAppearance.BorderSize = 0;
 			this.buttonEditNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditNeighborhood.Location = new System.Drawing.Point(1131, 309);
+			this.buttonEditNeighborhood.Location = new System.Drawing.Point(1223, 319);
 			this.buttonEditNeighborhood.Name = "buttonEditNeighborhood";
-			this.buttonEditNeighborhood.Size = new System.Drawing.Size(62, 34);
+			this.buttonEditNeighborhood.Size = new System.Drawing.Size(91, 34);
 			this.buttonEditNeighborhood.TabIndex = 38;
 			this.buttonEditNeighborhood.Text = "Edit";
 			this.buttonEditNeighborhood.UseVisualStyleBackColor = false;
+			this.buttonEditNeighborhood.Click += new System.EventHandler(this.ButtonEditNeighborhood_Click);
 			// 
 			// buttonViewNeighborhood
 			// 
 			this.buttonViewNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonViewNeighborhood.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonViewNeighborhood.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonViewNeighborhood.FlatAppearance.BorderSize = 0;
 			this.buttonViewNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewNeighborhood.Location = new System.Drawing.Point(1131, 349);
+			this.buttonViewNeighborhood.Location = new System.Drawing.Point(1320, 319);
 			this.buttonViewNeighborhood.Name = "buttonViewNeighborhood";
-			this.buttonViewNeighborhood.Size = new System.Drawing.Size(62, 34);
+			this.buttonViewNeighborhood.Size = new System.Drawing.Size(106, 34);
 			this.buttonViewNeighborhood.TabIndex = 41;
 			this.buttonViewNeighborhood.Text = "View";
 			this.buttonViewNeighborhood.UseVisualStyleBackColor = false;
+			this.buttonViewNeighborhood.Click += new System.EventHandler(this.ButtonViewNeighborhood_Click);
 			// 
 			// buttonAddProperty
 			// 
 			this.buttonAddProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonAddProperty.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonAddProperty.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonAddProperty.FlatAppearance.BorderSize = 0;
 			this.buttonAddProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAddProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAddProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAddProperty.Location = new System.Drawing.Point(1131, 627);
+			this.buttonAddProperty.Location = new System.Drawing.Point(1131, 524);
 			this.buttonAddProperty.Name = "buttonAddProperty";
-			this.buttonAddProperty.Size = new System.Drawing.Size(64, 34);
+			this.buttonAddProperty.Size = new System.Drawing.Size(86, 34);
 			this.buttonAddProperty.TabIndex = 43;
 			this.buttonAddProperty.Text = "Add";
 			this.buttonAddProperty.UseVisualStyleBackColor = false;
+			this.buttonAddProperty.Click += new System.EventHandler(this.ButtonAddProperty_Click);
 			// 
 			// buttonEditProperty
 			// 
 			this.buttonEditProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonEditProperty.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonEditProperty.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonEditProperty.FlatAppearance.BorderSize = 0;
 			this.buttonEditProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditProperty.Location = new System.Drawing.Point(1131, 667);
+			this.buttonEditProperty.Location = new System.Drawing.Point(1223, 524);
 			this.buttonEditProperty.Name = "buttonEditProperty";
-			this.buttonEditProperty.Size = new System.Drawing.Size(62, 34);
+			this.buttonEditProperty.Size = new System.Drawing.Size(91, 34);
 			this.buttonEditProperty.TabIndex = 42;
 			this.buttonEditProperty.Text = "Edit";
 			this.buttonEditProperty.UseVisualStyleBackColor = false;
+			this.buttonEditProperty.Click += new System.EventHandler(this.ButtonEditProperty_Click);
 			// 
 			// buttonViewProperty
 			// 
 			this.buttonViewProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonViewProperty.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonViewProperty.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonViewProperty.FlatAppearance.BorderSize = 0;
 			this.buttonViewProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewProperty.Location = new System.Drawing.Point(1131, 707);
+			this.buttonViewProperty.Location = new System.Drawing.Point(1320, 524);
 			this.buttonViewProperty.Name = "buttonViewProperty";
-			this.buttonViewProperty.Size = new System.Drawing.Size(62, 34);
+			this.buttonViewProperty.Size = new System.Drawing.Size(107, 34);
 			this.buttonViewProperty.TabIndex = 45;
 			this.buttonViewProperty.Text = "View";
 			this.buttonViewProperty.UseVisualStyleBackColor = false;
+			this.buttonViewProperty.Click += new System.EventHandler(this.ButtonViewProperty_Click);
+			// 
+			// buttonAnalysis
+			// 
+			this.buttonAnalysis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonAnalysis.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonAnalysis.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonAnalysis.FlatAppearance.BorderSize = 0;
+			this.buttonAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.buttonAnalysis.Location = new System.Drawing.Point(106, 12);
+			this.buttonAnalysis.Name = "buttonAnalysis";
+			this.buttonAnalysis.Size = new System.Drawing.Size(90, 60);
+			this.buttonAnalysis.TabIndex = 46;
+			this.buttonAnalysis.Text = "Analysis";
+			this.buttonAnalysis.UseVisualStyleBackColor = false;
+			// 
+			// label1
+			// 
+			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.label1.Location = new System.Drawing.Point(1131, 84);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(295, 41);
+			this.label1.TabIndex = 47;
+			this.label1.Text = "Districts";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label2
+			// 
+			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.label2.Location = new System.Drawing.Point(1131, 267);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(295, 41);
+			this.label2.TabIndex = 48;
+			this.label2.Text = "Neighborhoods";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label3
+			// 
+			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.label3.Location = new System.Drawing.Point(1131, 473);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(295, 41);
+			this.label3.TabIndex = 49;
+			this.label3.Text = "Properties";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// FormMain
 			// 
@@ -314,6 +391,10 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(1438, 905);
 			this.Controls.Add(this.labelFileDialog);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.buttonAnalysis);
 			this.Controls.Add(this.buttonAddProperty);
 			this.Controls.Add(this.buttonEditProperty);
 			this.Controls.Add(this.buttonAddNeighborhood);
@@ -358,5 +439,9 @@
 		private System.Windows.Forms.Button buttonAddProperty;
 		private System.Windows.Forms.Button buttonEditProperty;
 		private System.Windows.Forms.Button buttonViewProperty;
+		private System.Windows.Forms.Button buttonAnalysis;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
 	}
 }

@@ -34,6 +34,7 @@
 			this.labelAccess = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -41,6 +42,7 @@
 			// 
 			this.buttonPublic.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.buttonPublic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonPublic.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonPublic.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonPublic.FlatAppearance.BorderSize = 0;
 			this.buttonPublic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -58,6 +60,7 @@
 			// 
 			this.buttonStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.buttonStaff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonStaff.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonStaff.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.buttonStaff.FlatAppearance.BorderSize = 0;
 			this.buttonStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -106,12 +109,25 @@
 			this.pictureBox1.TabIndex = 4;
 			this.pictureBox1.TabStop = false;
 			// 
+			// label2
+			// 
+			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.label2.Location = new System.Drawing.Point(327, 572);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(785, 33);
+			this.label2.TabIndex = 5;
+			this.label2.Text = "Royalty && Copyright Free Bread";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// FormAccess
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(1438, 905);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelAccess);
@@ -135,6 +151,7 @@
         private System.Windows.Forms.Label labelAccess;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label label2;
 	}
 }
 
