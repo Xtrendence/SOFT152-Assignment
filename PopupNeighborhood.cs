@@ -39,9 +39,6 @@ namespace SOFT152Assignment
 			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
 			this.inputPropertyCount.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].PropertyCount.ToString();
 
-			this.inputDistrictName.ReadOnly = true;
-			this.inputDistrictName.Enabled = false;
-
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			if(action == "view")
 			{
@@ -68,8 +65,6 @@ namespace SOFT152Assignment
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			if(action == "view")
 			{
-				this.inputDistrictName.ReadOnly = true;
-				this.inputDistrictName.Enabled = false;
 				this.inputNeighborhoodName.ReadOnly = true;
 				this.inputNeighborhoodName.Enabled = false;
 				this.inputPropertyCount.ReadOnly = true;

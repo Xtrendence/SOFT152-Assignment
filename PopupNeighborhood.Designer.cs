@@ -119,10 +119,12 @@
 			// 
 			this.inputDistrictName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.inputDistrictName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.inputDistrictName.Enabled = false;
 			this.inputDistrictName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.inputDistrictName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.inputDistrictName.Location = new System.Drawing.Point(13, 10);
 			this.inputDistrictName.Name = "inputDistrictName";
+			this.inputDistrictName.ReadOnly = true;
 			this.inputDistrictName.Size = new System.Drawing.Size(332, 16);
 			this.inputDistrictName.TabIndex = 13;
 			this.inputDistrictName.Text = "District Name...";

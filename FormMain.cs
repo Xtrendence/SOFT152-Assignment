@@ -145,7 +145,8 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
-
+					int index = listviewDistricts.SelectedIndices[0];
+					ShowForm(new PopupNeighborhood("staff", "add", index), false, true);
 				}
 				else
 				{
@@ -161,7 +162,9 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
 				{
-
+					int districtIndex = listviewDistricts.SelectedIndices[0];
+					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+					ShowForm(new PopupNeighborhood("staff", "edit", districtIndex, neighborhoodIndex), false, true);
 				}
 				else
 				{
@@ -174,7 +177,9 @@ namespace SOFT152Assignment
 		{
 			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
 			{
-
+				int districtIndex = listviewDistricts.SelectedIndices[0];
+				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+				ShowForm(new PopupNeighborhood("staff", "view", districtIndex, neighborhoodIndex), false, true);
 			}
 			else
 			{
@@ -189,7 +194,9 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
 				{
-
+					int districtIndex = listviewDistricts.SelectedIndices[0];
+					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+					ShowForm(new PopupProperty("staff", "add", districtIndex, neighborhoodIndex), false, true);
 				}
 				else
 				{
@@ -205,7 +212,10 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
 				{
-
+					int districtIndex = listviewDistricts.SelectedIndices[0];
+					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+					int propertyIndex = listviewProperties.SelectedIndices[0];
+					ShowForm(new PopupProperty("staff", "edit", districtIndex, neighborhoodIndex, propertyIndex), false, true);
 				}
 				else
 				{
@@ -218,7 +228,10 @@ namespace SOFT152Assignment
 		{
 			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
 			{
-
+				int districtIndex = listviewDistricts.SelectedIndices[0];
+				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+				int propertyIndex = listviewProperties.SelectedIndices[0];
+				ShowForm(new PopupProperty("staff", "view", districtIndex, neighborhoodIndex, propertyIndex), false, true);
 			}
 			else
 			{
@@ -540,6 +553,7 @@ namespace SOFT152Assignment
 			}
 			else
 			{
+				Data.districts = new District[0];
 				labelFileDialog.Text = "Select Data Source...";
 				MessageBox.Show("Something went wrong. Make sure the data file is in the correct format. \n\nException Type: " + exception, "Error");
 			}

@@ -24,8 +24,6 @@ namespace SOFT152Assignment
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
-			this.inputDistrictName.Enabled = true;
-			this.inputNeighborhoodName.Enabled = true;
 			SetTitle();
 			GetTextBoxes();
 		}
@@ -42,9 +40,6 @@ namespace SOFT152Assignment
 			SetTitle();
 			GetTextBoxes();
 
-			this.inputDistrictName.Enabled = true;
-			this.inputNeighborhoodName.Enabled = true;
-
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
 			this.inputDistrictName.Text = Data.districts[districtIndex].Name;
 			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
@@ -60,15 +55,19 @@ namespace SOFT152Assignment
 			this.inputRoomNights.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomNights.ToString();
 			this.inputRoomAvailability.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomAvailability.ToString();
 
+			// The delete button is only visible when the user is modifying a property.
+			if(this.action == "edit")
+			{
+				buttonDelete.Visible = true;
+			}
 			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
-			if(this.action == "view")
+			else if(this.action == "view")
 			{
 				foreach(TextBox input in textBoxes)
 				{
 					input.ReadOnly = true;
 					input.Enabled = false;
 				}
-
 				this.buttonNext.Hide();
 			}
 		}
