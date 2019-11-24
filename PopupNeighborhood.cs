@@ -14,8 +14,8 @@ namespace SOFT152Assignment
 	{
 		public string level;
 		public string action;
-		public string district;
-		public Neighborhood neighborhood;
+		public int districtIndex;
+		public int neighborhoodIndex;
 
 		// For adding.
 		public PopupNeighborhood(string accessLevel, string desiredAction)
@@ -26,18 +26,18 @@ namespace SOFT152Assignment
 			SetTitle();
 		}
 		// For editing or viewing.
-		public PopupNeighborhood(string accessLevel, string desiredAction, string districtName, Neighborhood neighborhoodObject)
+		public PopupNeighborhood(string accessLevel, string desiredAction, int indexDistrict, int indexNeighborhood)
 		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
-			this.district = districtName;
-			this.neighborhood = neighborhoodObject;
+			this.districtIndex = indexDistrict;
+			this.neighborhoodIndex = indexNeighborhood;
 
 			// Autofill for changing the neighborhood name and property count.
-			this.inputDistrictName.Text = this.district;
-			this.inputNeighborhoodName.Text = neighborhood.Name;
-			this.inputPropertyCount.Text = neighborhood.PropertyCount.ToString();
+			this.inputDistrictName.Text = Data.districts[districtIndex].Name;
+			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
+			this.inputPropertyCount.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].PropertyCount.ToString();
 
 			this.inputDistrictName.ReadOnly = true;
 			this.inputDistrictName.Enabled = false;
@@ -55,15 +55,15 @@ namespace SOFT152Assignment
 		}
 
 		// For adding, but with the district name autofilled.
-		public PopupNeighborhood(string accessLevel, string desiredAction, string districtName)
+		public PopupNeighborhood(string accessLevel, string desiredAction, int indexDistrict)
 		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
-			this.district = districtName;
+			this.districtIndex = indexDistrict;
 
 			// Autofill for changing the neighborhood name and property count.
-			this.inputDistrictName.Text = this.district;
+			this.inputDistrictName.Text = Data.districts[districtIndex].Name;
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			if(action == "view")

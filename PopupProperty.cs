@@ -15,9 +15,9 @@ namespace SOFT152Assignment
 		public TextBox[] textBoxes;
 		public string level;
 		public string action;
-		public string district;
-		public string neighborhood;
-		public Property property;
+		public int districtIndex;
+		public int neighborhoodIndex;
+		public int propertyIndex;
 		// For adding.
 		public PopupProperty(string accessLevel, string desiredAction)
 		{
@@ -31,14 +31,14 @@ namespace SOFT152Assignment
 		}
 
 		// For editing or viewing.
-		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName, Property propertyObject)
+		public PopupProperty(string accessLevel, string desiredAction, int indexDistrict, int indexNeighborhood, int indexProperty)
 		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
-			this.district = districtName;
-			this.neighborhood = neighborhoodName;
-			this.property = propertyObject;
+			this.districtIndex = indexDistrict;
+			this.neighborhoodIndex = indexNeighborhood;
+			this.propertyIndex = indexProperty;
 			SetTitle();
 			GetTextBoxes();
 
@@ -46,19 +46,19 @@ namespace SOFT152Assignment
 			this.inputNeighborhoodName.Enabled = true;
 
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
-			this.inputDistrictName.Text = this.district;
-			this.inputNeighborhoodName.Text = this.neighborhood;
-			this.inputPropertyID.Text = property.Id.ToString();
-			this.inputPropertyName.Text = property.Name.ToString();
-			this.inputHostID.Text = property.HostID.ToString();
-			this.inputHostName.Text = property.HostName.ToString();
-			this.inputHostPropertyCount.Text = property.Count.ToString();
-			this.inputRoomType.Text = property.RoomType.ToString(); ;
-			this.inputRoomPrice.Text = property.RoomPrice.ToString();
-			this.inputLongitude.Text = property.Longitude.ToString();
-			this.inputLatitude.Text = property.Latitude.ToString();
-			this.inputRoomNights.Text = property.RoomNights.ToString();
-			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
+			this.inputDistrictName.Text = Data.districts[districtIndex].Name;
+			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
+			this.inputPropertyID.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Id.ToString();
+			this.inputPropertyName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Name.ToString();
+			this.inputHostID.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].HostID.ToString();
+			this.inputHostName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].HostName.ToString();
+			this.inputHostPropertyCount.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Count.ToString();
+			this.inputRoomType.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomType.ToString(); ;
+			this.inputRoomPrice.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomPrice.ToString();
+			this.inputLongitude.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Longitude.ToString();
+			this.inputLatitude.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Latitude.ToString();
+			this.inputRoomNights.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomNights.ToString();
+			this.inputRoomAvailability.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomAvailability.ToString();
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
 			if(this.action == "view")
@@ -74,19 +74,19 @@ namespace SOFT152Assignment
 		}
 
 		// For adding, but with the district name and neighborhood name autofilled.
-		public PopupProperty(string accessLevel, string desiredAction, string districtName, string neighborhoodName)
+		public PopupProperty(string accessLevel, string desiredAction, int indexDistrict, int indexNeighborhood)
 		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
-			this.district = districtName;
-			this.neighborhood = neighborhoodName;
+			this.districtIndex = indexDistrict;
+			this.neighborhoodIndex = indexNeighborhood;
 			SetTitle();
 			GetTextBoxes();
 
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
-			this.inputDistrictName.Text = this.district;
-			this.inputNeighborhoodName.Text = this.neighborhood;
+			this.inputDistrictName.Text = Data.districts[districtIndex].Name;
+			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only and are disabled so the user can't trigger any focus events on them.
 			if(this.action == "view")

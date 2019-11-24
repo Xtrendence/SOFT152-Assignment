@@ -111,29 +111,26 @@ namespace SOFT152Assignment
 
 		private void ButtonEditDistrict_Click(object sender, EventArgs e)
 		{
-			// If the "Districts" ListView has a selected item...
-			if(listviewDistricts.SelectedItems.Count == 1)
+			if(this.dataFile != null && this.dataFile != "")
 			{
-				// Then that item's subitems are fetched.
-				ListViewItem.ListViewSubItemCollection subItem = listviewDistricts.SelectedItems[0].SubItems;
-				District district = new District(subItem[0].Text, Convert.ToInt32(subItem[1].Text));
-				ShowForm(new PopupDistrict("staff", "edit", district), false, true);
-			}
-			else
-			{
-				MessageBox.Show("Select a district first.", "Error");
+				if(listviewDistricts.SelectedItems.Count == 1)
+				{
+					int index = listviewDistricts.SelectedIndices[0];
+					ShowForm(new PopupDistrict("staff", "edit", index), false, true);
+				}
+				else
+				{
+					MessageBox.Show("Select a district first.", "Error");
+				}
 			}
 		}
 
 		private void ButtonViewDistrict_Click(object sender, EventArgs e)
 		{
-			// If the "Districts" ListView has a selected item...
 			if(listviewDistricts.SelectedItems.Count == 1)
 			{
-				// Then that item's subitems are fetched.
-				ListViewItem.ListViewSubItemCollection item = listviewDistricts.SelectedItems[0].SubItems;
-				District district = new District(item[0].Text, Convert.ToInt32(item[1].Text));
-				ShowForm(new PopupDistrict("staff", "view", district), false, true);
+				int index = listviewDistricts.SelectedIndices[0];
+				ShowForm(new PopupDistrict("staff", "view", index), false, true);
 			}
 			else
 			{
@@ -143,25 +140,33 @@ namespace SOFT152Assignment
 
 		private void ButtonAddNeighborhood_Click(object sender, EventArgs e)
 		{
-			if(listviewDistricts.SelectedItems.Count == 1)
+			// A data file is required to actually modify and add data to.
+			if(this.dataFile != null && this.dataFile != "")
 			{
+				if(listviewDistricts.SelectedItems.Count == 1)
+				{
 
-			}
-			else
-			{
-				MessageBox.Show("Select a district to add a neighborhood to first.", "Error");
+				}
+				else
+				{
+					MessageBox.Show("Select a district to add a neighborhood to first.", "Error");
+				}
 			}
 		}
 
 		private void ButtonEditNeighborhood_Click(object sender, EventArgs e)
 		{
-			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+			// A data file is required to actually modify and add data to.
+			if(this.dataFile != null && this.dataFile != "")
 			{
+				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+				{
 
-			}
-			else
-			{
-				MessageBox.Show("Select a district and a neighborhood first.", "Error");
+				}
+				else
+				{
+					MessageBox.Show("Select a district and a neighborhood first.", "Error");
+				}
 			}
 		}
 
@@ -179,25 +184,33 @@ namespace SOFT152Assignment
 
 		private void ButtonAddProperty_Click(object sender, EventArgs e)
 		{
-			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+			// A data file is required to actually modify and add data to.
+			if(this.dataFile != null && this.dataFile != "")
 			{
+				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
+				{
 
-			}
-			else
-			{
-				MessageBox.Show("Select a district and neighborhood first.", "Error");
+				}
+				else
+				{
+					MessageBox.Show("Select a district and neighborhood first.", "Error");
+				}
 			}
 		}
 
 		private void ButtonEditProperty_Click(object sender, EventArgs e)
 		{
-			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
+			// A data file is required to actually modify and add data to.
+			if(this.dataFile != null && this.dataFile != "")
 			{
+				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
+				{
 
-			}
-			else
-			{
-				MessageBox.Show("Select a district, neighborhood, and property first.", "Error");
+				}
+				else
+				{
+					MessageBox.Show("Select a district, neighborhood, and property first.", "Error");
+				}
 			}
 		}
 
@@ -211,94 +224,6 @@ namespace SOFT152Assignment
 			{
 				MessageBox.Show("Select a district, neighborhood, and property first.", "Error");
 			}
-		}
-
-		private void ShowForm(Form form, bool matchSize, bool keepOpen)
-		{
-			int screenWidth = Screen.FromControl(this).Bounds.Width;
-			int screenHeight = Screen.FromControl(this).Bounds.Height;
-			// The "keepOpen" boolean is used to determine whether or not the current from should be kept open. Clicking something like the back button would count as closing the current form, so the "keepOpen" would be set to false. A popup, on the other hand, would constitute a situation in which the current form should ideally be kept open.
-			if(!keepOpen)
-			{
-				form.Show();
-				this.Hide();
-				// Open form in the same location.
-				form.Left = this.Left;
-				form.Top = this.Top;
-			}
-			else
-			{
-				int x = screenWidth - form.Width - 100;
-				int y = 100;
-				// Setting the location of a dialog is different from a normal form.
-				form.StartPosition = FormStartPosition.Manual;
-				form.Location = new Point(x, y);
-				// "ShowDialog" defers from the normal "Show" method, because it essentially disables the current form while the new one is open. This is good for a popup, because the user interacting with the data while a popup is open could lead to issues.
-				form.ShowDialog();
-			}
-
-			// Most forms have the same size, but some (such as popups) might not.
-			if(matchSize)
-			{
-				form.Size = this.Size;
-			}
-		}
-
-		// To avoid using "Clear()", which would count as a shortcut (I'm guessing).
-		private void EmptyList(ListView list)
-		{
-			foreach(ListViewItem item in list.Items)
-			{
-				list.Items.Remove(item);
-			}
-			foreach(ColumnHeader header in list.Columns)
-			{
-				list.Columns.Remove(header);
-			}
-		}
-
-		private void PopulateList(District[] districts, string category)
-		{
-			// Clear ListViews of any existing data. Coded my own method to replace the "Clear()" shortcut.
-			if(category == "districts")
-			{
-				EmptyList(listviewDistricts);
-				AddColumns("districts");
-			}
-			else if(category == "neighborhoods")
-			{
-				EmptyList(listviewNeighborhoods);
-				AddColumns("neighborhoods");
-			}
-			else if(category == "properties")
-			{
-				EmptyList(listviewProperties);
-				AddColumns("properties");
-			}
-
-			// Add each district, neighborhood, and property to their respective ListViews.
-			foreach(District district in districts)
-			{
-				if(category == "districts")
-				{
-					listviewDistricts.Items.Add(new ListViewItem(new string[2] { district.Name, district.NeighborhoodCount.ToString() }));
-				}
-				foreach(Neighborhood neighborhood in district.Neighborhoods)
-				{
-					if(category == "neighborhoods")
-					{
-						listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
-					}
-					foreach(Property property in neighborhood.Properties)
-					{
-						if(category == "properties")
-						{
-							listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
-						}
-					}
-				}
-			}
-			labelFileDialog.Hide();
 		}
 
 		private void ListviewDistricts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -429,6 +354,73 @@ namespace SOFT152Assignment
 			}
 		}
 
+		private void FileDialog_FileOk(object sender, CancelEventArgs e)
+		{
+			// Display the file name to the user along with "Loading" so they know they chose the right file.
+			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
+			ReadFile(fileDialog.FileName);
+			this.dataFile = fileDialog.FileName;
+			if(this.dataFile != null && this.dataFile != "")
+			{
+				Utils.EnableControl(buttonAddDistrict);
+			}
+		}
+
+		private void LabelFileDialog_Click(object sender, EventArgs e)
+		{
+			// Disable file selection if one's already been selected.
+			if(labelFileDialog.Text == "Select Data Source...")
+			{
+				fileDialog.Title = "Select Data Source File";
+				fileDialog.FileName = "*.txt";
+				fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+				fileDialog.CheckFileExists = true;
+				fileDialog.CheckPathExists = true;
+				fileDialog.ShowDialog();
+			}
+		}
+
+		private void LabelFileDialog_MouseEnter(object sender, EventArgs e)
+		{
+			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
+		}
+
+		private void LabelFileDialog_MouseLeave(object sender, EventArgs e)
+		{
+			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
+		}
+
+		private void ShowForm(Form form, bool matchSize, bool keepOpen)
+		{
+			int screenWidth = Screen.FromControl(this).Bounds.Width;
+			int screenHeight = Screen.FromControl(this).Bounds.Height;
+			// The "keepOpen" boolean is used to determine whether or not the current from should be kept open. Clicking something like the back button would count as closing the current form, so the "keepOpen" would be set to false. A popup, on the other hand, would constitute a situation in which the current form should ideally be kept open.
+			if(!keepOpen)
+			{
+				form.Show();
+				this.Hide();
+				// Open form in the same location.
+				form.Left = this.Left;
+				form.Top = this.Top;
+			}
+			else
+			{
+				int x = screenWidth - form.Width - 100;
+				int y = 100;
+				// Setting the location of a dialog is different from a normal form.
+				form.StartPosition = FormStartPosition.Manual;
+				form.Location = new Point(x, y);
+				// "ShowDialog" defers from the normal "Show" method, because it essentially disables the current form while the new one is open. This is good for a popup, because the user interacting with the data while a popup is open could lead to issues.
+				form.ShowDialog();
+			}
+
+			// Most forms have the same size, but some (such as popups) might not.
+			if(matchSize)
+			{
+				form.Size = this.Size;
+			}
+		}
+
 		private void Search(string category, string query)
 		{
 			if(this.dataFile != null && this.dataFile != "")
@@ -483,10 +475,12 @@ namespace SOFT152Assignment
 
 		private void ReadFile(string filename)
 		{
-			try
+			bool valid = true;
+			string exception = "";
+			StreamReader reader = new StreamReader(filename);
+			while(!reader.EndOfStream)
 			{
-				StreamReader reader = new StreamReader(filename);
-				while(!reader.EndOfStream)
+				try
 				{
 					string districtName = reader.ReadLine();
 					int districtNeighborhoodCount = Convert.ToInt32(reader.ReadLine());
@@ -525,56 +519,87 @@ namespace SOFT152Assignment
 					Array.Resize(ref Data.districts, numberOfDistricts + 1);
 					Data.districts[numberOfDistricts] = district;
 				}
+				catch(Exception e)
+				{
+					valid = false;
+					exception = e.GetType().Name;
+				}
 			}
-			catch(IndexOutOfRangeException e)
+			reader.Close();
+			if(valid)
 			{
-				Debug.WriteLine(e.Message);
+				// Fill the ListViews with data.
+				PopulateList(Data.districts, "districts");
+				PopulateList(Data.districts, "neighborhoods");
+				PopulateList(Data.districts, "properties");
+				// Show all ListViews.
+				listviewDistricts.Show();
+				listviewNeighborhoods.Show();
+				listviewProperties.Show();
+				Utils.EnableControl(buttonAnalysis);
 			}
-			// Fill the ListViews with data.
-			PopulateList(Data.districts, "districts");
-			PopulateList(Data.districts, "neighborhoods");
-			PopulateList(Data.districts, "properties");
-			// Show all ListViews.
-			listviewDistricts.Show();
-			listviewNeighborhoods.Show();
-			listviewProperties.Show();
-			Utils.EnableControl(buttonAnalysis);
-		}
-
-		private void FileDialog_FileOk(object sender, CancelEventArgs e)
-		{
-			// Display the file name to the user along with "Loading" so they know they chose the right file.
-			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
-			ReadFile(fileDialog.FileName);
-			this.dataFile = fileDialog.FileName;
-			if(this.dataFile != null && this.dataFile != "")
+			else
 			{
-				Utils.EnableControl(buttonAddDistrict);
+				labelFileDialog.Text = "Select Data Source...";
+				MessageBox.Show("Something went wrong. Make sure the data file is in the correct format. \n\nException Type: " + exception, "Error");
 			}
 		}
 
-		private void LabelFileDialog_Click(object sender, EventArgs e)
+		// To avoid using "Clear()", which would count as a shortcut (I'm guessing).
+		private void EmptyList(ListView list)
 		{
-			// Disable file selection if one's already been selected.
-			if(labelFileDialog.Text == "Select Data Source...")
+			foreach(ListViewItem item in list.Items)
 			{
-				fileDialog.Title = "Select Data Source File";
-				fileDialog.FileName = "*.txt";
-				fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-				fileDialog.CheckFileExists = true;
-				fileDialog.CheckPathExists = true;
-				fileDialog.ShowDialog();
+				list.Items.Remove(item);
+			}
+			foreach(ColumnHeader header in list.Columns)
+			{
+				list.Columns.Remove(header);
 			}
 		}
 
-		private void LabelFileDialog_MouseEnter(object sender, EventArgs e)
+		private void PopulateList(District[] districts, string category)
 		{
-			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
-		}
+			// Clear ListViews of any existing data. Coded my own method to replace the "Clear()" shortcut.
+			if(category == "districts")
+			{
+				EmptyList(listviewDistricts);
+				AddColumns("districts");
+			}
+			else if(category == "neighborhoods")
+			{
+				EmptyList(listviewNeighborhoods);
+				AddColumns("neighborhoods");
+			}
+			else if(category == "properties")
+			{
+				EmptyList(listviewProperties);
+				AddColumns("properties");
+			}
 
-		private void LabelFileDialog_MouseLeave(object sender, EventArgs e)
-		{
-			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
+			// Add each district, neighborhood, and property to their respective ListViews.
+			foreach(District district in districts)
+			{
+				if(category == "districts")
+				{
+					listviewDistricts.Items.Add(new ListViewItem(new string[2] { district.Name, district.NeighborhoodCount.ToString() }));
+				}
+				foreach(Neighborhood neighborhood in district.Neighborhoods)
+				{
+					if(category == "neighborhoods")
+					{
+						listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
+					}
+					foreach(Property property in neighborhood.Properties)
+					{
+						if(category == "properties")
+						{
+							listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+						}
+					}
+				}
+			}
+			labelFileDialog.Hide();
 		}
 
 		private void AddColumns(string category)

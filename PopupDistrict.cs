@@ -14,7 +14,7 @@ namespace SOFT152Assignment
 	{
 		public string level;
 		public string action;
-		public District district;
+		public int districtIndex;
 		public PopupDistrict(string accessLevel, string desiredAction)
 		{
 			InitializeComponent();
@@ -22,16 +22,16 @@ namespace SOFT152Assignment
 			this.action = desiredAction.ToLower();
 			SetTitle();
 		}
-		public PopupDistrict(string accessLevel, string desiredAction, District districtObject)
+		public PopupDistrict(string accessLevel, string desiredAction, int indexDistrict)
 		{
 			InitializeComponent();
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
-			this.district = districtObject;
+			this.districtIndex = indexDistrict;
 
 			// Autofill for editing the district name and neighborhood count.
-			this.inputName.Text = district.Name;
-			this.inputNeighborhoodCount.Text = district.NeighborhoodCount.ToString();
+			this.inputName.Text = Data.districts[districtIndex].Name;
+			this.inputNeighborhoodCount.Text = Data.districts[districtIndex].NeighborhoodCount.ToString();
 
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			if(action == "view")
