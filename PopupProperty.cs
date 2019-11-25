@@ -42,19 +42,22 @@ namespace SOFT152Assignment
 			GetTextBoxes();
 
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
-			this.inputDistrictName.Text = Data.districts[districtIndex].Name;
-			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
-			this.inputPropertyID.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Id.ToString();
-			this.inputPropertyName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Name.ToString();
-			this.inputHostID.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].HostID.ToString();
-			this.inputHostName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].HostName.ToString();
-			this.inputHostPropertyCount.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Count.ToString();
-			this.inputRoomType.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomType.ToString(); ;
-			this.inputRoomPrice.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomPrice.ToString();
-			this.inputLongitude.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Longitude.ToString();
-			this.inputLatitude.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].Latitude.ToString();
-			this.inputRoomNights.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomNights.ToString();
-			this.inputRoomAvailability.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex].RoomAvailability.ToString();
+			District district = Data.districts[districtIndex];
+			Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+			Property property = neighborhood.Properties[propertyIndex];
+			this.inputDistrictName.Text = district.Name;
+			this.inputNeighborhoodName.Text = neighborhood.Name;
+			this.inputPropertyID.Text = property.Id.ToString();
+			this.inputPropertyName.Text = property.Name.ToString();
+			this.inputHostID.Text = property.HostID.ToString();
+			this.inputHostName.Text = property.HostName.ToString();
+			this.inputHostPropertyCount.Text = property.Count.ToString();
+			this.inputRoomType.Text = property.RoomType.ToString();
+			this.inputRoomPrice.Text = property.RoomPrice.ToString();
+			this.inputLongitude.Text = property.Longitude.ToString();
+			this.inputLatitude.Text = property.Latitude.ToString();
+			this.inputRoomNights.Text = property.RoomNights.ToString();
+			this.inputRoomAvailability.Text = property.RoomAvailability.ToString();
 
 			// The delete button is only visible when the user is modifying a property.
 			if(this.action == "edit")
@@ -433,7 +436,36 @@ namespace SOFT152Assignment
 			}
 			if(valid)
 			{
-
+				if(action == "add")
+				{
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+					Property property = new Property(Convert.ToInt32(this.inputPropertyID.Text), this.inputPropertyName.Text, Convert.ToInt32(this.inputHostID.Text), this.inputHostName.Text, Convert.ToInt32(this.inputHostPropertyCount.Text), Convert.ToDouble(this.inputLongitude.Text), Convert.ToDouble(this.inputLatitude.Text), this.inputRoomType.Text, Convert.ToDouble(this.inputRoomPrice.Text), Convert.ToInt32(this.inputRoomNights.Text), Convert.ToInt32(this.inputRoomAvailability.Text));
+					int numberOfProperties = neighborhood.Properties.Length;
+					Property[] properties = neighborhood.Properties;
+					Array.Resize(ref properties, numberOfProperties + 1);
+					neighborhood.Properties[numberOfProperties] = property;
+					neighborhood.PropertyCount += 1;
+					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex] = neighborhood;
+				}
+				else if(action == "edit")
+				{
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+					Property property = neighborhood.Properties[propertyIndex];
+					property.Id = Convert.ToInt32(this.inputPropertyID.Text);
+					property.Name = this.inputPropertyName.Text;
+					property.HostID = Convert.ToInt32(this.inputHostID.Text);
+					property.HostName = this.inputHostName.Text;
+					property.Count = Convert.ToInt32(this.inputHostPropertyCount.Text);
+					property.RoomType = this.inputRoomType.Text;
+					property.RoomPrice = Convert.ToDouble(this.inputRoomPrice.Text);
+					property.Longitude = Convert.ToDouble(this.inputLongitude.Text);
+					property.Latitude = Convert.ToDouble(this.inputLatitude.Text);
+					property.RoomNights = Convert.ToInt32(this.inputRoomNights.Text);
+					property.RoomAvailability = Convert.ToInt32(this.inputRoomAvailability.Text);
+					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex] = property;
+				}
 			}
 		}
 	}
