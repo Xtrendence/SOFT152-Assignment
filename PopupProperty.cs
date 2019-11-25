@@ -72,7 +72,7 @@ namespace SOFT152Assignment
 					input.ReadOnly = true;
 					input.Enabled = false;
 				}
-				this.buttonNext.Hide();
+				this.buttonConfirm.Hide();
 			}
 		}
 
@@ -100,7 +100,7 @@ namespace SOFT152Assignment
 					input.Enabled = false;
 				}
 
-				this.buttonNext.Hide();
+				this.buttonConfirm.Hide();
 			}
 		}
 
@@ -362,7 +362,10 @@ namespace SOFT152Assignment
 					properties[numberOfProperties] = property;
 				}
 			}
+			Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].PropertyCount -= 1;
 			Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties = properties;
+			Data.changed = true;
+			this.Hide();
 		}
 
 		private void ButtonNext_Click(object sender, EventArgs e)
@@ -442,10 +445,7 @@ namespace SOFT152Assignment
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
 					Property property = new Property(Convert.ToInt32(this.inputPropertyID.Text), this.inputPropertyName.Text, Convert.ToInt32(this.inputHostID.Text), this.inputHostName.Text, Convert.ToInt32(this.inputHostPropertyCount.Text), Convert.ToDouble(this.inputLongitude.Text), Convert.ToDouble(this.inputLatitude.Text), this.inputRoomType.Text, Convert.ToDouble(this.inputRoomPrice.Text), Convert.ToInt32(this.inputRoomNights.Text), Convert.ToInt32(this.inputRoomAvailability.Text));
 					int numberOfProperties = neighborhood.Properties.Length;
-					Property[] properties = neighborhood.Properties;
-					Array.Resize(ref properties, numberOfProperties + 1);
-					neighborhood.Properties[numberOfProperties] = property;
-					neighborhood.PropertyCount += 1;
+					neighborhood.addProperty(property);
 					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex] = neighborhood;
 				}
 				else if(action == "edit")
@@ -466,6 +466,8 @@ namespace SOFT152Assignment
 					property.RoomAvailability = Convert.ToInt32(this.inputRoomAvailability.Text);
 					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex] = property;
 				}
+				Data.changed = true;
+				this.Hide();
 			}
 		}
 	}

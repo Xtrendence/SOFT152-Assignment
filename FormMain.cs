@@ -548,6 +548,7 @@ namespace SOFT152Assignment
 			}
 			else
 			{
+				this.dataFile = "";
 				Data.districts = new District[0];
 				labelFileDialog.Text = "Select Data Source...";
 				MessageBox.Show("Something went wrong. Make sure the data file is in the correct format. \n\nException Type: " + exception, "Error");
@@ -615,13 +616,13 @@ namespace SOFT152Assignment
 		{
 			if(category == "districts")
 			{
-				listviewDistricts.Columns.Add("District Name", 510);
-				listviewDistricts.Columns.Add("Number of Neighborhoods", 250);
+				listviewDistricts.Columns.Add("District Name", 650);
+				listviewDistricts.Columns.Add("Number of Neighborhoods", 450);
 			}
 			else if(category == "neighborhoods")
 			{
-				listviewNeighborhoods.Columns.Add("Neighborhood Name", 260);
-				listviewNeighborhoods.Columns.Add("Number of Properties", 250);
+				listviewNeighborhoods.Columns.Add("Neighborhood Name", 650);
+				listviewNeighborhoods.Columns.Add("Number of Properties", 450);
 			}
 			else if(category == "properties")
 			{
@@ -636,6 +637,20 @@ namespace SOFT152Assignment
 				listviewProperties.Columns.Add("Room Price", 130);
 				listviewProperties.Columns.Add("Minimum Nights", 150);
 				listviewProperties.Columns.Add("Days Available per Year", 250);
+			}
+		}
+
+		private void FormMain_Activated(object sender, EventArgs e)
+		{
+			if(dataFile != null && dataFile != "")
+			{
+				if(Data.changed)
+				{
+					PopulateList(Data.districts, "districts");
+					PopulateList(Data.districts, "neighborhoods");
+					PopulateList(Data.districts, "properties");
+					Data.changed = false;
+				}
 			}
 		}
 	}

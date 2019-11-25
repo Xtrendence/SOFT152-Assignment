@@ -41,7 +41,7 @@ namespace SOFT152Assignment
 				this.inputNeighborhoodCount.ReadOnly = true;
 				this.inputNeighborhoodCount.Enabled = false;
 				this.panelCount.Show();
-				this.buttonNext.Hide();
+				this.buttonConfirm.Hide();
 			}
 		}
 
@@ -83,11 +83,6 @@ namespace SOFT152Assignment
 				inputName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputNeighborhoodCount.Text.Trim() == "" || inputNeighborhoodCount.Text == "Number of Neighborhoods...")
-			{
-				inputNeighborhoodCount.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
 			if(valid)
 			{
 				if(this.action == "add")
@@ -103,6 +98,8 @@ namespace SOFT152Assignment
 					district.Name = inputName.Text;
 					Data.districts[districtIndex] = district;
 				}
+				Data.changed = true;
+				this.Hide();
 			}
 		}
 

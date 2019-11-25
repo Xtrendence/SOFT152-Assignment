@@ -103,8 +103,7 @@
 			this.listviewDistricts.Location = new System.Drawing.Point(12, 84);
 			this.listviewDistricts.MultiSelect = false;
 			this.listviewDistricts.Name = "listviewDistricts";
-			this.listviewDistricts.Size = new System.Drawing.Size(1099, 177);
-			this.listviewDistricts.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.listviewDistricts.Size = new System.Drawing.Size(1100, 177);
 			this.listviewDistricts.TabIndex = 34;
 			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
 			this.listviewDistricts.View = System.Windows.Forms.View.Details;
@@ -122,7 +121,7 @@
 			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 267);
 			this.listviewNeighborhoods.MultiSelect = false;
 			this.listviewNeighborhoods.Name = "listviewNeighborhoods";
-			this.listviewNeighborhoods.Size = new System.Drawing.Size(1099, 200);
+			this.listviewNeighborhoods.Size = new System.Drawing.Size(1100, 200);
 			this.listviewNeighborhoods.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewNeighborhoods.TabIndex = 35;
 			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
@@ -141,7 +140,7 @@
 			this.listviewProperties.Location = new System.Drawing.Point(12, 473);
 			this.listviewProperties.MultiSelect = false;
 			this.listviewProperties.Name = "listviewProperties";
-			this.listviewProperties.Size = new System.Drawing.Size(1099, 423);
+			this.listviewProperties.Size = new System.Drawing.Size(1100, 423);
 			this.listviewProperties.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewProperties.TabIndex = 36;
 			this.listviewProperties.UseCompatibleStateImageBehavior = false;
@@ -414,6 +413,7 @@
 			this.MaximumSize = new System.Drawing.Size(1454, 944);
 			this.Name = "FormMain";
 			this.Text = "Access";
+			this.Activated += new System.EventHandler(this.FormMain_Activated);
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
 			this.panelSearchDistrict.ResumeLayout(false);
 			this.panelSearchDistrict.PerformLayout();

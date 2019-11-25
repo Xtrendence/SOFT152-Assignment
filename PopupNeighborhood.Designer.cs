@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopupNeighborhood));
-			this.buttonNext = new System.Windows.Forms.Button();
+			this.buttonConfirm = new System.Windows.Forms.Button();
 			this.panelCount = new System.Windows.Forms.Panel();
 			this.inputPropertyCount = new System.Windows.Forms.TextBox();
 			this.panelName = new System.Windows.Forms.Panel();
@@ -41,21 +41,21 @@
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// buttonNext
+			// buttonConfirm
 			// 
-			this.buttonNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.buttonNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-			this.buttonNext.FlatAppearance.BorderSize = 0;
-			this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.buttonNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.buttonNext.Location = new System.Drawing.Point(293, 92);
-			this.buttonNext.Name = "buttonNext";
-			this.buttonNext.Size = new System.Drawing.Size(79, 34);
-			this.buttonNext.TabIndex = 33;
-			this.buttonNext.Text = "Next";
-			this.buttonNext.UseVisualStyleBackColor = false;
-			this.buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
+			this.buttonConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonConfirm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonConfirm.FlatAppearance.BorderSize = 0;
+			this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.buttonConfirm.Location = new System.Drawing.Point(293, 92);
+			this.buttonConfirm.Name = "buttonConfirm";
+			this.buttonConfirm.Size = new System.Drawing.Size(79, 34);
+			this.buttonConfirm.TabIndex = 33;
+			this.buttonConfirm.Text = "Confirm";
+			this.buttonConfirm.UseVisualStyleBackColor = false;
+			this.buttonConfirm.Click += new System.EventHandler(this.ButtonNext_Click);
 			// 
 			// panelCount
 			// 
@@ -138,7 +138,7 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(384, 136);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.buttonNext);
+			this.Controls.Add(this.buttonConfirm);
 			this.Controls.Add(this.panelCount);
 			this.Controls.Add(this.panelName);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -157,7 +157,7 @@
         }
 
 		#endregion
-		private System.Windows.Forms.Button buttonNext;
+		private System.Windows.Forms.Button buttonConfirm;
 		private System.Windows.Forms.Panel panelCount;
 		private System.Windows.Forms.TextBox inputPropertyCount;
 		private System.Windows.Forms.Panel panelName;

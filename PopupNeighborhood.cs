@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,7 @@ namespace SOFT152Assignment
 				this.inputPropertyCount.ReadOnly = true;
 				this.inputPropertyCount.Enabled = false;
 				this.panelCount.Show();
-				this.buttonNext.Hide();
+				this.buttonConfirm.Hide();
 			}
 		}
 
@@ -70,7 +71,7 @@ namespace SOFT152Assignment
 				this.inputPropertyCount.ReadOnly = true;
 				this.inputPropertyCount.Enabled = false;
 				this.panelCount.Show();
-				this.buttonNext.Hide();
+				this.buttonConfirm.Hide();
 			}
 		}
 
@@ -112,11 +113,6 @@ namespace SOFT152Assignment
 				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputPropertyCount.Text.Trim() == "" || inputPropertyCount.Text == "Number of Properties...")
-			{
-				inputPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
 			if(valid)
 			{
 				if(this.action == "add")
@@ -124,10 +120,7 @@ namespace SOFT152Assignment
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = new Neighborhood(inputNeighborhoodName.Text, 0);
 					int numberOfNeighborhoods = district.Neighborhoods.Length;
-					Neighborhood[] neighborhoods = district.Neighborhoods;
-					Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);
-					district.Neighborhoods[numberOfNeighborhoods] = neighborhood;
-					district.NeighborhoodCount += 1;
+					district.addNeighborhood(neighborhood);
 					Data.districts[districtIndex] = district;
 				}
 				else if(this.action == "edit")
@@ -135,8 +128,10 @@ namespace SOFT152Assignment
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
 					neighborhood.Name = inputNeighborhoodName.Text;
-					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name = inputNeighborhoodName.Name;
+					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name = inputNeighborhoodName.Text;
 				}
+				Data.changed = true;
+				this.Hide();
 			}
 		}
 
