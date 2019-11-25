@@ -15,6 +15,7 @@ namespace SOFT152Assignment
 			control.BackColor = Color.FromArgb(20, 20, 20);
 			control.ForeColor = Color.FromArgb(150, 150, 150);
 		}
+
 		public static void EnableControl(Control control)
 		{
 			control.BackColor = Color.FromArgb(60, 60, 60);

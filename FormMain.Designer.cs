@@ -50,6 +50,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
+			this.buttonSave = new System.Windows.Forms.Button();
 			this.panelSearchDistrict.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -342,6 +343,7 @@
 			this.buttonAnalysis.TabIndex = 46;
 			this.buttonAnalysis.Text = "Analysis";
 			this.buttonAnalysis.UseVisualStyleBackColor = false;
+			this.buttonAnalysis.Visible = false;
 			// 
 			// label1
 			// 
@@ -382,6 +384,24 @@
 			this.label3.Text = "Properties";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// buttonSave
+			// 
+			this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.buttonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonSave.FlatAppearance.BorderSize = 0;
+			this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.buttonSave.Location = new System.Drawing.Point(1022, 12);
+			this.buttonSave.Name = "buttonSave";
+			this.buttonSave.Size = new System.Drawing.Size(90, 60);
+			this.buttonSave.TabIndex = 50;
+			this.buttonSave.Text = "Save";
+			this.buttonSave.UseVisualStyleBackColor = false;
+			this.buttonSave.Visible = false;
+			this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,6 +409,7 @@
 			this.AutoScroll = true;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(1438, 905);
+			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.labelFileDialog);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
@@ -443,5 +464,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Button buttonSave;
 	}
 }

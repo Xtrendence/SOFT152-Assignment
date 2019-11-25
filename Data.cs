@@ -12,5 +12,7 @@ namespace SOFT152Assignment
 		public static District[] districts = new District[0];
 		// Used to determine when the data in the districts array has changed. This is used by the main form's "Activated" event listener to refresh the data.
 		public static bool changed = false;
+		// Used to determine if there are changes that need to be saved to the data file.
+		public static bool unsaved = false;
 	}
 }

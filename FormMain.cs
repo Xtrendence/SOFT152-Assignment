@@ -57,6 +57,9 @@ namespace SOFT152Assignment
 
 		private void ButtonBack_Click(object sender, EventArgs e)
 		{
+			EmptyList(listviewDistricts);
+			EmptyList(listviewNeighborhoods);
+			EmptyList(listviewProperties);
 			ShowForm(new FormAccess(), true, false);
 		}
 
@@ -485,6 +488,7 @@ namespace SOFT152Assignment
 		{
 			bool valid = true;
 			string exception = "";
+			Data.districts = new District[0];
 			StreamReader reader = new StreamReader(filename);
 			while(!reader.EndOfStream)
 			{
@@ -545,6 +549,11 @@ namespace SOFT152Assignment
 				listviewNeighborhoods.Show();
 				listviewProperties.Show();
 				Utils.EnableControl(buttonAnalysis);
+				buttonAnalysis.Visible = true;
+				if(this.level == "staff")
+				{
+					buttonSave.Visible = true;
+				}
 			}
 			else
 			{
@@ -650,7 +659,48 @@ namespace SOFT152Assignment
 					PopulateList(Data.districts, "neighborhoods");
 					PopulateList(Data.districts, "properties");
 					Data.changed = false;
+					Data.unsaved = true;
+					Utils.EnableControl(buttonSave);
 				}
+			}
+		}
+
+		private void ButtonSave_Click(object sender, EventArgs e)
+		{
+			if(Data.unsaved)
+			{
+				StreamWriter writer = new StreamWriter(dataFile);
+				foreach(District district in Data.districts)
+				{
+					writer.WriteLine(district.Name);
+					writer.WriteLine(district.Neighborhoods.Length);
+					foreach(Neighborhood neighborhood in district.Neighborhoods)
+					{
+						writer.WriteLine(neighborhood.Name);
+						writer.WriteLine(neighborhood.Properties.Length);
+						foreach(Property property in neighborhood.Properties)
+						{
+							writer.WriteLine(property.Id);
+							writer.WriteLine(property.Name);
+							writer.WriteLine(property.HostID);
+							writer.WriteLine(property.HostName);
+							writer.WriteLine(property.Count);
+							writer.WriteLine(property.Latitude);
+							writer.WriteLine(property.Longitude);
+							writer.WriteLine(property.RoomType);
+							writer.WriteLine(property.RoomPrice);
+							writer.WriteLine(property.RoomNights);
+							writer.WriteLine(property.RoomAvailability);
+						}
+					}
+				}
+				writer.Close();
+				Data.unsaved = false;
+				Utils.DisableControl(buttonSave);
+			}
+			else
+			{
+				MessageBox.Show("No changes have been made to save.", "Error");
 			}
 		}
 	}
