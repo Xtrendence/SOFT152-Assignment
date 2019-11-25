@@ -40,8 +40,12 @@ namespace SOFT152Assignment
 			this.inputNeighborhoodName.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name;
 			this.inputPropertyCount.Text = Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].PropertyCount.ToString();
 
+			if(action == "edit")
+			{
+				this.buttonDelete.Visible = true;
+			}
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
-			if(action == "view")
+			else if(action == "view")
 			{
 				this.inputNeighborhoodName.ReadOnly = true;
 				this.inputNeighborhoodName.Enabled = false;
@@ -190,6 +194,26 @@ namespace SOFT152Assignment
 			{
 				inputDistrictName.Text = "District Name...";
 			}
+		}
+
+		private void ButtonDelete_Click(object sender, EventArgs e)
+		{
+			District district = Data.districts[districtIndex];
+			district.Neighborhoods[neighborhoodIndex] = null;
+			Neighborhood[] neighborhoods = new Neighborhood[0];
+			foreach(Neighborhood neighborhood in district.Neighborhoods)
+			{
+				if(neighborhood != null)
+				{
+					int numberOfNeighborhoods = neighborhoods.Length;
+					Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);
+					neighborhoods[numberOfNeighborhoods] = neighborhood;
+				}
+			}
+			Data.districts[districtIndex].NeighborhoodCount -= 1;
+			Data.districts[districtIndex].Neighborhoods = neighborhoods;
+			Data.changed = true;
+			this.Hide();
 		}
 	}
 }

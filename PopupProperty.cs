@@ -99,7 +99,6 @@ namespace SOFT152Assignment
 					input.ReadOnly = true;
 					input.Enabled = false;
 				}
-
 				this.buttonConfirm.Hide();
 			}
 		}
@@ -432,7 +431,7 @@ namespace SOFT152Assignment
 				inputRoomNights.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;
 			}
-			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "")
+			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "" || Convert.ToInt32(inputRoomAvailability.Text) > 365)
 			{
 				inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
 				valid = false;

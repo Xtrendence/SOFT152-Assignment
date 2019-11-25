@@ -36,6 +36,7 @@
 			this.inputNeighborhoodName = new System.Windows.Forms.TextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.inputDistrictName = new System.Windows.Forms.TextBox();
+			this.buttonDelete = new System.Windows.Forms.Button();
 			this.panelCount.SuspendLayout();
 			this.panelName.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -131,12 +132,30 @@
 			this.inputDistrictName.Enter += new System.EventHandler(this.InputDistrictName_Enter);
 			this.inputDistrictName.Leave += new System.EventHandler(this.InputDistrictName_Leave);
 			// 
+			// buttonDelete
+			// 
+			this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.buttonDelete.FlatAppearance.BorderSize = 0;
+			this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.buttonDelete.Location = new System.Drawing.Point(208, 92);
+			this.buttonDelete.Name = "buttonDelete";
+			this.buttonDelete.Size = new System.Drawing.Size(79, 34);
+			this.buttonDelete.TabIndex = 37;
+			this.buttonDelete.Text = "Delete";
+			this.buttonDelete.UseVisualStyleBackColor = false;
+			this.buttonDelete.Visible = false;
+			this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
+			// 
 			// PopupNeighborhood
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(384, 136);
+			this.Controls.Add(this.buttonDelete);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.buttonConfirm);
 			this.Controls.Add(this.panelCount);
@@ -164,5 +183,6 @@
 		private System.Windows.Forms.TextBox inputNeighborhoodName;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TextBox inputDistrictName;
+		private System.Windows.Forms.Button buttonDelete;
 	}
 }
