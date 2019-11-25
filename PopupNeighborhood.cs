@@ -119,7 +119,24 @@ namespace SOFT152Assignment
 			}
 			if(valid)
 			{
-
+				if(this.action == "add")
+				{
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = new Neighborhood(inputNeighborhoodName.Text, 0);
+					int numberOfNeighborhoods = district.Neighborhoods.Length;
+					Neighborhood[] neighborhoods = district.Neighborhoods;
+					Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);
+					district.Neighborhoods[numberOfNeighborhoods] = neighborhood;
+					district.NeighborhoodCount += 1;
+					Data.districts[districtIndex] = district;
+				}
+				else if(this.action == "edit")
+				{
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+					neighborhood.Name = inputNeighborhoodName.Text;
+					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name = inputNeighborhoodName.Name;
+				}
 			}
 		}
 

@@ -90,7 +90,19 @@ namespace SOFT152Assignment
 			}
 			if(valid)
 			{
-
+				if(this.action == "add")
+				{
+					District district = new District(inputName.Text, 0);
+					int numberOfDistricts = Data.districts.Length;
+					Array.Resize(ref Data.districts, numberOfDistricts + 1);
+					Data.districts[numberOfDistricts] = district;
+				}
+				else if(this.action == "edit")
+				{
+					District district = Data.districts[districtIndex];
+					district.Name = inputName.Text;
+					Data.districts[districtIndex] = district;
+				}
 			}
 		}
 

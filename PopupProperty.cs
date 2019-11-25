@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -345,7 +346,20 @@ namespace SOFT152Assignment
 
 		private void ButtonDelete_Click(object sender, EventArgs e)
 		{
-
+			District district = Data.districts[districtIndex];
+			Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+			neighborhood.Properties[propertyIndex] = null;
+			Property[] properties = new Property[0];
+			foreach(Property property in neighborhood.Properties)
+			{
+				if(property != null)
+				{
+					int numberOfProperties = properties.Length;
+					Array.Resize(ref properties, numberOfProperties + 1);
+					properties[numberOfProperties] = property;
+				}
+			}
+			Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties = properties;
 		}
 
 		private void ButtonNext_Click(object sender, EventArgs e)
