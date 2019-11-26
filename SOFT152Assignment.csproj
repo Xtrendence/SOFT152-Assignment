@@ -56,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="FormAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAnalysis.Designer.cs">
+      <DependentUpon>FormAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopupDistrict.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="FormAccess.resx">
       <DependentUpon>FormAccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAnalysis.resx">
+      <DependentUpon>FormAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

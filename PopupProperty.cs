@@ -444,7 +444,7 @@ namespace SOFT152Assignment
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
 					Property property = new Property(Convert.ToInt32(this.inputPropertyID.Text), this.inputPropertyName.Text, Convert.ToInt32(this.inputHostID.Text), this.inputHostName.Text, Convert.ToInt32(this.inputHostPropertyCount.Text), Convert.ToDouble(this.inputLongitude.Text), Convert.ToDouble(this.inputLatitude.Text), this.inputRoomType.Text, Convert.ToDouble(this.inputRoomPrice.Text), Convert.ToInt32(this.inputRoomNights.Text), Convert.ToInt32(this.inputRoomAvailability.Text));
 					int numberOfProperties = neighborhood.Properties.Length;
-					neighborhood.addProperty(property);
+					neighborhood.AddProperty(property);
 					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex] = neighborhood;
 				}
 				else if(action == "edit")

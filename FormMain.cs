@@ -521,10 +521,10 @@ namespace SOFT152Assignment
 							int roomAvailability = Convert.ToInt32(reader.ReadLine());
 							// Create a new "Property" object, and add it to the array of properties in the neighborhood.
 							Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
-							neighborhood.addProperty(property);
+							neighborhood.AddProperty(property);
 						}
 						// Add the neighborhood object to the neighborhood array in the district object.
-						district.addNeighborhood(neighborhood);
+						district.AddNeighborhood(neighborhood);
 					}
 					// Add each district to the main district array that'll contain all the data from the text file.
 					int numberOfDistricts = Data.districts.Length;
@@ -701,6 +701,17 @@ namespace SOFT152Assignment
 			else
 			{
 				MessageBox.Show("No changes have been made to save.", "Error");
+			}
+		}
+
+		private void ButtonAnalysis_Click(object sender, EventArgs e)
+		{
+			if(dataFile != null && dataFile != "")
+			{
+				Form form = new FormAnalysis();
+				form.StartPosition = FormStartPosition.Manual;
+				form.Location = new Point(this.Left, this.Top);
+				form.ShowDialog();
 			}
 		}
 	}

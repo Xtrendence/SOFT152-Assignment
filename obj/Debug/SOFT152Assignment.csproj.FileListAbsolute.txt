@@ -69,3 +69,4 @@ C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.Wind
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.csproj.CopyComplete
+C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormAnalysis.resources

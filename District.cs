@@ -61,7 +61,7 @@ namespace SOFT152Assignment
 			}
 		}
 
-		public void addNeighborhood(Neighborhood neighborhood)
+		public void AddNeighborhood(Neighborhood neighborhood)
 		{
 			int numberOfNeighborhoods = this.neighborhoods.Length;
 			Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);

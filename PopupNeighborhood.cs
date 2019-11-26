@@ -124,7 +124,7 @@ namespace SOFT152Assignment
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = new Neighborhood(inputNeighborhoodName.Text, 0);
 					int numberOfNeighborhoods = district.Neighborhoods.Length;
-					district.addNeighborhood(neighborhood);
+					district.AddNeighborhood(neighborhood);
 					Data.districts[districtIndex] = district;
 				}
 				else if(this.action == "edit")

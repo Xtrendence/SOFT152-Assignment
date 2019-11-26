@@ -344,6 +344,7 @@
 			this.buttonAnalysis.Text = "Analysis";
 			this.buttonAnalysis.UseVisualStyleBackColor = false;
 			this.buttonAnalysis.Visible = false;
+			this.buttonAnalysis.Click += new System.EventHandler(this.ButtonAnalysis_Click);
 			// 
 			// label1
 			// 
