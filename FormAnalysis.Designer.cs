@@ -63,9 +63,9 @@
 			// panelDistrictNames
 			// 
 			this.panelDistrictNames.AutoSize = true;
-			this.panelDistrictNames.Location = new System.Drawing.Point(12, 389);
+			this.panelDistrictNames.Location = new System.Drawing.Point(12, 404);
 			this.panelDistrictNames.Name = "panelDistrictNames";
-			this.panelDistrictNames.Size = new System.Drawing.Size(1414, 65);
+			this.panelDistrictNames.Size = new System.Drawing.Size(1414, 50);
 			this.panelDistrictNames.TabIndex = 1;
 			// 
 			// panelProperty
@@ -92,9 +92,9 @@
 			// panelNeighborhoodNames
 			// 
 			this.panelNeighborhoodNames.AutoSize = true;
-			this.panelNeighborhoodNames.Location = new System.Drawing.Point(12, 815);
+			this.panelNeighborhoodNames.Location = new System.Drawing.Point(12, 830);
 			this.panelNeighborhoodNames.Name = "panelNeighborhoodNames";
-			this.panelNeighborhoodNames.Size = new System.Drawing.Size(1414, 67);
+			this.panelNeighborhoodNames.Size = new System.Drawing.Size(1414, 52);
 			this.panelNeighborhoodNames.TabIndex = 6;
 			// 
 			// FormAnalysis
