@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Shell;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,9 +56,9 @@ namespace SOFT152Assignment
 
 		private void ButtonBack_Click(object sender, EventArgs e)
 		{
-			EmptyList(listviewDistricts);
-			EmptyList(listviewNeighborhoods);
-			EmptyList(listviewProperties);
+			listviewDistricts.Clear();
+			listviewNeighborhoods.Clear();
+			listviewProperties.Clear();
 			ShowForm(new FormAccess(), true, false);
 		}
 
@@ -251,21 +250,16 @@ namespace SOFT152Assignment
 				Utils.EnableControl(buttonEditDistrict);
 				Utils.EnableControl(buttonAddNeighborhood);
 
-				EmptyList(listviewNeighborhoods);
-				EmptyList(listviewProperties);
+				listviewNeighborhoods.Clear();
+				listviewProperties.Clear();
 
 				AddColumns("neighborhoods");
-				AddColumns("properties");
 
 				int districtIndex = listviewDistricts.SelectedIndices[0];
 				District district = Data.districts[districtIndex];
 				foreach(Neighborhood neighborhood in district.Neighborhoods)
 				{
 					listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
-					foreach(Property property in neighborhood.Properties)
-					{
-						listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
-					}
 				}
 			}
 			else
@@ -274,8 +268,8 @@ namespace SOFT152Assignment
 				Utils.DisableControl(buttonEditDistrict);
 				Utils.DisableControl(buttonAddNeighborhood);
 
-				PopulateList(Data.districts, "neighborhoods");
-				PopulateList(Data.districts, "properties");
+				listviewNeighborhoods.Clear();
+				listviewProperties.Clear();
 			}
 		}
 
@@ -284,7 +278,7 @@ namespace SOFT152Assignment
 			// If there aren't any selected items in the ListView, then the edit button is "grayed out". I realize the "Disabled" property exists, but it's easier to style the button this way.
 			if(listviewNeighborhoods.SelectedItems.Count == 1)
 			{
-				EmptyList(listviewProperties);
+				listviewProperties.Clear();
 
 				AddColumns("properties");
 
@@ -303,28 +297,6 @@ namespace SOFT152Assignment
 						listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
 					}
 				}
-				else
-				{
-					Utils.DisableControl(buttonViewNeighborhood);
-					Utils.DisableControl(buttonEditNeighborhood);
-					Utils.DisableControl(buttonAddProperty);
-					Neighborhood neighborhood;
-					for(int i = 0; i < Data.districts.Length; i++)
-					{
-						District district = Data.districts[i];
-						foreach(Neighborhood neighborhoodToSearch in district.Neighborhoods)
-						{
-							if(neighborhoodToSearch.Name.ToLower() == listviewNeighborhoods.SelectedItems[0].SubItems[0].Text.ToLower())
-							{
-								neighborhood = neighborhoodToSearch;
-								foreach(Property property in neighborhood.Properties)
-								{
-									listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
-								}
-							}
-						}
-					}
-				}
 			}
 			else
 			{
@@ -332,26 +304,7 @@ namespace SOFT152Assignment
 				Utils.DisableControl(buttonEditNeighborhood);
 				Utils.DisableControl(buttonAddProperty);
 
-				EmptyList(listviewProperties);
-
-				AddColumns("properties");
-
-				if(listviewDistricts.SelectedItems.Count == 1)
-				{
-					int districtIndex = listviewDistricts.SelectedIndices[0];
-					District district = Data.districts[districtIndex];
-					foreach(Neighborhood neighborhood in district.Neighborhoods)
-					{
-						foreach(Property property in neighborhood.Properties)
-						{
-							listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
-						}
-					}
-				}
-				else
-				{
-					PopulateList(Data.districts, "properties");
-				}
+				listviewProperties.Clear();
 			}
 		}
 
@@ -542,8 +495,6 @@ namespace SOFT152Assignment
 			{
 				// Fill the ListViews with data.
 				PopulateList(Data.districts, "districts");
-				PopulateList(Data.districts, "neighborhoods");
-				PopulateList(Data.districts, "properties");
 				// Show all ListViews.
 				listviewDistricts.Show();
 				listviewNeighborhoods.Show();
@@ -564,35 +515,22 @@ namespace SOFT152Assignment
 			}
 		}
 
-		// To avoid using "Clear()", which would count as a shortcut (I'm guessing).
-		private void EmptyList(ListView list)
-		{
-			foreach(ListViewItem item in list.Items)
-			{
-				list.Items.Remove(item);
-			}
-			foreach(ColumnHeader header in list.Columns)
-			{
-				list.Columns.Remove(header);
-			}
-		}
-
 		private void PopulateList(District[] districts, string category)
 		{
 			// Clear ListViews of any existing data. Coded my own method to replace the "Clear()" shortcut.
 			if(category == "districts")
 			{
-				EmptyList(listviewDistricts);
+				listviewDistricts.Clear();
 				AddColumns("districts");
 			}
 			else if(category == "neighborhoods")
 			{
-				EmptyList(listviewNeighborhoods);
+				listviewNeighborhoods.Clear();
 				AddColumns("neighborhoods");
 			}
 			else if(category == "properties")
 			{
-				EmptyList(listviewProperties);
+				listviewProperties.Clear();
 				AddColumns("properties");
 			}
 
@@ -656,8 +594,8 @@ namespace SOFT152Assignment
 				if(Data.changed)
 				{
 					PopulateList(Data.districts, "districts");
-					PopulateList(Data.districts, "neighborhoods");
-					PopulateList(Data.districts, "properties");
+					listviewNeighborhoods.Clear();
+					listviewProperties.Clear();
 					Data.changed = false;
 					Data.unsaved = true;
 					Utils.EnableControl(buttonSave);

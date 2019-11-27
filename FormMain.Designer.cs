@@ -104,7 +104,7 @@
 			this.listviewDistricts.Location = new System.Drawing.Point(12, 84);
 			this.listviewDistricts.MultiSelect = false;
 			this.listviewDistricts.Name = "listviewDistricts";
-			this.listviewDistricts.Size = new System.Drawing.Size(1100, 177);
+			this.listviewDistricts.Size = new System.Drawing.Size(1100, 153);
 			this.listviewDistricts.TabIndex = 34;
 			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
 			this.listviewDistricts.View = System.Windows.Forms.View.Details;
@@ -119,10 +119,10 @@
 			this.listviewNeighborhoods.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewNeighborhoods.FullRowSelect = true;
 			this.listviewNeighborhoods.HideSelection = false;
-			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 267);
+			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 243);
 			this.listviewNeighborhoods.MultiSelect = false;
 			this.listviewNeighborhoods.Name = "listviewNeighborhoods";
-			this.listviewNeighborhoods.Size = new System.Drawing.Size(1100, 200);
+			this.listviewNeighborhoods.Size = new System.Drawing.Size(1100, 224);
 			this.listviewNeighborhoods.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listviewNeighborhoods.TabIndex = 35;
 			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
