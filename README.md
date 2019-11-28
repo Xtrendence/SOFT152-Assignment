@@ -12,7 +12,7 @@ Please note that the only reason I managed to learn and do it all so quickly is 
 
 ### Finished Assignment
 
-#### 28th of November, 2019 at 5 PM
+#### 28th of November, 2019 at 5:20 PM
 
 ### Time Spent on the Assignment
 
