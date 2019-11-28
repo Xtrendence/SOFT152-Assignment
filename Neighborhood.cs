@@ -59,7 +59,7 @@ namespace SOFT152Assignment
 			int numberOfProperties = this.properties.Length;
 			Array.Resize(ref properties, numberOfProperties + 1);
 			properties[numberOfProperties] = property;
-			this.propertyCount += 1;
+			this.propertyCount = properties.Length;
 		}
 	}
 }

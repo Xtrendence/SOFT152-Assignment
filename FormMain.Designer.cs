@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
 			this.buttonBack = new System.Windows.Forms.Button();
 			this.labelFileDialog = new System.Windows.Forms.Label();
 			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -464,7 +463,6 @@
 			this.Controls.Add(this.listviewDistricts);
 			this.Controls.Add(this.listviewNeighborhoods);
 			this.Controls.Add(this.listviewProperties);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(1454, 944);
 			this.Name = "FormMain";

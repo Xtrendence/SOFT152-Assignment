@@ -35,6 +35,7 @@ namespace SOFT152Assignment
 		public FormAnalysis()
 		{
 			InitializeComponent();
+			Utils.SetIcon(this);
 
 			this.districtStart = 0;
 			this.neighborhoodStart = 0;

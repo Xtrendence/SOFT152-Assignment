@@ -59,7 +59,7 @@ namespace SOFT152Assignment
 			int numberOfNeighborhoods = this.neighborhoods.Length;
 			Array.Resize(ref neighborhoods, numberOfNeighborhoods + 1);
 			neighborhoods[numberOfNeighborhoods] = neighborhood;
-			this.neighborhoodCount += 1;
+			this.neighborhoodCount = neighborhoods.Length;
 		}
 	}
 }

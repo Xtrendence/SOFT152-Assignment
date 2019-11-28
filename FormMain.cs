@@ -25,6 +25,8 @@ namespace SOFT152Assignment
 		public FormMain(string accessLevel)
 		{
 			InitializeComponent();
+			Utils.SetIcon(this);
+
 			this.open = true;
 			this.level = accessLevel.ToLower();
 
@@ -462,11 +464,15 @@ namespace SOFT152Assignment
 							{
 								// To avoid using "Contains()" or "IndexOf()", I've coded my own way of checking if the sub-item's text content contains a portion of the query. Unfortunately, it only checks from the beginning of the sub-item string, so the user can't search for the "eigh" in "neighborhood" for example.
 								string subString = subItemText.Substring(0, queryLength).ToLower();
-								if(subString != query.ToLower())
+								if(subString == query.ToLower())
 								{
-									item.Remove();
+									item.Tag = "match";
 								}
 							}
+						}
+						if(item.Tag == null)
+						{
+							item.Remove();
 						}
 					}
 				}

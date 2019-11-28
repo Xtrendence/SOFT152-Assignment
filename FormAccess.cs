@@ -17,6 +17,7 @@ namespace SOFT152Assignment
 		public FormAccess()
 		{
 			InitializeComponent();
+			Utils.SetIcon(this);
 
 			// Set the form to open. This is used later on to actually exit the application if the form is closed.
 			open = true;

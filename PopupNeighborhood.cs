@@ -18,14 +18,6 @@ namespace SOFT152Assignment
 		public int districtIndex;
 		public int neighborhoodIndex;
 
-		// For adding.
-		public PopupNeighborhood(string accessLevel, string desiredAction)
-		{
-			InitializeComponent();
-			this.level = accessLevel.ToLower();
-			this.action = desiredAction.ToLower();
-			SetTitle();
-		}
 		// For editing or viewing.
 		public PopupNeighborhood(string accessLevel, string desiredAction, int indexDistrict, int indexNeighborhood)
 		{

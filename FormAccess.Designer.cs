@@ -134,7 +134,6 @@
 			this.Controls.Add(this.buttonStaff);
 			this.Controls.Add(this.buttonPublic);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "FormAccess";
 			this.Text = "Access Level";

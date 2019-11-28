@@ -15,13 +15,19 @@ namespace SOFT152Assignment
 		public string level;
 		public string action;
 		public int districtIndex;
+
+		// For adding.
 		public PopupDistrict(string accessLevel, string desiredAction)
 		{
 			InitializeComponent();
+			Utils.SetIcon(this);
+
 			this.level = accessLevel.ToLower();
 			this.action = desiredAction.ToLower();
 			SetTitle();
 		}
+
+		// For editing and viewing.
 		public PopupDistrict(string accessLevel, string desiredAction, int indexDistrict)
 		{
 			InitializeComponent();

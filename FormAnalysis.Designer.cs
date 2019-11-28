@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAnalysis));
 			this.panelNeighborhood = new System.Windows.Forms.Panel();
 			this.panelDistrictNames = new System.Windows.Forms.Panel();
 			this.panelProperty = new System.Windows.Forms.Panel();
@@ -156,7 +155,6 @@
 			this.Controls.Add(this.panelDistrictNames);
 			this.Controls.Add(this.panelNeighborhood);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(1454, 944);
 			this.Name = "FormAnalysis";

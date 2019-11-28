@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopupDistrict));
 			this.inputName = new System.Windows.Forms.TextBox();
 			this.panelName = new System.Windows.Forms.Panel();
 			this.buttonConfirm = new System.Windows.Forms.Button();
@@ -133,7 +132,6 @@
 			this.Controls.Add(this.panelName);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "PopupDistrict";
 			this.Text = "District";

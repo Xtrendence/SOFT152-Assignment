@@ -10,6 +10,14 @@ namespace SOFT152Assignment
 {
 	class Utils
 	{
+		public static void SetIcon(Form form)
+		{
+			if(Properties.Resources.AMT != null)
+			{
+				form.Icon = Properties.Resources.AMT;
+			}
+		}
+
 		public static void DisableControl(Control control)
 		{
 			control.BackColor = Color.FromArgb(20, 20, 20);
