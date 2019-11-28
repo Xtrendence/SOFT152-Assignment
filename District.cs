@@ -12,13 +12,6 @@ namespace SOFT152Assignment
 		public int neighborhoodCount;
 		public Neighborhood[] neighborhoods = new Neighborhood[0];
 
-		public District(string districtName, int districtNeighborhoodCount, Neighborhood[] districtNeighborhoods)
-		{
-			this.name = districtName;
-			this.neighborhoodCount = districtNeighborhoodCount;
-			this.neighborhoods = districtNeighborhoods;
-		}
-
 		public District(string districtName, int districtNeighborhoodCount)
 		{
 			this.name = districtName;

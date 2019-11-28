@@ -17,10 +17,13 @@ namespace SOFT152Assignment
 		public FormAccess()
 		{
 			InitializeComponent();
+
 			// Set the form to open. This is used later on to actually exit the application if the form is closed.
 			open = true;
+
 			int screenWidth = Screen.FromControl(this).Bounds.Width;
 			int screenHeight = Screen.FromControl(this).Bounds.Height;
+
 			// Center the window horizontally.
 			this.Left = (screenWidth / 2) - (this.Width / 2);
 			this.Top = 50;
@@ -52,6 +55,7 @@ namespace SOFT152Assignment
 			if(this.open)
 			{
 				this.open = false;
+
 				// Ensures the application actually stops running.
 				this.Close();
 				Application.Exit();

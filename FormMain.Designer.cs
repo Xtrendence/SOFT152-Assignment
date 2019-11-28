@@ -51,6 +51,8 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.buttonSave = new System.Windows.Forms.Button();
+			this.labelSelectDistrict = new System.Windows.Forms.Label();
+			this.labelSelectDistrictAndNeighborhood = new System.Windows.Forms.Label();
 			this.panelSearchDistrict.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -82,7 +84,7 @@
 			this.labelFileDialog.Name = "labelFileDialog";
 			this.labelFileDialog.Size = new System.Drawing.Size(55, 47);
 			this.labelFileDialog.TabIndex = 33;
-			this.labelFileDialog.Text = "Select Data Source...";
+			this.labelFileDialog.Text = "Select a Data Source...";
 			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.labelFileDialog.Click += new System.EventHandler(this.LabelFileDialog_Click);
 			this.labelFileDialog.MouseEnter += new System.EventHandler(this.LabelFileDialog_MouseEnter);
@@ -403,6 +405,36 @@
 			this.buttonSave.Visible = false;
 			this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
 			// 
+			// labelSelectDistrict
+			// 
+			this.labelSelectDistrict.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelSelectDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.labelSelectDistrict.Cursor = System.Windows.Forms.Cursors.Default;
+			this.labelSelectDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelSelectDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.labelSelectDistrict.Location = new System.Drawing.Point(12, 243);
+			this.labelSelectDistrict.Name = "labelSelectDistrict";
+			this.labelSelectDistrict.Size = new System.Drawing.Size(1100, 224);
+			this.labelSelectDistrict.TabIndex = 51;
+			this.labelSelectDistrict.Text = "Select a District First...";
+			this.labelSelectDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelSelectDistrict.Visible = false;
+			// 
+			// labelSelectDistrictAndNeighborhood
+			// 
+			this.labelSelectDistrictAndNeighborhood.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelSelectDistrictAndNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+			this.labelSelectDistrictAndNeighborhood.Cursor = System.Windows.Forms.Cursors.Default;
+			this.labelSelectDistrictAndNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelSelectDistrictAndNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.labelSelectDistrictAndNeighborhood.Location = new System.Drawing.Point(12, 473);
+			this.labelSelectDistrictAndNeighborhood.Name = "labelSelectDistrictAndNeighborhood";
+			this.labelSelectDistrictAndNeighborhood.Size = new System.Drawing.Size(1100, 423);
+			this.labelSelectDistrictAndNeighborhood.TabIndex = 52;
+			this.labelSelectDistrictAndNeighborhood.Text = "Select a District && Neighborhood First";
+			this.labelSelectDistrictAndNeighborhood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelSelectDistrictAndNeighborhood.Visible = false;
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,8 +442,8 @@
 			this.AutoScroll = true;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
 			this.ClientSize = new System.Drawing.Size(1438, 905);
-			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.labelFileDialog);
+			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
@@ -427,6 +459,8 @@
 			this.Controls.Add(this.buttonEditDistrict);
 			this.Controls.Add(this.buttonViewDistrict);
 			this.Controls.Add(this.buttonBack);
+			this.Controls.Add(this.labelSelectDistrict);
+			this.Controls.Add(this.labelSelectDistrictAndNeighborhood);
 			this.Controls.Add(this.listviewDistricts);
 			this.Controls.Add(this.listviewNeighborhoods);
 			this.Controls.Add(this.listviewProperties);
@@ -466,5 +500,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button buttonSave;
+		private System.Windows.Forms.Label labelSelectDistrict;
+		private System.Windows.Forms.Label labelSelectDistrictAndNeighborhood;
 	}
 }

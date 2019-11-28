@@ -11,17 +11,13 @@ namespace SOFT152Assignment
 		public string name;
 		public int propertyCount;
 		public Property[] properties = new Property[0];
-		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount, Property[] neighborhoodProperties)
-		{
-			this.name = neighborhoodName;
-			this.propertyCount = neighborhoodPropertyCount;
-			this.properties = neighborhoodProperties;
-		}
+
 		public Neighborhood(string neighborhoodName, int neighborhoodPropertyCount)
 		{
 			this.name = neighborhoodName;
 			this.propertyCount = neighborhoodPropertyCount;
 		}
+
 		public string Name
 		{
 			get
@@ -33,6 +29,7 @@ namespace SOFT152Assignment
 				this.name = value;
 			}
 		}
+
 		public int PropertyCount
 		{
 			get
@@ -44,6 +41,7 @@ namespace SOFT152Assignment
 				this.propertyCount = value;
 			}
 		}
+
 		public Property[] Properties
 		{
 			get
@@ -55,6 +53,7 @@ namespace SOFT152Assignment
 				this.properties = value;
 			}
 		}
+
 		public void AddProperty(Property property)
 		{
 			int numberOfProperties = this.properties.Length;

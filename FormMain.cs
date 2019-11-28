@@ -14,8 +14,11 @@ namespace SOFT152Assignment
 {
 	public partial class FormMain : Form
 	{
+		// String containing the file path of the data file.
 		public string dataFile;
+		// The user's access level (staff or public).
 		public string level;
+		// To determine whether or not the form is open.
 		public bool open;
 
 		// For back buttons to "remember" the category the user was looking at. Just a quality of life improvement.
@@ -34,9 +37,11 @@ namespace SOFT152Assignment
 				buttonAddDistrict.Hide();
 				buttonAddNeighborhood.Hide();
 				buttonAddProperty.Hide();
+
 				buttonEditDistrict.Hide();
 				buttonEditNeighborhood.Hide();
 				buttonEditProperty.Hide();
+
 				this.Text = "Public Access";
 			}
 
@@ -59,6 +64,10 @@ namespace SOFT152Assignment
 			listviewDistricts.Clear();
 			listviewNeighborhoods.Clear();
 			listviewProperties.Clear();
+
+			labelSelectDistrict.Visible = true;
+			labelSelectDistrictAndNeighborhood.Visible = true;
+
 			ShowForm(new FormAccess(), true, false);
 		}
 
@@ -94,6 +103,7 @@ namespace SOFT152Assignment
 				{
 					PopulateList(Data.districts, "districts");
 				}
+
 				Search("districts", inputSearchDistrict.Text.Trim());
 			}
 			else
@@ -118,6 +128,7 @@ namespace SOFT152Assignment
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
 					int index = listviewDistricts.SelectedIndices[0];
+
 					ShowForm(new PopupDistrict("staff", "edit", index), false, true);
 				}
 				else
@@ -132,6 +143,7 @@ namespace SOFT152Assignment
 			if(listviewDistricts.SelectedItems.Count == 1)
 			{
 				int index = listviewDistricts.SelectedIndices[0];
+
 				ShowForm(new PopupDistrict("staff", "view", index), false, true);
 			}
 			else
@@ -148,6 +160,7 @@ namespace SOFT152Assignment
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
 					int index = listviewDistricts.SelectedIndices[0];
+
 					ShowForm(new PopupNeighborhood("staff", "add", index), false, true);
 				}
 				else
@@ -166,6 +179,7 @@ namespace SOFT152Assignment
 				{
 					int districtIndex = listviewDistricts.SelectedIndices[0];
 					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+
 					ShowForm(new PopupNeighborhood("staff", "edit", districtIndex, neighborhoodIndex), false, true);
 				}
 				else
@@ -181,6 +195,7 @@ namespace SOFT152Assignment
 			{
 				int districtIndex = listviewDistricts.SelectedIndices[0];
 				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+
 				ShowForm(new PopupNeighborhood("staff", "view", districtIndex, neighborhoodIndex), false, true);
 			}
 			else
@@ -198,6 +213,7 @@ namespace SOFT152Assignment
 				{
 					int districtIndex = listviewDistricts.SelectedIndices[0];
 					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+
 					ShowForm(new PopupProperty("staff", "add", districtIndex, neighborhoodIndex), false, true);
 				}
 				else
@@ -217,6 +233,7 @@ namespace SOFT152Assignment
 					int districtIndex = listviewDistricts.SelectedIndices[0];
 					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
 					int propertyIndex = listviewProperties.SelectedIndices[0];
+
 					ShowForm(new PopupProperty("staff", "edit", districtIndex, neighborhoodIndex, propertyIndex), false, true);
 				}
 				else
@@ -233,6 +250,7 @@ namespace SOFT152Assignment
 				int districtIndex = listviewDistricts.SelectedIndices[0];
 				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
 				int propertyIndex = listviewProperties.SelectedIndices[0];
+
 				ShowForm(new PopupProperty("staff", "view", districtIndex, neighborhoodIndex, propertyIndex), false, true);
 			}
 			else
@@ -253,10 +271,15 @@ namespace SOFT152Assignment
 				listviewNeighborhoods.Clear();
 				listviewProperties.Clear();
 
+				labelSelectDistrict.Visible = false;
+				labelSelectDistrictAndNeighborhood.Visible = true;
+				labelSelectDistrictAndNeighborhood.Text = "Select a Neighborhood First...";
+
 				AddColumns("neighborhoods");
 
 				int districtIndex = listviewDistricts.SelectedIndices[0];
 				District district = Data.districts[districtIndex];
+
 				foreach(Neighborhood neighborhood in district.Neighborhoods)
 				{
 					listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
@@ -270,6 +293,11 @@ namespace SOFT152Assignment
 
 				listviewNeighborhoods.Clear();
 				listviewProperties.Clear();
+
+				labelSelectDistrict.Visible = true;
+				labelSelectDistrict.Text = "Select a District First...";
+				labelSelectDistrictAndNeighborhood.Visible = true;
+				labelSelectDistrictAndNeighborhood.Text = "Select a District && Neighborhood First";
 			}
 		}
 
@@ -280,6 +308,8 @@ namespace SOFT152Assignment
 			{
 				listviewProperties.Clear();
 
+				labelSelectDistrictAndNeighborhood.Visible = false;
+
 				AddColumns("properties");
 
 				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
@@ -289,9 +319,12 @@ namespace SOFT152Assignment
 					Utils.EnableControl(buttonViewNeighborhood);
 					Utils.EnableControl(buttonEditNeighborhood);
 					Utils.EnableControl(buttonAddProperty);
+
 					int districtIndex = listviewDistricts.SelectedIndices[0];
+
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+
 					foreach(Property property in neighborhood.Properties)
 					{
 						listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
@@ -305,6 +338,8 @@ namespace SOFT152Assignment
 				Utils.DisableControl(buttonAddProperty);
 
 				listviewProperties.Clear();
+
+				labelSelectDistrictAndNeighborhood.Visible = true;
 			}
 		}
 
@@ -329,6 +364,7 @@ namespace SOFT152Assignment
 			labelFileDialog.Text = "Loading " + fileDialog.SafeFileName;
 			ReadFile(fileDialog.FileName);
 			this.dataFile = fileDialog.FileName;
+
 			if(this.dataFile != null && this.dataFile != "")
 			{
 				Utils.EnableControl(buttonAddDistrict);
@@ -338,9 +374,9 @@ namespace SOFT152Assignment
 		private void LabelFileDialog_Click(object sender, EventArgs e)
 		{
 			// Disable file selection if one's already been selected.
-			if(labelFileDialog.Text == "Select Data Source...")
+			if(labelFileDialog.Text == "Select a Data Source...")
 			{
-				fileDialog.Title = "Select Data Source File";
+				fileDialog.Title = "Select a Data Source File";
 				fileDialog.FileName = "*.txt";
 				fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 				fileDialog.CheckFileExists = true;
@@ -441,7 +477,9 @@ namespace SOFT152Assignment
 		{
 			bool valid = true;
 			string exception = "";
+			// The districts array is reset to 0 in case the user previously chose a different data file.
 			Data.districts = new District[0];
+
 			StreamReader reader = new StreamReader(filename);
 			while(!reader.EndOfStream)
 			{
@@ -499,8 +537,10 @@ namespace SOFT152Assignment
 				listviewDistricts.Show();
 				listviewNeighborhoods.Show();
 				listviewProperties.Show();
+
 				Utils.EnableControl(buttonAnalysis);
 				buttonAnalysis.Visible = true;
+
 				if(this.level == "staff")
 				{
 					buttonSave.Visible = true;
@@ -522,16 +562,21 @@ namespace SOFT152Assignment
 			{
 				listviewDistricts.Clear();
 				AddColumns("districts");
+				labelSelectDistrict.Visible = true;
+				labelSelectDistrictAndNeighborhood.Visible = true;
 			}
 			else if(category == "neighborhoods")
 			{
 				listviewNeighborhoods.Clear();
 				AddColumns("neighborhoods");
+				labelSelectDistrict.Visible = false;
+				labelSelectDistrictAndNeighborhood.Visible = true;
 			}
 			else if(category == "properties")
 			{
 				listviewProperties.Clear();
 				AddColumns("properties");
+				labelSelectDistrictAndNeighborhood.Visible = false;
 			}
 
 			// Add each district, neighborhood, and property to their respective ListViews.
@@ -594,10 +639,16 @@ namespace SOFT152Assignment
 				if(Data.changed)
 				{
 					PopulateList(Data.districts, "districts");
+
 					listviewNeighborhoods.Clear();
 					listviewProperties.Clear();
+
+					labelSelectDistrict.Visible = true;
+					labelSelectDistrictAndNeighborhood.Visible = true;
+
 					Data.changed = false;
 					Data.unsaved = true;
+
 					Utils.EnableControl(buttonSave);
 				}
 			}
