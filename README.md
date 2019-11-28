@@ -1,4 +1,4 @@
-# SOFT152-Assignment
+# SOFT152 Assignment (Airbnb Management Tool)
 
 SOFT152 Coursework by Khodadad (Adrian) Nouchin.
  
