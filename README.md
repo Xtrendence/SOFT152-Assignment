@@ -1,4 +1,4 @@
-# SOFT152-Assignment
+# SOFT152 Assignment (Airbnb Management Tool)
 
 SOFT152 Coursework by Khodadad (Adrian) Nouchin.
  
@@ -12,8 +12,8 @@ Please note that the only reason I managed to learn and do it all so quickly is 
 
 ### Finished Assignment
 
-#### 28th of November, 2019 at 2:40 AM
+#### 28th of November, 2019 at 5:20 PM
 
 ### Time Spent on the Assignment
 
-#### ~ 30 Hours
+#### ~ 32 Hours
