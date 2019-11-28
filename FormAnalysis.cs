@@ -19,14 +19,14 @@ namespace SOFT152Assignment
 		public int districtEnd;
 		public int neighborhoodEnd;
 		public int neighborhoodTotal;
+		public Neighborhood[] neighborhoods = new Neighborhood[0];
 		public FormAnalysis()
 		{
 			InitializeComponent();
 			this.districtStart = 0;
 			this.neighborhoodStart = 0;
-			this.districtEnd = 6;
-			this.neighborhoodEnd = 6;
-			this.neighborhoodTotal = 0;
+			this.districtEnd = 7;
+			this.neighborhoodEnd = 7;
 			this.drawingEnabled = true;
 			panelNeighborhood.Invalidate();
 			panelProperty.Invalidate();
@@ -95,41 +95,38 @@ namespace SOFT152Assignment
 				panelNeighborhoodNames.Controls.Clear();
 
 				SolidBrush orangeBrush = new SolidBrush(Color.FromArgb(230, 150, 0));
-				foreach(District district in Data.districts)
+				for(int i = start; i < end; i++)
 				{
-					for(int i = start; i < end; i++)
+					try
 					{
-						try
-						{
-							Neighborhood neighborhood = district.Neighborhoods[i];
-							int propertyCount = neighborhood.PropertyCount;
+						Neighborhood neighborhood = neighborhoods[i];
+						int propertyCount = neighborhood.PropertyCount;
 
-							Graphics propertyBar = panelProperty.CreateGraphics();
+						Graphics propertyBar = panelProperty.CreateGraphics();
 
-							int propertyBarHeight = Convert.ToInt32(Math.Round(propertyCount * propertyBarHeightAdjustment));
-							int propertyBarTop = panelPropertyHeight - propertyBarHeight;
+						int propertyBarHeight = Convert.ToInt32(Math.Round(propertyCount * propertyBarHeightAdjustment));
+						int propertyBarTop = panelPropertyHeight - propertyBarHeight;
 
-							Rectangle rectangle = new Rectangle(marginProperty, propertyBarTop, barWidth, propertyBarHeight);
-							propertyBar.FillRectangle(orangeBrush, rectangle);
-							propertyBar.Dispose();
-							marginProperty += totalWidth;
+						Rectangle rectangle = new Rectangle(marginProperty, propertyBarTop, barWidth, propertyBarHeight);
+						propertyBar.FillRectangle(orangeBrush, rectangle);
+						propertyBar.Dispose();
+						marginProperty += totalWidth;
 
-							Label labelNeighborhoodName = new Label();
-							labelNeighborhoodName.Text = neighborhood.Name + " (" + propertyCount + ")";
-							labelNeighborhoodName.AutoSize = false;
-							labelNeighborhoodName.ForeColor = Color.FromArgb(245, 245, 245);
-							labelNeighborhoodName.Font = font;
-							labelNeighborhoodName.Width = totalWidth - nameAdjustment;
-							labelNeighborhoodName.TextAlign = ContentAlignment.MiddleCenter;
-							labelNeighborhoodName.Top = 0;
-							labelNeighborhoodName.Left = marginNeighborhoodName;
-							panelNeighborhoodNames.Controls.Add(labelNeighborhoodName);
-							marginNeighborhoodName += totalWidth;
-						}
-						catch(IndexOutOfRangeException e)
-						{
-							Debug.WriteLine(e.Message);
-						}
+						Label labelNeighborhoodName = new Label();
+						labelNeighborhoodName.Text = neighborhood.Name + " (" + propertyCount + ")";
+						labelNeighborhoodName.AutoSize = false;
+						labelNeighborhoodName.ForeColor = Color.FromArgb(245, 245, 245);
+						labelNeighborhoodName.Font = font;
+						labelNeighborhoodName.Width = totalWidth - nameAdjustment;
+						labelNeighborhoodName.TextAlign = ContentAlignment.MiddleCenter;
+						labelNeighborhoodName.Top = 0;
+						labelNeighborhoodName.Left = marginNeighborhoodName;
+						panelNeighborhoodNames.Controls.Add(labelNeighborhoodName);
+						marginNeighborhoodName += totalWidth;
+					}
+					catch(IndexOutOfRangeException e)
+					{
+						Debug.WriteLine(e.Message);
 					}
 				}
 				orangeBrush.Dispose();
@@ -138,53 +135,25 @@ namespace SOFT152Assignment
 
 		private void ButtonPreviousDistrict_Click(object sender, EventArgs e)
 		{
-			if(this.districtStart - 6 > Data.districts.Length)
-			{
-				this.districtStart -= 6;
-			}
-			if(this.districtEnd - 6 > Data.districts.Length)
-			{
-				this.districtEnd -= 6;
-			}
+			
 			panelNeighborhood.Invalidate();
 		}
 
 		private void ButtonNextDistrict_Click(object sender, EventArgs e)
 		{
-			if(this.districtStart + 6 < Data.districts.Length)
-			{
-				this.districtStart += 6;
-			}
-			if(this.districtEnd + 6 < Data.districts.Length)
-			{
-				this.districtEnd += 6;
-			}
+			
 			panelNeighborhood.Invalidate();
 		}
 
 		private void ButtonPreviousNeighborhood_Click(object sender, EventArgs e)
 		{
-			if(this.neighborhoodStart - 6 < this.neighborhoodTotal)
-			{
-				this.neighborhoodStart -= 6;
-			}
-			if(this.neighborhoodEnd - 6 < this.neighborhoodTotal)
-			{
-				this.neighborhoodEnd -= 6;
-			}
+			
 			panelProperty.Invalidate();
 		}
 
 		private void ButtonNextNeighborhood_Click(object sender, EventArgs e)
 		{
-			if(this.neighborhoodStart + 6 < this.neighborhoodTotal)
-			{
-				this.neighborhoodStart += 6;
-			}
-			if(this.neighborhoodEnd + 6 < this.neighborhoodTotal)
-			{
-				this.neighborhoodEnd += 6;
-			}
+			
 			panelProperty.Invalidate();
 		}
   
@@ -192,14 +161,7 @@ namespace SOFT152Assignment
 		{
 			if(this.drawingEnabled)
 			{
-				if(this.districtStart < 0)
-				{
-					this.districtStart = 0;
-				}
-				if(this.districtEnd > Data.districts.Length)
-				{
-					this.districtEnd = Data.districts.Length;
-				}
+				
 				DrawBars(this.districtStart, this.districtEnd, "neighborhood");
 			}
 		}
@@ -208,18 +170,19 @@ namespace SOFT152Assignment
 		{
 			if(this.drawingEnabled)
 			{
-				foreach(District district in Data.districts)
+				if(this.neighborhoods.Length == 0)
 				{
-					this.neighborhoodTotal += district.NeighborhoodCount;
+					foreach(District district in Data.districts)
+					{
+						foreach(Neighborhood neighborhood in district.Neighborhoods)
+						{
+							int length = neighborhoods.Length;
+							Array.Resize(ref this.neighborhoods, length + 1);
+							neighborhoods[length] = neighborhood;
+						}
+					}
 				}
-				if(this.neighborhoodStart < 0)
-				{
-					this.neighborhoodStart = 0;
-				}
-				if(this.neighborhoodEnd > this.neighborhoodTotal - 1)
-				{
-					this.neighborhoodEnd = this.neighborhoodTotal - 1;
-				}
+				
 				DrawBars(this.neighborhoodStart, this.neighborhoodEnd, "property");
 			}
 		}

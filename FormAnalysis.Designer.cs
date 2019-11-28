@@ -86,6 +86,7 @@
 			this.buttonPreviousDistrict.TabIndex = 19;
 			this.buttonPreviousDistrict.Text = "Previous";
 			this.buttonPreviousDistrict.UseVisualStyleBackColor = false;
+			this.buttonPreviousDistrict.Visible = false;
 			this.buttonPreviousDistrict.Click += new System.EventHandler(this.ButtonPreviousDistrict_Click);
 			// 
 			// buttonNextDistrict
@@ -120,6 +121,7 @@
 			this.buttonPreviousNeighborhood.TabIndex = 21;
 			this.buttonPreviousNeighborhood.Text = "Previous";
 			this.buttonPreviousNeighborhood.UseVisualStyleBackColor = false;
+			this.buttonPreviousNeighborhood.Visible = false;
 			this.buttonPreviousNeighborhood.Click += new System.EventHandler(this.ButtonPreviousNeighborhood_Click);
 			// 
 			// buttonNextNeighborhood
