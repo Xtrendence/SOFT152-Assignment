@@ -21,7 +21,6 @@ namespace SOFT152Assignment
 		// To determine whether or not the form is open.
 		public bool open;
 
-		// For back buttons to "remember" the category the user was looking at. Just a quality of life improvement.
 		public FormMain(string accessLevel)
 		{
 			InitializeComponent();
@@ -51,6 +50,7 @@ namespace SOFT152Assignment
 			labelFileDialog.Height = this.Height - 135;
 		}
 
+		// Ensures the application actually closes when the form does.
 		private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			if(this.open)
@@ -58,6 +58,29 @@ namespace SOFT152Assignment
 				this.open = false;
 				this.Close();
 				Application.Exit();
+			}
+		}
+
+		// The "Activated" event is triggered whenever the form gains focus. In this case, it's used to refresh the data (if it has changed) when a popup form is closed.
+		private void FormMain_Activated(object sender, EventArgs e)
+		{
+			if(dataFile != null && dataFile != "")
+			{
+				if(Data.changed)
+				{
+					PopulateList(Data.districts, "districts");
+
+					listviewNeighborhoods.Clear();
+					listviewProperties.Clear();
+
+					labelSelectDistrict.Visible = true;
+					labelSelectDistrictAndNeighborhood.Visible = true;
+
+					Data.changed = false;
+					Data.unsaved = true;
+
+					Utils.EnableControl(buttonSave);
+				}
 			}
 		}
 
@@ -71,6 +94,56 @@ namespace SOFT152Assignment
 			labelSelectDistrictAndNeighborhood.Visible = true;
 
 			ShowForm(new FormAccess(), true, false);
+		}
+
+		private void ButtonSave_Click(object sender, EventArgs e)
+		{
+			if(Data.unsaved)
+			{
+				StreamWriter writer = new StreamWriter(dataFile);
+				foreach(District district in Data.districts)
+				{
+					writer.WriteLine(district.Name);
+					writer.WriteLine(district.Neighborhoods.Length);
+					foreach(Neighborhood neighborhood in district.Neighborhoods)
+					{
+						writer.WriteLine(neighborhood.Name);
+						writer.WriteLine(neighborhood.Properties.Length);
+						foreach(Property property in neighborhood.Properties)
+						{
+							writer.WriteLine(property.Id);
+							writer.WriteLine(property.Name);
+							writer.WriteLine(property.HostID);
+							writer.WriteLine(property.HostName);
+							writer.WriteLine(property.Count);
+							writer.WriteLine(property.Latitude);
+							writer.WriteLine(property.Longitude);
+							writer.WriteLine(property.RoomType);
+							writer.WriteLine(property.RoomPrice);
+							writer.WriteLine(property.RoomNights);
+							writer.WriteLine(property.RoomAvailability);
+						}
+					}
+				}
+				writer.Close();
+				Data.unsaved = false;
+				Utils.DisableControl(buttonSave);
+			}
+			else
+			{
+				MessageBox.Show("No changes have been made to save.", "Error");
+			}
+		}
+
+		private void ButtonAnalysis_Click(object sender, EventArgs e)
+		{
+			if(dataFile != null && dataFile != "")
+			{
+				Form form = new FormAnalysis();
+				form.StartPosition = FormStartPosition.Manual;
+				form.Location = new Point(this.Left, this.Top);
+				form.ShowDialog();
+			}
 		}
 
 		private void PanelSearchDistrict_Click(object sender, EventArgs e)
@@ -397,6 +470,63 @@ namespace SOFT152Assignment
 			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
 		}
 
+		private void LabelFileDialog_DragEnter(object sender, DragEventArgs e)
+		{
+			labelFileDialog.BackColor = Color.FromArgb(70, 70, 70);
+		}
+
+		private void LabelFileDialog_DragLeave(object sender, EventArgs e)
+		{
+			labelFileDialog.BackColor = Color.FromArgb(60, 60, 60);
+		}
+
+		private void LabelFileDialog_DragOver(object sender, DragEventArgs e)
+		{
+			try
+			{
+				if(e.Data.GetDataPresent(DataFormats.FileDrop))
+				{
+					e.Effect = DragDropEffects.Copy;
+				}
+				else
+				{
+					e.Effect = DragDropEffects.None;
+				}
+			}
+			catch(Exception error)
+			{
+				MessageBox.Show(error.Message, "Error");
+			}
+		}
+
+		private void LabelFileDialog_DragDrop(object sender, DragEventArgs e)
+		{
+			try
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				if(files.Length > 1)
+				{
+					MessageBox.Show("You can only read one file.", "Error");
+				}
+				else
+				{
+					// Display the file name to the user along with "Loading" so they know they chose the right file.
+					labelFileDialog.Text = "Loading " + files[0];
+					ReadFile(files[0]);
+					this.dataFile = files[0];
+
+					if(this.dataFile != null && this.dataFile != "")
+					{
+						Utils.EnableControl(buttonAddDistrict);
+					}
+				}
+			}
+			catch(Exception error)
+			{
+				MessageBox.Show(error.Message, "Error");
+			}
+		}
+
 		private void ShowForm(Form form, bool matchSize, bool keepOpen)
 		{
 			int screenWidth = Screen.FromControl(this).Bounds.Width;
@@ -635,78 +765,6 @@ namespace SOFT152Assignment
 				listviewProperties.Columns.Add("Room Price", 130);
 				listviewProperties.Columns.Add("Minimum Nights", 150);
 				listviewProperties.Columns.Add("Days Available per Year", 250);
-			}
-		}
-
-		private void FormMain_Activated(object sender, EventArgs e)
-		{
-			if(dataFile != null && dataFile != "")
-			{
-				if(Data.changed)
-				{
-					PopulateList(Data.districts, "districts");
-
-					listviewNeighborhoods.Clear();
-					listviewProperties.Clear();
-
-					labelSelectDistrict.Visible = true;
-					labelSelectDistrictAndNeighborhood.Visible = true;
-
-					Data.changed = false;
-					Data.unsaved = true;
-
-					Utils.EnableControl(buttonSave);
-				}
-			}
-		}
-
-		private void ButtonSave_Click(object sender, EventArgs e)
-		{
-			if(Data.unsaved)
-			{
-				StreamWriter writer = new StreamWriter(dataFile);
-				foreach(District district in Data.districts)
-				{
-					writer.WriteLine(district.Name);
-					writer.WriteLine(district.Neighborhoods.Length);
-					foreach(Neighborhood neighborhood in district.Neighborhoods)
-					{
-						writer.WriteLine(neighborhood.Name);
-						writer.WriteLine(neighborhood.Properties.Length);
-						foreach(Property property in neighborhood.Properties)
-						{
-							writer.WriteLine(property.Id);
-							writer.WriteLine(property.Name);
-							writer.WriteLine(property.HostID);
-							writer.WriteLine(property.HostName);
-							writer.WriteLine(property.Count);
-							writer.WriteLine(property.Latitude);
-							writer.WriteLine(property.Longitude);
-							writer.WriteLine(property.RoomType);
-							writer.WriteLine(property.RoomPrice);
-							writer.WriteLine(property.RoomNights);
-							writer.WriteLine(property.RoomAvailability);
-						}
-					}
-				}
-				writer.Close();
-				Data.unsaved = false;
-				Utils.DisableControl(buttonSave);
-			}
-			else
-			{
-				MessageBox.Show("No changes have been made to save.", "Error");
-			}
-		}
-
-		private void ButtonAnalysis_Click(object sender, EventArgs e)
-		{
-			if(dataFile != null && dataFile != "")
-			{
-				Form form = new FormAnalysis();
-				form.StartPosition = FormStartPosition.Manual;
-				form.Location = new Point(this.Left, this.Top);
-				form.ShowDialog();
 			}
 		}
 	}

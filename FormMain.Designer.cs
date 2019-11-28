@@ -74,6 +74,7 @@
 			// 
 			// labelFileDialog
 			// 
+			this.labelFileDialog.AllowDrop = true;
 			this.labelFileDialog.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelFileDialog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.labelFileDialog.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -86,6 +87,10 @@
 			this.labelFileDialog.Text = "Select a Data Source...";
 			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.labelFileDialog.Click += new System.EventHandler(this.LabelFileDialog_Click);
+			this.labelFileDialog.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelFileDialog_DragDrop);
+			this.labelFileDialog.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelFileDialog_DragEnter);
+			this.labelFileDialog.DragOver += new System.Windows.Forms.DragEventHandler(this.LabelFileDialog_DragOver);
+			this.labelFileDialog.DragLeave += new System.EventHandler(this.LabelFileDialog_DragLeave);
 			this.labelFileDialog.MouseEnter += new System.EventHandler(this.LabelFileDialog_MouseEnter);
 			this.labelFileDialog.MouseLeave += new System.EventHandler(this.LabelFileDialog_MouseLeave);
 			// 
