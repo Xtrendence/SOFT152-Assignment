@@ -17,3 +17,9 @@ Please note that the only reason I managed to learn and do it all so quickly is 
 ### Time Spent on the Assignment
 
 #### ~ 32 Hours
+
+![1](https://user-images.githubusercontent.com/5298487/69841551-91746300-1257-11ea-90dc-3bc93154dbc5.png)
+
+![2](https://user-images.githubusercontent.com/5298487/69841560-9cc78e80-1257-11ea-903b-b3d68d39afee.png)
+
+![3](https://user-images.githubusercontent.com/5298487/69841563-a18c4280-1257-11ea-92db-8f1204f9fb12.png)
