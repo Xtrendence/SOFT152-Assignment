@@ -6,6 +6,8 @@ This was created after I had already made the UI of the program. It looked a bit
 
 Please note that the only reason I managed to learn and do it all so quickly is due to 3 years of daily full stack web development (with HTML, CSS, JavaScript, jQuery, NodeJS, PHP) and, on multiple occasions, Android app development (with Java).
 
+The bread is royalty and copyright free, I made sure of it.
+
 ### Started Assignment
 
 #### 11th of November, 2019 at 11 AM
