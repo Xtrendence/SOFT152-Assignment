@@ -200,6 +200,11 @@ namespace SOFT152Assignment
 
 		private void ButtonPreviousDistrict_Click(object sender, EventArgs e)
 		{
+			PreviousDistrict();
+		}
+
+		private void PreviousDistrict()
+		{
 			// If the start position - the number of bars is less than zero, then that means there are no more items before the current ones on display.
 			if(this.districtStart - barsTrack < 0)
 			{
@@ -231,6 +236,11 @@ namespace SOFT152Assignment
 
 		private void ButtonNextDistrict_Click(object sender, EventArgs e)
 		{
+			NextDistrict();
+		}
+
+		private void NextDistrict()
+		{
 			buttonPreviousDistrict.Visible = true;
 			if(this.districtStart + barsTrack >= Data.districts.Length)
 			{
@@ -248,6 +258,11 @@ namespace SOFT152Assignment
 		}
 
 		private void ButtonPreviousNeighborhood_Click(object sender, EventArgs e)
+		{
+			PreviousNeighborhood();
+		}
+
+		private void PreviousNeighborhood()
 		{
 			if(this.neighborhoodStart - barsTrack < 0)
 			{
@@ -277,6 +292,11 @@ namespace SOFT152Assignment
 		}
 
 		private void ButtonNextNeighborhood_Click(object sender, EventArgs e)
+		{
+			NextNeighborhood();
+		}
+
+		private void NextNeighborhood()
 		{
 			buttonPreviousNeighborhood.Visible = true;
 			if(this.neighborhoodStart + barsTrack >= neighborhoods.Length)

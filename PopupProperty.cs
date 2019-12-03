@@ -30,20 +30,14 @@ namespace SOFT152Assignment
 			this.neighborhoodIndex = indexNeighborhood;
 			this.propertyIndex = indexProperty;
 
-			Debug.WriteLine(districtIndex);
-			Debug.WriteLine(neighborhoodIndex);
-			Debug.WriteLine(propertyIndex);
-
 			SetTitle();
 			GetTextBoxes();
 
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
 			District district = Data.districts[districtIndex];
-			Debug.WriteLine(district.Name);
 			Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
-			Debug.WriteLine(neighborhood.Name);
 			Property property = neighborhood.Properties[propertyIndex];
-			Debug.WriteLine(property.Name);
+
 			this.inputDistrictName.Text = district.Name;
 			this.inputNeighborhoodName.Text = neighborhood.Name;
 			this.inputPropertyID.Text = property.Id.ToString();
@@ -83,6 +77,7 @@ namespace SOFT152Assignment
 			this.action = desiredAction.ToLower();
 			this.districtIndex = indexDistrict;
 			this.neighborhoodIndex = indexNeighborhood;
+
 			SetTitle();
 			GetTextBoxes();
 
@@ -363,10 +358,24 @@ namespace SOFT152Assignment
 			Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].PropertyCount -= 1;
 			Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties = properties;
 			Data.changed = true;
+			Data.deletedProperty = true;
 			this.Hide();
 		}
 
 		private void ButtonNext_Click(object sender, EventArgs e)
+		{
+			ProcessInput();
+		}
+
+		private void InputFields_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				ProcessInput();
+			}
+		}
+
+		private void ProcessInput()
 		{
 			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
 			bool valid = true;

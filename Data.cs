@@ -14,6 +14,12 @@ namespace SOFT152Assignment
 		public static bool changed = false;
 		// Used to determine if there are changes that need to be saved to the data file.
 		public static bool unsaved = false;
+		// Used to determine whether or not a district was deleted.
+		public static bool deletedDistrict = false;
+		// Used to determine whether or not a neighborhood was deleted.
+		public static bool deletedNeighborhood = false;
+		// Used to determine whether or not a property was deleted.
+		public static bool deletedProperty = false;
 
 		// Method to add a district to the districts array.
 		public static void AddDistrict(District district)

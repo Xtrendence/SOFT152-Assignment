@@ -104,6 +104,7 @@
 			this.inputNeighborhoodName.TabIndex = 13;
 			this.inputNeighborhoodName.Text = "Neighborhood Name...";
 			this.inputNeighborhoodName.Enter += new System.EventHandler(this.InputNeighborhoodName_Enter);
+			this.inputNeighborhoodName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputNeighborhoodName_KeyDown);
 			this.inputNeighborhoodName.Leave += new System.EventHandler(this.InputNeighborhoodName_Leave);
 			// 
 			// panel1
@@ -152,7 +153,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
 			this.ClientSize = new System.Drawing.Size(384, 136);
 			this.Controls.Add(this.buttonDelete);
 			this.Controls.Add(this.panel1);

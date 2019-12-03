@@ -102,33 +102,7 @@ namespace SOFT152Assignment
 
 		private void ButtonNext_Click(object sender, EventArgs e)
 		{
-			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
-			bool valid = true;
-			if(inputNeighborhoodName.Text.Trim() == "" || inputNeighborhoodName.Text == "Neighborhood Name...")
-			{
-				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(valid)
-			{
-				if(this.action == "add")
-				{
-					District district = Data.districts[districtIndex];
-					Neighborhood neighborhood = new Neighborhood(inputNeighborhoodName.Text, 0);
-					int numberOfNeighborhoods = district.Neighborhoods.Length;
-					district.AddNeighborhood(neighborhood);
-					Data.districts[districtIndex] = district;
-				}
-				else if(this.action == "edit")
-				{
-					District district = Data.districts[districtIndex];
-					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
-					neighborhood.Name = inputNeighborhoodName.Text;
-					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name = inputNeighborhoodName.Text;
-				}
-				Data.changed = true;
-				this.Hide();
-			}
+			ProcessInput();
 		}
 
 		private void InputNeighborhoodName_Enter(object sender, EventArgs e)
@@ -205,7 +179,47 @@ namespace SOFT152Assignment
 			Data.districts[districtIndex].NeighborhoodCount -= 1;
 			Data.districts[districtIndex].Neighborhoods = neighborhoods;
 			Data.changed = true;
+			Data.deletedNeighborhood = true;
 			this.Hide();
+		}
+
+		private void InputNeighborhoodName_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				ProcessInput();
+			}
+		}
+
+		private void ProcessInput()
+		{
+			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
+			bool valid = true;
+			if(inputNeighborhoodName.Text.Trim() == "" || inputNeighborhoodName.Text == "Neighborhood Name...")
+			{
+				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(valid)
+			{
+				if(this.action == "add")
+				{
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = new Neighborhood(inputNeighborhoodName.Text, 0);
+					int numberOfNeighborhoods = district.Neighborhoods.Length;
+					district.AddNeighborhood(neighborhood);
+					Data.districts[districtIndex] = district;
+				}
+				else if(this.action == "edit")
+				{
+					District district = Data.districts[districtIndex];
+					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+					neighborhood.Name = inputNeighborhoodName.Text;
+					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Name = inputNeighborhoodName.Text;
+				}
+				Data.changed = true;
+				this.Hide();
+			}
 		}
 	}
 }

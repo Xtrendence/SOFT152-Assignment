@@ -50,6 +50,7 @@
 			this.inputName.TabIndex = 13;
 			this.inputName.Text = "District Name...";
 			this.inputName.Enter += new System.EventHandler(this.InputName_Enter);
+			this.inputName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputName_KeyDown);
 			this.inputName.Leave += new System.EventHandler(this.InputName_Leave);
 			// 
 			// panelName
@@ -124,7 +125,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
 			this.ClientSize = new System.Drawing.Size(430, 95);
 			this.Controls.Add(this.buttonDelete);
 			this.Controls.Add(this.buttonConfirm);

@@ -92,6 +92,7 @@
 			this.inputRoomAvailability.TabIndex = 13;
 			this.inputRoomAvailability.Text = "Availability Days...";
 			this.inputRoomAvailability.Enter += new System.EventHandler(this.InputRoomAvailability_Enter);
+			this.inputRoomAvailability.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputRoomAvailability.Leave += new System.EventHandler(this.InputRoomAvailability_Leave);
 			// 
 			// panel1
@@ -115,6 +116,7 @@
 			this.inputRoomNights.TabIndex = 13;
 			this.inputRoomNights.Text = "Minimum Nights...";
 			this.inputRoomNights.Enter += new System.EventHandler(this.InputRoomNights_Enter);
+			this.inputRoomNights.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputRoomNights.Leave += new System.EventHandler(this.InputRoomNights_Leave);
 			// 
 			// panel2
@@ -138,6 +140,7 @@
 			this.inputRoomPrice.TabIndex = 13;
 			this.inputRoomPrice.Text = "Room Price...";
 			this.inputRoomPrice.Enter += new System.EventHandler(this.InputRoomPrice_Enter);
+			this.inputRoomPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputRoomPrice.Leave += new System.EventHandler(this.InputRoomPrice_Leave);
 			// 
 			// panel3
@@ -161,6 +164,7 @@
 			this.inputRoomType.TabIndex = 13;
 			this.inputRoomType.Text = "Room Type...";
 			this.inputRoomType.Enter += new System.EventHandler(this.InputRoomType_Enter);
+			this.inputRoomType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputRoomType.Leave += new System.EventHandler(this.InputRoomType_Leave);
 			// 
 			// panel4
@@ -184,6 +188,7 @@
 			this.inputLongitude.TabIndex = 13;
 			this.inputLongitude.Text = "Longitude...";
 			this.inputLongitude.Enter += new System.EventHandler(this.InputLongitude_Enter);
+			this.inputLongitude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputLongitude.Leave += new System.EventHandler(this.InputLongitude_Leave);
 			// 
 			// panel5
@@ -207,6 +212,7 @@
 			this.inputLatitude.TabIndex = 13;
 			this.inputLatitude.Text = "Latitude...";
 			this.inputLatitude.Enter += new System.EventHandler(this.InputLatitude_Enter);
+			this.inputLatitude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputLatitude.Leave += new System.EventHandler(this.InputLatitude_Leave);
 			// 
 			// panel6
@@ -230,6 +236,7 @@
 			this.inputHostPropertyCount.TabIndex = 13;
 			this.inputHostPropertyCount.Text = "Number of Properties Owned by Host...";
 			this.inputHostPropertyCount.Enter += new System.EventHandler(this.InputHostPropertyCount_Enter);
+			this.inputHostPropertyCount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputHostPropertyCount.Leave += new System.EventHandler(this.InputHostPropertyCount_Leave);
 			// 
 			// panel7
@@ -253,6 +260,7 @@
 			this.inputHostName.TabIndex = 13;
 			this.inputHostName.Text = "Host Name...";
 			this.inputHostName.Enter += new System.EventHandler(this.InputHostName_Enter);
+			this.inputHostName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputHostName.Leave += new System.EventHandler(this.InputHostName_Leave);
 			// 
 			// panel8
@@ -276,6 +284,7 @@
 			this.inputHostID.TabIndex = 13;
 			this.inputHostID.Text = "Host ID...";
 			this.inputHostID.Enter += new System.EventHandler(this.InputHostID_Enter);
+			this.inputHostID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputHostID.Leave += new System.EventHandler(this.InputHostID_Leave);
 			// 
 			// panel9
@@ -299,6 +308,7 @@
 			this.inputPropertyName.TabIndex = 13;
 			this.inputPropertyName.Text = "Property Name...";
 			this.inputPropertyName.Enter += new System.EventHandler(this.InputPropertyName_Enter);
+			this.inputPropertyName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputPropertyName.Leave += new System.EventHandler(this.InputPropertyName_Leave);
 			// 
 			// panel10
@@ -322,6 +332,7 @@
 			this.inputPropertyID.TabIndex = 13;
 			this.inputPropertyID.Text = "Property ID...";
 			this.inputPropertyID.Enter += new System.EventHandler(this.InputPropertyID_Enter);
+			this.inputPropertyID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputPropertyID.Leave += new System.EventHandler(this.InputPropertyID_Leave);
 			// 
 			// buttonDelete
@@ -380,6 +391,7 @@
 			this.inputDistrictName.TabIndex = 13;
 			this.inputDistrictName.Text = "District Name...";
 			this.inputDistrictName.Enter += new System.EventHandler(this.InputDistrictName_Enter);
+			this.inputDistrictName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputDistrictName.Leave += new System.EventHandler(this.InputDistrictName_Leave);
 			// 
 			// panel12
@@ -405,13 +417,14 @@
 			this.inputNeighborhoodName.TabIndex = 13;
 			this.inputNeighborhoodName.Text = "Neighborhood Name...";
 			this.inputNeighborhoodName.Enter += new System.EventHandler(this.InputNeighborhoodName_Enter);
+			this.inputNeighborhoodName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFields_KeyDown);
 			this.inputNeighborhoodName.Leave += new System.EventHandler(this.InputNeighborhoodName_Leave);
 			// 
 			// PopupProperty
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
 			this.ClientSize = new System.Drawing.Size(384, 572);
 			this.Controls.Add(this.panel12);
 			this.Controls.Add(this.panel11);

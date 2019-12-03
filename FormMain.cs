@@ -94,17 +94,17 @@ namespace SOFT152Assignment
 					labelSelectDistrictAndNeighborhood.Visible = true;
 
 					// Reselect the district, neighborhood, or property that the user had selected before the ListView was refreshed.
-					if(indexDistrict >= 0)
+					if(indexDistrict >= 0 && Data.deletedDistrict == false)
 					{
 						listviewDistricts.Items[indexDistrict].Selected = true;
 						listviewDistricts.EnsureVisible(indexDistrict);
 					}
-					if(indexNeighborhood >= 0)
+					if(indexNeighborhood >= 0 && Data.deletedNeighborhood == false)
 					{
 						listviewNeighborhoods.Items[indexNeighborhood].Selected = true;
 						listviewNeighborhoods.EnsureVisible(indexNeighborhood);
 					}
-					if(indexProperty >= 0)
+					if(indexProperty >= 0 && Data.deletedProperty == false)
 					{
 						listviewProperties.Items[indexProperty].Selected = true;
 						listviewProperties.EnsureVisible(indexProperty);
@@ -112,6 +112,10 @@ namespace SOFT152Assignment
 
 					Data.changed = false;
 					Data.unsaved = true;
+
+					Data.deletedDistrict = false;
+					Data.deletedNeighborhood = false;
+					Data.deletedProperty = false;
 
 					Utils.EnableControl(buttonSave);
 				}

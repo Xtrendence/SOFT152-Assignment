@@ -86,31 +86,7 @@ namespace SOFT152Assignment
 
 		private void ButtonNext_Click(object sender, EventArgs e)
 		{
-			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
-			bool valid = true;
-			if(inputName.Text.Trim() == "" || inputName.Text == "District Name...")
-			{
-				inputName.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(valid)
-			{
-				if(this.action == "add")
-				{
-					District district = new District(inputName.Text, 0);
-					int numberOfDistricts = Data.districts.Length;
-					Array.Resize(ref Data.districts, numberOfDistricts + 1);
-					Data.districts[numberOfDistricts] = district;
-				}
-				else if(this.action == "edit")
-				{
-					District district = Data.districts[districtIndex];
-					district.Name = inputName.Text;
-					Data.districts[districtIndex] = district;
-				}
-				Data.changed = true;
-				this.Hide();
-			}
+			ProcessInput();
 		}
 
 		private void InputName_Enter(object sender, EventArgs e)
@@ -141,6 +117,14 @@ namespace SOFT152Assignment
 				inputName.Text = "District Name...";
 			}
 		}
+		
+		private void InputName_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				ProcessInput();
+			}
+		}
 
 		private void InputNeighborhoodCount_Leave(object sender, EventArgs e)
 		{
@@ -166,7 +150,37 @@ namespace SOFT152Assignment
 			}
 			Data.districts = districts;
 			Data.changed = true;
+			Data.deletedDistrict = true;
 			this.Hide();
+		}
+
+		private void ProcessInput()
+		{
+			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
+			bool valid = true;
+			if(inputName.Text.Trim() == "" || inputName.Text == "District Name...")
+			{
+				inputName.ForeColor = Color.FromArgb(240, 100, 50);
+				valid = false;
+			}
+			if(valid)
+			{
+				if(this.action == "add")
+				{
+					District district = new District(inputName.Text, 0);
+					int numberOfDistricts = Data.districts.Length;
+					Array.Resize(ref Data.districts, numberOfDistricts + 1);
+					Data.districts[numberOfDistricts] = district;
+				}
+				else if(this.action == "edit")
+				{
+					District district = Data.districts[districtIndex];
+					district.Name = inputName.Text;
+					Data.districts[districtIndex] = district;
+				}
+				Data.changed = true;
+				this.Hide();
+			}
 		}
 	}
 }
