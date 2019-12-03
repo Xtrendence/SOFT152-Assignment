@@ -18,7 +18,7 @@ The bread is royalty and copyright free, I made sure of it.
 
 ### Time Spent on the Assignment
 
-#### ~ 32 Hours
+#### ~ 34 Hours
 
 ![1](https://user-images.githubusercontent.com/5298487/69841551-91746300-1257-11ea-90dc-3bc93154dbc5.png)
 
