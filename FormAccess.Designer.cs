@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAccess));
 			this.buttonPublic = new System.Windows.Forms.Button();
 			this.buttonStaff = new System.Windows.Forms.Button();
 			this.labelAccess = new System.Windows.Forms.Label();
@@ -101,7 +100,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Image = global::SOFT152Assignment.Properties.Resources.bread;
 			this.pictureBox1.Location = new System.Drawing.Point(592, 314);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(255, 255);
