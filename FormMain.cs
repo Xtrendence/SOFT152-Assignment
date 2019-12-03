@@ -68,6 +68,23 @@ namespace SOFT152Assignment
 			{
 				if(Data.changed)
 				{
+					int indexDistrict = -1;
+					int indexNeighborhood = -1;
+					int indexProperty = -1;
+
+					if(listviewDistricts.SelectedItems.Count == 1)
+					{
+						indexDistrict = listviewDistricts.SelectedIndices[0];
+					}
+					if(listviewNeighborhoods.SelectedItems.Count == 1)
+					{
+						indexNeighborhood = listviewNeighborhoods.SelectedIndices[0];
+					}
+					if(listviewProperties.SelectedItems.Count == 1)
+					{
+						indexProperty = listviewProperties.SelectedIndices[0];
+					}
+
 					PopulateList(Data.districts, "districts");
 
 					listviewNeighborhoods.Clear();
@@ -75,6 +92,23 @@ namespace SOFT152Assignment
 
 					labelSelectDistrict.Visible = true;
 					labelSelectDistrictAndNeighborhood.Visible = true;
+
+					// Reselect the district, neighborhood, or property that the user had selected before the ListView was refreshed.
+					if(indexDistrict >= 0)
+					{
+						listviewDistricts.Items[indexDistrict].Selected = true;
+						listviewDistricts.EnsureVisible(indexDistrict);
+					}
+					if(indexNeighborhood >= 0)
+					{
+						listviewNeighborhoods.Items[indexNeighborhood].Selected = true;
+						listviewNeighborhoods.EnsureVisible(indexNeighborhood);
+					}
+					if(indexProperty >= 0)
+					{
+						listviewProperties.Items[indexProperty].Selected = true;
+						listviewProperties.EnsureVisible(indexProperty);
+					}
 
 					Data.changed = false;
 					Data.unsaved = true;
@@ -453,7 +487,12 @@ namespace SOFT152Assignment
 			{
 				fileDialog.Title = "Select a Data Source File";
 				fileDialog.FileName = "*.txt";
-				fileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+				// The "CurrentDirectory" returns the current "working" folder, which would be the "debug" folder.
+				string debugDirectory = Environment.CurrentDirectory;
+				// To set the initial directory of the FileDialog to the project folder.
+				fileDialog.InitialDirectory = Directory.GetParent(debugDirectory).Parent.FullName;
+
 				fileDialog.CheckFileExists = true;
 				fileDialog.CheckPathExists = true;
 				fileDialog.ShowDialog();
