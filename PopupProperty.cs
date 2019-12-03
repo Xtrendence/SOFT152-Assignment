@@ -29,13 +29,21 @@ namespace SOFT152Assignment
 			this.districtIndex = indexDistrict;
 			this.neighborhoodIndex = indexNeighborhood;
 			this.propertyIndex = indexProperty;
+
+			Debug.WriteLine(districtIndex);
+			Debug.WriteLine(neighborhoodIndex);
+			Debug.WriteLine(propertyIndex);
+
 			SetTitle();
 			GetTextBoxes();
 
 			// For editing and viewing, this sets/autofills the values of the TextBoxes.
 			District district = Data.districts[districtIndex];
+			Debug.WriteLine(district.Name);
 			Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+			Debug.WriteLine(neighborhood.Name);
 			Property property = neighborhood.Properties[propertyIndex];
+			Debug.WriteLine(property.Name);
 			this.inputDistrictName.Text = district.Name;
 			this.inputNeighborhoodName.Text = neighborhood.Name;
 			this.inputPropertyID.Text = property.Id.ToString();
@@ -434,7 +442,6 @@ namespace SOFT152Assignment
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
 					Property property = new Property(Convert.ToInt32(this.inputPropertyID.Text), this.inputPropertyName.Text, Convert.ToInt32(this.inputHostID.Text), this.inputHostName.Text, Convert.ToInt32(this.inputHostPropertyCount.Text), Convert.ToDouble(this.inputLongitude.Text), Convert.ToDouble(this.inputLatitude.Text), this.inputRoomType.Text, Convert.ToDouble(this.inputRoomPrice.Text), Convert.ToInt32(this.inputRoomNights.Text), Convert.ToInt32(this.inputRoomAvailability.Text));
-					int numberOfProperties = neighborhood.Properties.Length;
 					neighborhood.AddProperty(property);
 					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex] = neighborhood;
 				}

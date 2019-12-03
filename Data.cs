@@ -14,5 +14,13 @@ namespace SOFT152Assignment
 		public static bool changed = false;
 		// Used to determine if there are changes that need to be saved to the data file.
 		public static bool unsaved = false;
+
+		// Method to add a district to the districts array.
+		public static void AddDistrict(District district)
+		{
+			int numberOfDistricts = districts.Length;
+			Array.Resize(ref districts, numberOfDistricts + 1);
+			districts[numberOfDistricts] = district;
+		}
 	}
 }

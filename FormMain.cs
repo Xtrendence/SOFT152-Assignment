@@ -569,7 +569,6 @@ namespace SOFT152Assignment
 		private void ShowForm(Form form, bool matchSize, bool keepOpen)
 		{
 			int screenWidth = Screen.FromControl(this).Bounds.Width;
-			int screenHeight = Screen.FromControl(this).Bounds.Height;
 			// The "keepOpen" boolean is used to determine whether or not the current from should be kept open. Clicking something like the back button would count as closing the current form, so the "keepOpen" would be set to false. A popup, on the other hand, would constitute a situation in which the current form should ideally be kept open.
 			if(!keepOpen)
 			{
@@ -693,9 +692,7 @@ namespace SOFT152Assignment
 						district.AddNeighborhood(neighborhood);
 					}
 					// Add each district to the main district array that'll contain all the data from the text file.
-					int numberOfDistricts = Data.districts.Length;
-					Array.Resize(ref Data.districts, numberOfDistricts + 1);
-					Data.districts[numberOfDistricts] = district;
+					Data.AddDistrict(district);
 				}
 				catch(Exception e)
 				{

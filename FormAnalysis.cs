@@ -195,6 +195,7 @@ namespace SOFT152Assignment
 				}
 				orangeBrush.Dispose();
 			}
+			font.Dispose();
 		}
 
 		private void ButtonPreviousDistrict_Click(object sender, EventArgs e)

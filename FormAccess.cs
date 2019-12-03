@@ -23,7 +23,6 @@ namespace SOFT152Assignment
 			open = true;
 
 			int screenWidth = Screen.FromControl(this).Bounds.Width;
-			int screenHeight = Screen.FromControl(this).Bounds.Height;
 
 			// Center the window horizontally.
 			this.Left = (screenWidth / 2) - (this.Width / 2);
