@@ -19,6 +19,13 @@ namespace SOFT152Assignment
 			InitializeComponent();
 			Utils.SetIcon(this);
 
+			// Only set the bread image if it exists as a resource.
+			if(Properties.Resources.bread != null)
+			{
+				pictureBox1.Image = Properties.Resources.bread;
+				label2.Text = "Royalty && Copyright Free Bread";
+			}
+
 			// Set the form to open. This is used later on to actually exit the application if the form is closed.
 			open = true;
 

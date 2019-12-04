@@ -100,7 +100,6 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = global::SOFT152Assignment.Properties.Resources.bread;
 			this.pictureBox1.Location = new System.Drawing.Point(592, 314);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(255, 255);
@@ -117,7 +116,6 @@
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(785, 33);
 			this.label2.TabIndex = 5;
-			this.label2.Text = "Royalty && Copyright Free Bread";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// FormAccess
