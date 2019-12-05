@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,16 @@ namespace SOFT152Assignment
 	{
 		public static void SetIcon(Form form)
 		{
-			if(Properties.Resources.AMT != null)
+			try
 			{
-				form.Icon = Properties.Resources.AMT;
+				if(Properties.Resources.AMT != null)
+				{
+					form.Icon = Properties.Resources.AMT;
+				}
+			}
+			catch(Exception e)
+			{
+				Debug.WriteLine(e.Message);
 			}
 		}
 
