@@ -136,8 +136,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AMT.ico" />
+    <None Include="Bread.jpg" />
     <None Include="bread.png" />
-    <None Include="Resources\Bread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
