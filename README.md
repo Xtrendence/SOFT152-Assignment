@@ -14,7 +14,7 @@ The bread is royalty and copyright free, I made sure of it.
 
 ### Finished Assignment
 
-#### 28th of November, 2019 at 5:20 PM
+#### 5th of December, 2019 at 5 PM
 
 ### Time Spent on the Assignment
 
