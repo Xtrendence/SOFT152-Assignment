@@ -73,9 +73,9 @@ namespace SOFT152Assignment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bread {
+        internal static System.Drawing.Bitmap Bread {
             get {
-                object obj = ResourceManager.GetObject("bread", resourceCulture);
+                object obj = ResourceManager.GetObject("Bread", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

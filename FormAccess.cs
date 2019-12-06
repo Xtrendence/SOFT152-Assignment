@@ -23,9 +23,9 @@ namespace SOFT152Assignment
 			// Only set the bread image if it exists as a resource.
 			try
 			{
-				if(Properties.Resources.bread != null)
+				if(Properties.Resources.Bread != null)
 				{
-					pictureBox1.Image = Properties.Resources.bread;
+					pictureBox1.Image = Properties.Resources.Bread;
 					label2.Text = "Royalty && Copyright Free Bread";
 				}
 			}
