@@ -41,7 +41,8 @@ namespace SOFT152Assignment
 
 			if(action == "edit")
 			{
-				this.buttonDelete.Visible = true;
+				// This used to allow users to delete a district, but I realized it'd count as adding to the functionality of the program, and it'd fall outside the brief.
+				// this.buttonDelete.Visible = true;
 			}
 			// If the user only wants to view the item, then the TextBox components are set to read-only.
 			else if(action == "view")
