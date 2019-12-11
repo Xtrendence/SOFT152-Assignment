@@ -414,7 +414,7 @@ namespace SOFT152Assignment
 				labelSelectDistrict.Visible = true;
 				labelSelectDistrict.Text = "Select a District First...";
 				labelSelectDistrictAndNeighborhood.Visible = true;
-				labelSelectDistrictAndNeighborhood.Text = "Select a District && Neighborhood First";
+				labelSelectDistrictAndNeighborhood.Text = "Select a District && Neighborhood First...";
 			}
 		}
 
