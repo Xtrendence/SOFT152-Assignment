@@ -724,7 +724,9 @@ namespace SOFT152Assignment
 					exception = e.GetType().Name;
 				}
 			}
+
 			reader.Close();
+
 			if(valid)
 			{
 				// Fill the ListViews with data.
