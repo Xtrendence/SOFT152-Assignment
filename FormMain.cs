@@ -139,14 +139,17 @@ namespace SOFT152Assignment
 			if(Data.unsaved)
 			{
 				StreamWriter writer = new StreamWriter(dataFile);
+
 				foreach(District district in Data.districts)
 				{
 					writer.WriteLine(district.Name);
 					writer.WriteLine(district.Neighborhoods.Length);
+
 					foreach(Neighborhood neighborhood in district.Neighborhoods)
 					{
 						writer.WriteLine(neighborhood.Name);
 						writer.WriteLine(neighborhood.Properties.Length);
+
 						foreach(Property property in neighborhood.Properties)
 						{
 							writer.WriteLine(property.Id);
@@ -163,6 +166,7 @@ namespace SOFT152Assignment
 						}
 					}
 				}
+
 				writer.Close();
 				Data.unsaved = false;
 				Utils.DisableControl(buttonSave);
@@ -573,6 +577,7 @@ namespace SOFT152Assignment
 		private void ShowForm(Form form, bool matchSize, bool keepOpen)
 		{
 			int screenWidth = Screen.FromControl(this).Bounds.Width;
+
 			// The "keepOpen" boolean is used to determine whether or not the current from should be kept open. Clicking something like the back button would count as closing the current form, so the "keepOpen" would be set to false. A popup, on the other hand, would constitute a situation in which the current form should ideally be kept open.
 			if(!keepOpen)
 			{
@@ -605,8 +610,11 @@ namespace SOFT152Assignment
 			if(this.dataFile != null && this.dataFile != "")
 			{
 				int queryLength = query.Length;
+
 				PopulateList(Data.districts, category);
+
 				ListView.ListViewItemCollection items = listviewDistricts.Items;
+
 				if(category == "neighborhoods")
 				{
 					items = listviewNeighborhoods.Items;
@@ -631,11 +639,13 @@ namespace SOFT152Assignment
 							// If the lowercase value of the query is found in the lowercase value of the sub-item's text content, then its parent item is tagged as a match.
 							string subItemText = item.SubItems[i].Text;
 							int subItemLength = subItemText.Length;
+
 							// Check to see if the sub-item's text content is bigger than or equal to the query's length. This prevents an index out of range exception with the "Substring()" method.
 							if(subItemLength >= queryLength)
 							{
 								// To avoid using "Contains()" or "IndexOf()", I've coded my own way of checking if the sub-item's text content contains a portion of the query. Unfortunately, it only checks from the beginning of the sub-item string, so the user can't search for the "eigh" in "neighborhood" for example.
 								string subString = subItemText.Substring(0, queryLength).ToLower();
+
 								if(subString == query.ToLower())
 								{
 									item.Tag = "match";
@@ -655,25 +665,31 @@ namespace SOFT152Assignment
 		{
 			bool valid = true;
 			string exception = "";
+
 			// The districts array is reset to 0 in case the user previously chose a different data file.
 			Data.districts = new District[0];
 
 			StreamReader reader = new StreamReader(filename);
+
 			while(!reader.EndOfStream)
 			{
 				try
 				{
 					string districtName = reader.ReadLine();
 					int districtNeighborhoodCount = Convert.ToInt32(reader.ReadLine());
+
 					// Create a new "District" object.
 					District district = new District(districtName, districtNeighborhoodCount);
+
 					// For each neighborhood in the district...
 					for(int j = 0; j < districtNeighborhoodCount; j++)
 					{
 						string neighborhoodName = reader.ReadLine();
 						int neighborhoodPropertyCount = Convert.ToInt32(reader.ReadLine());
+
 						// Create a new "Neighborhood" object.
 						Neighborhood neighborhood = new Neighborhood(neighborhoodName, neighborhoodPropertyCount);
+
 						// For each property in the neighborhood...
 						for(int k = 0; k < neighborhoodPropertyCount; k++)
 						{
@@ -688,13 +704,17 @@ namespace SOFT152Assignment
 							double roomPrice = Convert.ToDouble(reader.ReadLine());
 							int roomNights = Convert.ToInt32(reader.ReadLine());
 							int roomAvailability = Convert.ToInt32(reader.ReadLine());
+
 							// Create a new "Property" object, and add it to the array of properties in the neighborhood.
 							Property property = new Property(propertyID, propertyName, hostID, hostName, hostPropertyCount, latitude, longitude, roomType, roomPrice, roomNights, roomAvailability);
+							
 							neighborhood.AddProperty(property);
 						}
+
 						// Add the neighborhood object to the neighborhood array in the district object.
 						district.AddNeighborhood(neighborhood);
 					}
+
 					// Add each district to the main district array that'll contain all the data from the text file.
 					Data.AddDistrict(district);
 				}
@@ -709,6 +729,7 @@ namespace SOFT152Assignment
 			{
 				// Fill the ListViews with data.
 				PopulateList(Data.districts, "districts");
+
 				// Show all ListViews.
 				listviewDistricts.Show();
 				listviewNeighborhoods.Show();
@@ -727,6 +748,7 @@ namespace SOFT152Assignment
 				this.dataFile = "";
 				Data.districts = new District[0];
 				labelFileDialog.Text = "Select Data Source...";
+
 				MessageBox.Show("Something went wrong. Make sure the data file is in the correct format. \n\nException Type: " + exception, "Error");
 			}
 		}
@@ -777,6 +799,7 @@ namespace SOFT152Assignment
 					}
 				}
 			}
+
 			labelFileDialog.Hide();
 		}
 
