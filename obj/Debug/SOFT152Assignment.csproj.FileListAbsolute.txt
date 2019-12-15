@@ -65,3 +65,17 @@ C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-mas
 C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.Properties.Resources.resources
 C:\Users\knouchin\Downloads\SOFT152-Assignment-master (2)\SOFT152-Assignment-master\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
 C:\Users\Xtrendence\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormAnalysis.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\bin\Debug\SOFT152Assignment.exe.config
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\bin\Debug\SOFT152Assignment.exe
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\bin\Debug\SOFT152Assignment.pdb
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.csprojAssemblyReference.cache
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormAccess.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormAnalysis.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.FormMain.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.PopupDistrict.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.PopupNeighborhood.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.PopupProperty.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.Properties.Resources.resources
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.csproj.GenerateResource.cache
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.exe
+C:\Users\Xtren\Documents\GitHub\SOFT152-Assignment\obj\Debug\SOFT152Assignment.pdb

@@ -64,9 +64,10 @@
 			this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.buttonBack.Location = new System.Drawing.Point(12, 12);
+			this.buttonBack.Location = new System.Drawing.Point(18, 18);
+			this.buttonBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonBack.Name = "buttonBack";
-			this.buttonBack.Size = new System.Drawing.Size(79, 60);
+			this.buttonBack.Size = new System.Drawing.Size(118, 92);
 			this.buttonBack.TabIndex = 10;
 			this.buttonBack.Text = "Back";
 			this.buttonBack.UseVisualStyleBackColor = false;
@@ -75,14 +76,14 @@
 			// labelFileDialog
 			// 
 			this.labelFileDialog.AllowDrop = true;
-			this.labelFileDialog.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelFileDialog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.labelFileDialog.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.labelFileDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelFileDialog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.labelFileDialog.Location = new System.Drawing.Point(12, 84);
+			this.labelFileDialog.Location = new System.Drawing.Point(15, 129);
+			this.labelFileDialog.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelFileDialog.Name = "labelFileDialog";
-			this.labelFileDialog.Size = new System.Drawing.Size(55, 47);
+			this.labelFileDialog.Size = new System.Drawing.Size(82, 72);
 			this.labelFileDialog.TabIndex = 33;
 			this.labelFileDialog.Text = "Select a Data Source...";
 			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,10 +108,11 @@
 			this.listviewDistricts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewDistricts.FullRowSelect = true;
 			this.listviewDistricts.HideSelection = false;
-			this.listviewDistricts.Location = new System.Drawing.Point(12, 84);
+			this.listviewDistricts.Location = new System.Drawing.Point(18, 129);
+			this.listviewDistricts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.listviewDistricts.MultiSelect = false;
 			this.listviewDistricts.Name = "listviewDistricts";
-			this.listviewDistricts.Size = new System.Drawing.Size(1100, 153);
+			this.listviewDistricts.Size = new System.Drawing.Size(1650, 235);
 			this.listviewDistricts.TabIndex = 34;
 			this.listviewDistricts.UseCompatibleStateImageBehavior = false;
 			this.listviewDistricts.View = System.Windows.Forms.View.Details;
@@ -125,10 +127,11 @@
 			this.listviewNeighborhoods.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewNeighborhoods.FullRowSelect = true;
 			this.listviewNeighborhoods.HideSelection = false;
-			this.listviewNeighborhoods.Location = new System.Drawing.Point(12, 243);
+			this.listviewNeighborhoods.Location = new System.Drawing.Point(18, 374);
+			this.listviewNeighborhoods.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.listviewNeighborhoods.MultiSelect = false;
 			this.listviewNeighborhoods.Name = "listviewNeighborhoods";
-			this.listviewNeighborhoods.Size = new System.Drawing.Size(1100, 224);
+			this.listviewNeighborhoods.Size = new System.Drawing.Size(1650, 345);
 			this.listviewNeighborhoods.TabIndex = 35;
 			this.listviewNeighborhoods.UseCompatibleStateImageBehavior = false;
 			this.listviewNeighborhoods.View = System.Windows.Forms.View.Details;
@@ -143,10 +146,11 @@
 			this.listviewProperties.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.listviewProperties.FullRowSelect = true;
 			this.listviewProperties.HideSelection = false;
-			this.listviewProperties.Location = new System.Drawing.Point(12, 473);
+			this.listviewProperties.Location = new System.Drawing.Point(18, 728);
+			this.listviewProperties.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.listviewProperties.MultiSelect = false;
 			this.listviewProperties.Name = "listviewProperties";
-			this.listviewProperties.Size = new System.Drawing.Size(1100, 423);
+			this.listviewProperties.Size = new System.Drawing.Size(1650, 651);
 			this.listviewProperties.TabIndex = 36;
 			this.listviewProperties.UseCompatibleStateImageBehavior = false;
 			this.listviewProperties.View = System.Windows.Forms.View.Details;
@@ -159,9 +163,10 @@
 			this.inputSearchDistrict.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.inputSearchDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.inputSearchDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.inputSearchDistrict.Location = new System.Drawing.Point(13, 10);
+			this.inputSearchDistrict.Location = new System.Drawing.Point(20, 15);
+			this.inputSearchDistrict.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.inputSearchDistrict.Name = "inputSearchDistrict";
-			this.inputSearchDistrict.Size = new System.Drawing.Size(270, 16);
+			this.inputSearchDistrict.Size = new System.Drawing.Size(405, 23);
 			this.inputSearchDistrict.TabIndex = 13;
 			this.inputSearchDistrict.Text = "Search...";
 			this.inputSearchDistrict.Enter += new System.EventHandler(this.InputSearchDistrict_Enter);
@@ -173,9 +178,10 @@
 			this.panelSearchDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.panelSearchDistrict.Controls.Add(this.inputSearchDistrict);
 			this.panelSearchDistrict.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.panelSearchDistrict.Location = new System.Drawing.Point(1131, 182);
+			this.panelSearchDistrict.Location = new System.Drawing.Point(1696, 280);
+			this.panelSearchDistrict.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.panelSearchDistrict.Name = "panelSearchDistrict";
-			this.panelSearchDistrict.Size = new System.Drawing.Size(297, 34);
+			this.panelSearchDistrict.Size = new System.Drawing.Size(446, 52);
 			this.panelSearchDistrict.TabIndex = 19;
 			this.panelSearchDistrict.Click += new System.EventHandler(this.PanelSearchDistrict_Click);
 			// 
@@ -188,9 +194,10 @@
 			this.buttonViewDistrict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewDistrict.Location = new System.Drawing.Point(1320, 137);
+			this.buttonViewDistrict.Location = new System.Drawing.Point(1980, 211);
+			this.buttonViewDistrict.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonViewDistrict.Name = "buttonViewDistrict";
-			this.buttonViewDistrict.Size = new System.Drawing.Size(106, 34);
+			this.buttonViewDistrict.Size = new System.Drawing.Size(159, 52);
 			this.buttonViewDistrict.TabIndex = 37;
 			this.buttonViewDistrict.Text = "View";
 			this.buttonViewDistrict.UseVisualStyleBackColor = false;
@@ -205,9 +212,10 @@
 			this.buttonEditDistrict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditDistrict.Location = new System.Drawing.Point(1223, 137);
+			this.buttonEditDistrict.Location = new System.Drawing.Point(1834, 211);
+			this.buttonEditDistrict.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonEditDistrict.Name = "buttonEditDistrict";
-			this.buttonEditDistrict.Size = new System.Drawing.Size(91, 34);
+			this.buttonEditDistrict.Size = new System.Drawing.Size(136, 52);
 			this.buttonEditDistrict.TabIndex = 17;
 			this.buttonEditDistrict.Text = "Edit";
 			this.buttonEditDistrict.UseVisualStyleBackColor = false;
@@ -222,9 +230,10 @@
 			this.buttonAddDistrict.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAddDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAddDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAddDistrict.Location = new System.Drawing.Point(1131, 137);
+			this.buttonAddDistrict.Location = new System.Drawing.Point(1696, 211);
+			this.buttonAddDistrict.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonAddDistrict.Name = "buttonAddDistrict";
-			this.buttonAddDistrict.Size = new System.Drawing.Size(86, 34);
+			this.buttonAddDistrict.Size = new System.Drawing.Size(129, 52);
 			this.buttonAddDistrict.TabIndex = 18;
 			this.buttonAddDistrict.Text = "Add";
 			this.buttonAddDistrict.UseVisualStyleBackColor = false;
@@ -239,9 +248,10 @@
 			this.buttonAddNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAddNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAddNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAddNeighborhood.Location = new System.Drawing.Point(1131, 319);
+			this.buttonAddNeighborhood.Location = new System.Drawing.Point(1696, 491);
+			this.buttonAddNeighborhood.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonAddNeighborhood.Name = "buttonAddNeighborhood";
-			this.buttonAddNeighborhood.Size = new System.Drawing.Size(86, 34);
+			this.buttonAddNeighborhood.Size = new System.Drawing.Size(129, 52);
 			this.buttonAddNeighborhood.TabIndex = 39;
 			this.buttonAddNeighborhood.Text = "Add";
 			this.buttonAddNeighborhood.UseVisualStyleBackColor = false;
@@ -256,9 +266,10 @@
 			this.buttonEditNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditNeighborhood.Location = new System.Drawing.Point(1223, 319);
+			this.buttonEditNeighborhood.Location = new System.Drawing.Point(1834, 491);
+			this.buttonEditNeighborhood.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonEditNeighborhood.Name = "buttonEditNeighborhood";
-			this.buttonEditNeighborhood.Size = new System.Drawing.Size(91, 34);
+			this.buttonEditNeighborhood.Size = new System.Drawing.Size(136, 52);
 			this.buttonEditNeighborhood.TabIndex = 38;
 			this.buttonEditNeighborhood.Text = "Edit";
 			this.buttonEditNeighborhood.UseVisualStyleBackColor = false;
@@ -273,9 +284,10 @@
 			this.buttonViewNeighborhood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewNeighborhood.Location = new System.Drawing.Point(1320, 319);
+			this.buttonViewNeighborhood.Location = new System.Drawing.Point(1980, 491);
+			this.buttonViewNeighborhood.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonViewNeighborhood.Name = "buttonViewNeighborhood";
-			this.buttonViewNeighborhood.Size = new System.Drawing.Size(106, 34);
+			this.buttonViewNeighborhood.Size = new System.Drawing.Size(159, 52);
 			this.buttonViewNeighborhood.TabIndex = 41;
 			this.buttonViewNeighborhood.Text = "View";
 			this.buttonViewNeighborhood.UseVisualStyleBackColor = false;
@@ -290,9 +302,10 @@
 			this.buttonAddProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAddProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAddProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAddProperty.Location = new System.Drawing.Point(1131, 524);
+			this.buttonAddProperty.Location = new System.Drawing.Point(1696, 806);
+			this.buttonAddProperty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonAddProperty.Name = "buttonAddProperty";
-			this.buttonAddProperty.Size = new System.Drawing.Size(86, 34);
+			this.buttonAddProperty.Size = new System.Drawing.Size(129, 52);
 			this.buttonAddProperty.TabIndex = 43;
 			this.buttonAddProperty.Text = "Add";
 			this.buttonAddProperty.UseVisualStyleBackColor = false;
@@ -307,9 +320,10 @@
 			this.buttonEditProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonEditProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonEditProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonEditProperty.Location = new System.Drawing.Point(1223, 524);
+			this.buttonEditProperty.Location = new System.Drawing.Point(1834, 806);
+			this.buttonEditProperty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonEditProperty.Name = "buttonEditProperty";
-			this.buttonEditProperty.Size = new System.Drawing.Size(91, 34);
+			this.buttonEditProperty.Size = new System.Drawing.Size(136, 52);
 			this.buttonEditProperty.TabIndex = 42;
 			this.buttonEditProperty.Text = "Edit";
 			this.buttonEditProperty.UseVisualStyleBackColor = false;
@@ -324,9 +338,10 @@
 			this.buttonViewProperty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonViewProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonViewProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonViewProperty.Location = new System.Drawing.Point(1320, 524);
+			this.buttonViewProperty.Location = new System.Drawing.Point(1980, 806);
+			this.buttonViewProperty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonViewProperty.Name = "buttonViewProperty";
-			this.buttonViewProperty.Size = new System.Drawing.Size(107, 34);
+			this.buttonViewProperty.Size = new System.Drawing.Size(160, 52);
 			this.buttonViewProperty.TabIndex = 45;
 			this.buttonViewProperty.Text = "View";
 			this.buttonViewProperty.UseVisualStyleBackColor = false;
@@ -341,9 +356,10 @@
 			this.buttonAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonAnalysis.Location = new System.Drawing.Point(106, 12);
+			this.buttonAnalysis.Location = new System.Drawing.Point(159, 18);
+			this.buttonAnalysis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonAnalysis.Name = "buttonAnalysis";
-			this.buttonAnalysis.Size = new System.Drawing.Size(90, 60);
+			this.buttonAnalysis.Size = new System.Drawing.Size(135, 92);
 			this.buttonAnalysis.TabIndex = 46;
 			this.buttonAnalysis.Text = "Analysis";
 			this.buttonAnalysis.UseVisualStyleBackColor = false;
@@ -352,39 +368,39 @@
 			// 
 			// label1
 			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.label1.Location = new System.Drawing.Point(1131, 84);
+			this.label1.Location = new System.Drawing.Point(1693, 129);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(295, 41);
+			this.label1.Size = new System.Drawing.Size(442, 63);
 			this.label1.TabIndex = 47;
 			this.label1.Text = "Districts";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label2
 			// 
-			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.label2.Location = new System.Drawing.Point(1131, 267);
+			this.label2.Location = new System.Drawing.Point(1693, 411);
+			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(295, 41);
+			this.label2.Size = new System.Drawing.Size(442, 63);
 			this.label2.TabIndex = 48;
 			this.label2.Text = "Neighborhoods";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label3
 			// 
-			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.label3.Location = new System.Drawing.Point(1131, 473);
+			this.label3.Location = new System.Drawing.Point(1693, 728);
+			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(295, 41);
+			this.label3.Size = new System.Drawing.Size(442, 63);
 			this.label3.TabIndex = 49;
 			this.label3.Text = "Properties";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -398,9 +414,10 @@
 			this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.buttonSave.Location = new System.Drawing.Point(1022, 12);
+			this.buttonSave.Location = new System.Drawing.Point(1533, 18);
+			this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(90, 60);
+			this.buttonSave.Size = new System.Drawing.Size(135, 92);
 			this.buttonSave.TabIndex = 50;
 			this.buttonSave.Text = "Save";
 			this.buttonSave.UseVisualStyleBackColor = false;
@@ -409,14 +426,14 @@
 			// 
 			// labelSelectDistrict
 			// 
-			this.labelSelectDistrict.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelSelectDistrict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.labelSelectDistrict.Cursor = System.Windows.Forms.Cursors.Default;
 			this.labelSelectDistrict.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelSelectDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.labelSelectDistrict.Location = new System.Drawing.Point(12, 243);
+			this.labelSelectDistrict.Location = new System.Drawing.Point(15, 374);
+			this.labelSelectDistrict.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelSelectDistrict.Name = "labelSelectDistrict";
-			this.labelSelectDistrict.Size = new System.Drawing.Size(1100, 224);
+			this.labelSelectDistrict.Size = new System.Drawing.Size(1650, 345);
 			this.labelSelectDistrict.TabIndex = 51;
 			this.labelSelectDistrict.Text = "Select a District First...";
 			this.labelSelectDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -424,14 +441,14 @@
 			// 
 			// labelSelectDistrictAndNeighborhood
 			// 
-			this.labelSelectDistrictAndNeighborhood.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelSelectDistrictAndNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
 			this.labelSelectDistrictAndNeighborhood.Cursor = System.Windows.Forms.Cursors.Default;
 			this.labelSelectDistrictAndNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelSelectDistrictAndNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-			this.labelSelectDistrictAndNeighborhood.Location = new System.Drawing.Point(12, 473);
+			this.labelSelectDistrictAndNeighborhood.Location = new System.Drawing.Point(15, 728);
+			this.labelSelectDistrictAndNeighborhood.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelSelectDistrictAndNeighborhood.Name = "labelSelectDistrictAndNeighborhood";
-			this.labelSelectDistrictAndNeighborhood.Size = new System.Drawing.Size(1100, 423);
+			this.labelSelectDistrictAndNeighborhood.Size = new System.Drawing.Size(1650, 651);
 			this.labelSelectDistrictAndNeighborhood.TabIndex = 52;
 			this.labelSelectDistrictAndNeighborhood.Text = "Select a District && Neighborhood First";
 			this.labelSelectDistrictAndNeighborhood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -439,11 +456,11 @@
 			// 
 			// FormMain
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-			this.ClientSize = new System.Drawing.Size(1438, 905);
+			this.ClientSize = new System.Drawing.Size(2148, 1366);
 			this.Controls.Add(this.labelFileDialog);
 			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.label3);
@@ -466,8 +483,9 @@
 			this.Controls.Add(this.listviewDistricts);
 			this.Controls.Add(this.listviewNeighborhoods);
 			this.Controls.Add(this.listviewProperties);
+			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(1454, 944);
+			this.MaximumSize = new System.Drawing.Size(2170, 1422);
 			this.Name = "FormMain";
 			this.Text = "Access";
 			this.Activated += new System.EventHandler(this.FormMain_Activated);
