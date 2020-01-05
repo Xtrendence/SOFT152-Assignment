@@ -81,7 +81,7 @@
 			this.labelFileDialog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
 			this.labelFileDialog.Location = new System.Drawing.Point(10, 84);
 			this.labelFileDialog.Name = "labelFileDialog";
-			this.labelFileDialog.Size = new System.Drawing.Size(1414, 803);
+			this.labelFileDialog.Size = new System.Drawing.Size(1418, 803);
 			this.labelFileDialog.TabIndex = 33;
 			this.labelFileDialog.Text = "Select a Data Source...";
 			this.labelFileDialog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
