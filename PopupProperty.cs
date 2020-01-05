@@ -379,101 +379,124 @@ namespace SOFT152Assignment
 		{
 			// The boolean variable "valid" is used to determine whether or not the TextBoxes have been filled out. If they have, then the next button does what's it's actually meant to do.
 			bool valid = true;
-			if(inputDistrictName.Text == "District Name..." || inputDistrictName.Text == "")
+			long longResult;
+			double doubleResult;
+
+			try
 			{
-				inputDistrictName.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputNeighborhoodName.Text == "Neighborhood Name..." || inputNeighborhoodName.Text == "")
-			{
-				inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "")
-			{
-				inputPropertyID.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "")
-			{
-				inputPropertyName.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputHostID.Text == "Host ID..." || inputHostID.Text == "")
-			{
-				inputHostID.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputHostName.Text == "Host Name..." || inputHostName.Text == "")
-			{
-				inputHostName.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "")
-			{
-				inputHostPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "")
-			{
-				inputRoomType.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "")
-			{
-				inputRoomPrice.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "")
-			{
-				inputLongitude.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "")
-			{
-				inputLatitude.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "")
-			{
-				inputRoomNights.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "" || Convert.ToInt32(inputRoomAvailability.Text) > 365)
-			{
-				inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
-				valid = false;
-			}
-			if(valid)
-			{
-				if(action == "add")
+				if(inputDistrictName.Text == "District Name..." || inputDistrictName.Text == "")
 				{
-					District district = Data.districts[districtIndex];
-					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
-					Property property = new Property(Convert.ToInt32(this.inputPropertyID.Text), this.inputPropertyName.Text, Convert.ToInt32(this.inputHostID.Text), this.inputHostName.Text, Convert.ToInt32(this.inputHostPropertyCount.Text), Convert.ToDouble(this.inputLongitude.Text), Convert.ToDouble(this.inputLatitude.Text), this.inputRoomType.Text, Convert.ToDouble(this.inputRoomPrice.Text), Convert.ToInt32(this.inputRoomNights.Text), Convert.ToInt32(this.inputRoomAvailability.Text));
-					neighborhood.AddProperty(property);
-					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex] = neighborhood;
+					inputDistrictName.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
 				}
-				else if(action == "edit")
+				if(inputNeighborhoodName.Text == "Neighborhood Name..." || inputNeighborhoodName.Text == "")
 				{
-					District district = Data.districts[districtIndex];
-					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
-					Property property = neighborhood.Properties[propertyIndex];
-					property.Id = Convert.ToInt32(this.inputPropertyID.Text);
-					property.Name = this.inputPropertyName.Text;
-					property.HostID = Convert.ToInt32(this.inputHostID.Text);
-					property.HostName = this.inputHostName.Text;
-					property.Count = Convert.ToInt32(this.inputHostPropertyCount.Text);
-					property.RoomType = this.inputRoomType.Text;
-					property.RoomPrice = Convert.ToDouble(this.inputRoomPrice.Text);
-					property.Longitude = Convert.ToDouble(this.inputLongitude.Text);
-					property.Latitude = Convert.ToDouble(this.inputLatitude.Text);
-					property.RoomNights = Convert.ToInt32(this.inputRoomNights.Text);
-					property.RoomAvailability = Convert.ToInt32(this.inputRoomAvailability.Text);
-					Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex] = property;
+					inputNeighborhoodName.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
 				}
-				Data.changed = true;
-				this.Hide();
+				if(inputPropertyID.Text == "Property ID..." || inputPropertyID.Text == "" || !long.TryParse(inputPropertyID.Text, out longResult))
+				{
+					inputPropertyID.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputPropertyName.Text == "Property Name..." || inputPropertyName.Text == "")
+				{
+					inputPropertyName.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputHostID.Text == "Host ID..." || inputHostID.Text == "" || !long.TryParse(inputHostID.Text, out longResult))
+				{
+					inputHostID.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputHostName.Text == "Host Name..." || inputHostName.Text == "")
+				{
+					inputHostName.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputHostPropertyCount.Text == "Number of Properties Owned by Host..." || inputHostPropertyCount.Text == "" || !long.TryParse(inputHostPropertyCount.Text, out longResult))
+				{
+					inputHostPropertyCount.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputRoomType.Text == "Room Type..." || inputRoomType.Text == "")
+				{
+					inputRoomType.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputRoomPrice.Text == "Room Price..." || inputRoomPrice.Text == "")
+				{
+					inputRoomPrice.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputLongitude.Text == "Longitude..." || inputLongitude.Text == "" || !double.TryParse(inputLongitude.Text, out doubleResult))
+				{
+					inputLongitude.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputLatitude.Text == "Latitude..." || inputLatitude.Text == "" || !double.TryParse(inputLatitude.Text, out doubleResult))
+				{
+					inputLatitude.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputRoomNights.Text == "Minimum Nights..." || inputRoomNights.Text == "" || !long.TryParse(inputRoomNights.Text, out longResult))
+				{
+					inputRoomNights.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				if(inputRoomAvailability.Text == "Availability Days..." || inputRoomAvailability.Text == "")
+				{
+					inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
+					valid = false;
+				}
+				else
+				{
+					if(!long.TryParse(inputRoomAvailability.Text, out longResult))
+					{
+						inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
+						valid = false;
+					}
+					else if(Convert.ToInt32(inputRoomAvailability.Text) > 365 || Convert.ToInt32(inputRoomAvailability.Text) < 0)
+					{
+						inputRoomAvailability.ForeColor = Color.FromArgb(240, 100, 50);
+						valid = false;
+					}
+				}
+				if(valid)
+				{
+					if(action == "add")
+					{
+						District district = Data.districts[districtIndex];
+						Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+						Property property = new Property(Convert.ToInt32(this.inputPropertyID.Text), this.inputPropertyName.Text, Convert.ToInt32(this.inputHostID.Text), this.inputHostName.Text, Convert.ToInt32(this.inputHostPropertyCount.Text), Convert.ToDouble(this.inputLongitude.Text), Convert.ToDouble(this.inputLatitude.Text), this.inputRoomType.Text, Convert.ToDouble(this.inputRoomPrice.Text), Convert.ToInt32(this.inputRoomNights.Text), Convert.ToInt32(this.inputRoomAvailability.Text));
+						neighborhood.AddProperty(property);
+						Data.districts[districtIndex].Neighborhoods[neighborhoodIndex] = neighborhood;
+					}
+					else if(action == "edit")
+					{
+						District district = Data.districts[districtIndex];
+						Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
+						Property property = neighborhood.Properties[propertyIndex];
+						property.Id = Convert.ToInt32(this.inputPropertyID.Text);
+						property.Name = this.inputPropertyName.Text;
+						property.HostID = Convert.ToInt32(this.inputHostID.Text);
+						property.HostName = this.inputHostName.Text;
+						property.Count = Convert.ToInt32(this.inputHostPropertyCount.Text);
+						property.RoomType = this.inputRoomType.Text;
+						property.RoomPrice = Convert.ToDouble(this.inputRoomPrice.Text);
+						property.Longitude = Convert.ToDouble(this.inputLongitude.Text);
+						property.Latitude = Convert.ToDouble(this.inputLatitude.Text);
+						property.RoomNights = Convert.ToInt32(this.inputRoomNights.Text);
+						property.RoomAvailability = Convert.ToInt32(this.inputRoomAvailability.Text);
+						Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties[propertyIndex] = property;
+					}
+					Data.changed = true;
+					this.Hide();
+				}
+			}
+			catch(Exception e)
+			{
+				MessageBox.Show(e.Message, "Error");
 			}
 		}
 	}

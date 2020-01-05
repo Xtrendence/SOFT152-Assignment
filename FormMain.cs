@@ -71,15 +71,15 @@ namespace SOFT152Assignment
 
 					if(listviewDistricts.SelectedItems.Count == 1)
 					{
-						indexDistrict = listviewDistricts.SelectedIndices[0];
+						indexDistrict = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
 					}
 					if(listviewNeighborhoods.SelectedItems.Count == 1)
 					{
-						indexNeighborhood = listviewNeighborhoods.SelectedIndices[0];
+						indexNeighborhood = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
 					}
 					if(listviewProperties.SelectedItems.Count == 1)
 					{
-						indexProperty = listviewProperties.SelectedIndices[0];
+						indexProperty = Convert.ToInt32(listviewProperties.SelectedItems[0].SubItems[0].Text);
 					}
 
 					PopulateList(Data.districts, "districts");
@@ -241,7 +241,7 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
-					int index = listviewDistricts.SelectedIndices[0];
+					int index = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
 
 					ShowForm(new PopupDistrict("staff", "edit", index), false, true);
 				}
@@ -256,13 +256,64 @@ namespace SOFT152Assignment
 		{
 			if(listviewDistricts.SelectedItems.Count == 1)
 			{
-				int index = listviewDistricts.SelectedIndices[0];
+				int index = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
 
 				ShowForm(new PopupDistrict("staff", "view", index), false, true);
 			}
 			else
 			{
 				MessageBox.Show("Select a district first.", "Error");
+			}
+		}
+
+		private void PanelSearchNeighborhood_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedIndices.Count == 1)
+			{
+				// User might click on the panel instead of the TextBox. This takes care of that.
+				inputSearchNeighborhood.Focus();
+			}
+		}
+
+		private void InputSearchNeighborhood_Enter(object sender, EventArgs e)
+		{
+			// Remove placeholder text.
+			if(inputSearchNeighborhood.Text == "Search..." && listviewDistricts.SelectedIndices.Count == 1)
+			{
+				inputSearchNeighborhood.Text = "";
+			}
+		}
+
+		private void InputSearchNeighborhood_Leave(object sender, EventArgs e)
+		{
+			// Add placeholder text.
+			if(inputSearchNeighborhood.Text.Trim() == "" && listviewDistricts.SelectedIndices.Count == 1)
+			{
+				inputSearchNeighborhood.Text = "Search...";
+			}
+		}
+
+		private void InputSearchNeighborhood_KeyUp(object sender, KeyEventArgs e)
+		{
+			if(listviewDistricts.SelectedIndices.Count == 1)
+			{
+				if(inputSearchNeighborhood.Text.Trim() == "")
+				{
+					if(this.dataFile != null && this.dataFile != "")
+					{
+						PopulateList(Data.districts, "neighborhoods");
+					}
+
+					Search("neighborhoods", inputSearchNeighborhood.Text.Trim());
+				}
+				else
+				{
+					Search("neighborhoods", inputSearchNeighborhood.Text.Trim());
+				}
+			}
+			else
+			{
+				inputSearchNeighborhood.Text = "Search...";
 			}
 		}
 
@@ -273,7 +324,7 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
-					int index = listviewDistricts.SelectedIndices[0];
+					int index = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
 
 					ShowForm(new PopupNeighborhood("staff", "add", index), false, true);
 				}
@@ -291,8 +342,8 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
 				{
-					int districtIndex = listviewDistricts.SelectedIndices[0];
-					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+					int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+					int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
 
 					ShowForm(new PopupNeighborhood("staff", "edit", districtIndex, neighborhoodIndex), false, true);
 				}
@@ -307,14 +358,65 @@ namespace SOFT152Assignment
 		{
 			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
 			{
-				int districtIndex = listviewDistricts.SelectedIndices[0];
-				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+				int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+				int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
 
 				ShowForm(new PopupNeighborhood("staff", "view", districtIndex, neighborhoodIndex), false, true);
 			}
 			else
 			{
 				MessageBox.Show("Select a district and a neighborhood first.", "Error");
+			}
+		}
+
+		private void PanelSearchProperty_Click(object sender, EventArgs e)
+		{
+			if(listviewDistricts.SelectedIndices.Count == 1 && listviewNeighborhoods.SelectedIndices.Count == 1)
+			{
+				// User might click on the panel instead of the TextBox. This takes care of that.
+				inputSearchProperty.Focus();
+			}
+		}
+
+		private void InputSearchProperty_Enter(object sender, EventArgs e)
+		{
+			// Remove placeholder text.
+			if(inputSearchProperty.Text == "Search..." && listviewDistricts.SelectedIndices.Count == 1 && listviewNeighborhoods.SelectedIndices.Count == 1)
+			{
+				inputSearchProperty.Text = "";
+			}
+		}
+
+		private void InputSearchProperty_Leave(object sender, EventArgs e)
+		{
+			// Add placeholder text.
+			if(inputSearchProperty.Text.Trim() == "" && listviewDistricts.SelectedIndices.Count == 1 && listviewNeighborhoods.SelectedIndices.Count == 1)
+			{
+				inputSearchProperty.Text = "Search...";
+			}
+		}
+
+		private void InputSearchProperty_KeyUp(object sender, KeyEventArgs e)
+		{
+			if(listviewDistricts.SelectedIndices.Count == 1 && listviewNeighborhoods.SelectedIndices.Count == 1)
+			{
+				if(inputSearchProperty.Text.Trim() == "")
+				{
+					if(this.dataFile != null && this.dataFile != "")
+					{
+						PopulateList(Data.districts, "properties");
+					}
+
+					Search("properties", inputSearchProperty.Text.Trim());
+				}
+				else
+				{
+					Search("properties", inputSearchProperty.Text.Trim());
+				}
+			}
+			else
+			{
+				inputSearchProperty.Text = "Search...";
 			}
 		}
 
@@ -325,8 +427,8 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1)
 				{
-					int districtIndex = listviewDistricts.SelectedIndices[0];
-					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+					int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+					int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
 
 					ShowForm(new PopupProperty("staff", "add", districtIndex, neighborhoodIndex), false, true);
 				}
@@ -344,9 +446,9 @@ namespace SOFT152Assignment
 			{
 				if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
 				{
-					int districtIndex = listviewDistricts.SelectedIndices[0];
-					int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
-					int propertyIndex = listviewProperties.SelectedIndices[0];
+					int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+					int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
+					int propertyIndex = Convert.ToInt32(listviewProperties.SelectedItems[0].SubItems[0].Text);
 
 					ShowForm(new PopupProperty("staff", "edit", districtIndex, neighborhoodIndex, propertyIndex), false, true);
 				}
@@ -361,9 +463,9 @@ namespace SOFT152Assignment
 		{
 			if(listviewDistricts.SelectedItems.Count == 1 && listviewNeighborhoods.SelectedItems.Count == 1 && listviewProperties.SelectedItems.Count == 1)
 			{
-				int districtIndex = listviewDistricts.SelectedIndices[0];
-				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
-				int propertyIndex = listviewProperties.SelectedIndices[0];
+				int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+				int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
+				int propertyIndex = Convert.ToInt32(listviewProperties.SelectedItems[0].SubItems[0].Text);
 
 				ShowForm(new PopupProperty("staff", "view", districtIndex, neighborhoodIndex, propertyIndex), false, true);
 			}
@@ -381,6 +483,8 @@ namespace SOFT152Assignment
 				Utils.EnableControl(buttonViewDistrict);
 				Utils.EnableControl(buttonEditDistrict);
 				Utils.EnableControl(buttonAddNeighborhood);
+				Utils.EnableControl(panelSearchNeighborhood);
+				Utils.EnableControl(inputSearchNeighborhood);
 
 				listviewNeighborhoods.Clear();
 				listviewProperties.Clear();
@@ -391,12 +495,14 @@ namespace SOFT152Assignment
 
 				AddColumns("neighborhoods");
 
-				int districtIndex = listviewDistricts.SelectedIndices[0];
+				int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
 				District district = Data.districts[districtIndex];
 
+				int i = 0;
 				foreach(Neighborhood neighborhood in district.Neighborhoods)
 				{
-					listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
+					listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { i.ToString(), neighborhood.Name, neighborhood.PropertyCount.ToString() }));
+					i++;
 				}
 			}
 			else
@@ -404,6 +510,8 @@ namespace SOFT152Assignment
 				Utils.DisableControl(buttonViewDistrict);
 				Utils.DisableControl(buttonEditDistrict);
 				Utils.DisableControl(buttonAddNeighborhood);
+				Utils.DisableControl(panelSearchNeighborhood);
+				Utils.DisableControl(inputSearchNeighborhood);
 
 				listviewNeighborhoods.Clear();
 				listviewProperties.Clear();
@@ -426,22 +534,26 @@ namespace SOFT152Assignment
 
 				AddColumns("properties");
 
-				int neighborhoodIndex = listviewNeighborhoods.SelectedIndices[0];
+				int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
 
 				if(listviewDistricts.SelectedItems.Count == 1)
 				{
 					Utils.EnableControl(buttonViewNeighborhood);
 					Utils.EnableControl(buttonEditNeighborhood);
 					Utils.EnableControl(buttonAddProperty);
+					Utils.EnableControl(panelSearchProperty);
+					Utils.EnableControl(inputSearchProperty);
 
-					int districtIndex = listviewDistricts.SelectedIndices[0];
+					int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
 
 					District district = Data.districts[districtIndex];
 					Neighborhood neighborhood = district.Neighborhoods[neighborhoodIndex];
 
+					int i = 0;
 					foreach(Property property in neighborhood.Properties)
 					{
-						listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+						listviewProperties.Items.Add(new ListViewItem(new string[12] { i.ToString(), property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+						i++;
 					}
 				}
 			}
@@ -450,6 +562,8 @@ namespace SOFT152Assignment
 				Utils.DisableControl(buttonViewNeighborhood);
 				Utils.DisableControl(buttonEditNeighborhood);
 				Utils.DisableControl(buttonAddProperty);
+				Utils.DisableControl(panelSearchProperty);
+				Utils.DisableControl(inputSearchProperty);
 
 				listviewProperties.Clear();
 
@@ -776,26 +890,44 @@ namespace SOFT152Assignment
 				labelSelectDistrictAndNeighborhood.Visible = false;
 			}
 
-			// Add each district, neighborhood, and property to their respective ListViews.
-			foreach(District district in districts)
+			// Populate the districts ListView.
+			if(category == "districts")
 			{
-				if(category == "districts")
+				int i = 0;
+
+				foreach(District district in districts)
 				{
-					listviewDistricts.Items.Add(new ListViewItem(new string[2] { district.Name, district.NeighborhoodCount.ToString() }));
+					listviewDistricts.Items.Add(new ListViewItem(new string[3] { i.ToString(), district.Name, district.NeighborhoodCount.ToString() }));
+					i++;
 				}
-				foreach(Neighborhood neighborhood in district.Neighborhoods)
+			}
+			
+			// Populate the neighborhoods ListView.
+			else if(category == "neighborhoods" && listviewDistricts.SelectedIndices.Count == 1)
+			{
+				int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+
+				int i = 0;
+
+				foreach(Neighborhood neighborhood in Data.districts[districtIndex].Neighborhoods)
 				{
-					if(category == "neighborhoods")
-					{
-						listviewNeighborhoods.Items.Add(new ListViewItem(new string[2] { neighborhood.Name, neighborhood.PropertyCount.ToString() }));
-					}
-					foreach(Property property in neighborhood.Properties)
-					{
-						if(category == "properties")
-						{
-							listviewProperties.Items.Add(new ListViewItem(new string[11] { property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
-						}
-					}
+					listviewNeighborhoods.Items.Add(new ListViewItem(new string[3] { i.ToString(), neighborhood.Name, neighborhood.PropertyCount.ToString() }));
+					i++;
+				}
+			}
+
+			// Populate the properties ListView.
+			else if(category == "properties" && listviewDistricts.SelectedIndices.Count == 1 && listviewNeighborhoods.SelectedIndices.Count == 1)
+			{
+				int districtIndex = Convert.ToInt32(listviewDistricts.SelectedItems[0].SubItems[0].Text);
+				int neighborhoodIndex = Convert.ToInt32(listviewNeighborhoods.SelectedItems[0].SubItems[0].Text);
+
+				int i = 0;
+
+				foreach(Property property in Data.districts[districtIndex].Neighborhoods[neighborhoodIndex].Properties)
+				{
+					listviewProperties.Items.Add(new ListViewItem(new string[12] { i.ToString(), property.Id.ToString(), property.Name, property.HostID.ToString(), property.HostName, property.Count.ToString(), property.Longitude.ToString(), property.Latitude.ToString(), property.RoomType, property.RoomPrice.ToString(), property.RoomNights.ToString(), property.RoomAvailability.ToString() }));
+					i++;
 				}
 			}
 
@@ -806,16 +938,19 @@ namespace SOFT152Assignment
 		{
 			if(category == "districts")
 			{
+				listviewDistricts.Columns.Add("#", 0);
 				listviewDistricts.Columns.Add("District Name", 650);
 				listviewDistricts.Columns.Add("Number of Neighborhoods", 450);
 			}
 			else if(category == "neighborhoods")
 			{
+				listviewNeighborhoods.Columns.Add("#", 0);
 				listviewNeighborhoods.Columns.Add("Neighborhood Name", 650);
 				listviewNeighborhoods.Columns.Add("Number of Properties", 450);
 			}
 			else if(category == "properties")
 			{
+				listviewProperties.Columns.Add("#", 0);
 				listviewProperties.Columns.Add("Property ID", 130);
 				listviewProperties.Columns.Add("Property Name", 370);
 				listviewProperties.Columns.Add("Host ID", 130);

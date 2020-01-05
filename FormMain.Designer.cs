@@ -52,7 +52,13 @@
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.labelSelectDistrict = new System.Windows.Forms.Label();
 			this.labelSelectDistrictAndNeighborhood = new System.Windows.Forms.Label();
+			this.panelSearchNeighborhood = new System.Windows.Forms.Panel();
+			this.inputSearchNeighborhood = new System.Windows.Forms.TextBox();
+			this.panelSearchProperty = new System.Windows.Forms.Panel();
+			this.inputSearchProperty = new System.Windows.Forms.TextBox();
 			this.panelSearchDistrict.SuspendLayout();
+			this.panelSearchNeighborhood.SuspendLayout();
+			this.panelSearchProperty.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonBack
@@ -431,6 +437,58 @@
 			this.labelSelectDistrictAndNeighborhood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.labelSelectDistrictAndNeighborhood.Visible = false;
 			// 
+			// panelSearchNeighborhood
+			// 
+			this.panelSearchNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.panelSearchNeighborhood.Controls.Add(this.inputSearchNeighborhood);
+			this.panelSearchNeighborhood.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.panelSearchNeighborhood.Location = new System.Drawing.Point(1131, 363);
+			this.panelSearchNeighborhood.Name = "panelSearchNeighborhood";
+			this.panelSearchNeighborhood.Size = new System.Drawing.Size(297, 34);
+			this.panelSearchNeighborhood.TabIndex = 20;
+			this.panelSearchNeighborhood.Click += new System.EventHandler(this.PanelSearchNeighborhood_Click);
+			// 
+			// inputSearchNeighborhood
+			// 
+			this.inputSearchNeighborhood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.inputSearchNeighborhood.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.inputSearchNeighborhood.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.inputSearchNeighborhood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.inputSearchNeighborhood.Location = new System.Drawing.Point(13, 10);
+			this.inputSearchNeighborhood.Name = "inputSearchNeighborhood";
+			this.inputSearchNeighborhood.Size = new System.Drawing.Size(270, 16);
+			this.inputSearchNeighborhood.TabIndex = 13;
+			this.inputSearchNeighborhood.Text = "Search...";
+			this.inputSearchNeighborhood.Enter += new System.EventHandler(this.InputSearchNeighborhood_Enter);
+			this.inputSearchNeighborhood.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InputSearchNeighborhood_KeyUp);
+			this.inputSearchNeighborhood.Leave += new System.EventHandler(this.InputSearchNeighborhood_Leave);
+			// 
+			// panelSearchProperty
+			// 
+			this.panelSearchProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.panelSearchProperty.Controls.Add(this.inputSearchProperty);
+			this.panelSearchProperty.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.panelSearchProperty.Location = new System.Drawing.Point(1133, 568);
+			this.panelSearchProperty.Name = "panelSearchProperty";
+			this.panelSearchProperty.Size = new System.Drawing.Size(297, 34);
+			this.panelSearchProperty.TabIndex = 53;
+			this.panelSearchProperty.Click += new System.EventHandler(this.PanelSearchProperty_Click);
+			// 
+			// inputSearchProperty
+			// 
+			this.inputSearchProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.inputSearchProperty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.inputSearchProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.inputSearchProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+			this.inputSearchProperty.Location = new System.Drawing.Point(13, 10);
+			this.inputSearchProperty.Name = "inputSearchProperty";
+			this.inputSearchProperty.Size = new System.Drawing.Size(270, 16);
+			this.inputSearchProperty.TabIndex = 13;
+			this.inputSearchProperty.Text = "Search...";
+			this.inputSearchProperty.Enter += new System.EventHandler(this.InputSearchProperty_Enter);
+			this.inputSearchProperty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InputSearchProperty_KeyUp);
+			this.inputSearchProperty.Leave += new System.EventHandler(this.InputSearchProperty_Leave);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,6 +497,8 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
 			this.ClientSize = new System.Drawing.Size(1283, 690);
 			this.Controls.Add(this.labelFileDialog);
+			this.Controls.Add(this.panelSearchProperty);
+			this.Controls.Add(this.panelSearchNeighborhood);
 			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
@@ -468,6 +528,10 @@
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
 			this.panelSearchDistrict.ResumeLayout(false);
 			this.panelSearchDistrict.PerformLayout();
+			this.panelSearchNeighborhood.ResumeLayout(false);
+			this.panelSearchNeighborhood.PerformLayout();
+			this.panelSearchProperty.ResumeLayout(false);
+			this.panelSearchProperty.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -497,5 +561,9 @@
 		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.Label labelSelectDistrict;
 		private System.Windows.Forms.Label labelSelectDistrictAndNeighborhood;
+		private System.Windows.Forms.Panel panelSearchNeighborhood;
+		private System.Windows.Forms.TextBox inputSearchNeighborhood;
+		private System.Windows.Forms.Panel panelSearchProperty;
+		private System.Windows.Forms.TextBox inputSearchProperty;
 	}
 }
