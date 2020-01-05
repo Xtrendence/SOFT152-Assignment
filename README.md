@@ -6,9 +6,9 @@ This is a WinForms desktop application created as part of my coursework for the 
 
 Search, view, edit, and add districts.
 
-Search, view, edit, and add neighborhoods.
+Select, view, edit, and add neighborhoods.
 
-Search, view, edit, add, and delete properties.
+Select, view, edit, add, and delete properties.
 
 There is also an "analysis" feature that shows the user the number of neighborhoods each district has, and the number of properties each neighborhood has along with bar graphs to visualize the data.
 
