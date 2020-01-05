@@ -1,24 +1,18 @@
 # SOFT152 Assignment (Airbnb Management Tool)
 
-SOFT152 Coursework by Khodadad (Adrian) Nouchin.
- 
-This was created after I had already made the UI of the program. It looked a bit too professional in a way, and I was worried the teacher would think I cheated or copy-pasted all the code, especially because I finished about 80% of the project within the first day or two. Hopefully a private GitHub repository (so it doesn't get flagged for plagiarism or something) will be enough to prove I coded it myself.
+SOFT152 coursework. An Airbnb management tool.
 
-Please note that the only reason I managed to learn and do it all so quickly is due to 3 years of daily full stack web development (with HTML, CSS, JavaScript, jQuery, NodeJS, PHP) and, on multiple occasions, Android app development (with Java).
+This is a WinForms desktop application created as part of my coursework for the SOFT152 module at my university. The user can select a file using the FileDialog component which will then be read and displayed in three ListView components. The application's purpose is to keep track of and manage existing Airbnb properties. The user can:
+
+Search, view, edit, and add districts.
+
+Search, view, edit, and add neighborhoods.
+
+Search, view, edit, add, and delete properties.
+
+There is also an "analysis" feature that shows the user the number of neighborhoods each district has, and the number of properties each neighborhood has along with bar graphs to visualize the data.
 
 The bread is royalty and copyright free, I made sure of it.
-
-### Started Assignment
-
-#### 11th of November, 2019 at 11 AM
-
-### Finished Assignment
-
-#### 5th of December, 2019 at 5 PM
-
-### Time Spent on the Assignment
-
-#### ~ 34 Hours
 
 ![1](https://user-images.githubusercontent.com/5298487/69841551-91746300-1257-11ea-90dc-3bc93154dbc5.png)
 
