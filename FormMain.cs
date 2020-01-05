@@ -45,9 +45,6 @@ namespace SOFT152Assignment
 
 				this.Text = "Public Access";
 			}
-
-			labelFileDialog.Width = this.Width - 40;
-			labelFileDialog.Height = this.Height - 135;
 		}
 
 		// Ensures the application actually closes when the form does.
