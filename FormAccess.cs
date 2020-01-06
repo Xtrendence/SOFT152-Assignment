@@ -41,7 +41,7 @@ namespace SOFT152Assignment
 
 			// Center the window horizontally.
 			this.Left = (screenWidth / 2) - (this.Width / 2);
-			this.Top = 50;
+			this.Top = 25;
 		}
 
 		private void ButtonPublic_Click(object sender, EventArgs e)
