@@ -512,6 +512,8 @@ namespace SOFT152Assignment
 				Utils.DisableControl(buttonAddNeighborhood);
 				Utils.DisableControl(panelSearchNeighborhood);
 				Utils.DisableControl(inputSearchNeighborhood);
+				Utils.DisableControl(panelSearchProperty);
+				Utils.DisableControl(inputSearchProperty);
 
 				listviewNeighborhoods.Clear();
 				listviewProperties.Clear();
