@@ -384,6 +384,20 @@ namespace SOFT152Assignment
 
 			try
 			{
+				inputDistrictName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputNeighborhoodName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputPropertyID.ForeColor = Color.FromArgb(250, 250, 250);
+				inputPropertyName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputHostID.ForeColor = Color.FromArgb(250, 250, 250);
+				inputHostName.ForeColor = Color.FromArgb(250, 250, 250);
+				inputHostPropertyCount.ForeColor = Color.FromArgb(250, 250, 250);
+				inputRoomType.ForeColor = Color.FromArgb(250, 250, 250);
+				inputRoomPrice.ForeColor = Color.FromArgb(250, 250, 250);
+				inputLongitude.ForeColor = Color.FromArgb(250, 250, 250);
+				inputLatitude.ForeColor = Color.FromArgb(250, 250, 250);
+				inputRoomNights.ForeColor = Color.FromArgb(250, 250, 250);
+				inputRoomAvailability.ForeColor = Color.FromArgb(250, 250, 250);
+
 				if(inputDistrictName.Text == "District Name..." || inputDistrictName.Text == "")
 				{
 					inputDistrictName.ForeColor = Color.FromArgb(240, 100, 50);
