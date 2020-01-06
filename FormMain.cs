@@ -862,7 +862,7 @@ namespace SOFT152Assignment
 			{
 				this.dataFile = "";
 				Data.districts = new District[0];
-				labelFileDialog.Text = "Select Data Source...";
+				labelFileDialog.Text = "Select a Data Source...";
 
 				MessageBox.Show("Something went wrong. Make sure the data file is in the correct format. \n\nException Type: " + exception, "Error");
 			}
