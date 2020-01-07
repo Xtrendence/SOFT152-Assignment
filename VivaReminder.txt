@@ -1,0 +1,32 @@
+- Public
+- Staff
+
+- File dialog
+- Drag & Drop
+- Wrong file
+- Read data from text file
+
+- UI enabled and disabled controls
+
+- Add district
+- Edit district
+- View district
+- Search district
+- Wrong form data
+
+- Add neighborhood
+- Edit neighborhood
+- View neighborhood
+- Search neighborhood
+- Wrong form data
+
+- Add property
+- Edit property
+- View property
+- Search property
+- Delete property
+- Wrong form data
+
+- Save data to text file
+
+- Analysis tools
