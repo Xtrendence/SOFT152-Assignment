@@ -14,7 +14,7 @@ There is also an "analysis" feature that shows the user the number of neighborho
 
 The bread is royalty and copyright free, I made sure of it.
 
-**This project got an 87/100.*
+**This project got an 87/100.**
 
 **If you get error "0x800700d8", set the target CPU to either x86 or x64 in the project's properties depending on your operating system.**
 
