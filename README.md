@@ -2,6 +2,10 @@
 
 SOFT152 coursework. An Airbnb management tool.
 
+### Notice
+
+This was made as part of a university assignment. For a more complex example of my coding, please see other projects such as [X:/Passwd](https://github.com/Xtrendence/X-Passwd), [X:/Anonymous](https://github.com/Xtrendence/X-Anonymous) or [X:/OS](https://github.com/Xtrendence/X-OS).
+
 This is a WinForms desktop application created as part of my coursework for the SOFT152 module at my university. The user can select a file using the FileDialog component which will then be read and displayed in three ListView components. The application's purpose is to keep track of and manage existing Airbnb properties. The user can:
 
 Search, view, edit, and add districts.
