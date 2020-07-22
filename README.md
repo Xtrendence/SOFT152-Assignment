@@ -22,8 +22,8 @@ The bread is royalty and copyright free, I made sure of it.
 
 **This project got an 87/100.**
 
-![1](https://user-images.githubusercontent.com/5298487/69841551-91746300-1257-11ea-90dc-3bc93154dbc5.png)
+![1](https://i.imgur.com/T6WweSK.png)
 
-![2](https://user-images.githubusercontent.com/5298487/69841560-9cc78e80-1257-11ea-903b-b3d68d39afee.png)
+![2](https://i.imgur.com/HZY93rx.png)
 
-![3](https://user-images.githubusercontent.com/5298487/69841563-a18c4280-1257-11ea-92db-8f1204f9fb12.png)
+![3](https://i.imgur.com/EaPSHQO.png)
